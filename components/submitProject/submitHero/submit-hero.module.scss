@@ -3,6 +3,7 @@
 .section {
   @include restrained-width(100%);
   @include center-flex;
+  position: relative;
   flex-direction: column;
   margin-top: $section-spacing;
   text-align: center;

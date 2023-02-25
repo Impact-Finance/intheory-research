@@ -101,33 +101,6 @@
   }
 }
 
-// @mixin shine {
-//   &:after {
-//     animation: shine 5s ease-out infinite;
-//     animation-fill-mode: forwards;
-//     content: '';
-//     position: absolute;
-//     top: -110%;
-//     left: -210%;
-//     width: 200%;
-//     height: 200%;
-//     opacity: 0;
-//     transform: rotate(30deg);
-//     background: rgba(255, 255, 255, 0.01);
-//     background: linear-gradient(
-//       to right,
-//       rgba(255, 255, 255, 0.01) 0%,
-//       rgba(255, 255, 255, 0.01) 30%,
-//       rgba(255, 255, 255, 0.3) 62%,
-//       rgba(255, 255, 255, 0) 100%
-//     );
-//   }
-
-//   &:active:after {
-//     opacity: 0;
-//   }
-// }
-
 // Breakpoints
 @mixin screen-xxl {
   @media (min-width: 1800px) {

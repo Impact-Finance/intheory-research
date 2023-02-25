@@ -24,19 +24,19 @@
     .chain {
       @include obj-contain;
       animation: pulse 6s ease infinite;
-      opacity: 0.85;
     }
   }
   .stepItem {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 0 4rem;
+    padding: 0 3rem;
     h3 {
       color: $color-accent-1;
       font-size: 2.2rem;
       font-weight: 400;
       margin-bottom: 1rem;
+      letter-spacing: 1px;
     }
     p {
       font-size: 1.6rem;

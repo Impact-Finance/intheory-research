@@ -17,6 +17,7 @@
       overflow: hidden;
       .artwork {
         object-fit: cover;
+        transform: scale(1.1);
         transition: all 0.4s;
       }
       .hoverContent {
@@ -65,7 +66,8 @@
       }
       &:hover {
         .artwork {
-          @include image-hover;
+          transform: scale(1);
+          filter: opacity(1.5);
         }
         .hoverContent {
           display: flex;

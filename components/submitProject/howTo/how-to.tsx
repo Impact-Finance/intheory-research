@@ -22,7 +22,7 @@ const HowTo = () => {
               rel="noreferrer">
               this form
             </a>
-            . The application takes less than 10 minutes.
+            . The application takes about 15 minutes.
           </p>
         </div>
         <div className={styles.stepItem}>
@@ -52,9 +52,9 @@ const HowTo = () => {
         <div className={styles.stepItem}>
           <h3>Receive your funds</h3>
           <p>
-            Receive periodic payouts from contributions to your project in the
-            form of USDC. We will help you set up a cryptocurrency wallet if you
-            don&apos;t have one.
+            Receive instant payouts from contributions to your project in the
+            form of USDC. If you don&apos;t already have a cryptocurrency
+            wallet, we will help you set one up.
           </p>
         </div>
         <div className={styles.stepItem}>
