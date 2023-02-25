@@ -1,0 +1,64 @@
+@import '/styles/sass/variables';
+
+/* Accordion styles */
+.tabs {
+  overflow: hidden;
+}
+.tab {
+  width: 100%;
+  overflow: hidden;
+  font-size: 2rem;
+  border-top: 1px solid rgba($color-accent-1, 0.25);
+  border-radius: $box-border-radius;
+  color: rgba($color-white, 0.85);
+  margin: 1rem 0;
+  backdrop-filter: blur(5px);
+  .label {
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem;
+    font-weight: 900;
+    background-color: rgba($color-main, 0.25);
+    cursor: pointer;
+    transition: all 0.2s;
+    /* Icon */
+    &:hover {
+      background-color: rgba($color-main, 0.5);
+      color: $color-accent-1;
+    }
+    &::after {
+      content: '\276F';
+      width: 1.6rem;
+      height: 1.6rem;
+      margin-left: 2rem;
+      text-align: center;
+      transition: all 0.15s;
+    }
+  }
+  .content {
+    max-height: 0;
+    padding: 0 3rem;
+    color: $color-white;
+    background-color: rgba($color-main, 0.25);
+    line-height: 3.5rem;
+    transition: all 0.15s;
+  }
+  input {
+    display: none;
+  }
+}
+
+// :checked
+input:checked {
+  + .label {
+    background: darken($color-main, 10%);
+    color: $color-accent-1;
+    &::after {
+      transform: rotate(90deg);
+    }
+  }
+  ~ .content {
+    max-height: 100vh;
+    padding: 3rem;
+  }
+}

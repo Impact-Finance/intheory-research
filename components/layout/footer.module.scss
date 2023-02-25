@@ -1,0 +1,113 @@
+@import '/styles/sass/mixins';
+
+.footerBox {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: $section-spacing;
+  background-image: linear-gradient(
+    to bottom,
+    rgba($color-dark, 0),
+    rgba($color-dark, 1) 50%
+  );
+  .innerShell {
+    @include center-flex;
+    @include restrained-width(100%);
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 2fr 1fr;
+    grid-template-areas:
+      'description description links links socials socials'
+      '. company company company company .';
+    gap: 5rem 4rem;
+    align-items: flex-end;
+    .platform {
+      grid-area: description;
+      .logoBox {
+        position: relative;
+        height: $navbar-height;
+        width: 18rem;
+        .logo {
+          @include obj-contain;
+        }
+      }
+      .description {
+        font-size: 1.4rem;
+        line-height: 2rem;
+        filter: opacity(0.75);
+      }
+    }
+    .links {
+      grid-area: links;
+      justify-self: center;
+      ul {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+      }
+      .title {
+        color: $color-accent-1;
+        font-size: 2rem;
+        line-height: 4rem;
+        font-weight: 400;
+      }
+      .link {
+        font-size: 1.4rem;
+        line-height: 2rem;
+        margin-right: 4rem;
+        transition: all 0.2s;
+        filter: opacity(0.75);
+        &:hover {
+          filter: opacity(1);
+        }
+      }
+    }
+    .socials {
+      grid-area: socials;
+      .socialList {
+        display: flex;
+        justify-content: flex-end;
+        .socialIcon {
+          margin: 0 2rem;
+          width: 3rem;
+          height: 3rem;
+          transition: all 0.2s;
+          filter: opacity(0.75);
+          &:hover {
+            filter: opacity(1);
+          }
+        }
+      }
+    }
+    .company {
+      grid-area: company;
+      align-self: flex-start;
+      border-top: 1px solid rgba($color-accent-1, 0.25);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 0;
+      .ifLogo {
+        filter: grayscale(0.75);
+        margin: 0 2rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        transition: all 0.2s;
+        &:hover {
+          filter: grayscale(0);
+        }
+      }
+      p {
+        font-size: 1.2rem;
+        filter: opacity(0.5);
+        span {
+          text-decoration: underline;
+          transition: all 0.2s;
+          &:hover {
+            filter: opacity(0.75);
+          }
+        }
+      }
+    }
+  }
+}

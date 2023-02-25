@@ -1,0 +1,11 @@
+@import '/styles/sass/mixins';
+
+.section {
+  @include restrained-width(100%);
+  display: flex;
+  flex-direction: column;
+  margin-top: $section-spacing;
+  .faqBox {
+    @include section-border;
+  }
+}

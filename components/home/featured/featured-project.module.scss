@@ -1,0 +1,67 @@
+@import '/styles/sass/mixins';
+
+.featureBox {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  border-radius: $box-border-radius;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  transition: all 0.2s;
+  .coverImage {
+    object-fit: cover;
+    z-index: -1;
+    transition: all 0.7s;
+  }
+  .toolTip {
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    padding: 0.8rem 1rem;
+    margin: 1rem;
+    border: 1px solid rgba($color-accent-1, 0.25);
+    border-radius: $btn-border-radius;
+    color: $color-accent-1;
+    background-color: rgba($color-main, 0.75);
+    backdrop-filter: blur(15px);
+    .icon {
+      position: relative;
+      width: 2rem;
+      height: 2rem;
+      margin-right: 1rem;
+      animation: rotateClockwise 10s linear infinite;
+      .atom {
+        @include obj-contain;
+      }
+    }
+  }
+  .text {
+    padding: 2rem;
+    width: 100%;
+    background-color: rgba($color-main, 0.75);
+    backdrop-filter: blur(15px);
+    .subtitle {
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      filter: opacity(0.75);
+    }
+    .title {
+      font-size: 2.7rem;
+      letter-spacing: 1px;
+      transition: all 0.4s;
+    }
+  }
+  &:hover {
+    .coverImage {
+      filter: saturate(1.5);
+    }
+    .title {
+      color: $color-accent-1;
+    }
+  }
+}

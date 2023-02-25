@@ -1,0 +1,28 @@
+@import '/styles/sass/mixins';
+
+.shapeContainer {
+  position: absolute;
+  top: 10rem;
+  height: 50rem;
+  width: 50rem;
+  z-index: -1;
+  .shape {
+    @include obj-contain;
+    filter: opacity(0.1);
+  }
+  &:nth-child(1) {
+    animation: rotateClockwise 60s linear infinite;
+  }
+  &:nth-child(2) {
+    animation: rotateClockwise 15s linear infinite reverse;
+    .shape {
+      transform: scale(0.5);
+    }
+  }
+  &:nth-child(3) {
+    animation: rotateClockwise 15s linear infinite;
+    .shape {
+      transform: scale(0.25);
+    }
+  }
+}

@@ -1,0 +1,47 @@
+@import '/styles/sass/mixins';
+
+.itemBox {
+  position: relative;
+  height: 25rem;
+  flex: 1;
+  overflow: hidden;
+  border-radius: $box-border-radius;
+  transition: all 0.3s;
+  .image {
+    object-fit: cover;
+    z-index: -1;
+    transition: all 0.4s;
+  }
+  .text {
+    @include overlay-position;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 calc(2 * $content-gap);
+    background-color: rgba($color-dark, 0.5);
+    backdrop-filter: blur(10px);
+    .subtitle {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      filter: opacity(0.75);
+    }
+    .title {
+      font-size: 2.2rem;
+      transition: all 0.4s;
+    }
+  }
+  &:hover {
+    .image {
+      @include image-hover;
+    }
+    .text {
+      backdrop-filter: none;
+      .title {
+        color: $color-accent-1;
+      }
+    }
+  }
+}

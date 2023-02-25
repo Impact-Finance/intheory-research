@@ -1,0 +1,20 @@
+@import '/styles/sass/mixins';
+
+.section {
+  @include restrained-width(100%);
+  @include center-flex;
+  flex-direction: column;
+  margin-top: $section-spacing;
+  .heading {
+    @include header-styling;
+    font-size: 3rem;
+    margin-bottom: 3rem;
+  }
+  .descriptor {
+    font-size: 2rem;
+    margin-bottom: 5rem;
+  }
+  .actionBtn {
+    @include main-btn;
+  }
+}

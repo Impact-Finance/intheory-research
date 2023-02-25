@@ -1,0 +1,58 @@
+@keyframes animatedGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes rotateClockwise {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    filter: saturate(1);
+  }
+  50% {
+    filter: saturate(2);
+  }
+  100% {
+    filter: saturate(1);
+  }
+}
+
+@keyframes loadingBars {
+  from {
+    height: 0.5rem;
+  }
+  to {
+    height: 7rem;
+  }
+}
+
+// @keyframes shine {
+//   40% {
+//     opacity: 1;
+//     top: -30%;
+//     left: -30%;
+//     transition-property: left, top, opacity;
+//     transition-duration: 1s, 1s, 0.3s;
+//     transition-timing-function: ease;
+//   }
+//   100% {
+//     opacity: 0;
+//     top: -30%;
+//     left: -30%;
+//     transition-property: left, top, opacity;
+//   }
+// }

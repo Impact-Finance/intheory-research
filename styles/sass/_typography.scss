@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura:wght@400;700&family=Orbitron:wght@500;800&display=swap');
+
+@import 'variables';
+
+body {
+  color: $color-white;
+}
+
+body,
+input,
+button {
+  font-family: 'Jura', sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  font-family: 'Orbitron', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  border: none;
+}

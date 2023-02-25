@@ -1,0 +1,76 @@
+@import '/styles/sass/mixins';
+
+.section {
+  @include restrained-width(100%);
+  margin-top: $section-spacing;
+  .gridBox {
+    @include section-border;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    gap: $content-gap;
+    height: 50rem;
+    .gridItem {
+      position: relative;
+      background-color: $color-main;
+      border-radius: $box-border-radius;
+      overflow: hidden;
+      .artwork {
+        object-fit: cover;
+        transition: all 0.4s;
+      }
+      .hoverContent {
+        @include overlay-position;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 0 $content-gap;
+        background-color: rgba($color-dark, 0.75);
+        backdrop-filter: blur(10px);
+        .hoverText {
+          font-size: 1.4rem;
+          line-height: 2.5rem;
+          font-weight: 800;
+          .label {
+            text-transform: uppercase;
+            font-weight: 400;
+            filter: opacity(0.75);
+          }
+        }
+      }
+      &:nth-child(1) {
+        grid-area: 1 / 1 / span 4 / 2;
+      }
+      &:nth-child(2) {
+        grid-area: 5 / 1 / span 3 / 2;
+      }
+      &:nth-child(3) {
+        grid-area: 1 / 2 / span 3 / 3;
+      }
+      &:nth-child(4) {
+        grid-area: 4 / 2 / span 4 / 3;
+      }
+      &:nth-child(5) {
+        grid-area: 1 / 3 / span 4 / 4;
+      }
+      &:nth-child(6) {
+        grid-area: 5 / 3 / span 3 / 4;
+      }
+      &:nth-child(7) {
+        grid-area: 1 / 4 / span 3 / 5;
+      }
+      &:nth-child(8) {
+        grid-area: 4 / 4 / span 4 / 5;
+      }
+      &:hover {
+        .artwork {
+          @include image-hover;
+        }
+        .hoverContent {
+          display: flex;
+        }
+      }
+    }
+  }
+}

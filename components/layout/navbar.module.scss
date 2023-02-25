@@ -1,0 +1,124 @@
+@import 'styles/sass/mixins';
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  background-color: rgba($color-dark, 0.75);
+  overflow-x: hidden;
+  backdrop-filter: blur(10px);
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $navbar-height;
+  .innerShell {
+    @include center-flex;
+    @include restrained-width(100%);
+    .rightContent,
+    .leftContent {
+      @include center-flex;
+    }
+
+    .logoBox {
+      position: relative;
+      height: $navbar-height;
+      width: 18rem;
+
+      .logo {
+        @include obj-contain;
+      }
+    }
+    .search {
+      position: relative;
+      .searchIcon {
+        position: absolute;
+        --icon-size: 1.8rem;
+        height: var(--icon-size);
+        width: var(--icon-size);
+        left: calc(var(--icon-size) * 2.3);
+        top: calc(50% - var(--icon-size) / 2);
+        filter: opacity(0.5);
+        .icon {
+          @include obj-contain;
+        }
+      }
+      .searchInput {
+        border: 0.1rem solid rgba($color-accent-1, 0.5);
+        border-radius: $box-border-radius;
+        background-color: rgba($color-dark, 0.35);
+        margin: 0 3rem;
+        padding: 1rem 1.5rem 1rem 3.5rem;
+        width: 25rem;
+        color: rgba($color-white, 0.5);
+
+        &:focus {
+          outline: none;
+          border-color: rgba($color-accent-2, 0.5);
+          background-color: rgba($color-main, 0.35);
+          box-shadow: 0 0 0.4rem 0.4rem rgba($color-accent-2, 0.15);
+        }
+
+        &::placeholder {
+          color: rgba($color-accent-1, 0.5);
+        }
+      }
+    }
+
+    .buttons {
+      display: inline-flex;
+      font-size: 1.6rem;
+      align-items: center;
+
+      .links {
+        display: flex;
+        .navLink {
+          padding: 1.2rem 1.5rem;
+          margin: 0 2rem;
+          border-radius: $btn-border-radius;
+          transition: all 0.2s;
+          &:last-child {
+            margin-right: 4rem;
+          }
+          &:hover {
+            @include btn-hover;
+          }
+        }
+        .active {
+          color: $color-accent-1;
+        }
+      }
+
+      .connectWallet {
+        @include gradient-border;
+        @include wallet-styles;
+        transition: all 0.2s;
+        &:hover {
+          cursor: pointer;
+          color: rgba($color-accent-1, 0.75);
+          &::after {
+            animation-play-state: paused;
+          }
+        }
+      }
+      .connectedAddress {
+        @include wallet-styles;
+        display: flex;
+        .gradientCircle {
+          width: 2rem;
+          height: 2rem;
+          border-radius: 50%;
+          margin-right: 1rem;
+          background-image: linear-gradient(
+            to bottom right,
+            $color-accent-1 15%,
+            $color-accent-2
+          );
+        }
+        &:hover {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

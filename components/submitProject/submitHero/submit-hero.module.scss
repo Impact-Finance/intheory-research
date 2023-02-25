@@ -1,0 +1,28 @@
+@import '/styles/sass/mixins';
+
+.section {
+  @include restrained-width(100%);
+  @include center-flex;
+  flex-direction: column;
+  margin-top: $section-spacing;
+  text-align: center;
+  .mainText {
+    font-size: 6rem;
+    letter-spacing: 3px;
+    margin-bottom: 3rem;
+  }
+  .subText {
+    width: 55rem;
+    font-size: 3rem;
+    line-height: 5rem;
+    margin-bottom: 3rem;
+    filter: opacity(0.85);
+    span {
+      color: $color-accent-1;
+      font-weight: 800;
+    }
+  }
+  .actionBtn {
+    @include main-btn;
+  }
+}

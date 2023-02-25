@@ -1,0 +1,166 @@
+@import 'variables';
+@import 'animations';
+
+@mixin btn-hover {
+  filter: opacity(0.75);
+  cursor: pointer;
+}
+
+@mixin main-btn {
+  font-size: 2rem;
+  margin: 0 1.5rem;
+  padding: 1.5rem 2rem;
+  border-radius: $btn-border-radius;
+  background-color: rgba($color-main, 0.75);
+  color: $color-accent-1;
+  transition: all 0.2s;
+  &:hover {
+    @include btn-hover;
+  }
+}
+
+@mixin image-hover {
+  transform: scale(1.1);
+  filter: saturate(1.5);
+}
+
+@mixin wallet-styles {
+  font-size: inherit;
+  color: $color-accent-1;
+  border-radius: $btn-border-radius;
+  background-color: $color-main;
+  padding: 0.8rem 1.5rem;
+}
+
+@mixin overlay-position {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@mixin header-styling {
+  font-size: 2.5rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  color: $color-accent-1;
+}
+
+@mixin obj-contain {
+  -o-object-fit: contain;
+  object-fit: contain;
+}
+
+@mixin center-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin restrained-width($width) {
+  width: $width;
+  max-width: $max-page-width;
+  padding: 0 5rem;
+}
+
+@mixin section-border {
+  border-top: 1px solid rgba($color-accent-1, 0.5);
+  border-radius: 2.5rem;
+  padding: $content-gap;
+}
+
+@mixin gradient-border {
+  --borderWidth: 1px;
+  position: relative;
+  border-radius: $btn-border-radius;
+  display: inline-block;
+  width: fit-content;
+  height: fit-content;
+  &::after {
+    content: '';
+    filter: opacity(0.5);
+    position: absolute;
+    top: calc(-1 * var(--borderWidth));
+    left: calc(-1 * var(--borderWidth));
+    height: calc(100% + var(--borderWidth) * 2);
+    width: calc(100% + var(--borderWidth) * 2);
+    background: linear-gradient(
+      60deg,
+      $color-accent-1,
+      $color-main,
+      $color-accent-2,
+      $color-main,
+      $color-accent-1
+    );
+    border-radius: $btn-border-radius;
+    z-index: -1;
+    animation: animatedGradient 6s ease alternate infinite;
+    background-size: 300% 300%;
+  }
+}
+
+// @mixin shine {
+//   &:after {
+//     animation: shine 5s ease-out infinite;
+//     animation-fill-mode: forwards;
+//     content: '';
+//     position: absolute;
+//     top: -110%;
+//     left: -210%;
+//     width: 200%;
+//     height: 200%;
+//     opacity: 0;
+//     transform: rotate(30deg);
+//     background: rgba(255, 255, 255, 0.01);
+//     background: linear-gradient(
+//       to right,
+//       rgba(255, 255, 255, 0.01) 0%,
+//       rgba(255, 255, 255, 0.01) 30%,
+//       rgba(255, 255, 255, 0.3) 62%,
+//       rgba(255, 255, 255, 0) 100%
+//     );
+//   }
+
+//   &:active:after {
+//     opacity: 0;
+//   }
+// }
+
+// Breakpoints
+@mixin screen-xxl {
+  @media (min-width: 1800px) {
+    @content;
+  }
+}
+
+@mixin screen-desktop-sm {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin screen-tablet-lg {
+  @media (max-width: 999px) {
+    @content;
+  }
+}
+
+@mixin screen-tablet-sm {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin screen-mobile-lg {
+  @media (max-width: 425px) {
+    @content;
+  }
+}
+
+@mixin screen-mobile-sm {
+  @media (max-width: 375px) {
+    @content;
+  }
+}

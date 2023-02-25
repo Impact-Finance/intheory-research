@@ -1,0 +1,19 @@
+@import '/styles/sass/mixins';
+
+.text {
+  display: flex;
+  align-items: baseline;
+  .header {
+    @include header-styling;
+    margin: 0 3rem 1rem $content-gap;
+  }
+  .allLink {
+    display: inline-block;
+    font-size: 1.6rem;
+    filter: opacity(0.75);
+    transition: all 0.2s;
+    &:hover {
+      color: $color-accent-1;
+    }
+  }
+}

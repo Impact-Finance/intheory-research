@@ -1,0 +1,11 @@
+@import '/styles/sass/mixins';
+
+.section {
+  @include restrained-width(100%);
+  margin-top: $section-spacing;
+  .bannerBox {
+    @include center-flex;
+    @include section-border;
+    gap: $content-gap;
+  }
+}

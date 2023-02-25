@@ -1,0 +1,54 @@
+@import '/styles/sass/mixins';
+
+.section {
+  @include restrained-width(100%);
+  .heroBox {
+    @include center-flex;
+    height: 85vh;
+    max-height: 80rem;
+    .textBox {
+      width: 55%;
+      margin-right: 5%;
+      .mainHeader {
+        font-size: 4.3rem;
+        letter-spacing: 2px;
+        margin-bottom: 2.5rem;
+        .highlighted {
+          background-image: linear-gradient(
+            to right,
+            $color-accent-1 25%,
+            $color-accent-2
+          );
+          background-clip: text;
+          -webkit-background-clip: text;
+          color: transparent;
+        }
+      }
+      .subHeader {
+        filter: opacity(0.85);
+        font-size: 2.7rem;
+        line-height: 3.5rem;
+        margin-bottom: 5rem;
+      }
+      .actionButtons {
+        display: flex;
+        .action {
+          @include main-btn;
+          &:first-child {
+            margin-left: 0;
+          }
+          &:last-child {
+            background-color: transparent;
+            color: $color-white;
+          }
+        }
+      }
+    }
+    .imageBox {
+      display: flex;
+      justify-content: flex-end;
+      height: 55rem;
+      width: 55rem;
+    }
+  }
+}
