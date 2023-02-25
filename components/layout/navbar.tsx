@@ -53,25 +53,23 @@ const Navbar = ({ current }: NavBarProps) => {
         <div className={styles.rightContent}>
           <div className={styles.buttons}>
             <ul className={styles.links}>
-              <Link href="/projects">
-                <li
-                  className={
-                    current === '/projects' || current === '/artworks'
-                      ? `${styles.navLink} ${styles.active}`
-                      : styles.navLink
-                  }>
-                  Explore
-                </li>
+              <Link
+                href="/projects"
+                className={
+                  current === '/projects' || current === '/artworks'
+                    ? `${styles.navLink} ${styles.active}`
+                    : styles.navLink
+                }>
+                <li>Explore</li>
               </Link>
-              <Link href="/submit-project">
-                <li
-                  className={
-                    current === '/submit-project'
-                      ? `${styles.navLink} ${styles.active}`
-                      : styles.navLink
-                  }>
-                  Submit a Project
-                </li>
+              <Link
+                href="/submit-project"
+                className={
+                  current === '/submit-project'
+                    ? `${styles.navLink} ${styles.active}`
+                    : styles.navLink
+                }>
+                <li>Submit a Project</li>
               </Link>
             </ul>
             {!wallet && (

@@ -7,6 +7,7 @@
   overflow: hidden;
   border-radius: $box-border-radius;
   transition: all 0.3s;
+  @include safari-overflow;
   .image {
     object-fit: cover;
     z-index: -1;

@@ -28,12 +28,16 @@ const Hero = () => {
             research-inspired digital artworks
           </h4>
           <ul className={styles.actionButtons}>
-            <li className={styles.action}>
-              <Link href="/projects">Explore Research</Link>
-            </li>
-            <li className={styles.action}>
-              <Link href="/submit-project">Submit a Project</Link>
-            </li>
+            <Link
+              className={styles.action}
+              href="/projects">
+              <li>Explore Research</li>
+            </Link>
+            <Link
+              className={styles.action}
+              href="/submit-project">
+              <li>Submit a Project</li>
+            </Link>
           </ul>
         </div>
         <div className={styles.imageBox}>

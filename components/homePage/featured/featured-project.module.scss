@@ -11,6 +11,7 @@
   justify-content: space-between;
   align-items: flex-end;
   transition: all 0.2s;
+  @include safari-overflow;
   .coverImage {
     object-fit: cover;
     z-index: -1;

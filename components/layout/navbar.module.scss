@@ -69,16 +69,18 @@
       display: inline-flex;
       font-size: 1.6rem;
       align-items: center;
-
       .links {
         display: flex;
-        margin-right: 2.5rem;
         .navLink {
           padding: 1rem 1.2rem;
-          margin: 0 2.5rem;
+          --link-spacing: 2.5rem;
+          margin: 0 var(--link-spacing);
           border-radius: $btn-border-radius;
           border-bottom: 1px solid rgba($color-accent-1, 0);
           transition: all 0.2s;
+          &:last-child {
+            margin-right: calc(2 * var(--link-spacing));
+          }
           &:hover {
             @include btn-hover;
           }

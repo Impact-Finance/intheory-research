@@ -5,14 +5,14 @@ import SectionHeading from '@/components/site/sectionHeading/section-heading';
 import styles from './faq.module.scss';
 
 interface FaqProps {
-  faq: MutableRefObject<null>;
+  FAQ: MutableRefObject<null>;
 }
 
-const Faq = ({ faq }: FaqProps) => {
+const Faq = ({ FAQ }: FaqProps) => {
   return (
     <section
       className={styles.section}
-      ref={faq}>
+      ref={FAQ}>
       <SectionHeading
         title="frequently asked questions"
         link=""

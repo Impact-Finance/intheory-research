@@ -49,7 +49,7 @@ const Footer = () => {
             </li>
             <li className={styles.link}>
               <Link
-                href="/submit-project#faq"
+                href="/submit-project#FAQ"
                 scroll={false}>
                 FAQ
               </Link>
