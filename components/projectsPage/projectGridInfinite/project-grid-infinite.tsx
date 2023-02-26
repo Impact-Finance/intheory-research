@@ -1,18 +1,22 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
-import DUMMY_PROJECTS, { Project } from '@/content/DUMMY_PROJECTS';
+import { Project } from '@/content/DUMMY_PROJECTS';
 import ProjectGridItem from '../../site/projectGridItem/project-grid-item';
 import { Waypoint } from 'react-waypoint';
 import Loader from '@/components/site/loader/loader';
 import styles from './project-grid-infinite.module.scss';
 
-const projectArray = [...DUMMY_PROJECTS];
-const randomProject = DUMMY_PROJECTS[0];
-const initialProjects = projectArray.splice(0, 12);
+interface ProjectGridInfiniteProps {
+  projectArray: Project[];
+  firstLoaded: Project[];
+}
 
-const ProjectGridInfinite = () => {
-  const [projects, setProjects] = useState<Project[]>(initialProjects);
+const ProjectGridInfinite = ({
+  projectArray,
+  firstLoaded,
+}: ProjectGridInfiniteProps) => {
+  const [projects, setProjects] = useState<Project[]>(firstLoaded);
 
   const handleInfiniteScroll = () => {
     const newProjects = projectArray.splice(0, 12);
@@ -37,7 +41,7 @@ const ProjectGridInfinite = () => {
         <p className={styles.endText}>Need help choosing a project?</p>
         <Link
           className={styles.endBtn}
-          href={'/projects/' + randomProject.id}>
+          href={'/projects/' + firstLoaded[0].id}>
           Pick for me
         </Link>
       </div>

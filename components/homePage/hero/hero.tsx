@@ -1,12 +1,14 @@
 import Link from 'next/link';
 import FeaturedProject from '../featured/featured-project';
 
-import DUMMY_PROJECTS from '@/content/DUMMY_PROJECTS';
+import { Project } from '@/content/DUMMY_PROJECTS';
 import styles from './hero.module.scss';
 
-const Hero = () => {
-  const featuredProject = DUMMY_PROJECTS[0];
+interface HeroProps {
+  featuredProject: Project;
+}
 
+const Hero = ({ featuredProject }: HeroProps) => {
   return (
     <section className={styles.section}>
       <div className={styles.heroBox}>

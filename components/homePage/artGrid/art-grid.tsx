@@ -1,13 +1,13 @@
-import DUMMY_ARTWORK from '@/content/DUMMY_ARTWORK';
-
 import SectionHeading from '../../site/sectionHeading/section-heading';
 import ArtworkGridItem from '@/components/site/artworkGridItem/artworkGridItem';
 import { Artwork } from '@/content/DUMMY_ARTWORK';
 import styles from './art-grid.module.scss';
 
-const ArtGrid = () => {
-  const selectedArt = DUMMY_ARTWORK.slice(0, 8) as Artwork[];
+interface ArtGridProps {
+  bannerArtworks: Artwork[];
+}
 
+const ArtGrid = ({ bannerArtworks }: ArtGridProps) => {
   return (
     <section className={styles.section}>
       <SectionHeading
@@ -15,7 +15,7 @@ const ArtGrid = () => {
         link="/artworks"
       />
       <div className={styles.gridBox}>
-        {selectedArt.map(artwork => (
+        {bannerArtworks.map(artwork => (
           <ArtworkGridItem
             artwork={artwork}
             key={artwork.id}
