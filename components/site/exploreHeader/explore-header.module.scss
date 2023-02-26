@@ -1,0 +1,45 @@
+@import '/styles/sass/mixins';
+
+.section {
+  @include restrained-width(100%);
+  @include center-flex;
+  margin-top: $navbar-height;
+  align-items: flex-end;
+  .leftContent {
+    display: flex;
+    align-items: baseline;
+    margin-left: $content-gap;
+    .head {
+      font-size: 4rem;
+      letter-spacing: 1px;
+      color: $color-accent-1;
+    }
+    .tab {
+      font-size: 2rem;
+      margin: 0 1.5rem;
+      padding: 1.5rem 2rem;
+      border-radius: $btn-border-radius;
+      transition: all 0.2s;
+      --head-spacing: 2rem;
+      margin: 0 var(--head-spacing);
+      &:first-of-type {
+        margin-left: calc(2 * var(--head-spacing));
+      }
+      &.active {
+        background-color: rgba($color-main, 0.75);
+        color: $color-accent-1;
+      }
+      &:hover:not(.active) {
+        @include btn-hover;
+      }
+    }
+  }
+  .filters {
+    margin-right: $content-gap;
+    .shuffle {
+      display: flex;
+      @include main-btn;
+      margin: 0;
+    }
+  }
+}

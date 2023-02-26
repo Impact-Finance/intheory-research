@@ -1,12 +1,12 @@
-import Link from 'next/link';
-
 import DUMMY_PROJECTS from '@/content/DUMMY_PROJECTS';
-import ProjectBannerItem from './project-banner-item';
-import styles from './project-banner.module.scss';
+import ProjectGridItem from '../../site/projectGridItem/project-grid-item';
 import SectionHeading from '../../site/sectionHeading/section-heading';
+import { Project } from '@/content/DUMMY_PROJECTS';
+import randomSubArray from '@/utils/randomSubArray';
+import styles from './project-banner.module.scss';
 
 const ContentBanner = () => {
-  const featured = DUMMY_PROJECTS.slice(0, 3);
+  const selectedProjects = DUMMY_PROJECTS.slice(0, 3) as Project[];
 
   return (
     <section className={styles.section}>
@@ -15,8 +15,8 @@ const ContentBanner = () => {
         link="/projects"
       />
       <div className={styles.bannerBox}>
-        {featured.map(project => (
-          <ProjectBannerItem
+        {selectedProjects.map(project => (
+          <ProjectGridItem
             project={project}
             key={project.id}
           />

@@ -1,0 +1,48 @@
+@import '/styles/sass/variables';
+@import '/styles/sass/animations';
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  --base-size: 6rem;
+  .loaderCircle {
+    position: relative;
+    width: calc(var(--base-size) * 2);
+    height: calc(var(--base-size) * 2);
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px rgba($color-white, 0.1);
+    margin-left: calc(var(--base-size) * -1);
+    .loaderContent {
+      position: absolute;
+      font-size: 1.6rem;
+      left: 50%;
+      top: 57%;
+      transform: translate(-50%, -100%);
+      color: rgba($color-accent-1, 0.8);
+    }
+    .loaderLineMask {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: --base-size;
+      height: calc(var(--base-size) * 2);
+      margin-left: calc(var(--base-size) * -1);
+      margin-top: calc(var(--base-size) * -1);
+      overflow: hidden;
+      transform-origin: --base-size --base-size;
+      -webkit-mask-image: -webkit-linear-gradient(
+        top,
+        #000000,
+        rgba(0, 0, 0, 0)
+      );
+      animation: rotateClockwise 1.2s infinite linear;
+      .loaderLine {
+        width: calc(var(--base-size) * 2);
+        height: calc(var(--base-size) * 2);
+        border-radius: 50%;
+        box-shadow: inset 0 0 0 1px rgba($color-accent-1, 0.75);
+      }
+    }
+  }
+}

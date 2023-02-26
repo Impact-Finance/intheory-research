@@ -2,10 +2,10 @@
 
 .section {
   @include restrained-width(100%);
-  display: flex;
-  flex-direction: column;
-  padding-top: $section-spacing;
-  .faqBox {
+  margin-top: 1rem;
+  padding: 0 $content-gap;
+  .gridBox {
     @include section-border;
+    height: 100vh;
   }
 }

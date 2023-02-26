@@ -19,6 +19,7 @@
     "nextjs-progressbar": "^0.0.16",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-waypoint": "^10.3.0",
     "typescript": "4.9.5"
   },
   "devDependencies": {

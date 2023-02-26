@@ -1,8 +1,12 @@
+import ArtworkGridInfinite from '@/components/artworksPage/artworksGridInfinite/artwork-grid-infinite';
+import ExploreHeader from '@/components/site/exploreHeader/explore-header';
+
 const AllArtworks = () => {
   return (
-    <div>
-      <h1>All Artwork</h1>
-    </div>
+    <>
+      <ExploreHeader current="artworks" />
+      <ArtworkGridInfinite />
+    </>
   );
 };
 

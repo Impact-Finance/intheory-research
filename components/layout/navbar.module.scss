@@ -81,15 +81,12 @@
           &:last-child {
             margin-right: calc(2 * var(--link-spacing));
           }
-          &:hover {
+          &:hover:not(.active) {
             @include btn-hover;
           }
-        }
-        .active {
-          color: $color-accent-1;
-          border-bottom: 1px solid rgba($color-accent-1, 0.5);
-          &:hover {
-            filter: opacity(1);
+          &.active {
+            color: $color-accent-1;
+            border-bottom: 1px solid rgba($color-accent-1, 0.5);
           }
         }
       }

@@ -1,13 +1,12 @@
-import Image from 'next/image';
-import Link from 'next/link';
-
 import DUMMY_ARTWORK from '@/content/DUMMY_ARTWORK';
-import getRandomSubarray from '@/utils/getRandomSubarray';
+
 import SectionHeading from '../../site/sectionHeading/section-heading';
+import ArtworkGridItem from '@/components/site/artworkGridItem/artworkGridItem';
+import { Artwork } from '@/content/DUMMY_ARTWORK';
 import styles from './art-grid.module.scss';
 
 const ArtGrid = () => {
-  const selectedArt = getRandomSubarray(DUMMY_ARTWORK, 8);
+  const selectedArt = DUMMY_ARTWORK.slice(0, 8) as Artwork[];
 
   return (
     <section className={styles.section}>
@@ -16,34 +15,11 @@ const ArtGrid = () => {
         link="/artworks"
       />
       <div className={styles.gridBox}>
-        {selectedArt.map((artPiece, i) => (
-          <div
-            key={i}
-            className={styles.gridItem}>
-            <Link href={'/artworks/' + artPiece.id}>
-              <Image
-                className={styles.artwork}
-                src={'/dummy_images/' + artPiece.path}
-                alt="community artwork"
-                fill
-                sizes="20vw"
-              />
-              <div className={styles.hoverContent}>
-                <p className={styles.hoverText}>
-                  <span className={styles.label}>Research Funded: </span>
-                  {artPiece.associatedProject}
-                </p>
-                <p className={styles.hoverText}>
-                  <span className={styles.label}>Funding Amount: </span>
-                  {artPiece.fundingAmount} USDC
-                </p>
-                <p className={styles.hoverText}>
-                  <span className={styles.label}>Created by: </span>
-                  {artPiece.funder}
-                </p>
-              </div>
-            </Link>
-          </div>
+        {selectedArt.map(artwork => (
+          <ArtworkGridItem
+            artwork={artwork}
+            key={artwork.id}
+          />
         ))}
       </div>
     </section>

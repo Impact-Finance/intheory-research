@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
 import { Project } from '@/content/DUMMY_PROJECTS';
-import styles from './project-banner-item.module.scss';
+import styles from './project-grid-item.module.scss';
 import Link from 'next/link';
 
 interface ProjectBannerItemProps {

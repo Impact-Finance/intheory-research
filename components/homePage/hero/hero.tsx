@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react';
-
 import Link from 'next/link';
 import FeaturedProject from '../featured/featured-project';
 
@@ -7,13 +5,7 @@ import DUMMY_PROJECTS from '@/content/DUMMY_PROJECTS';
 import styles from './hero.module.scss';
 
 const Hero = () => {
-  const [featuredProject, setFeaturedProject] = useState(DUMMY_PROJECTS[0]);
-
-  useEffect(() => {
-    setFeaturedProject(
-      DUMMY_PROJECTS[Math.floor(Math.random() * DUMMY_PROJECTS.length)]
-    );
-  }, []);
+  const featuredProject = DUMMY_PROJECTS[0];
 
   return (
     <section className={styles.section}>

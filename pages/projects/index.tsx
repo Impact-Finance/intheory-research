@@ -1,8 +1,12 @@
+import ProjectGridInfinite from '@/components/projectsPage/projectGridInfinite/project-grid-infinite';
+import ExploreHeader from '@/components/site/exploreHeader/explore-header';
+
 const AllProjects = () => {
   return (
-    <div>
-      <h1>All Projects</h1>
-    </div>
+    <>
+      <ExploreHeader current="projects" />
+      <ProjectGridInfinite />
+    </>
   );
 };
 

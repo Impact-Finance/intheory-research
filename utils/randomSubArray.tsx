@@ -1,6 +1,10 @@
 import { Artwork } from '@/content/DUMMY_ARTWORK';
+import { Project } from '@/content/DUMMY_PROJECTS';
 
-export default function getRandomSubarray(arr: Artwork[], size: number) {
+export default function randomSubArray(
+  arr: Artwork[] | Project[],
+  size: number
+) {
   var shuffled = arr.slice(0),
     i = arr.length,
     temp,
@@ -11,5 +15,5 @@ export default function getRandomSubarray(arr: Artwork[], size: number) {
     shuffled[index] = shuffled[i];
     shuffled[i] = temp;
   }
-  return shuffled.slice(0, size);
+  return shuffled.splice(0, size);
 }
