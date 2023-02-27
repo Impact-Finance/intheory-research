@@ -1,8 +1,6 @@
-import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { Waypoint } from 'react-waypoint';
 
-import DUMMY_ARTWORK from '@/content/DUMMY_ARTWORK';
 import Loader from '@/components/site/loader/loader';
 import { Artwork } from '@/content/DUMMY_ARTWORK';
 import styles from './artwork-grid-infinite.module.scss';
@@ -11,6 +9,7 @@ import GridRow from '../gridRow/grid-row';
 
 interface ArtworkGridInfiniteProps {
   numArtworks: number;
+  artworkArray: Artwork[];
   firstLoaded: Artwork[];
 }
 
@@ -18,6 +17,7 @@ const bannerSize = 8;
 
 const ArtworkGridInfinite = ({
   numArtworks,
+  artworkArray,
   firstLoaded,
 }: ArtworkGridInfiniteProps) => {
   const [currentBanner, setCurrentBanner] = useState(
@@ -35,11 +35,10 @@ const ArtworkGridInfinite = ({
 
   const handleInfiniteScroll = async () => {
     if (currentBanner < numBanners) {
-      const dummy = [...DUMMY_ARTWORK]; // replace with API call
-      const newArt = dummy.slice(
-        bannerSize * currentBanner,
-        bannerSize * currentBanner +
-          bannerSize * (firstLoaded.length / bannerSize)
+      const newArt = artworkArray.splice(
+        // replace with API call
+        0,
+        bannerSize * (firstLoaded.length / bannerSize)
       );
       setArtArray([...artArray, ...newArt]);
       setCurrentBanner(currentBanner + firstLoaded.length / bannerSize);

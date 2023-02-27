@@ -1,10 +1,12 @@
+import { GetStaticProps } from 'next';
+
 import ArtDisplay from '@/components/singleArtworkPage/artDisplay/art-display';
-import { useRouter } from 'next/router';
 
-const ArtPage = () => {
-  const router = useRouter();
-  const { artId } = router.query;
+interface ArtPageProps {
+  artId: string;
+}
 
+const ArtPage = ({ artId }: ArtPageProps) => {
   return (
     <>
       <ArtDisplay artId={artId} />
@@ -16,18 +18,27 @@ export default ArtPage;
 
 export async function getStaticPaths() {
   return {
-    paths: [{ params: { artId: 'uuid-1' } }, { params: { artId: 'uuid-2' } }],
-    fallback: false, // can also be true or 'blocking'
+    paths: [
+      { params: { artId: 'uuid-1' } },
+      { params: { artId: 'uuid-2' } },
+      { params: { artId: 'uuid-3' } },
+      { params: { artId: 'uuid-4' } },
+      { params: { artId: 'uuid-5' } },
+    ],
+    fallback: 'blocking',
   };
 }
 
-export async function getStaticProps() {
-  const image = {};
+export const getStaticProps: GetStaticProps = async context => {
+  let artId;
+  if (context.params) {
+    artId = context.params.artId;
+  }
 
   return {
     props: {
-      image: image,
+      artId: artId,
     },
     revalidate: 3600,
   };
-}
+};

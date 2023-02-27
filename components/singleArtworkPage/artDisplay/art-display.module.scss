@@ -1,0 +1,91 @@
+@import '/styles/sass/mixins';
+
+.section {
+  @include restrained-width(100%);
+  margin-top: $section-spacing/2;
+  display: flex;
+  flex-direction: column;
+  .notFound {
+    color: $color-accent-1;
+    font-size: 3.5rem;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-top: 5rem;
+  }
+  .mainContent {
+    @include center-flex;
+    gap: 5rem;
+    .leftContent {
+      position: relative;
+      flex: 3;
+      background-color: rgba($color-main, 0.25);
+      border-radius: $box-border-radius;
+      height: 60rem;
+      border: 1px solid rgba($color-accent-1, 0.25);
+      backdrop-filter: blur(10px);
+      transition: all 0.4s;
+      &:hover {
+        filter: saturate(1.5);
+      }
+      .loaderBox {
+        position: absolute;
+        top: calc(40% - $loader-diameter/2);
+        left: calc(50% - $loader-diameter/2);
+      }
+      .imageBox {
+        height: 100%;
+        position: relative;
+        @include safari-overflow;
+        .image {
+          @include obj-contain;
+        }
+      }
+    }
+
+    .sidebar {
+      flex: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-height: 60rem;
+      gap: 3rem;
+      p {
+        font-size: 3.5rem;
+        line-height: 4rem;
+        span {
+          color: $color-accent-1;
+          display: block;
+          font-size: 1.8rem;
+          filter: opacity(0.75);
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          &:nth-of-type(2) {
+            color: $color-white;
+            display: inline;
+          }
+        }
+      }
+      .links {
+        margin-top: 3rem;
+        display: flex;
+        gap: 3rem;
+        .link {
+          @include main-btn;
+          margin: 0;
+          font-size: 1.8rem;
+        }
+      }
+    }
+  }
+  .back {
+    width: 70%;
+    align-self: center;
+    border-top: 1px solid rgba($color-accent-1, 0.5);
+    text-align: center;
+    margin-top: $section-spacing;
+    padding-top: 5rem;
+    .link {
+      @include main-btn;
+    }
+  }
+}

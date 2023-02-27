@@ -4,15 +4,21 @@ import DUMMY_ARTWORK, { Artwork } from '@/content/DUMMY_ARTWORK';
 
 interface AllArtworksProps {
   numArtworks: number;
+  artworkArray: Artwork[];
   firstLoaded: Artwork[];
 }
 
-const AllArtworks = ({ numArtworks, firstLoaded }: AllArtworksProps) => {
+const AllArtworks = ({
+  numArtworks,
+  artworkArray,
+  firstLoaded,
+}: AllArtworksProps) => {
   return (
     <>
       <ExploreHeader current="artworks" />
       <ArtworkGridInfinite
         numArtworks={numArtworks}
+        artworkArray={artworkArray}
         firstLoaded={firstLoaded}
       />
     </>
@@ -28,8 +34,9 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      firstLoaded: firstLoaded,
       numArtworks: numArtworks,
+      firstLoaded: firstLoaded,
+      artworkArray: artworkArray,
     },
   };
 }
