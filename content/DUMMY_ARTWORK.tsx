@@ -4,6 +4,7 @@ export interface Artwork {
   associatedProject: string;
   fundingAmount: number;
   funder: string;
+  txnHash: string;
 }
 
 const DUMMY_ARTWORK = [
@@ -13,6 +14,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-2',
@@ -20,6 +22,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-3',
@@ -27,6 +30,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-4',
@@ -34,6 +38,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-5',
@@ -41,6 +46,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-6',
@@ -48,6 +54,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-7',
@@ -55,6 +62,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-8',
@@ -62,6 +70,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-9',
@@ -69,6 +78,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-10',
@@ -76,6 +86,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-11',
@@ -83,6 +94,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-12',
@@ -90,6 +102,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-13',
@@ -97,6 +110,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-14',
@@ -104,6 +118,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-15',
@@ -111,6 +126,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-16',
@@ -118,6 +134,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-17',
@@ -125,6 +142,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-18',
@@ -132,6 +150,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-19',
@@ -139,6 +158,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-20',
@@ -146,6 +166,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-21',
@@ -153,6 +174,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-22',
@@ -160,6 +182,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-23',
@@ -167,6 +190,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-24',
@@ -174,6 +198,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-25',
@@ -181,6 +206,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-26',
@@ -188,6 +214,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-27',
@@ -195,6 +222,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-28',
@@ -202,6 +230,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-29',
@@ -209,6 +238,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-30',
@@ -216,6 +246,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-31',
@@ -223,6 +254,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-32',
@@ -230,6 +262,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-33',
@@ -237,6 +270,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-34',
@@ -244,6 +278,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-35',
@@ -251,6 +286,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-36',
@@ -258,6 +294,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-37',
@@ -265,6 +302,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-38',
@@ -272,6 +310,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-39',
@@ -279,6 +318,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-40',
@@ -286,6 +326,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-41',
@@ -293,6 +334,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-42',
@@ -300,6 +342,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-43',
@@ -307,6 +350,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-44',
@@ -314,6 +358,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-45',
@@ -321,6 +366,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-46',
@@ -328,6 +374,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-47',
@@ -335,6 +382,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-48',
@@ -342,6 +390,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-49',
@@ -349,6 +398,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-50',
@@ -356,6 +406,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-51',
@@ -363,6 +414,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-52',
@@ -370,6 +422,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-53',
@@ -377,6 +430,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
   {
     id: 'uuid-54',
@@ -384,6 +438,7 @@ const DUMMY_ARTWORK = [
     associatedProject: 'Novel Methods of Tuning Neuroplasticity',
     fundingAmount: 45,
     funder: 'cornperson.eth',
+    txnHash: '0x3hj42h...',
   },
 ];
 

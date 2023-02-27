@@ -1,0 +1,9 @@
+@import '/styles/sass/variables';
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  gap: $content-gap;
+  height: 50rem;
+}

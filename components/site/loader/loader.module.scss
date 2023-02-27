@@ -12,12 +12,12 @@
     height: calc(var(--base-size) * 2);
     border-radius: 50%;
     box-shadow: inset 0 0 0 1px rgba($color-white, 0.1);
-    margin-left: calc(var(--base-size) * -1);
     .loaderContent {
       position: absolute;
       font-size: 1.6rem;
       left: 50%;
       top: 57%;
+      text-transform: uppercase;
       transform: translate(-50%, -100%);
       color: rgba($color-accent-1, 0.8);
     }

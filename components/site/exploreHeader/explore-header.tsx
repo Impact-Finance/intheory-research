@@ -12,6 +12,10 @@ interface ExploreHeaderProps {
 const ExploreHeader = ({ current }: ExploreHeaderProps) => {
   const router = useRouter();
 
+  const handleShuffle = () => {
+    router.reload();
+  };
+
   return (
     <section className={styles.section}>
       <div className={styles.leftContent}>
@@ -38,9 +42,7 @@ const ExploreHeader = ({ current }: ExploreHeaderProps) => {
       <div className={styles.filters}>
         <button
           className={styles.shuffle}
-          onClick={() => {
-            router.reload();
-          }}>
+          onClick={handleShuffle}>
           <Image
             className={styles.shuffleIcon}
             src={shuffle}

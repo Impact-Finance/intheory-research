@@ -19,11 +19,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 0 calc(2 * $content-gap);
+    padding: 0 3rem;
     background-color: rgba($color-dark, 0.5);
     backdrop-filter: blur(10px);
     .subtitle {
-      font-size: 1.2rem;
+      font-size: 1.6rem;
       text-transform: uppercase;
       display: inline-block;
       margin-bottom: 0.5rem;

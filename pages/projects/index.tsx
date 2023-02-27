@@ -1,3 +1,5 @@
+import { useRouter } from 'next/router';
+
 import ProjectGridInfinite from '@/components/projectsPage/projectGridInfinite/project-grid-infinite';
 import ExploreHeader from '@/components/site/exploreHeader/explore-header';
 import DUMMY_PROJECTS, { Project } from '@/content/DUMMY_PROJECTS';
@@ -8,12 +10,16 @@ interface AllProjectsProps {
 }
 
 const AllProjects = ({ projectArray, firstLoaded }: AllProjectsProps) => {
+  const router = useRouter();
+  const searchQuery = router.query.search;
+
   return (
     <>
       <ExploreHeader current="projects" />
       <ProjectGridInfinite
         projectArray={projectArray}
         firstLoaded={firstLoaded}
+        searchQuery={searchQuery}
       />
     </>
   );
@@ -21,14 +27,15 @@ const AllProjects = ({ projectArray, firstLoaded }: AllProjectsProps) => {
 
 export default AllProjects;
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const projectArray = [...DUMMY_PROJECTS].sort(() => 0.5 - Math.random());
-  const firstLoaded = projectArray.splice(0, 12);
+  const firstLoaded = projectArray.splice(0, 24);
 
   return {
     props: {
       projectArray: projectArray,
       firstLoaded: firstLoaded,
     },
+    revalidate: 60,
   };
 }

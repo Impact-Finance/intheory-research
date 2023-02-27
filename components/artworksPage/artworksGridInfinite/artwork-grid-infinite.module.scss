@@ -3,9 +3,26 @@
 .section {
   @include restrained-width(100%);
   margin-top: 1rem;
-  padding: 0 $content-gap;
   .gridBox {
     @include section-border;
-    height: 100vh;
+    display: grid;
+    gap: $content-gap;
+    .test {
+      height: 20vh;
+    }
+  }
+  .end {
+    @include center-flex;
+    flex-direction: column;
+    margin-top: $section-spacing;
+    color: $color-accent-1;
+    .endHead {
+      font-size: 4rem;
+      margin-bottom: 5rem;
+      letter-spacing: 1px;
+    }
+    .endBtn {
+      @include main-btn;
+    }
   }
 }

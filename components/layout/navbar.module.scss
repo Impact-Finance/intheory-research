@@ -38,9 +38,13 @@
         width: var(--icon-size);
         left: calc(var(--icon-size) * 2.3);
         top: calc(50% - var(--icon-size) / 2);
+        background-color: transparent;
         filter: opacity(0.5);
         .icon {
           @include obj-contain;
+        }
+        &:hover {
+          cursor: pointer;
         }
       }
       .searchInput {

@@ -3,27 +3,41 @@
 .section {
   @include restrained-width(100%);
   margin-top: 1rem;
-  .gridBox {
+  .container {
     @include section-border;
-    display: grid;
-    gap: $content-gap;
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .end {
-    @include center-flex;
-    flex-direction: column;
-    margin-top: $section-spacing;
-    color: $color-accent-1;
-    .endHead {
-      font-size: 4rem;
-      margin-bottom: 2rem;
+    .searchHeader {
+      text-align: center;
+      margin-bottom: $content-gap;
+      .searchText {
+        font-size: 2rem;
+        span {
+          font-size: 1.6rem;
+          filter: opacity(0.5);
+        }
+      }
     }
-    .endText {
-      font-size: 2rem;
-      margin-bottom: 5rem;
+    .gridBox {
+      display: grid;
+      gap: $content-gap;
+      grid-template-columns: repeat(3, 1fr);
     }
-    .endBtn {
-      @include main-btn;
+    .end {
+      @include center-flex;
+      flex-direction: column;
+      margin-top: $section-spacing;
+      color: $color-accent-1;
+      .endHead {
+        font-size: 4rem;
+        margin-bottom: 2rem;
+        letter-spacing: 1px;
+      }
+      .endText {
+        font-size: 2rem;
+        margin-bottom: 5rem;
+      }
+      .endBtn {
+        @include main-btn;
+      }
     }
   }
 }
