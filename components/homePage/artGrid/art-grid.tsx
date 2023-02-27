@@ -1,5 +1,5 @@
 import SectionHeading from '../../site/sectionHeading/section-heading';
-import ArtworkGridItem from '@/components/site/artworkGridItem/artworkGridItem';
+import ArtworkGridItem from '@/components/site/artworkGridItem/artwork-grid-item';
 import { Artwork } from '@/content/DUMMY_ARTWORK';
 import styles from './art-grid.module.scss';
 

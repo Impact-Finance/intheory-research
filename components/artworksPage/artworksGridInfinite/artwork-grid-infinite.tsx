@@ -64,7 +64,14 @@ const ArtworkGridInfinite = ({
         ))}
       </div>
       <Waypoint onEnter={handleInfiniteScroll}>
-        <div>{!lastBanner && <Loader text="loading" />}</div>
+        <div className={styles.loaderBox}>
+          {!lastBanner && (
+            <Loader
+              text="loading"
+              size="large"
+            />
+          )}
+        </div>
       </Waypoint>
       <div className={styles.end}>
         <h3 className={styles.endHead}>That&apos;s all of them!</h3>

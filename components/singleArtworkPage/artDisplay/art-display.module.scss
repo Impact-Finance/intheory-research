@@ -29,8 +29,9 @@
       }
       .loaderBox {
         position: absolute;
-        top: calc(40% - $loader-diameter/2);
-        left: calc(50% - $loader-diameter/2);
+        height: 95%;
+        width: 100%;
+        margin: auto;
       }
       .imageBox {
         height: 100%;

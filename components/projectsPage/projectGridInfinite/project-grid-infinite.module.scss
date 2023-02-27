@@ -21,6 +21,9 @@
       gap: $content-gap;
       grid-template-columns: repeat(3, 1fr);
     }
+    .loaderBox {
+      margin-top: 5rem;
+    }
     .end {
       @include center-flex;
       flex-direction: column;

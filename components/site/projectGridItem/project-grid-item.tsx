@@ -1,8 +1,9 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
+import Loader from '../loader/loader';
 import { Project } from '@/content/DUMMY_PROJECTS';
 import styles from './project-grid-item.module.scss';
-import Link from 'next/link';
 
 interface ProjectBannerItemProps {
   project: Project;
@@ -11,6 +12,10 @@ interface ProjectBannerItemProps {
 const ProjectBannerItem = ({ project }: ProjectBannerItemProps) => {
   return (
     <div className={styles.itemBox}>
+      <Loader
+        text=""
+        size="small"
+      />
       <Link href={'/projects/' + project.id}>
         <Image
           className={styles.image}

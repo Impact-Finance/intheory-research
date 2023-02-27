@@ -1,5 +1,5 @@
 import { Artwork } from '@/content/DUMMY_ARTWORK';
-import ArtworkGridItem from '@/components/site/artworkGridItem/artworkGridItem';
+import ArtworkGridItem from '@/components/site/artworkGridItem/artwork-grid-item';
 import styles from './grid-row.module.scss';
 
 interface GridRowProps {

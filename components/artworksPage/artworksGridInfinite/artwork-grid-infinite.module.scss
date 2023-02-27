@@ -7,9 +7,9 @@
     @include section-border;
     display: grid;
     gap: $content-gap;
-    .test {
-      height: 20vh;
-    }
+  }
+  .loaderBox {
+    margin-top: 5rem;
   }
   .end {
     @include center-flex;

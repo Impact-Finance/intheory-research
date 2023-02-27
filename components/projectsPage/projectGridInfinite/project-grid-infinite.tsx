@@ -68,7 +68,14 @@ const ProjectGridInfinite = ({
           ))}
         </div>
         <Waypoint onEnter={handleInfiniteScroll}>
-          <div>{filteredArray.length > 0 && <Loader text="loading" />}</div>
+          <div className={styles.loaderBox}>
+            {filteredArray.length > 0 && (
+              <Loader
+                text="loading"
+                size="large"
+              />
+            )}
+          </div>
         </Waypoint>
         <div className={styles.end}>
           <h3 className={styles.endHead}>That&apos;s all of them! </h3>

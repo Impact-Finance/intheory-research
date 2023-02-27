@@ -5,6 +5,7 @@
   height: 25rem;
   flex: 1;
   overflow: hidden;
+  background-color: rgba($color-main, 0.5);
   border-radius: $box-border-radius;
   transition: all 0.3s;
   @include safari-overflow;

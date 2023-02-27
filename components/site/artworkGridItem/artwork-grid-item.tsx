@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 import { Artwork } from '@/content/DUMMY_ARTWORK';
 import styles from './artwork-grid-item.module.scss';
+import Loader from '../loader/loader';
 
 interface ArtworkGridItemProps {
   artwork: Artwork;
@@ -11,6 +12,10 @@ interface ArtworkGridItemProps {
 const ArtworkGridItem = ({ artwork }: ArtworkGridItemProps) => {
   return (
     <div className={styles.gridItem}>
+      <Loader
+        text=""
+        size="small"
+      />
       <Link href={'/artworks/' + artwork.id}>
         <Image
           className={styles.artwork}

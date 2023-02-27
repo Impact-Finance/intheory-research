@@ -27,7 +27,10 @@ const ArtDisplay = ({ artId }: ArtDisplayProps) => {
         <div className={styles.mainContent}>
           <div className={styles.leftContent}>
             <div className={styles.loaderBox}>
-              <Loader text="loading" />
+              <Loader
+                text="loading"
+                size="large"
+              />
             </div>
             <div className={styles.imageBox}>
               <Image
