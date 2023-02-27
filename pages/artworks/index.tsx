@@ -21,7 +21,7 @@ const AllArtworks = ({ numArtworks, firstLoaded }: AllArtworksProps) => {
 
 export default AllArtworks;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const artworkArray = [...DUMMY_ARTWORK].sort(() => 0.5 - Math.random());
   const numArtworks = artworkArray.length;
   const firstLoaded = artworkArray.splice(0, 16);
@@ -31,6 +31,5 @@ export async function getStaticProps() {
       firstLoaded: firstLoaded,
       numArtworks: numArtworks,
     },
-    revalidate: 1,
   };
 }

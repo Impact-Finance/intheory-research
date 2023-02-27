@@ -27,7 +27,7 @@ const AllProjects = ({ projectArray, firstLoaded }: AllProjectsProps) => {
 
 export default AllProjects;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const projectArray = [...DUMMY_PROJECTS].sort(() => 0.5 - Math.random());
   const firstLoaded = projectArray.splice(0, 24);
 
@@ -36,6 +36,5 @@ export async function getStaticProps() {
       projectArray: projectArray,
       firstLoaded: firstLoaded,
     },
-    revalidate: 1,
   };
 }
