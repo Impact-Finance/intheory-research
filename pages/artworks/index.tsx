@@ -31,6 +31,6 @@ export async function getStaticProps() {
       firstLoaded: firstLoaded,
       numArtworks: numArtworks,
     },
-    revalidate: 60,
+    revalidate: 1,
   };
 }

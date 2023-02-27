@@ -36,6 +36,6 @@ export async function getStaticProps() {
       projectArray: projectArray,
       firstLoaded: firstLoaded,
     },
-    revalidate: 60,
+    revalidate: 1,
   };
 }
