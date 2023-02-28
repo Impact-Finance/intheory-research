@@ -1,0 +1,38 @@
+@import '/styles/sass/mixins';
+
+.section {
+  @include restrained-width(100%);
+  margin-top: $section-spacing/2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  .subtext {
+    color: $color-accent-1;
+    font-size: 1.8rem;
+    filter: opacity(0.75);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .title {
+    font-size: 5rem;
+    letter-spacing: 1px;
+  }
+  .researcher {
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+    filter: opacity(0.75);
+  }
+  .tags {
+    display: flex;
+    margin-top: 3rem;
+    gap: 2rem;
+    .tag {
+      font-size: 2rem;
+      text-transform: capitalize;
+      color: $color-accent-1;
+      border-radius: $btn-border-radius;
+      background-color: $color-main;
+      padding: 0.8rem 1.5rem;
+    }
+  }
+}

@@ -17,6 +17,7 @@ html {
 body {
   box-sizing: border-box;
   background-color: $color-dark;
+  position: relative;
 }
 
 html,
@@ -29,6 +30,7 @@ main {
   @include center-flex;
   flex-direction: column;
   margin-top: calc($navbar-height);
+  min-height: 100vh;
 
   .bg-container {
     position: fixed;

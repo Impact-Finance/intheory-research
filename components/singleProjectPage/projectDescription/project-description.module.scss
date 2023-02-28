@@ -1,0 +1,35 @@
+@import '/styles/sass/mixins';
+
+.section {
+  @include restrained-width(100%);
+  display: flex;
+  flex-direction: column;
+  margin-top: $section-spacing/2;
+  .header {
+    font-size: 3rem;
+    letter-spacing: 1px;
+    font-weight: 100;
+    color: $color-accent-1;
+    padding: 1rem $content-gap;
+  }
+  .content {
+    @include center-flex;
+    @include section-border;
+    gap: 6rem;
+    .text {
+      flex: 5;
+      filter: opacity(0.85);
+      .description {
+        font-size: 2rem;
+        line-height: 3rem;
+        margin-bottom: 1rem;
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+    }
+    .radar {
+      flex: 4;
+    }
+  }
+}

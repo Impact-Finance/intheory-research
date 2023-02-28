@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { ReactNode, useState } from 'react';
+import { ReactNode } from 'react';
 import { useRouter } from 'next/router';
 
 import hexes from '@/public/site/hexagon-background.png';
@@ -12,7 +12,6 @@ interface LayoutProps {
 }
 
 function Layout({ children }: LayoutProps) {
-  const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
   const currentPage = router.pathname;
 

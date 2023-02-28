@@ -5,6 +5,7 @@ import Link from 'next/link';
 import DUMMY_ARTWORK, { Artwork } from '@/content/DUMMY_ARTWORK';
 import styles from './art-display.module.scss';
 import Loader from '@/components/site/loader/loader';
+import NotFound from '@/components/site/notFound/not-found';
 
 interface ArtDisplayProps {
   artId: string | string[] | undefined;
@@ -20,9 +21,7 @@ const ArtDisplay = ({ artId }: ArtDisplayProps) => {
 
   return (
     <section className={styles.section}>
-      {!artwork && (
-        <p className={styles.notFound}>Uh oh... something went wrong 🙁</p>
-      )}
+      {!artwork && <NotFound />}
       {artwork && (
         <div className={styles.mainContent}>
           <div className={styles.leftContent}>
