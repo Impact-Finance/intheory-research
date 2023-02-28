@@ -6,6 +6,8 @@ import ProjectHeader from '@/components/singleProjectPage/projectHeader/project-
 import MainContent from '@/components/singleProjectPage/mainContent/main-content';
 import NotFound from '@/components/site/notFound/not-found';
 import ProjectDescription from '@/components/singleProjectPage/projectDescription/project-description';
+import AboutResearcher from '@/components/singleProjectPage/aboutResearcher/about-researcher';
+import AssociatedArtworks from '@/components/singleProjectPage/associatedArtworks/associated-artworks';
 
 interface ProjectPageProps {
   projectId: string;
@@ -41,6 +43,8 @@ const ProjectPage = ({ projectId }: ProjectPageProps) => {
             impacts={project.impacts}
             longDescription={project.longDescription}
           />
+          <AboutResearcher researcher={project.researcher} />
+          <AssociatedArtworks artworks={project.associatedArtwork} />
         </>
       )}
     </>
@@ -77,6 +81,6 @@ export const getStaticProps: GetStaticProps = async context => {
     props: {
       projectId: projectId,
     },
-    revalidate: 3600,
+    revalidate: 600,
   };
 };

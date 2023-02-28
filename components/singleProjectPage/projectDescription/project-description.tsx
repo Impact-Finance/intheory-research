@@ -15,7 +15,7 @@ const ProjectDescription = ({
 
   return (
     <section className={styles.section}>
-      <h3 className={styles.header}>About This Project</h3>
+      <h3 className={styles.header}>About the Project</h3>
       <div className={styles.content}>
         <div className={styles.text}>
           {paragraphs.map((p, i) => (

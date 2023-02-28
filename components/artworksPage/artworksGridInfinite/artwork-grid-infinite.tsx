@@ -25,6 +25,8 @@ const ArtworkGridInfinite = ({
   );
   const [lastBanner, setLastBanner] = useState(false);
   const [artArray, setArtArray] = useState<Artwork[]>(firstLoaded);
+  const [currentFilter, setCurrentFilter] = useState<'all' | 'my'>('all');
+  const [filteredArray, setFilteredArray] = useState<Artwork[]>([]);
   const [bannerArray, setBannerArray] = useState<Artwork[][]>([]);
   const numBanners = numArtworks / bannerSize;
 
@@ -47,6 +49,15 @@ const ArtworkGridInfinite = ({
     }
   };
 
+  const handleFilter = () => {
+    if (currentFilter === 'all') {
+      setCurrentFilter('my');
+    }
+    if (currentFilter === 'my') {
+      setCurrentFilter('all');
+    }
+  };
+
   const scrollToTop = () => {
     const isBrowser = () => typeof window !== 'undefined';
     if (!isBrowser()) return;
@@ -56,6 +67,18 @@ const ArtworkGridInfinite = ({
   return (
     <section className={styles.section}>
       <div className={styles.gridBox}>
+        <div className={styles.filters}>
+          <button
+            className={currentFilter === 'all' ? styles.current : ''}
+            onClick={handleFilter}>
+            All Art
+          </button>
+          <button
+            className={currentFilter === 'my' ? styles.current : ''}
+            onClick={handleFilter}>
+            My Collection
+          </button>
+        </div>
         {bannerArray.map((banner, i) => (
           <GridRow
             artworks={banner}

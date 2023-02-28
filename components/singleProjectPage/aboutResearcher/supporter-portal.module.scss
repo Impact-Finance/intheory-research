@@ -1,0 +1,35 @@
+@import '/styles/sass/mixins';
+
+.supporterBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  height: fit-content;
+  background-color: rgba($color-dark, 0.25);
+  backdrop-filter: blur(100px);
+  border-top: 1px solid rgba($color-accent-1, 0.25);
+  border-bottom: 1px solid rgba($color-accent-1, 0.25);
+  border-radius: $box-border-radius;
+  padding: 3rem;
+  gap: 2rem;
+  .head {
+    font-size: 2.2rem;
+    color: $color-accent-1;
+  }
+  .text {
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+    filter: opacity(0.85);
+  }
+  .accessLink {
+    @include main-btn;
+    &:disabled {
+      filter: opacity(0.75) grayscale(1);
+      &:hover {
+        cursor: default;
+      }
+    }
+  }
+}

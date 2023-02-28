@@ -1,5 +1,6 @@
 export interface Researcher {
   name: string;
+  avatar: string;
   affiliation: string;
   degree: string;
   bio: string;
@@ -37,9 +38,10 @@ const DUMMY_PROJECTS = [
     name: 'Molecular Dynamics of Grain Boundaries',
     researcher: {
       name: 'Satoshi Nakamoto',
+      avatar: 'scientist2.jpg',
       affiliation: 'University of Southern California',
       degree: 'PhD Materials Science',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -79,10 +81,11 @@ const DUMMY_PROJECTS = [
     id: 'uuid-2',
     name: 'Quantum Materials Research',
     researcher: {
-      name: 'Bert Merple',
+      name: 'Marie Curie',
+      avatar: 'scientist1.jpg',
       affiliation: 'University of California - Los Angeles',
       degree: 'PhD Physics',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -125,9 +128,10 @@ const DUMMY_PROJECTS = [
     name: 'Novel Methods of Tuning Neuroplasticity',
     researcher: {
       name: 'Isaac Clarke',
+      avatar: 'scientist3.jpg',
       affiliation: 'USG Ishimura',
       degree: 'PhD Biomedical Engineering',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -168,9 +172,10 @@ const DUMMY_PROJECTS = [
     name: 'Molecular Dynamics of Grain Boundaries',
     researcher: {
       name: 'Satoshi Nakamoto',
+      avatar: 'scientist2.jpg',
       affiliation: 'University of Southern California',
       degree: 'PhD Materials Science',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -210,10 +215,11 @@ const DUMMY_PROJECTS = [
     id: 'uuid-5',
     name: 'Quantum Materials Research',
     researcher: {
-      name: 'Bert Merple',
+      name: 'Marie Curie',
+      avatar: 'scientist1.jpg',
       affiliation: 'University of California - Los Angeles',
       degree: 'PhD Physics',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -256,9 +262,10 @@ const DUMMY_PROJECTS = [
     name: 'Novel Methods of Tuning Neuroplasticity',
     researcher: {
       name: 'Isaac Clarke',
+      avatar: 'scientist3.jpg',
       affiliation: 'USG Ishimura',
       degree: 'PhD Biomedical Engineering',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -299,9 +306,10 @@ const DUMMY_PROJECTS = [
     name: 'Molecular Dynamics of Grain Boundaries',
     researcher: {
       name: 'Satoshi Nakamoto',
+      avatar: 'scientist2.jpg',
       affiliation: 'University of Southern California',
       degree: 'PhD Materials Science',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -341,10 +349,11 @@ const DUMMY_PROJECTS = [
     id: 'uuid-8',
     name: 'Quantum Materials Research',
     researcher: {
-      name: 'Bert Merple',
+      name: 'Marie Curie',
+      avatar: 'scientist1.jpg',
       affiliation: 'University of California - Los Angeles',
       degree: 'PhD Physics',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -387,9 +396,10 @@ const DUMMY_PROJECTS = [
     name: 'Novel Methods of Tuning Neuroplasticity',
     researcher: {
       name: 'Isaac Clarke',
+      avatar: 'scientist3.jpg',
       affiliation: 'USG Ishimura',
       degree: 'PhD Biomedical Engineering',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -430,9 +440,10 @@ const DUMMY_PROJECTS = [
     name: 'Molecular Dynamics of Grain Boundaries',
     researcher: {
       name: 'Satoshi Nakamoto',
+      avatar: 'scientist2.jpg',
       affiliation: 'University of Southern California',
       degree: 'PhD Materials Science',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -472,10 +483,11 @@ const DUMMY_PROJECTS = [
     id: 'uuid-11',
     name: 'Quantum Materials Research',
     researcher: {
-      name: 'Bert Merple',
+      name: 'Marie Curie',
+      avatar: 'scientist1.jpg',
       affiliation: 'University of California - Los Angeles',
       degree: 'PhD Physics',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -518,9 +530,10 @@ const DUMMY_PROJECTS = [
     name: 'Novel Methods of Tuning Neuroplasticity',
     researcher: {
       name: 'Isaac Clarke',
+      avatar: 'scientist3.jpg',
       affiliation: 'USG Ishimura',
       degree: 'PhD Biomedical Engineering',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -561,9 +574,10 @@ const DUMMY_PROJECTS = [
     name: 'Molecular Dynamics of Grain Boundaries',
     researcher: {
       name: 'Satoshi Nakamoto',
+      avatar: 'scientist2.jpg',
       affiliation: 'University of Southern California',
       degree: 'PhD Materials Science',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -603,10 +617,11 @@ const DUMMY_PROJECTS = [
     id: 'uuid-14',
     name: 'Quantum Materials Research',
     researcher: {
-      name: 'Bert Merple',
+      name: 'Marie Curie',
+      avatar: 'scientist1.jpg',
       affiliation: 'University of California - Los Angeles',
       degree: 'PhD Physics',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -649,9 +664,10 @@ const DUMMY_PROJECTS = [
     name: 'Novel Methods of Tuning Neuroplasticity',
     researcher: {
       name: 'Isaac Clarke',
+      avatar: 'scientist3.jpg',
       affiliation: 'USG Ishimura',
       degree: 'PhD Biomedical Engineering',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -692,9 +708,10 @@ const DUMMY_PROJECTS = [
     name: 'Molecular Dynamics of Grain Boundaries',
     researcher: {
       name: 'Satoshi Nakamoto',
+      avatar: 'scientist2.jpg',
       affiliation: 'University of Southern California',
       degree: 'PhD Materials Science',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -734,10 +751,11 @@ const DUMMY_PROJECTS = [
     id: 'uuid-17',
     name: 'Quantum Materials Research',
     researcher: {
-      name: 'Bert Merple',
+      name: 'Marie Curie',
+      avatar: 'scientist1.jpg',
       affiliation: 'University of California - Los Angeles',
       degree: 'PhD Physics',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -780,9 +798,10 @@ const DUMMY_PROJECTS = [
     name: 'Novel Methods of Tuning Neuroplasticity',
     researcher: {
       name: 'Isaac Clarke',
+      avatar: 'scientist3.jpg',
       affiliation: 'USG Ishimura',
       degree: 'PhD Biomedical Engineering',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -823,9 +842,10 @@ const DUMMY_PROJECTS = [
     name: 'Molecular Dynamics of Grain Boundaries',
     researcher: {
       name: 'Satoshi Nakamoto',
+      avatar: 'scientist2.jpg',
       affiliation: 'University of Southern California',
       degree: 'PhD Materials Science',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -865,10 +885,11 @@ const DUMMY_PROJECTS = [
     id: 'uuid-20',
     name: 'Quantum Materials Research',
     researcher: {
-      name: 'Bert Merple',
+      name: 'Marie Curie',
+      avatar: 'scientist1.jpg',
       affiliation: 'University of California - Los Angeles',
       degree: 'PhD Physics',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -911,9 +932,10 @@ const DUMMY_PROJECTS = [
     name: 'Novel Methods of Tuning Neuroplasticity',
     researcher: {
       name: 'Isaac Clarke',
+      avatar: 'scientist3.jpg',
       affiliation: 'USG Ishimura',
       degree: 'PhD Biomedical Engineering',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -954,9 +976,10 @@ const DUMMY_PROJECTS = [
     name: 'Molecular Dynamics of Grain Boundaries',
     researcher: {
       name: 'Satoshi Nakamoto',
+      avatar: 'scientist2.jpg',
       affiliation: 'University of Southern California',
       degree: 'PhD Materials Science',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -996,10 +1019,11 @@ const DUMMY_PROJECTS = [
     id: 'uuid-23',
     name: 'Quantum Materials Research',
     researcher: {
-      name: 'Bert Merple',
+      name: 'Marie Curie',
+      avatar: 'scientist1.jpg',
       affiliation: 'University of California - Los Angeles',
       degree: 'PhD Physics',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -1042,9 +1066,10 @@ const DUMMY_PROJECTS = [
     name: 'Novel Methods of Tuning Neuroplasticity',
     researcher: {
       name: 'Isaac Clarke',
+      avatar: 'scientist3.jpg',
       affiliation: 'USG Ishimura',
       degree: 'PhD Biomedical Engineering',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -1085,9 +1110,10 @@ const DUMMY_PROJECTS = [
     name: 'Molecular Dynamics of Grain Boundaries',
     researcher: {
       name: 'Satoshi Nakamoto',
+      avatar: 'scientist2.jpg',
       affiliation: 'University of Southern California',
       degree: 'PhD Materials Science',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -1127,10 +1153,11 @@ const DUMMY_PROJECTS = [
     id: 'uuid-26',
     name: 'Quantum Materials Research',
     researcher: {
-      name: 'Bert Merple',
+      name: 'Marie Curie',
+      avatar: 'scientist1.jpg',
       affiliation: 'University of California - Los Angeles',
       degree: 'PhD Physics',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -1173,9 +1200,10 @@ const DUMMY_PROJECTS = [
     name: 'Novel Methods of Tuning Neuroplasticity',
     researcher: {
       name: 'Isaac Clarke',
+      avatar: 'scientist3.jpg',
       affiliation: 'USG Ishimura',
       degree: 'PhD Biomedical Engineering',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -1216,9 +1244,10 @@ const DUMMY_PROJECTS = [
     name: 'Molecular Dynamics of Grain Boundaries',
     researcher: {
       name: 'Satoshi Nakamoto',
+      avatar: 'scientist2.jpg',
       affiliation: 'University of Southern California',
       degree: 'PhD Materials Science',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -1258,10 +1287,11 @@ const DUMMY_PROJECTS = [
     id: 'uuid-29',
     name: 'Quantum Materials Research',
     researcher: {
-      name: 'Bert Merple',
+      name: 'Marie Curie',
+      avatar: 'scientist1.jpg',
       affiliation: 'University of California - Los Angeles',
       degree: 'PhD Physics',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -1304,9 +1334,10 @@ const DUMMY_PROJECTS = [
     name: 'Novel Methods of Tuning Neuroplasticity',
     researcher: {
       name: 'Isaac Clarke',
+      avatar: 'scientist3.jpg',
       affiliation: 'USG Ishimura',
       degree: 'PhD Biomedical Engineering',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -1347,9 +1378,10 @@ const DUMMY_PROJECTS = [
     name: 'Molecular Dynamics of Grain Boundaries',
     researcher: {
       name: 'Satoshi Nakamoto',
+      avatar: 'scientist2.jpg',
       affiliation: 'University of Southern California',
       degree: 'PhD Materials Science',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -1389,10 +1421,11 @@ const DUMMY_PROJECTS = [
     id: 'uuid-32',
     name: 'Quantum Materials Research',
     researcher: {
-      name: 'Bert Merple',
+      name: 'Marie Curie',
+      avatar: 'scientist1.jpg',
       affiliation: 'University of California - Los Angeles',
       degree: 'PhD Physics',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -1435,9 +1468,10 @@ const DUMMY_PROJECTS = [
     name: 'Novel Methods of Tuning Neuroplasticity',
     researcher: {
       name: 'Isaac Clarke',
+      avatar: 'scientist3.jpg',
       affiliation: 'USG Ishimura',
       degree: 'PhD Biomedical Engineering',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -1478,9 +1512,10 @@ const DUMMY_PROJECTS = [
     name: 'Molecular Dynamics of Grain Boundaries',
     researcher: {
       name: 'Satoshi Nakamoto',
+      avatar: 'scientist2.jpg',
       affiliation: 'University of Southern California',
       degree: 'PhD Materials Science',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -1520,10 +1555,11 @@ const DUMMY_PROJECTS = [
     id: 'uuid-35',
     name: 'Quantum Materials Research',
     researcher: {
-      name: 'Bert Merple',
+      name: 'Marie Curie',
+      avatar: 'scientist1.jpg',
       affiliation: 'University of California - Los Angeles',
       degree: 'PhD Physics',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -1566,9 +1602,10 @@ const DUMMY_PROJECTS = [
     name: 'Novel Methods of Tuning Neuroplasticity',
     researcher: {
       name: 'Isaac Clarke',
+      avatar: 'scientist3.jpg',
       affiliation: 'USG Ishimura',
       degree: 'PhD Biomedical Engineering',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -1609,9 +1646,10 @@ const DUMMY_PROJECTS = [
     name: 'Molecular Dynamics of Grain Boundaries',
     researcher: {
       name: 'Satoshi Nakamoto',
+      avatar: 'scientist2.jpg',
       affiliation: 'University of Southern California',
       degree: 'PhD Materials Science',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -1651,10 +1689,11 @@ const DUMMY_PROJECTS = [
     id: 'uuid-38',
     name: 'Quantum Materials Research',
     researcher: {
-      name: 'Bert Merple',
+      name: 'Marie Curie',
+      avatar: 'scientist1.jpg',
       affiliation: 'University of California - Los Angeles',
       degree: 'PhD Physics',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -1697,9 +1736,10 @@ const DUMMY_PROJECTS = [
     name: 'Novel Methods of Tuning Neuroplasticity',
     researcher: {
       name: 'Isaac Clarke',
+      avatar: 'scientist3.jpg',
       affiliation: 'USG Ishimura',
       degree: 'PhD Biomedical Engineering',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -1740,9 +1780,10 @@ const DUMMY_PROJECTS = [
     name: 'Molecular Dynamics of Grain Boundaries',
     researcher: {
       name: 'Satoshi Nakamoto',
+      avatar: 'scientist2.jpg',
       affiliation: 'University of Southern California',
       degree: 'PhD Materials Science',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -1782,10 +1823,11 @@ const DUMMY_PROJECTS = [
     id: 'uuid-41',
     name: 'Quantum Materials Research',
     researcher: {
-      name: 'Bert Merple',
+      name: 'Marie Curie',
+      avatar: 'scientist1.jpg',
       affiliation: 'University of California - Los Angeles',
       degree: 'PhD Physics',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -1828,9 +1870,10 @@ const DUMMY_PROJECTS = [
     name: 'Novel Methods of Tuning Neuroplasticity',
     researcher: {
       name: 'Isaac Clarke',
+      avatar: 'scientist3.jpg',
       affiliation: 'USG Ishimura',
       degree: 'PhD Biomedical Engineering',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',
@@ -1871,9 +1914,10 @@ const DUMMY_PROJECTS = [
     name: 'Novel Methods of Tuning Neuroplasticity',
     researcher: {
       name: 'Isaac Clarke',
+      avatar: 'scientist3.jpg',
       affiliation: 'USG Ishimura',
       degree: 'PhD Biomedical Engineering',
-      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ',
+      bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       links: [
         'https://www.linkedin.com/in/brettcornick/',
         'https://twitter.com/brett_cornick',

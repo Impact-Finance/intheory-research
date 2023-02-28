@@ -35,12 +35,12 @@ const RadarChart = ({ impacts }: RadarChartProps) => {
 
   const impactData = {
     labels: [
-      'Sustainability',
-      'Global Health',
-      'Social Science',
-      'Digital Technology',
-      'Materials',
-      'Space Travel',
+      'SUSTAINABILITY',
+      'GLOBAL HEALTH',
+      'SOCIAL SCIENCE',
+      'DIGITAL TECHNOLOGY',
+      'MATERIALS',
+      'SPACE TRAVEL',
     ],
     datasets: [
       {

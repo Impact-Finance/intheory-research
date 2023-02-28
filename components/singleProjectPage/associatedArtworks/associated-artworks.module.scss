@@ -1,0 +1,35 @@
+@import '/styles/sass/mixins';
+
+.section {
+  @include restrained-width(100%);
+  display: flex;
+  flex-direction: column;
+  margin-top: $section-spacing/2;
+  .header {
+    font-size: 3rem;
+    letter-spacing: 1px;
+    font-weight: 100;
+    color: $color-accent-1;
+    padding: 1rem $content-gap;
+  }
+  .content {
+    @include section-border;
+    .noArt {
+      text-align: center;
+      font-size: 3rem;
+      margin-top: $section-spacing/2;
+      filter: opacity(0.75);
+    }
+  }
+  .back {
+    width: 70%;
+    align-self: center;
+    border-top: 1px solid rgba($color-accent-1, 0.5);
+    text-align: center;
+    margin-top: $section-spacing;
+    padding-top: 5rem;
+    .link {
+      @include main-btn;
+    }
+  }
+}

@@ -5,6 +5,7 @@
   margin-top: 1rem;
   .container {
     @include section-border;
+    min-height: 90vh;
     .searchHeader {
       text-align: center;
       margin-bottom: $content-gap;

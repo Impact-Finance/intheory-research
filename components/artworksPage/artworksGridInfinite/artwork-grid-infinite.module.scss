@@ -7,6 +7,26 @@
     @include section-border;
     display: grid;
     gap: $content-gap;
+    .filters {
+      display: flex;
+      justify-content: center;
+      gap: $content-gap;
+      button {
+        font-size: 2rem;
+        background-color: transparent;
+        padding: 1rem 1.2rem;
+        border-radius: $btn-border-radius;
+        border-bottom: 1px solid rgba($color-accent-1, 0);
+        transition: all 0.2s;
+        &:hover:not(.current) {
+          @include btn-hover;
+        }
+        &.current {
+          color: $color-accent-1;
+          border-bottom: 1px solid rgba($color-accent-1, 0.5);
+        }
+      }
+    }
   }
   .loaderBox {
     margin-top: 5rem;

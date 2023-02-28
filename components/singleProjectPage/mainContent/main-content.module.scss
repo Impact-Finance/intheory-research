@@ -3,7 +3,7 @@
 .section {
   @include restrained-width(100%);
   display: flex;
-  gap: 4rem;
+  gap: $content-gap;
   margin-top: 3rem;
   .imageBox {
     flex: 4;

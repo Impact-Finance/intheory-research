@@ -1,0 +1,83 @@
+@import '/styles/sass/mixins';
+
+.section {
+  @include restrained-width(100%);
+  display: flex;
+  flex-direction: column;
+  margin-top: $section-spacing/2;
+  .header {
+    font-size: 3rem;
+    letter-spacing: 1px;
+    font-weight: 100;
+    color: $color-accent-1;
+    padding: 1rem $content-gap;
+  }
+  .content {
+    display: flex;
+    gap: 5rem;
+    .researcher {
+      @include section-border;
+      position: relative;
+      flex: 4;
+      display: grid;
+      grid-template-columns: 20rem 1fr;
+      gap: $content-gap;
+      grid-template-areas:
+        'avatar attributes'
+        'bio bio';
+      .avatarBox {
+        grid-area: avatar;
+        position: relative;
+        height: 20rem;
+        overflow: hidden;
+        border-radius: $box-border-radius;
+        background-color: rgba($color-main, 0.25);
+        .avatarImage {
+          object-fit: cover;
+        }
+      }
+      .attributes {
+        grid-area: attributes;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        h4 {
+          font-size: 2.2rem;
+          font-weight: 100;
+          line-height: 2.8rem;
+          span {
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.8rem;
+            filter: opacity(0.75);
+            color: $color-accent-1;
+          }
+        }
+      }
+      .bio {
+        grid-area: bio;
+        font-size: 2rem;
+        line-height: 3rem;
+        filter: opacity(0.85);
+      }
+      .socials {
+        position: absolute;
+        top: $content-gap;
+        right: $content-gap;
+        display: flex;
+        gap: 3rem;
+        filter: opacity(0.85);
+        .icon {
+          transition: all 0.2s;
+          &:hover {
+            @include btn-hover;
+          }
+        }
+      }
+    }
+    .supporterPortal {
+      flex: 3;
+    }
+  }
+}
