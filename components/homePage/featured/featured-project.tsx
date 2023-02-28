@@ -4,6 +4,7 @@ import Link from 'next/link';
 import atom from '@/public/icons/atom.svg';
 import { Project } from '@/content/DUMMY_PROJECTS';
 import styles from './featured-project.module.scss';
+import Loader from '@/components/site/loader/loader';
 
 interface FeaturedProjectProps {
   project: Project;
@@ -13,6 +14,12 @@ const FeaturedProject = ({ project }: FeaturedProjectProps) => {
   return (
     <Link href={'/projects/' + project.id}>
       <div className={styles.featureBox}>
+        <div className={styles.loaderContainer}>
+          <Loader
+            text="loading"
+            size="large"
+          />
+        </div>
         <Image
           className={styles.coverImage}
           src={'/dummy_images/' + project.coverImage}
