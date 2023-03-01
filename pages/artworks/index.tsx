@@ -2,17 +2,17 @@ import ArtworkGridInfinite from '@/components/artworksPage/artworksGridInfinite/
 import ExploreHeader from '@/components/site/exploreHeader/explore-header';
 import DUMMY_ARTWORK, { Artwork } from '@/content/DUMMY_ARTWORK';
 
-interface AllArtworksProps {
+interface AllArtworksPageProps {
   numArtworks: number;
   artworkArray: Artwork[];
   firstLoaded: Artwork[];
 }
 
-const AllArtworks = ({
+const AllArtworksPage = ({
   numArtworks,
   artworkArray,
   firstLoaded,
-}: AllArtworksProps) => {
+}: AllArtworksPageProps) => {
   return (
     <>
       <ExploreHeader current="artworks" />
@@ -25,7 +25,7 @@ const AllArtworks = ({
   );
 };
 
-export default AllArtworks;
+export default AllArtworksPage;
 
 export async function getServerSideProps() {
   const artworkArray = [...DUMMY_ARTWORK].sort(() => 0.5 - Math.random());

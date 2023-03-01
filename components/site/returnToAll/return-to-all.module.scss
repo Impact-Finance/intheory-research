@@ -1,0 +1,13 @@
+@import '/styles/sass/mixins';
+
+.back {
+  width: 70%;
+  align-self: center;
+  border-top: 1px solid rgba($color-accent-1, 0.5);
+  text-align: center;
+  margin-top: $section-spacing;
+  padding-top: 5rem;
+  .link {
+    @include main-btn;
+  }
+}

@@ -21,14 +21,18 @@
       filter: opacity(0.75);
     }
   }
-  .back {
-    width: 70%;
-    align-self: center;
-    border-top: 1px solid rgba($color-accent-1, 0.5);
-    text-align: center;
-    margin-top: $section-spacing;
-    padding-top: 5rem;
-    .link {
+  .callToAction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: $section-spacing/2;
+    gap: $content-gap;
+    h3 {
+      font-size: 4rem;
+      letter-spacing: 1px;
+      color: $color-accent-1;
+    }
+    .actionBtn {
       @include main-btn;
     }
   }

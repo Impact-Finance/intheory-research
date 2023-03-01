@@ -1,27 +1,17 @@
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import DUMMY_ARTWORK, { Artwork } from '@/content/DUMMY_ARTWORK';
+import { Artwork } from '@/content/DUMMY_ARTWORK';
 import styles from './art-display.module.scss';
 import Loader from '@/components/site/loader/loader';
-import NotFound from '@/components/site/notFound/not-found';
 
 interface ArtDisplayProps {
-  artId: string | string[] | undefined;
+  artwork: Artwork;
 }
 
-const ArtDisplay = ({ artId }: ArtDisplayProps) => {
-  const [artwork, setArtwork] = useState<Artwork>();
-
-  useEffect(() => {
-    const foundArt = DUMMY_ARTWORK.find(art => art.id === artId);
-    setArtwork(foundArt);
-  }, [artId]);
-
+const ArtDisplay = ({ artwork }: ArtDisplayProps) => {
   return (
     <section className={styles.section}>
-      {!artwork && <NotFound />}
       {artwork && (
         <div className={styles.mainContent}>
           <div className={styles.leftContent}>
@@ -78,13 +68,6 @@ const ArtDisplay = ({ artId }: ArtDisplayProps) => {
           </div>
         </div>
       )}
-      <div className={styles.back}>
-        <Link
-          className={styles.link}
-          href="/artworks">
-          Return to Gallery
-        </Link>
-      </div>
     </section>
   );
 };

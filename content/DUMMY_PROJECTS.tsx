@@ -23,6 +23,7 @@ export interface Project {
   name: string;
   researcher: Researcher;
   tags: string[];
+  imageKeywords: string[];
   coverImage: string;
   shortDescription: string;
   longDescription: string;
@@ -54,6 +55,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0xD740E2dE99CB47Fb95c4601b597914972e43b0FC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'surface.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -98,6 +100,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x075B7D316FF10EE0B65DF8cEdE4F0f066aCBFDdC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'network.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -144,6 +147,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x71b08fb032d6D8000EA5C9326aC4362c6178F3D7',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'cell.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -188,6 +192,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0xD740E2dE99CB47Fb95c4601b597914972e43b0FC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'surface.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -232,6 +237,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x075B7D316FF10EE0B65DF8cEdE4F0f066aCBFDdC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'network.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -278,6 +284,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x71b08fb032d6D8000EA5C9326aC4362c6178F3D7',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'cell.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -322,6 +329,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0xD740E2dE99CB47Fb95c4601b597914972e43b0FC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'surface.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -366,6 +374,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x075B7D316FF10EE0B65DF8cEdE4F0f066aCBFDdC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'network.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -412,6 +421,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x71b08fb032d6D8000EA5C9326aC4362c6178F3D7',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'cell.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -456,6 +466,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0xD740E2dE99CB47Fb95c4601b597914972e43b0FC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'surface.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -500,6 +511,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x075B7D316FF10EE0B65DF8cEdE4F0f066aCBFDdC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'network.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -546,6 +558,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x71b08fb032d6D8000EA5C9326aC4362c6178F3D7',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'cell.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -590,6 +603,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0xD740E2dE99CB47Fb95c4601b597914972e43b0FC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'surface.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -634,6 +648,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x075B7D316FF10EE0B65DF8cEdE4F0f066aCBFDdC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'network.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -680,6 +695,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x71b08fb032d6D8000EA5C9326aC4362c6178F3D7',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'cell.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -724,6 +740,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0xD740E2dE99CB47Fb95c4601b597914972e43b0FC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'surface.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -768,6 +785,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x075B7D316FF10EE0B65DF8cEdE4F0f066aCBFDdC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'network.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -814,6 +832,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x71b08fb032d6D8000EA5C9326aC4362c6178F3D7',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'cell.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -858,6 +877,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0xD740E2dE99CB47Fb95c4601b597914972e43b0FC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'surface.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -902,6 +922,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x075B7D316FF10EE0B65DF8cEdE4F0f066aCBFDdC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'network.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -948,6 +969,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x71b08fb032d6D8000EA5C9326aC4362c6178F3D7',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'cell.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -992,6 +1014,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0xD740E2dE99CB47Fb95c4601b597914972e43b0FC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'surface.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -1036,6 +1059,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x075B7D316FF10EE0B65DF8cEdE4F0f066aCBFDdC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'network.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -1082,6 +1106,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x71b08fb032d6D8000EA5C9326aC4362c6178F3D7',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'cell.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -1126,6 +1151,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0xD740E2dE99CB47Fb95c4601b597914972e43b0FC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'surface.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -1170,6 +1196,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x075B7D316FF10EE0B65DF8cEdE4F0f066aCBFDdC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'network.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -1216,6 +1243,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x71b08fb032d6D8000EA5C9326aC4362c6178F3D7',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'cell.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -1260,6 +1288,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0xD740E2dE99CB47Fb95c4601b597914972e43b0FC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'surface.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -1304,6 +1333,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x075B7D316FF10EE0B65DF8cEdE4F0f066aCBFDdC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'network.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -1350,6 +1380,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x71b08fb032d6D8000EA5C9326aC4362c6178F3D7',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'cell.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -1394,6 +1425,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0xD740E2dE99CB47Fb95c4601b597914972e43b0FC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'surface.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -1438,6 +1470,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x075B7D316FF10EE0B65DF8cEdE4F0f066aCBFDdC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'network.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -1484,6 +1517,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x71b08fb032d6D8000EA5C9326aC4362c6178F3D7',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'cell.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -1528,6 +1562,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0xD740E2dE99CB47Fb95c4601b597914972e43b0FC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'surface.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -1572,6 +1607,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x075B7D316FF10EE0B65DF8cEdE4F0f066aCBFDdC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'network.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -1618,6 +1654,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x71b08fb032d6D8000EA5C9326aC4362c6178F3D7',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'cell.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -1662,6 +1699,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0xD740E2dE99CB47Fb95c4601b597914972e43b0FC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'surface.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -1706,6 +1744,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x075B7D316FF10EE0B65DF8cEdE4F0f066aCBFDdC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'network.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -1752,6 +1791,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x71b08fb032d6D8000EA5C9326aC4362c6178F3D7',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'cell.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -1796,6 +1836,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0xD740E2dE99CB47Fb95c4601b597914972e43b0FC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'surface.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -1840,6 +1881,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x075B7D316FF10EE0B65DF8cEdE4F0f066aCBFDdC',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'network.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -1886,6 +1928,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x71b08fb032d6D8000EA5C9326aC4362c6178F3D7',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'cell.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
@@ -1930,6 +1973,7 @@ const DUMMY_PROJECTS = [
       walletAddress: '0x71b08fb032d6D8000EA5C9326aC4362c6178F3D7',
     },
     tags: ['quantum technologies', 'electronics', 'software'],
+    imageKeywords: ['nucleus', 'future energy', 'lasers', 'vapor'],
     coverImage: 'cell.jpg',
     shortDescription:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',

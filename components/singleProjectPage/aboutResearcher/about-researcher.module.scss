@@ -32,6 +32,7 @@
         overflow: hidden;
         border-radius: $box-border-radius;
         background-color: rgba($color-main, 0.25);
+        @include safari-overflow;
         .avatarImage {
           object-fit: cover;
         }

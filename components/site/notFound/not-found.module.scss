@@ -1,9 +1,15 @@
 @import '/styles/sass/variables';
 
-.notFound {
-  color: $color-accent-1;
-  font-size: 3.5rem;
-  letter-spacing: 1px;
-  text-align: center;
-  margin-top: 5rem;
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: $content-gap;
+  .notFound {
+    color: $color-accent-1;
+    font-size: 3.5rem;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-top: 5rem;
+  }
 }

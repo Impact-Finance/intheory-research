@@ -1,0 +1,36 @@
+@import '/styles/sass/mixins';
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  .initial {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    filter: opacity(0.25);
+    margin-bottom: 5rem;
+    color: $color-accent-1;
+    .preText {
+      text-align: center;
+      font-size: 3rem;
+    }
+  }
+  .generatedImage {
+    @include obj-contain;
+  }
+  .error {
+    text-align: center;
+    font-size: 3rem;
+    line-height: 5rem;
+    color: $color-accent-1;
+    filter: opacity(0.85);
+    h3 {
+      font-size: 6rem;
+      line-height: 8rem;
+    }
+  }
+}

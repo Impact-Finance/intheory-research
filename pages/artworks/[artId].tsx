@@ -1,15 +1,32 @@
+import { useEffect, useState } from 'react';
 import { GetStaticProps } from 'next';
 
+import DUMMY_ARTWORK, { Artwork } from '@/content/DUMMY_ARTWORK';
 import ArtDisplay from '@/components/singleArtworkPage/artDisplay/art-display';
+import NotFound from '@/components/site/notFound/not-found';
+import ReturnToAll from '@/components/site/returnToAll/return-to-all';
 
 interface ArtPageProps {
   artId: string;
 }
 
 const ArtPage = ({ artId }: ArtPageProps) => {
+  const [artwork, setArtwork] = useState<Artwork>();
+
+  useEffect(() => {
+    const foundArt = DUMMY_ARTWORK.find(art => art.id === artId);
+    setArtwork(foundArt);
+  }, [artId]);
+
   return (
     <>
-      <ArtDisplay artId={artId} />
+      {!artwork && <NotFound context="artworks" />}
+      {artwork && (
+        <>
+          <ArtDisplay artwork={artwork} />
+          <ReturnToAll destination="artworks" />
+        </>
+      )}
     </>
   );
 };

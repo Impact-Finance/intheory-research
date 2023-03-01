@@ -14,15 +14,17 @@ const ProjectHeader = ({ name, researcher, tags }: ProjectHeaderProps) => {
       <p className={styles.subtext}>Project Name</p>
       <h2 className={styles.title}>{name}</h2>
       <h4 className={styles.researcher}>by {researcher.name}</h4>
-      <div className={styles.tags}>
-        {tags.map((tag, i) => (
-          <div
-            key={i}
-            className={styles.tag}>
-            {tag}
-          </div>
-        ))}
-      </div>
+      {tags.length > 0 && (
+        <div className={styles.tags}>
+          {tags.map((tag, i) => (
+            <div
+              key={i}
+              className={styles.tag}>
+              {tag}
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 };

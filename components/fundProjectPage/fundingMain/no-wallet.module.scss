@@ -1,0 +1,58 @@
+@import '/styles/sass/mixins';
+
+.noWallet {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  .text {
+    width: 85%;
+    margin-top: 3rem;
+    p {
+      font-size: 3rem;
+    }
+    .subtext {
+      font-size: 1.6rem;
+      line-height: 2.5rem;
+      filter: opacity(0.75);
+      margin-top: 3rem;
+    }
+  }
+  .connectWallet {
+    @include gradient-border;
+    @include wallet-styles;
+    font-size: 2.5rem;
+    transition: all 0.2s;
+    &:hover {
+      cursor: pointer;
+      color: rgba($color-accent-1, 0.75);
+      &::after {
+        animation-play-state: paused;
+      }
+    }
+  }
+  .help {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 85%;
+    margin-top: 3rem;
+    .helpHead {
+      font-size: 1.8rem;
+    }
+    .helpSub {
+      font-size: 1.6rem;
+      line-height: 2.5rem;
+      filter: opacity(0.75);
+      span {
+        text-decoration: underline;
+        transition: all 0.2s;
+        &:hover {
+          @include btn-hover;
+        }
+      }
+    }
+  }
+}

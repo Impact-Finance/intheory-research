@@ -4,12 +4,15 @@ import ProjectGridInfinite from '@/components/projectsPage/projectGridInfinite/p
 import ExploreHeader from '@/components/site/exploreHeader/explore-header';
 import DUMMY_PROJECTS, { Project } from '@/content/DUMMY_PROJECTS';
 
-interface AllProjectsProps {
+interface AllProjectsPageProps {
   projectArray: Project[];
   firstLoaded: Project[];
 }
 
-const AllProjects = ({ projectArray, firstLoaded }: AllProjectsProps) => {
+const AllProjectsPage = ({
+  projectArray,
+  firstLoaded,
+}: AllProjectsPageProps) => {
   const router = useRouter();
   const searchQuery = router.query.search;
 
@@ -25,7 +28,7 @@ const AllProjects = ({ projectArray, firstLoaded }: AllProjectsProps) => {
   );
 };
 
-export default AllProjects;
+export default AllProjectsPage;
 
 export async function getServerSideProps() {
   const projectArray = [...DUMMY_PROJECTS].sort(() => 0.5 - Math.random());

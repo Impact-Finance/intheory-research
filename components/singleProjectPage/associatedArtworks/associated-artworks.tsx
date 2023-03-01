@@ -7,9 +7,13 @@ import styles from './associated-artworks.module.scss';
 
 interface AssociatedArtworksProps {
   artworks: string[];
+  projectId: string;
 }
 
-const AssociatedArtworks = ({ artworks }: AssociatedArtworksProps) => {
+const AssociatedArtworks = ({
+  artworks,
+  projectId,
+}: AssociatedArtworksProps) => {
   const [artArray, setArtArray] = useState<Artwork[]>([]);
 
   useEffect(() => {
@@ -27,11 +31,12 @@ const AssociatedArtworks = ({ artworks }: AssociatedArtworksProps) => {
           <h3 className={styles.noArt}>No artworks yet!</h3>
         )}
       </div>
-      <div className={styles.back}>
+      <div className={styles.callToAction}>
+        <h3>Make an Impact</h3>
         <Link
-          className={styles.link}
-          href="/projects">
-          Return to All Projects
+          className={styles.actionBtn}
+          href={`/projects/${projectId}/fund-project`}>
+          Fund this Research
         </Link>
       </div>
     </section>

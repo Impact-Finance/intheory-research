@@ -8,6 +8,7 @@ import NotFound from '@/components/site/notFound/not-found';
 import ProjectDescription from '@/components/singleProjectPage/projectDescription/project-description';
 import AboutResearcher from '@/components/singleProjectPage/aboutResearcher/about-researcher';
 import AssociatedArtworks from '@/components/singleProjectPage/associatedArtworks/associated-artworks';
+import ReturnToAll from '@/components/site/returnToAll/return-to-all';
 
 interface ProjectPageProps {
   projectId: string;
@@ -25,7 +26,7 @@ const ProjectPage = ({ projectId }: ProjectPageProps) => {
 
   return (
     <>
-      {!project && <NotFound />}
+      {!project && <NotFound context="projects" />}
       {project && (
         <>
           <ProjectHeader
@@ -44,7 +45,11 @@ const ProjectPage = ({ projectId }: ProjectPageProps) => {
             longDescription={project.longDescription}
           />
           <AboutResearcher researcher={project.researcher} />
-          <AssociatedArtworks artworks={project.associatedArtwork} />
+          <AssociatedArtworks
+            artworks={project.associatedArtwork}
+            projectId={projectId}
+          />
+          <ReturnToAll destination="projects" />
         </>
       )}
     </>

@@ -1,0 +1,11 @@
+@import '/styles/sass/mixins';
+
+.header {
+  text-align: center;
+  font-size: 3.5rem;
+  line-height: 3.5rem;
+  font-weight: 100;
+  padding-bottom: 3rem;
+  width: 95%;
+  border-bottom: solid 1px rgba($color-accent-1, 0.25);
+}
