@@ -10,10 +10,25 @@
     flex-direction: column;
     flex: 1;
     .requestImage {
-      @include main-btn;
+      @include gradient-border;
+      background-image: linear-gradient(to bottom, $color-main, $color-dark);
+      color: $color-accent-1;
+      font-size: 2.5rem;
+      padding: 1.5rem 2rem;
       margin-top: 3rem;
+      transition: all 0.2s;
+      &:hover {
+        cursor: pointer;
+        color: rgba($color-accent-1, 0.7);
+        &::after {
+          animation-play-state: paused;
+        }
+      }
       &:disabled {
-        filter: opacity(0.5);
+        color: rgba($color-accent-1, 0.3);
+        &::after {
+          animation-play-state: paused;
+        }
         &:hover {
           cursor: none;
         }
