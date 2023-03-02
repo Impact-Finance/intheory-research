@@ -22,12 +22,11 @@ const FundingMain = ({ project }: FundingMainProps) => {
   const [imageRequested, setImageRequested] = useState(false);
   const [imageGenerated, setImageGenerated] = useState(false);
   const [imagePath, setImagePath] = useState('');
-  const [fundingSuccess, setFundingSuccess] = useState(false);
 
   return (
     <section className={styles.section}>
       <div className={styles.leftPanel}>
-        {!imageGenerated && !fundingSuccess && (
+        {!imageGenerated && (
           <>
             <ImageOptions setImageProperties={setImageProperties} />
             <button
@@ -40,8 +39,15 @@ const FundingMain = ({ project }: FundingMainProps) => {
             </button>
           </>
         )}
-        {imageGenerated && !fundingSuccess && <SubmitFunding />}
-        {imageGenerated && fundingSuccess && <div>Funding successful</div>}
+        {imageGenerated && (
+          <SubmitFunding
+            imagePath={imagePath}
+            contractAddress={project.contractAddress}
+            setImageRequested={setImageRequested}
+            setImageGenerated={setImageGenerated}
+            setImagePath={setImagePath}
+          />
+        )}
       </div>
       <div className={styles.imagePanel}>
         <ImageGenerator

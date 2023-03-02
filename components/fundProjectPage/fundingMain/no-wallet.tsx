@@ -13,8 +13,8 @@ const NoWallet = ({ setWalletAddress }: NoWalletProps) => {
       <div className={styles.text}>
         <p>Connect your web3 wallet to support this research.</p>
         <p className={styles.subtext}>
-          Your generated artwork will be sent to your connected wallet address
-          as a digital collectible (non-fungible token).
+          Your generated artwork will then be sent to your connected wallet
+          address as a digital collectible (non-fungible token).
         </p>
       </div>
       <button

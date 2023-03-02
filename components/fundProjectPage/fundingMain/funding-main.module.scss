@@ -8,7 +8,7 @@
   .leftPanel {
     @include center-flex;
     flex-direction: column;
-    flex: 3;
+    flex: 1;
     .requestImage {
       @include main-btn;
       margin-top: 3rem;
@@ -21,7 +21,7 @@
     }
   }
   .imagePanel {
-    flex: 4;
+    flex: 1;
     background-color: rgba($color-main, 0.25);
     border-radius: $box-border-radius;
     height: 60rem;

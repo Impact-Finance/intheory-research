@@ -30,11 +30,13 @@ const ImageGenerator = ({
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    setSuccess(false);
     if (imageRequested) {
       setTimeout(() => {
         setSuccess(true);
         setImageGenerated(true);
-      }, 5000);
+        setError(false);
+      }, 2000);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [imageRequested]);

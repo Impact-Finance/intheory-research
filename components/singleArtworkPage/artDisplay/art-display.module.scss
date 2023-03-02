@@ -7,7 +7,7 @@
   flex-direction: column;
   .mainContent {
     @include center-flex;
-    gap: 5rem;
+    gap: 4rem;
     .leftContent {
       position: relative;
       flex: 3;

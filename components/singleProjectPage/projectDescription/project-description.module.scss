@@ -15,9 +15,9 @@
   .content {
     @include center-flex;
     @include section-border;
-    gap: 6rem;
+    gap: 4rem;
     .text {
-      flex: 5;
+      flex: 1;
       filter: opacity(0.85);
       .description {
         font-size: 2rem;
@@ -29,7 +29,7 @@
       }
     }
     .radar {
-      flex: 4;
+      flex: 1;
     }
   }
 }

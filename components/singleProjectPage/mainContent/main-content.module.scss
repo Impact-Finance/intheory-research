@@ -3,10 +3,10 @@
 .section {
   @include restrained-width(100%);
   display: flex;
-  gap: $content-gap;
+  gap: 5rem;
   margin-top: 3rem;
   .imageBox {
-    flex: 4;
+    flex: 1;
     position: relative;
     display: flex;
     justify-content: center;
@@ -25,12 +25,11 @@
     }
   }
   .textBox {
-    flex: 3;
+    flex: 1;
     display: flex;
     position: relative;
     gap: 3rem;
     flex-direction: column;
-    padding: 2rem 3rem;
     border-radius: $box-border-radius;
     overflow: hidden;
     .funding {

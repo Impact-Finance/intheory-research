@@ -1,0 +1,35 @@
+@import '/styles/sass/mixins';
+
+.dotFalling {
+  position: relative;
+  left: -999rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 0.5rem;
+  background-color: $color-accent-1;
+  color: $color-accent-1;
+  box-shadow: 999rem 0 0 0 $color-accent-1;
+  animation: dot-falling 1s infinite linear;
+  animation-delay: 0.1s;
+  &::after,
+  &::before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.5rem;
+    background-color: $color-accent-1;
+    color: $color-accent-1;
+  }
+  &::before {
+    animation: dot-falling-before 1s infinite linear;
+    animation-delay: 0s;
+  }
+  &::after {
+    animation: dot-falling-after 1s infinite linear;
+    animation-delay: 0.2s;
+  }
+}
