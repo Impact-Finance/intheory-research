@@ -31,7 +31,6 @@ const NoWallet = ({ setWalletAddress }: NoWalletProps) => {
           <span>
             <Link
               href="/submit-project/#FAQ"
-              scroll={false}
               target="_blank"
               rel="noreferrer">
               our FAQ

@@ -48,11 +48,7 @@ const Footer = () => {
               <Link href="/artworks">Art Gallery</Link>
             </li>
             <li className={styles.link}>
-              <Link
-                href="/submit-project/#FAQ"
-                scroll={false}>
-                FAQ
-              </Link>
+              <Link href="/submit-project/#FAQ">FAQ</Link>
             </li>
           </ul>
         </div>
