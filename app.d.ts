@@ -36,3 +36,8 @@ export interface CommunityArtwork {
   funder: string;
   txnHash: string;
 }
+
+export interface ImagePropertyObject {
+  dimensions: number[];
+  style: string;
+}
