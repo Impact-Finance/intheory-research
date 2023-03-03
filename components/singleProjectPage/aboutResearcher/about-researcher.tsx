@@ -1,12 +1,13 @@
-import { Researcher } from '@/content/DUMMY_PROJECTS';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import linkedin from '@/public/icons/linkedin.svg';
+import twitter from '@/public/icons/twitter.svg';
 import website from '@/public/icons/website.svg';
-import SupporterPortal from './supporter-portal';
-import styles from './about-researcher.module.scss';
-import Link from 'next/link';
 import Loader from '@/components/site/loader/loader';
+import SupporterPortal from './supporter-portal';
+import { Researcher } from '@/app';
+import styles from './about-researcher.module.scss';
 
 interface AboutResearcherProps {
   researcher: Researcher;
@@ -23,17 +24,20 @@ const AboutResearcher = ({ researcher }: AboutResearcherProps) => {
               text=""
               size="small"
             />
-            <Image
-              src={'/dummy_images/scientists/' + researcher.avatar}
-              alt={'Picture of ' + researcher.name}
-              fill
-              sizes="15vw"
-            />
+            {researcher && (
+              <Image
+                className={styles.avatarImage}
+                src={`${process.env.AWS_BUCKET_DOMAIN}/researcherAvatars/${researcher._id}.jpg`}
+                alt={'Picture of ' + researcher.researcherName}
+                fill
+                sizes="15vw"
+              />
+            )}
           </div>
           <div className={styles.attributes}>
             <h4>
               <span>name </span>
-              {researcher.name}
+              {researcher.researcherName}
             </h4>
             <h4>
               <span>degree </span>
@@ -48,30 +52,48 @@ const AboutResearcher = ({ researcher }: AboutResearcherProps) => {
             <p>{researcher.bio}</p>
           </div>
           <div className={styles.socials}>
-            <Link
-              href={researcher.links[0]}
-              target="_blank"
-              rel="noreferrer">
-              <Image
-                className={styles.icon}
-                src={website}
-                alt="website"
-                width={30}
-                height={30}
-              />
-            </Link>
-            <Link
-              href={researcher.links[0]}
-              target="_blank"
-              rel="noreferrer">
-              <Image
-                className={styles.icon}
-                src={linkedin}
-                alt="linkedin"
-                width={30}
-                height={30}
-              />
-            </Link>
+            {researcher.links.website && (
+              <Link
+                href={researcher.links.website}
+                target="_blank"
+                rel="noreferrer">
+                <Image
+                  className={styles.icon}
+                  src={website}
+                  alt="website"
+                  width={25}
+                  height={25}
+                />
+              </Link>
+            )}
+            {researcher.links.linkedin && (
+              <Link
+                href={researcher.links.linkedin}
+                target="_blank"
+                rel="noreferrer">
+                <Image
+                  className={styles.icon}
+                  src={linkedin}
+                  alt="linkedin"
+                  width={25}
+                  height={25}
+                />
+              </Link>
+            )}
+            {researcher.links.twitter && (
+              <Link
+                href={researcher.links.twitter}
+                target="_blank"
+                rel="noreferrer">
+                <Image
+                  className={styles.icon}
+                  src={twitter}
+                  alt="twitter"
+                  width={25}
+                  height={25}
+                />
+              </Link>
+            )}
           </div>
         </div>
         <div className={styles.supporterPortal}>

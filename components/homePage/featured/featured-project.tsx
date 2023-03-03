@@ -2,17 +2,17 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import atom from '@/public/icons/atom.svg';
-import { Project } from '@/content/DUMMY_PROJECTS';
-import styles from './featured-project.module.scss';
 import Loader from '@/components/site/loader/loader';
+import { ResearchProject } from '@/app';
+import styles from './featured-project.module.scss';
 
 interface FeaturedProjectProps {
-  project: Project;
+  project: ResearchProject;
 }
 
 const FeaturedProject = ({ project }: FeaturedProjectProps) => {
   return (
-    <Link href={'/projects/' + project.id}>
+    <Link href={'/projects/' + project._id}>
       <div className={styles.featureBox}>
         <div className={styles.loaderContainer}>
           <Loader
@@ -22,8 +22,8 @@ const FeaturedProject = ({ project }: FeaturedProjectProps) => {
         </div>
         <Image
           className={styles.coverImage}
-          src={'/dummy_images/' + project.coverImage}
-          alt={project.name}
+          src={`${process.env.AWS_BUCKET_DOMAIN}/projectCoverImages/${project._id}.jpg`}
+          alt={project.projectName}
           fill
           sizes="40vw"
         />
@@ -41,7 +41,7 @@ const FeaturedProject = ({ project }: FeaturedProjectProps) => {
         </div>
         <div className={styles.text}>
           <h5 className={styles.subtitle}>Project Name</h5>
-          <h2 className={styles.title}>{project.name}</h2>
+          <h2 className={styles.title}>{project.projectName}</h2>
         </div>
       </div>
     </Link>

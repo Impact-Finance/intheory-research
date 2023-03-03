@@ -37,3 +37,9 @@
     max-width: 60rem;
   }
 }
+
+@media (min-width: 1201px) {
+  .section {
+    display: none;
+  }
+}

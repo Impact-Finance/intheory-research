@@ -1,22 +1,25 @@
-import { Researcher } from '@/content/DUMMY_PROJECTS';
-
+import { ResearchProject, Researcher } from '@/app';
 import styles from './project-header.module.scss';
 
 interface ProjectHeaderProps {
-  name: string;
+  project: ResearchProject;
   researcher: Researcher;
-  tags: string[];
+  displayTags: boolean;
 }
 
-const ProjectHeader = ({ name, researcher, tags }: ProjectHeaderProps) => {
+const ProjectHeader = ({
+  project,
+  researcher,
+  displayTags,
+}: ProjectHeaderProps) => {
   return (
     <section className={styles.section}>
       <p className={styles.subtext}>Project Name</p>
-      <h2 className={styles.title}>{name}</h2>
-      <h4 className={styles.researcher}>by {researcher.name}</h4>
-      {tags.length > 0 && (
+      <h2 className={styles.title}>{project.projectName}</h2>
+      <h4 className={styles.researcher}>by {researcher.researcherName}</h4>
+      {displayTags && project.tags.length > 0 && (
         <div className={styles.tags}>
-          {tags.map((tag, i) => (
+          {project.tags.map((tag, i) => (
             <div
               key={i}
               className={styles.tag}>

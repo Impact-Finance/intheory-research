@@ -4,7 +4,7 @@ import styles from './project-description.module.scss';
 
 interface ProjectDescriptionProps {
   longDescription: string;
-  impacts: Impacts;
+  impacts: number[];
 }
 
 const ProjectDescription = ({

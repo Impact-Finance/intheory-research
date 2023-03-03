@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Artwork } from '@/content/DUMMY_ARTWORK';
-import styles from './art-display.module.scss';
 import Loader from '@/components/site/loader/loader';
+import { CommunityArtwork } from '@/app';
+import styles from './art-display.module.scss';
 
 interface ArtDisplayProps {
-  artwork: Artwork;
+  artwork: CommunityArtwork;
 }
 
 const ArtDisplay = ({ artwork }: ArtDisplayProps) => {
@@ -24,7 +24,7 @@ const ArtDisplay = ({ artwork }: ArtDisplayProps) => {
             <div className={styles.imageBox}>
               <Image
                 className={styles.image}
-                src={'/dummy_images/' + artwork.path}
+                src={`${process.env.AWS_BUCKET_DOMAIN}/communityArtworks/${artwork._id}.jpg`}
                 alt="artwork"
                 fill
                 sizes="50vw"
@@ -34,7 +34,7 @@ const ArtDisplay = ({ artwork }: ArtDisplayProps) => {
           <div className={styles.sidebar}>
             <p>
               <span>Research Funded </span>
-              {artwork.associatedProject}
+              {artwork.associatedProjectName}
             </p>
             <p>
               <span>Created by </span>

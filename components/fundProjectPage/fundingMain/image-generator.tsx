@@ -2,13 +2,9 @@ import Loader from '@/components/site/loader/loader';
 import Image from 'next/image';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
+import { ImagePropertyObject } from '@/app';
 import imagePlaceholder from '@/public/icons/atom.svg';
 import styles from './image-generator.module.scss';
-
-export interface ImagePropertyObject {
-  dimensions: number[];
-  style: string;
-}
 
 interface ImageGeneratorProps {
   imageProperties: ImagePropertyObject;

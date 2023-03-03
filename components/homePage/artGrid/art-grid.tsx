@@ -1,10 +1,10 @@
 import SectionHeading from '../../site/sectionHeading/section-heading';
 import ArtworkGridItem from '@/components/site/artworkGridItem/artwork-grid-item';
-import { Artwork } from '@/content/DUMMY_ARTWORK';
+import { CommunityArtwork } from '@/app';
 import styles from './art-grid.module.scss';
 
 interface ArtGridProps {
-  bannerArtworks: Artwork[];
+  bannerArtworks: CommunityArtwork[];
 }
 
 const ArtGrid = ({ bannerArtworks }: ArtGridProps) => {
@@ -18,7 +18,7 @@ const ArtGrid = ({ bannerArtworks }: ArtGridProps) => {
         {bannerArtworks.map(artwork => (
           <ArtworkGridItem
             artwork={artwork}
-            key={artwork.id}
+            key={artwork._id}
           />
         ))}
       </div>

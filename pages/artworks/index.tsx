@@ -1,26 +1,17 @@
+import { CommunityArtwork } from '@/app';
 import ArtworkGridInfinite from '@/components/artworksPage/artworksGridInfinite/artwork-grid-infinite';
 import ExploreHeader from '@/components/site/exploreHeader/explore-header';
-import DUMMY_ARTWORK, { Artwork } from '@/content/DUMMY_ARTWORK';
+import { getAllArtworks } from '@/utils/fetchContent';
 
 interface AllArtworksPageProps {
-  numArtworks: number;
-  artworkArray: Artwork[];
-  firstLoaded: Artwork[];
+  artworkArray: CommunityArtwork[];
 }
 
-const AllArtworksPage = ({
-  numArtworks,
-  artworkArray,
-  firstLoaded,
-}: AllArtworksPageProps) => {
+const AllArtworksPage = ({ artworkArray }: AllArtworksPageProps) => {
   return (
     <>
       <ExploreHeader current="artworks" />
-      <ArtworkGridInfinite
-        numArtworks={numArtworks}
-        artworkArray={artworkArray}
-        firstLoaded={firstLoaded}
-      />
+      <ArtworkGridInfinite artworkArray={artworkArray} />
     </>
   );
 };
@@ -28,15 +19,20 @@ const AllArtworksPage = ({
 export default AllArtworksPage;
 
 export async function getServerSideProps() {
-  const artworkArray = [...DUMMY_ARTWORK].sort(() => 0.5 - Math.random());
-  const numArtworks = artworkArray.length;
-  const firstLoaded = artworkArray.splice(0, 16);
+  const artworkArray = await getAllArtworks();
+
+  let numArtworks;
+  let randomized;
+
+  if (artworkArray) {
+    const parsedArtworks = JSON.parse(JSON.stringify(artworkArray));
+    numArtworks = parsedArtworks.length;
+    randomized = parsedArtworks.sort(() => 0.5 - Math.random());
+  }
 
   return {
     props: {
-      numArtworks: numArtworks,
-      firstLoaded: firstLoaded,
-      artworkArray: artworkArray,
+      artworkArray: randomized,
     },
   };
 }

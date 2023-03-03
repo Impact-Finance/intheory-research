@@ -2,13 +2,13 @@ import Hero from '@/components/homePage/hero/hero';
 import ProjectBanner from '@/components/homePage/projectBanner/project-banner';
 import ArtGrid from '@/components/homePage/artGrid/art-grid';
 import LearnMore from '@/components/homePage/learnMore/learn-more';
-import DUMMY_PROJECTS, { Project } from '@/content/DUMMY_PROJECTS';
-import DUMMY_ARTWORK, { Artwork } from '@/content/DUMMY_ARTWORK';
+import { ResearchProject, CommunityArtwork } from '@/app';
+import { getAllProjects, getSomeArtworks } from '@/utils/fetchContent';
 
 interface HomeProps {
-  featuredProject: Project;
-  bannerProjects: Project[];
-  bannerArtworks: Artwork[];
+  featuredProject: ResearchProject;
+  bannerProjects: ResearchProject[];
+  bannerArtworks: CommunityArtwork[];
 }
 
 export default function Home({
@@ -26,14 +26,26 @@ export default function Home({
   );
 }
 
-export async function getServerSideProps() {
-  const projectsArray = [...DUMMY_PROJECTS].sort(() => 0.5 - Math.random());
-  const artworksArray = [...DUMMY_ARTWORK].sort(() => 0.5 - Math.random());
+export async function getStaticProps() {
+  const projectsArray = await getAllProjects();
+  const artworksArray = await getSomeArtworks(48);
 
-  const bannerProjects = projectsArray.slice(0, 3);
-  const featuredProject = projectsArray[3];
+  let bannerProjects;
+  let featuredProject;
+  let bannerArtworks;
 
-  const bannerArtworks = artworksArray.slice(0, 8);
+  if (projectsArray) {
+    const parsedProjects = JSON.parse(JSON.stringify(projectsArray));
+    const randomizedProjects = parsedProjects.sort(() => 0.5 - Math.random());
+    bannerProjects = randomizedProjects.slice(0, 3);
+    featuredProject = randomizedProjects[3]; // ensures it is not a banner project
+  }
+
+  if (artworksArray) {
+    const parsedArtworks = JSON.parse(JSON.stringify(artworksArray));
+    const randomizedProjects = parsedArtworks.sort(() => 0.5 - Math.random());
+    bannerArtworks = randomizedProjects.slice(0, 8);
+  }
 
   return {
     props: {
@@ -41,5 +53,6 @@ export async function getServerSideProps() {
       bannerProjects: bannerProjects,
       bannerArtworks: bannerArtworks,
     },
+    revalidate: 600,
   };
 }

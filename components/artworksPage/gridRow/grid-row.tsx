@@ -1,9 +1,9 @@
-import { Artwork } from '@/content/DUMMY_ARTWORK';
+import { CommunityArtwork } from '@/app';
 import ArtworkGridItem from '@/components/site/artworkGridItem/artwork-grid-item';
 import styles from './grid-row.module.scss';
 
 interface GridRowProps {
-  artworks: Artwork[];
+  artworks: CommunityArtwork[];
 }
 
 const GridRow = ({ artworks }: GridRowProps) => {
@@ -12,7 +12,7 @@ const GridRow = ({ artworks }: GridRowProps) => {
       {artworks.map(artwork => (
         <ArtworkGridItem
           artwork={artwork}
-          key={artwork.id}
+          key={artwork._id}
         />
       ))}
     </div>

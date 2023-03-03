@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import FeaturedProject from '../featured/featured-project';
 
-import { Project } from '@/content/DUMMY_PROJECTS';
+import { ResearchProject } from '@/app';
 import styles from './hero.module.scss';
 
 interface HeroProps {
-  featuredProject: Project;
+  featuredProject: ResearchProject;
 }
 
 const Hero = ({ featuredProject }: HeroProps) => {

@@ -14,7 +14,7 @@ import { Impacts } from '@/content/DUMMY_PROJECTS';
 import styles from './radar-chart.module.scss';
 
 interface RadarChartProps {
-  impacts: Impacts;
+  impacts: number[];
 }
 
 ChartJS.register(
@@ -29,7 +29,7 @@ const RadarChart = ({ impacts }: RadarChartProps) => {
   const [impactArray, setImpactArray] = useState([0, 0, 0, 0, 0, 0]);
 
   const populateData = () => {
-    const newValues = Object.values(impacts);
+    const newValues = impacts;
     setImpactArray(newValues);
   };
 

@@ -1,48 +1,52 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
-import { Project } from '@/content/DUMMY_PROJECTS';
 import ProjectGridItem from '../../site/projectGridItem/project-grid-item';
+import { ResearchProject } from '@/app';
 import { Waypoint } from 'react-waypoint';
 import Loader from '@/components/site/loader/loader';
-import styles from './project-grid-infinite.module.scss';
 import searchFilter from '@/utils/searchFilter';
+import styles from './project-grid-infinite.module.scss';
 
 interface ProjectGridInfiniteProps {
-  projectArray: Project[];
-  firstLoaded: Project[];
+  projectArray: ResearchProject[];
   searchQuery: string | string[] | undefined;
 }
 
+const numFirstLoaded = 18; // number of projects initially loaded on page
+const scrollLoadIncrement = numFirstLoaded; // number of new projects loaded on each infinite scroll step
+
 const ProjectGridInfinite = ({
   projectArray,
-  firstLoaded,
   searchQuery,
 }: ProjectGridInfiniteProps) => {
-  const [projects, setProjects] = useState<Project[]>(firstLoaded);
-  const [filteredArray, setFilteredArray] = useState(projectArray);
+  const [projects, setProjects] = useState<ResearchProject[]>(
+    projectArray.slice(0, numFirstLoaded)
+  );
+  const [count, setCount] = useState<number>(
+    numFirstLoaded / scrollLoadIncrement
+  );
 
   const handleInfiniteScroll = () => {
-    const newProjects = filteredArray.splice(0, 12);
-    setProjects([...projects, ...newProjects]);
+    if (projects.length < projectArray.length && !searchQuery) {
+      const startIndex = count * scrollLoadIncrement;
+      const endIndex = count * scrollLoadIncrement + scrollLoadIncrement;
+      const newProjects = projectArray.slice(startIndex, endIndex);
+      setProjects([...projects, ...newProjects]);
+      setCount(count + 1);
+    }
   };
 
   useEffect(() => {
     if (searchQuery && typeof searchQuery === 'string') {
       const queryTerms = searchQuery.toLowerCase().split(' ');
       setProjects(
-        projects.filter(project => {
-          return searchFilter(project, queryTerms);
-        })
-      );
-      setFilteredArray(
-        filteredArray.filter(project => {
+        projectArray.filter(project => {
           return searchFilter(project, queryTerms);
         })
       );
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchQuery]);
+  }, [searchQuery, projectArray]);
 
   return (
     <section className={styles.section}>
@@ -61,16 +65,17 @@ const ProjectGridInfinite = ({
           </div>
         )}
         <div className={styles.gridBox}>
-          {projects.map((project, i) => (
-            <ProjectGridItem
-              project={project}
-              key={i}
-            />
-          ))}
+          {projects &&
+            projects.map((project, i) => (
+              <ProjectGridItem
+                project={project}
+                key={i}
+              />
+            ))}
         </div>
         <Waypoint onEnter={handleInfiniteScroll}>
           <div className={styles.loaderBox}>
-            {filteredArray.length > 0 && (
+            {projects.length < projectArray.length && !searchQuery && (
               <Loader
                 text="loading"
                 size="large"
@@ -83,7 +88,7 @@ const ProjectGridInfinite = ({
           <p className={styles.endText}>Need help choosing a project?</p>
           <Link
             className={styles.endBtn}
-            href={'/projects/' + firstLoaded[0].id}>
+            href={projects.length > 0 ? '/projects/' + projects[0]._id : ''}>
             Pick for me
           </Link>
         </div>

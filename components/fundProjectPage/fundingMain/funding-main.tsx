@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
-import ImageGenerator, { ImagePropertyObject } from './image-generator';
-import { Project } from '@/content/DUMMY_PROJECTS';
+import ImageGenerator from './image-generator';
+import { ResearchProject, ImagePropertyObject } from '@/app';
 import ImageOptions from './image-options';
 import SubmitFunding from './submit-funding';
 import styles from './funding-main.module.scss';
 
 interface FundingMainProps {
-  project: Project;
+  project: ResearchProject;
 }
 
 const FundingMain = ({ project }: FundingMainProps) => {
@@ -53,7 +53,7 @@ const FundingMain = ({ project }: FundingMainProps) => {
         <ImageGenerator
           setImageGenerated={setImageGenerated}
           imageProperties={imageProperties}
-          keywords={project.imageKeywords}
+          keywords={project.imageGenKeywords}
           imageRequested={imageRequested}
           setImagePath={setImagePath}
         />

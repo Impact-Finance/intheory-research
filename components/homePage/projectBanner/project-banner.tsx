@@ -1,10 +1,10 @@
 import ProjectGridItem from '../../site/projectGridItem/project-grid-item';
 import SectionHeading from '../../site/sectionHeading/section-heading';
-import { Project } from '@/content/DUMMY_PROJECTS';
+import { ResearchProject } from '@/app';
 import styles from './project-banner.module.scss';
 
 interface ProjectBannerProps {
-  bannerProjects: Project[];
+  bannerProjects: ResearchProject[];
 }
 
 const ProjectBanner = ({ bannerProjects }: ProjectBannerProps) => {
@@ -18,7 +18,7 @@ const ProjectBanner = ({ bannerProjects }: ProjectBannerProps) => {
         {bannerProjects.map(project => (
           <ProjectGridItem
             project={project}
-            key={project.id}
+            key={project._id}
           />
         ))}
       </div>

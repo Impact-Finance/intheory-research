@@ -1,0 +1,42 @@
+@import '/styles/sass/mixins';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  align-items: flex-start;
+  padding: 5rem 0;
+  width: 80%;
+  .title {
+    font-size: 4rem;
+  }
+  .projectUpload,
+  .researcherUpload,
+  .artworkUpload {
+    .head {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      color: $color-accent-1;
+    }
+    .form {
+      font-size: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      label {
+        color: $color-accent-1;
+        margin-right: 1rem;
+      }
+      input,
+      textarea {
+        @include wallet-styles;
+        border: none;
+      }
+      button {
+        width: fit-content;
+        @include main-btn;
+        margin: 0;
+      }
+    }
+  }
+}

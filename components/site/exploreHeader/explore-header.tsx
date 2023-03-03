@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 
-import shuffle from '@/public/icons/shuffle.svg';
+import shuffleIcon from '@/public/icons/shuffle.svg';
 import styles from './explore-header.module.scss';
 
 interface ExploreHeaderProps {
@@ -11,7 +11,6 @@ interface ExploreHeaderProps {
 
 const ExploreHeader = ({ current }: ExploreHeaderProps) => {
   const router = useRouter();
-
   const handleShuffle = () => {
     router.reload();
   };
@@ -45,7 +44,7 @@ const ExploreHeader = ({ current }: ExploreHeaderProps) => {
           onClick={handleShuffle}>
           <Image
             className={styles.shuffleIcon}
-            src={shuffle}
+            src={shuffleIcon}
             alt="shuffle"
             width={20}
             height={20}

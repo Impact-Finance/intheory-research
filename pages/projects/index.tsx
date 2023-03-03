@@ -2,17 +2,14 @@ import { useRouter } from 'next/router';
 
 import ProjectGridInfinite from '@/components/projectsPage/projectGridInfinite/project-grid-infinite';
 import ExploreHeader from '@/components/site/exploreHeader/explore-header';
-import DUMMY_PROJECTS, { Project } from '@/content/DUMMY_PROJECTS';
+import { ResearchProject } from '@/app';
+import { getAllProjects } from '@/utils/fetchContent';
 
 interface AllProjectsPageProps {
-  projectArray: Project[];
-  firstLoaded: Project[];
+  projectArray: ResearchProject[];
 }
 
-const AllProjectsPage = ({
-  projectArray,
-  firstLoaded,
-}: AllProjectsPageProps) => {
+const AllProjectsPage = ({ projectArray }: AllProjectsPageProps) => {
   const router = useRouter();
   const searchQuery = router.query.search;
 
@@ -21,7 +18,6 @@ const AllProjectsPage = ({
       <ExploreHeader current="projects" />
       <ProjectGridInfinite
         projectArray={projectArray}
-        firstLoaded={firstLoaded}
         searchQuery={searchQuery}
       />
     </>
@@ -31,13 +27,18 @@ const AllProjectsPage = ({
 export default AllProjectsPage;
 
 export async function getServerSideProps() {
-  const projectArray = [...DUMMY_PROJECTS].sort(() => 0.5 - Math.random());
-  const firstLoaded = projectArray.splice(0, 24);
+  const projectsArray = await getAllProjects();
+
+  let randomized;
+
+  if (projectsArray) {
+    const parsedProjects = JSON.parse(JSON.stringify(projectsArray));
+    randomized = parsedProjects.sort(() => 0.5 - Math.random());
+  }
 
   return {
     props: {
-      projectArray: projectArray,
-      firstLoaded: firstLoaded,
+      projectArray: randomized,
     },
   };
 }

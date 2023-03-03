@@ -3,21 +3,14 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 import Loader from '@/components/site/loader/loader';
+import { ResearchProject } from '@/app';
 import styles from './main-content.module.scss';
 
 interface MainContentProps {
-  coverImage: string;
-  fundingRaised: number;
-  shortDescription: string;
-  projectId: string;
+  project: ResearchProject;
 }
 
-const MainContent = ({
-  coverImage,
-  fundingRaised,
-  shortDescription,
-  projectId,
-}: MainContentProps) => {
+const MainContent = ({ project }: MainContentProps) => {
   const [displayHow, setDisplayHow] = useState(false);
 
   return (
@@ -31,7 +24,7 @@ const MainContent = ({
         </div>
         <Image
           className={styles.coverImage}
-          src={'/dummy_images/' + coverImage}
+          src={`${process.env.AWS_BUCKET_DOMAIN}/projectCoverImages/${project._id}.jpg`}
           alt="project image"
           fill
           sizes="50vw"
@@ -40,13 +33,13 @@ const MainContent = ({
       <div className={styles.textBox}>
         <>
           <h3 className={styles.funding}>
-            ${fundingRaised}
+            ${project.fundingRaised}
             <span> funding received</span>
           </h3>
           <div className={styles.fundingBox}>
             <Link
               className={styles.fundProject}
-              href={`/projects/${projectId}/fund-project`}>
+              href={`/projects/${project._id}/fund-project`}>
               Fund Research
             </Link>
             <button
@@ -59,7 +52,7 @@ const MainContent = ({
           </div>
           <div className={styles.summary}>
             <h4 className={styles.summaryHead}>Project Summary</h4>
-            <p className={styles.summary}>{shortDescription}</p>
+            <p className={styles.summary}>{project.shortDescription}</p>
           </div>
         </>
         {displayHow && (

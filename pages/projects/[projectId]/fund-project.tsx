@@ -1,36 +1,32 @@
 import { GetStaticProps } from 'next';
-import { useState, useEffect } from 'react';
 
-import DUMMY_PROJECTS, { Project } from '@/content/DUMMY_PROJECTS';
+import { getSingleProject, getSingleResearcher } from '@/utils/fetchContent';
 import NotFound from '@/components/site/notFound/not-found';
 import ProjectHeader from '@/components/singleProjectPage/projectHeader/project-header';
 import ReturnToAll from '@/components/site/returnToAll/return-to-all';
 import FundingMain from '@/components/fundProjectPage/fundingMain/funding-main';
+import { Researcher, ResearchProject } from '@/app';
 
 interface FundProjectPageProps {
-  projectId: string;
+  projectObject: ResearchProject;
+  researcherObject: Researcher;
 }
 
-const FundProjectPage = ({ projectId }: FundProjectPageProps) => {
-  const [project, setProject] = useState<Project>();
-
-  useEffect(() => {
-    const foundProject = DUMMY_PROJECTS.find(
-      project => project.id === projectId
-    );
-    setProject(foundProject);
-  }, [projectId]);
+const FundProjectPage = ({
+  projectObject,
+  researcherObject,
+}: FundProjectPageProps) => {
   return (
     <>
-      {!project && <NotFound context="projects" />}
-      {project && (
+      {!projectObject || (!researcherObject && <NotFound context="projects" />)}
+      {projectObject && researcherObject && (
         <>
           <ProjectHeader
-            name={project.name}
-            researcher={project.researcher}
-            tags={[]}
+            project={projectObject}
+            researcher={researcherObject}
+            displayTags={false}
           />
-          <FundingMain project={project} />
+          <FundingMain project={projectObject} />
           <ReturnToAll destination="singleProject" />
         </>
       )}
@@ -42,31 +38,39 @@ export default FundProjectPage;
 
 export async function getStaticPaths() {
   return {
-    paths: [
-      { params: { projectId: 'uuid-1' } },
-      { params: { projectId: 'uuid-2' } },
-      { params: { projectId: 'uuid-3' } },
-      { params: { projectId: 'uuid-4' } },
-      { params: { projectId: 'uuid-5' } },
-      { params: { projectId: 'uuid-6' } },
-      { params: { projectId: 'uuid-7' } },
-      { params: { projectId: 'uuid-8' } },
-      { params: { projectId: 'uuid-9' } },
-      { params: { projectId: 'uuid-10' } },
-    ],
+    paths: [{ params: { projectId: '64011574d1b80bb359926d3f' } }],
     fallback: 'blocking',
   };
 }
 
 export const getStaticProps: GetStaticProps = async context => {
   let projectId;
+  let parsedProject;
+  let parsedResearcher;
+
   if (context.params) {
-    projectId = context.params.projectId;
+    projectId = context.params.projectId as string;
+  }
+
+  const project = await getSingleProject(projectId);
+  if (project) {
+    parsedProject = JSON.parse(JSON.stringify(project));
+  } else {
+    parsedProject = false;
+  }
+
+  const researcherId = parsedProject.researcherId;
+  const researcher = await getSingleResearcher(researcherId);
+  if (researcher) {
+    parsedResearcher = JSON.parse(JSON.stringify(researcher));
+  } else {
+    parsedResearcher = false;
   }
 
   return {
     props: {
-      projectId: projectId,
+      projectObject: parsedProject,
+      researcherObject: parsedResearcher,
     },
   };
 };

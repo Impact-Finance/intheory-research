@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { Artwork } from '@/content/DUMMY_ARTWORK';
-import styles from './artwork-grid-item.module.scss';
+import { CommunityArtwork } from '@/app';
 import Loader from '../loader/loader';
+import styles from './artwork-grid-item.module.scss';
 
 interface ArtworkGridItemProps {
-  artwork: Artwork;
+  artwork: CommunityArtwork;
 }
 
 const ArtworkGridItem = ({ artwork }: ArtworkGridItemProps) => {
@@ -16,10 +16,10 @@ const ArtworkGridItem = ({ artwork }: ArtworkGridItemProps) => {
         text=""
         size="small"
       />
-      <Link href={'/artworks/' + artwork.id}>
+      <Link href={'/artworks/' + artwork._id}>
         <Image
           className={styles.artwork}
-          src={'/dummy_images/' + artwork.path}
+          src={`${process.env.AWS_BUCKET_DOMAIN}/communityArtworks/${artwork._id}.jpg`}
           alt="community artwork"
           fill
           sizes="20vw"
@@ -27,7 +27,7 @@ const ArtworkGridItem = ({ artwork }: ArtworkGridItemProps) => {
         <div className={styles.hoverContent}>
           <p className={styles.hoverText}>
             <span className={styles.label}>Research Funded: </span>
-            {artwork.associatedProject}
+            {artwork.associatedProjectName}
           </p>
           <p className={styles.hoverText}>
             <span className={styles.label}>Funding Amount: </span>
@@ -35,7 +35,8 @@ const ArtworkGridItem = ({ artwork }: ArtworkGridItemProps) => {
           </p>
           <p className={styles.hoverText}>
             <span className={styles.label}>Created by: </span>
-            {artwork.funder}
+            {artwork.funder.slice(0, 4)}...
+            {artwork.funder.slice(-6)}
           </p>
         </div>
       </Link>

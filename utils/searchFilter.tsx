@@ -1,7 +1,7 @@
-import { Project } from '@/content/DUMMY_PROJECTS';
+import { ResearchProject } from '@/app';
 
-const searchFilter = (el: Project, queryTerms: string[]) => {
-  const nameArray = el.name.toLowerCase().split(' ');
+const searchFilter = (el: ResearchProject, queryTerms: string[]) => {
+  const nameArray = el.projectName.toLowerCase().split(' ');
   const descriptionArray = el.shortDescription.toLowerCase().split(' ');
   const validateArray = nameArray.concat(descriptionArray);
   return queryTerms.some(word => {

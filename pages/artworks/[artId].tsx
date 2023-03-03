@@ -1,23 +1,16 @@
-import { useEffect, useState } from 'react';
 import { GetStaticProps } from 'next';
 
-import DUMMY_ARTWORK, { Artwork } from '@/content/DUMMY_ARTWORK';
+import { getSingleArtwork } from '@/utils/fetchContent';
 import ArtDisplay from '@/components/singleArtworkPage/artDisplay/art-display';
 import NotFound from '@/components/site/notFound/not-found';
 import ReturnToAll from '@/components/site/returnToAll/return-to-all';
+import { CommunityArtwork } from '@/app';
 
 interface ArtPageProps {
-  artId: string;
+  artwork: CommunityArtwork;
 }
 
-const ArtPage = ({ artId }: ArtPageProps) => {
-  const [artwork, setArtwork] = useState<Artwork>();
-
-  useEffect(() => {
-    const foundArt = DUMMY_ARTWORK.find(art => art.id === artId);
-    setArtwork(foundArt);
-  }, [artId]);
-
+const ArtPage = ({ artwork }: ArtPageProps) => {
   return (
     <>
       {!artwork && <NotFound context="artworks" />}
@@ -35,27 +28,30 @@ export default ArtPage;
 
 export async function getStaticPaths() {
   return {
-    paths: [
-      { params: { artId: 'uuid-1' } },
-      { params: { artId: 'uuid-2' } },
-      { params: { artId: 'uuid-3' } },
-      { params: { artId: 'uuid-4' } },
-      { params: { artId: 'uuid-5' } },
-    ],
+    paths: [{ params: { artId: '6402329a8648a724190c2166' } }],
     fallback: 'blocking',
   };
 }
 
 export const getStaticProps: GetStaticProps = async context => {
   let artId;
+  let parsedArtwork;
+
   if (context.params) {
-    artId = context.params.artId;
+    artId = context.params.artId as string;
+  }
+
+  const artwork = await getSingleArtwork(artId);
+  if (artwork) {
+    parsedArtwork = JSON.parse(JSON.stringify(artwork));
+  } else {
+    parsedArtwork = false;
   }
 
   return {
     props: {
-      artId: artId,
+      artwork: parsedArtwork,
     },
-    revalidate: 3600,
+    revalidate: 60,
   };
 };

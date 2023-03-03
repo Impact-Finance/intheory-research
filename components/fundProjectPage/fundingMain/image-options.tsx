@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useState, useEffect } from 'react';
 
-import { ImagePropertyObject } from './image-generator';
+import { ImagePropertyObject } from '@/app';
 import styles from './image-options.module.scss';
 
 interface ImageOptionsProps {
