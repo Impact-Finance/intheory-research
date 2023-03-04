@@ -1,0 +1,42 @@
+@import '/styles/sass/mixins';
+
+.section {
+  @include restrained-width(100%);
+  display: flex;
+  justify-content: center;
+  margin-top: $section-spacing/2;
+  .orderBox {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba($color-dark, 0.25);
+    backdrop-filter: blur(100px);
+    border-top: 1px solid rgba($color-accent-1, 0.25);
+    border-bottom: 1px solid rgba($color-accent-1, 0.25);
+    border-radius: $box-border-radius;
+    padding: 3rem;
+    gap: 3rem;
+    .head {
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+      color: $color-accent-1;
+    }
+    .sub {
+      font-size: 2rem;
+      line-height: 3rem;
+      max-width: 55rem;
+      filter: opacity(0.85);
+    }
+    .orderBtn {
+      @include main-btn;
+      width: fit-content;
+      &:disabled {
+        filter: opacity(0.75) grayscale(1);
+        &:hover {
+          cursor: default;
+        }
+      }
+    }
+  }
+}

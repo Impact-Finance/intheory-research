@@ -26,13 +26,21 @@ const SuccessBox = ({ txnHash, tokenId, contractAddress }: SuccessBoxProps) => {
         it off to your friends!
       </p>
       <div className={styles.links}>
-        <Link
-          className={styles.tweetLink}
-          href="https://twitter.com/"
-          target="_blank"
-          rel="noreferrer">
-          Share on Twitter
-        </Link>
+        <div>
+          <Link
+            className={styles.tweetLink}
+            href="https://twitter.com/"
+            target="_blank"
+            rel="noreferrer">
+            Share on Twitter
+          </Link>
+          <button
+            className={styles.orderLink}
+            disabled>
+            Order a Print<span className={styles.popUp}>coming soon</span>
+          </button>
+        </div>
+
         <p className={styles.txnInfo}>
           <span>Txn Hash</span>
           <Link

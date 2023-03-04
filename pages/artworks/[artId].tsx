@@ -5,6 +5,7 @@ import ArtDisplay from '@/components/singleArtworkPage/artDisplay/art-display';
 import NotFound from '@/components/site/notFound/not-found';
 import ReturnToAll from '@/components/site/returnToAll/return-to-all';
 import { CommunityArtwork } from '@/app';
+import OrderPrint from '@/components/singleArtworkPage/orderPrint/order-print';
 
 interface ArtPageProps {
   artwork: CommunityArtwork;
@@ -17,6 +18,7 @@ const ArtPage = ({ artwork }: ArtPageProps) => {
       {artwork && (
         <>
           <ArtDisplay artwork={artwork} />
+          <OrderPrint />
           <ReturnToAll destination="artworks" />
         </>
       )}

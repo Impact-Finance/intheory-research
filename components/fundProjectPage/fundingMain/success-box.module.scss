@@ -24,8 +24,36 @@
     border-top: 1px solid rgba($color-accent-1, 0.25);
     padding-top: 3rem;
     gap: 2rem;
-    .tweetLink {
+    .tweetLink,
+    .orderLink {
       @include main-btn;
+    }
+    .orderLink {
+      position: relative;
+      &:disabled {
+        filter: opacity(0.75) grayscale(1);
+        &:hover {
+          cursor: default;
+          & > .popUp {
+            display: block;
+          }
+        }
+      }
+      .popUp {
+        position: absolute;
+        display: none;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 2rem;
+        transform: rotate(-15deg);
+        background-color: rgba($color-main, 0.5);
+        border-radius: $btn-border-radius;
+        backdrop-filter: blur(10px);
+        padding: 1rem;
+        width: 18rem;
+        top: 1rem;
+        left: -1rem;
+      }
     }
     .txnInfo {
       span {
