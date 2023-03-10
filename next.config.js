@@ -25,7 +25,7 @@ const nextConfig = {
     AWS_BUCKET_NAME: process.env.AWS_BUCKET_NAME,
     AWS_REGION: process.env.AWS_REGION,
     AWS_KEY_ID: process.env.AWS_KEY_ID,
-    AWS_SECRET_KEY: process.env.AWS_SECRET_KEY,
+    AWS_SECRET: process.env.AWS_SECRET,
     OPENAI_API_KEY: process.env.OPENAI_API_KEY,
     GOOGLE_PW: process.env.GOOGLE_PW,
   },

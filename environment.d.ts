@@ -8,7 +8,7 @@ declare global {
       AWS_BUCKET_NAME: string;
       AWS_REGION: string;
       AWS_KEY_ID: string;
-      AWS_SECRET_KEY: string;
+      AWS_SECRET: string;
       OPENAI_API_KEY: string;
       GOOGLE_PW: string;
     }

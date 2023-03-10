@@ -10,7 +10,7 @@ const mongodb_database = process.env.MONGODB_DATABASE;
 const aws_bucket_name = process.env.AWS_BUCKET_NAME;
 const aws_region = process.env.AWS_REGION;
 const aws_key_id = process.env.AWS_KEY_ID;
-const aws_secret_key = process.env.AWS_SECRET_KEY;
+const aws_secret_key = process.env.AWS_SECRET;
 
 const mongoUri = `mongodb+srv://${mongodb_username}:${mongodb_password}@${mongodb_clustername}.4xsak5a.mongodb.net/${mongodb_database}?retryWrites=true&w=majority`;
 
