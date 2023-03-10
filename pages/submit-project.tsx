@@ -13,19 +13,19 @@ const SubmitProjectPage = () => {
         <meta
           name="twitter:description"
           content="Apply today to earn supplementary funding for your research"
-          key="twitter:description"
+          key="twitter_description"
         />
 
         {/* <!-- Open Graph Meta Tags --> */}
         <meta
           property="og:description"
           content="Apply today to earn supplementary funding for your research"
-          key="og:description"
+          key="og_description"
         />
         <meta
           property="og:url"
           content="https://www.intheory.app/submit-project"
-          key="og:url"
+          key="og_url"
         />
       </Head>
       <SubmitHero />
