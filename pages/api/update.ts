@@ -86,7 +86,6 @@ export default async function handler(
           Body: imageBuffer,
           ContentType: 'image/jpeg',
         };
-
         s3.putObject(params, (err, data) => {
           if (err) {
             console.error(err);
@@ -97,7 +96,7 @@ export default async function handler(
       });
     });
 
-    client.close();
+    await client.close();
 
     res.status(200).json({ message: 'Data successfully uploaded' });
   } catch {
