@@ -96,13 +96,12 @@ export default async function handler(
       });
     });
 
-    await client.close();
-
     res.status(200).json({ message: 'Data successfully uploaded' });
   } catch {
+    res.status(500).json({ message: 'DATA UPLOAD FAILED' });
+  } finally {
     if (client) {
       client.close();
     }
-    res.status(500).json({ message: 'DATA UPLOAD FAILED' });
   }
 }
