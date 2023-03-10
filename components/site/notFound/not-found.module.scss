@@ -1,15 +1,33 @@
-@import '/styles/sass/variables';
+@import '/styles/sass/mixins';
 
 .container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 100%;
   margin-top: $content-gap;
+  gap: 3rem;
+  color: $color-accent-1;
+  .vortexBox {
+    position: absolute;
+    width: 55rem;
+    height: 55rem;
+    z-index: -1;
+    .vortex {
+      object-fit: contain;
+      filter: opacity(0.1);
+      animation: rotateClockwise 60s linear infinite;
+    }
+  }
+  .errorHead {
+    font-size: 5rem;
+    letter-spacing: 2px;
+    margin-top: 10rem;
+  }
   .notFound {
-    color: $color-accent-1;
     font-size: 3.5rem;
     letter-spacing: 1px;
     text-align: center;
-    margin-top: 5rem;
+    filter: opacity(0.75);
   }
 }

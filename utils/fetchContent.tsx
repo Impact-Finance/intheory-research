@@ -23,7 +23,6 @@ export const getAllProjects = async () => {
     const findResult = await collection.find({}).toArray();
     return findResult;
   } catch (e) {
-    client.close();
     return false;
   } finally {
     client.close();
@@ -53,7 +52,6 @@ export const getSingleProject = async (projectId: string | undefined) => {
     const findResult = await collection.findOne({ _id: objId });
     return findResult;
   } catch (e) {
-    client.close();
     return false;
   } finally {
     client.close();
@@ -85,7 +83,6 @@ export const getSingleResearcher = async (researcherId: string | undefined) => {
     });
     return findResult;
   } catch (e) {
-    client.close();
     return false;
   } finally {
     client.close();
@@ -108,7 +105,6 @@ export const getAllArtworks = async () => {
     const findResult = await collection.find({}).toArray();
     return findResult;
   } catch (e) {
-    client.close();
     return false;
   } finally {
     client.close();
@@ -134,7 +130,6 @@ export const getSomeArtworks = async (requestedAmount: number) => {
       .toArray();
     return findResult;
   } catch (e) {
-    client.close();
     return false;
   } finally {
     client.close();
@@ -146,30 +141,33 @@ export const getProjectArtworks = async (
   numReturned: number
 ) => {
   let client;
-  const objIdArray = projectArtworkIds.map(id => {
-    return new ObjectId(id);
-  });
+  if (projectArtworkIds) {
+    const objIdArray = projectArtworkIds.map(id => {
+      return new ObjectId(id);
+    });
 
-  try {
-    client = await MongoClient.connect(uri);
-  } catch (e) {
+    try {
+      client = await MongoClient.connect(uri);
+    } catch (e) {
+      return false;
+    }
+
+    const db = client.db();
+
+    try {
+      const collection = db.collection('communityArtworks');
+      const findResult = await collection
+        .find({ _id: { $in: objIdArray } })
+        .limit(numReturned)
+        .toArray();
+      return findResult;
+    } catch (e) {
+      return false;
+    } finally {
+      client.close();
+    }
+  } else {
     return false;
-  }
-
-  const db = client.db();
-
-  try {
-    const collection = db.collection('communityArtworks');
-    const findResult = await collection
-      .find({ _id: { $in: objIdArray } })
-      .limit(numReturned)
-      .toArray();
-    return findResult;
-  } catch (e) {
-    client.close();
-    return false;
-  } finally {
-    client.close();
   }
 };
 
@@ -196,7 +194,6 @@ export const getSingleArtwork = async (artworkId: string | undefined) => {
     const findResult = await collection.findOne({ _id: objId });
     return findResult;
   } catch (e) {
-    client.close();
     return false;
   } finally {
     client.close();

@@ -1,8 +1,10 @@
+import NotFound from '@/components/site/notFound/not-found';
+
 const NotFoundPage = () => {
   return (
-    <div>
-      <h1>404 Page Not Found</h1>
-    </div>
+    <>
+      <NotFound context="home" />
+    </>
   );
 };
 
