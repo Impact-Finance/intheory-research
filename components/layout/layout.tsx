@@ -57,24 +57,24 @@ function Layout({ children }: LayoutProps) {
         <meta
           name="twitter:title"
           content="inTheory Research Funding"
-          key="twitter:title"
+          key="twitter_title"
         />
         <meta
           name="twitter:description"
           content="Fund cutting-edge scientific research by collecting project-inspired digital artworks"
-          key="twitter:description"
+          key="twitter_description"
         />
         <meta
           name="twitter:image"
           content="https://www.intheory.science/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmeta-image.f032aac5.jpg&w=3840&q=75"
-          key="twitter:image"
+          key="twitter_image"
         />
 
         {/* <!-- Open Graph Meta Tags --> */}
         <meta
           property="og:title"
           content="inTheory Research Funding"
-          key="og:title"
+          key="og_title"
         />
         <meta
           property="og:type"
@@ -87,17 +87,17 @@ function Layout({ children }: LayoutProps) {
         <meta
           property="og:description"
           content="Fund cutting-edge scientific research by collecting project-inspired digital artworks"
-          key="og:description"
+          key="og_description"
         />
         <meta
           property="og:url"
           content="https://www.intheory.app/"
-          key="og:url"
+          key="og_url"
         />
         <meta
           property="og:image"
           content="https://www.intheory.science/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fmeta-image.f032aac5.jpg&w=3840&q=75"
-          key="og:image"
+          key="og_image"
         />
       </Head>
       <Navbar current={currentPage} />
