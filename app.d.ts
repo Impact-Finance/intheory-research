@@ -38,6 +38,6 @@ export interface CommunityArtwork {
 }
 
 export interface ImagePropertyObject {
-  dimensions: number[];
+  colorPalette: string;
   style: string;
 }

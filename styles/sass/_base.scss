@@ -29,6 +29,7 @@ body {
 main {
   @include center-flex;
   flex-direction: column;
+  justify-content: flex-start;
   margin-top: calc($navbar-height);
   min-height: 100vh;
 

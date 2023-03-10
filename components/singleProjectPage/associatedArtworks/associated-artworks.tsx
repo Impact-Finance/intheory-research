@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 import GridRow from '@/components/artworksPage/gridRow/grid-row';

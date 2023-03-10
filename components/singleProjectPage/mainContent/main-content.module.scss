@@ -13,7 +13,7 @@
     align-items: center;
     height: 50rem;
     background-color: rgba($color-main, 0.25);
-    border: 1px solid rgba($color-accent-1, 0.25);
+    border: 1px solid rgba($color-accent-1, 0.15);
     overflow: hidden;
     border-radius: $box-border-radius;
     transition: all 0.4s;
@@ -30,8 +30,6 @@
     position: relative;
     gap: 3rem;
     flex-direction: column;
-    border-radius: $box-border-radius;
-    overflow: hidden;
     .funding {
       font-size: 6rem;
       font-weight: 100;

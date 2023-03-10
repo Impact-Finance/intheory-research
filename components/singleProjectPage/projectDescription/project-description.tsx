@@ -11,7 +11,7 @@ const ProjectDescription = ({
   longDescription,
   impacts,
 }: ProjectDescriptionProps) => {
-  const paragraphs = longDescription.split('\n');
+  const paragraphs = longDescription.split('\\n');
 
   return (
     <section className={styles.section}>

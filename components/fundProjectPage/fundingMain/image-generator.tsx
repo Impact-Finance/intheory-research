@@ -1,45 +1,26 @@
 import Loader from '@/components/site/loader/loader';
 import Image from 'next/image';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 
-import { ImagePropertyObject } from '@/app';
 import imagePlaceholder from '@/public/icons/atom.svg';
 import styles from './image-generator.module.scss';
 
 interface ImageGeneratorProps {
-  imageProperties: ImagePropertyObject;
-  keywords: string[];
   imageRequested: boolean;
+  generationError: boolean;
+  imageUrl: string;
   setImageGenerated: Dispatch<SetStateAction<boolean>>;
-  setImagePath: Dispatch<SetStateAction<string>>;
 }
 
 const ImageGenerator = ({
-  imageProperties,
-  keywords,
   imageRequested,
+  generationError,
+  imageUrl,
   setImageGenerated,
-  setImagePath,
 }: ImageGeneratorProps) => {
-  const [success, setSuccess] = useState(false);
-  const [imageData, setImageData] = useState('aperture.jpg');
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    setSuccess(false);
-    if (imageRequested) {
-      setTimeout(() => {
-        setSuccess(true);
-        setImageGenerated(true);
-        setError(false);
-      }, 2000);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [imageRequested]);
-
   return (
     <div className={styles.container}>
-      {!imageRequested && (
+      {!imageRequested && !generationError && (
         <div className={styles.initial}>
           <Image
             src={imagePlaceholder}
@@ -52,22 +33,25 @@ const ImageGenerator = ({
           </p>
         </div>
       )}
-      {imageRequested && !error && (
+      {imageRequested && !generationError && (
         <Loader
           text="generating"
           size="large"
         />
       )}
-      {imageRequested && success && imageData && !error && (
+      {imageRequested && imageUrl && !generationError && (
         <Image
           className={styles.generatedImage}
-          src={'/dummy_images/' + imageData}
+          src={imageUrl}
           alt="generated image"
           fill
           sizes="50vw"
+          onLoadingComplete={() => {
+            setImageGenerated(true);
+          }}
         />
       )}
-      {imageRequested && error && (
+      {generationError && (
         <div className={styles.error}>
           <h3>???</h3>
           <p>Uh oh... image generation failed!</p>

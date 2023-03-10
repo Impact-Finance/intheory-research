@@ -10,7 +10,6 @@ import {
   Filler,
 } from 'chart.js';
 
-import { Impacts } from '@/content/DUMMY_PROJECTS';
 import styles from './radar-chart.module.scss';
 
 interface RadarChartProps {
@@ -39,8 +38,8 @@ const RadarChart = ({ impacts }: RadarChartProps) => {
       'GLOBAL HEALTH',
       'SOCIAL SCIENCE',
       'DIGITAL TECHNOLOGY',
-      'MATERIALS',
-      'SPACE TRAVEL',
+      'MANUFACTURING',
+      'TRANSPORTATION',
     ],
     datasets: [
       {
@@ -75,8 +74,8 @@ const RadarChart = ({ impacts }: RadarChartProps) => {
         },
         pointLabels: {
           color: 'rgba(104, 234, 255, 1)',
-          font: { family: "'Jura', sans-serif", size: 12 },
-          padding: 10,
+          font: { family: "'Jura', sans-serif", size: 14 },
+          padding: 14,
         },
         min: 0,
         max: 6,

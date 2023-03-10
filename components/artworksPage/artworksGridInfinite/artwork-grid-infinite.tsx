@@ -70,12 +70,14 @@ const ArtworkGridInfinite = ({ artworkArray }: ArtworkGridInfiniteProps) => {
         <div className={styles.filters}>
           <button
             className={currentFilter === 'all' ? styles.current : ''}
-            onClick={handleFilter}>
+            onClick={handleFilter}
+            disabled={currentFilter === 'all'}>
             All Art
           </button>
           <button
             className={currentFilter === 'my' ? styles.current : ''}
-            onClick={handleFilter}>
+            onClick={handleFilter}
+            disabled={currentFilter === 'my'}>
             My Collection
           </button>
         </div>

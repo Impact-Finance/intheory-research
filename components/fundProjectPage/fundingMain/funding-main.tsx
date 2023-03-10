@@ -12,8 +12,12 @@ interface FundingMainProps {
 
 const FundingMain = ({ project }: FundingMainProps) => {
   const defaultImageProperties = {
-    dimensions: [512, 896],
-    style: 'realistic',
+    colorPalette: 'bright beautiful vibrant colors',
+    style: 'hyper-realistic photograph',
+    keywords:
+      project.imageGenKeywords[
+        Math.floor(Math.random() * project.imageGenKeywords.length)
+      ],
   };
 
   const [imageProperties, setImageProperties] = useState<ImagePropertyObject>(
@@ -21,7 +25,39 @@ const FundingMain = ({ project }: FundingMainProps) => {
   );
   const [imageRequested, setImageRequested] = useState(false);
   const [imageGenerated, setImageGenerated] = useState(false);
-  const [imagePath, setImagePath] = useState('');
+  const [generationError, setGenerationError] = useState(false);
+  const [imageUrl, setImageUrl] = useState('');
+
+  const handleGeneration = async () => {
+    setImageRequested(true);
+    setGenerationError(false);
+
+    const reqBody = {
+      styles: imageProperties.style,
+      colors: imageProperties.colorPalette,
+      keywords:
+        project.imageGenKeywords[
+          Math.floor(Math.random() * project.imageGenKeywords.length)
+        ],
+    };
+
+    const response = await fetch('/api/generate', {
+      method: 'POST',
+      body: JSON.stringify(reqBody),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      setGenerationError(true);
+      setImageRequested(false);
+    } else {
+      setImageUrl(data.imageUrl);
+    }
+  };
 
   return (
     <section className={styles.section}>
@@ -31,9 +67,7 @@ const FundingMain = ({ project }: FundingMainProps) => {
             <ImageOptions setImageProperties={setImageProperties} />
             <button
               className={styles.requestImage}
-              onClick={() => {
-                setImageRequested(true);
-              }}
+              onClick={handleGeneration}
               disabled={imageRequested}>
               Generate Image
             </button>
@@ -41,21 +75,20 @@ const FundingMain = ({ project }: FundingMainProps) => {
         )}
         {imageGenerated && (
           <SubmitFunding
-            imagePath={imagePath}
-            contractAddress={project.contractAddress}
+            imageUrl={imageUrl}
+            project={project}
             setImageRequested={setImageRequested}
             setImageGenerated={setImageGenerated}
-            setImagePath={setImagePath}
+            setImageUrl={setImageUrl}
           />
         )}
       </div>
       <div className={styles.imagePanel}>
         <ImageGenerator
-          setImageGenerated={setImageGenerated}
-          imageProperties={imageProperties}
-          keywords={project.imageGenKeywords}
           imageRequested={imageRequested}
-          setImagePath={setImagePath}
+          generationError={generationError}
+          imageUrl={imageUrl}
+          setImageGenerated={setImageGenerated}
         />
       </div>
     </section>

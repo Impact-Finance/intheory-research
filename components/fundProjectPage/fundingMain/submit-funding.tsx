@@ -8,27 +8,31 @@ import {
 } from 'react';
 
 import NoWallet from './no-wallet';
-import styles from './submit-funding.module.scss';
 import AnimatedDots from '@/components/site/animatedDots/animated-dots';
 import SuccessBox from './success-box';
+import { ResearchProject } from '@/app';
+import submitFunding from '@/utils/submitFunding';
+import updateData from '@/utils/updateData';
+import styles from './submit-funding.module.scss';
+import sendAlert from '@/utils/sendAlert';
 
 interface SubmitFundingProps {
-  imagePath: string;
-  contractAddress: string;
+  imageUrl: string;
+  project: ResearchProject;
   setImageRequested: Dispatch<SetStateAction<boolean>>;
   setImageGenerated: Dispatch<SetStateAction<boolean>>;
-  setImagePath: Dispatch<SetStateAction<string>>;
+  setImageUrl: Dispatch<SetStateAction<string>>;
 }
 
 const SubmitFunding = ({
-  imagePath,
-  contractAddress,
+  imageUrl,
+  project,
   setImageRequested,
   setImageGenerated,
-  setImagePath,
+  setImageUrl,
 }: SubmitFundingProps) => {
   const [walletAddress, setWalletAddress] = useState('');
-  const [contributionAmount, setContributionAmount] = useState('');
+  const [contributionAmount, setContributionAmount] = useState<number>();
   const [validInput, setValidInput] = useState(false);
   const [txnSent, setTxnSent] = useState(false);
   const [txnSuccess, setTxnSuccess] = useState(false);
@@ -36,39 +40,64 @@ const SubmitFunding = ({
   const [txnHash, setTxnHash] = useState('');
   const [tokenId, setTokenId] = useState('');
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setTxnSent(true);
-    setTimeout(() => {
-      if (Math.random() < 0.5) {
-        setTxnSuccess(true);
-        setTxnHash(
-          '0x8e24a77a94324b960bb308549dea058fc508096af9be3a0e90d7ccaf8a995e8e'
+
+    const { newTxnHash, newTokenId } = await submitFunding(
+      walletAddress,
+      contributionAmount!,
+      project.contractAddress
+    );
+
+    if (!newTxnHash) {
+      setTxnFailed(true);
+      setTxnSuccess(false);
+      setTxnSent(false);
+    } else {
+      setTxnSuccess(true);
+      setTxnHash(newTxnHash);
+      setTokenId(newTokenId);
+
+      const dataUpload = await updateData(
+        project,
+        contributionAmount!,
+        walletAddress,
+        newTxnHash,
+        imageUrl
+      );
+
+      if (!dataUpload) {
+        await sendAlert(
+          project._id,
+          newTxnHash,
+          imageUrl,
+          walletAddress,
+          contributionAmount!
         );
-        setTokenId('1');
-        setTxnFailed(false);
-      } else {
-        setTxnSuccess(false);
-        setTxnFailed(true);
-        setTxnSent(false);
       }
-    }, 2000);
+    }
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setContributionAmount(e.target.value);
+    if (isNaN(parseInt(e.target.value))) {
+      setContributionAmount(0);
+    } else {
+      setContributionAmount(parseInt(e.target.value));
+    }
   };
 
   const handleRestart = () => {
     setImageRequested(false);
     setImageGenerated(false);
-    setImagePath('');
+    setImageUrl('');
   };
 
   useEffect(() => {
     if (
-      /^\d+$/.test(contributionAmount) &&
-      parseInt(contributionAmount) >= 10
+      contributionAmount &&
+      /^\d+$/.test(contributionAmount.toString()) &&
+      contributionAmount >= 10
     ) {
       setValidInput(true);
     } else {
@@ -85,7 +114,7 @@ const SubmitFunding = ({
         <SuccessBox
           txnHash={txnHash}
           tokenId={tokenId}
-          contractAddress={contractAddress}
+          contractAddress={project.contractAddress}
         />
       )}
       {walletAddress && !txnSuccess && (

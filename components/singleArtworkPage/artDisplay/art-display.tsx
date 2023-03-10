@@ -24,7 +24,7 @@ const ArtDisplay = ({ artwork }: ArtDisplayProps) => {
             <div className={styles.imageBox}>
               <Image
                 className={styles.image}
-                src={`${process.env.AWS_BUCKET_DOMAIN}/communityArtworks/${artwork._id}.jpg`}
+                src={`https://${process.env.AWS_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/communityArtworks/${artwork._id}.jpg`}
                 alt="artwork"
                 fill
                 sizes="50vw"

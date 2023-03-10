@@ -19,7 +19,7 @@ const ArtworkGridItem = ({ artwork }: ArtworkGridItemProps) => {
       <Link href={'/artworks/' + artwork._id}>
         <Image
           className={styles.artwork}
-          src={`${process.env.AWS_BUCKET_DOMAIN}/communityArtworks/${artwork._id}.jpg`}
+          src={`https://${process.env.AWS_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/communityArtworks/${artwork._id}.jpg`}
           alt="community artwork"
           fill
           sizes="20vw"

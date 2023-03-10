@@ -18,7 +18,7 @@ const ProjectBannerItem = ({ project }: ProjectBannerItemProps) => {
       <Link href={'/projects/' + project._id}>
         <Image
           className={styles.image}
-          src={`${process.env.AWS_BUCKET_DOMAIN}/projectCoverImages/${project._id}.jpg`}
+          src={`https://${process.env.AWS_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/projectCoverImages/${project._id}.jpg`}
           alt={project.projectName}
           fill
           sizes="30vw"
