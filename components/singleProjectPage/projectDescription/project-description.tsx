@@ -1,4 +1,3 @@
-import { Impacts } from '@/content/DUMMY_PROJECTS';
 import RadarChart from './radar-chart';
 import styles from './project-description.module.scss';
 
