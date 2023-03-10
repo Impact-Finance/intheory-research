@@ -92,10 +92,11 @@ export default async function handler(
           } else {
             console.log('Successfully uploaded image to S3 bucket');
           }
-          mongoClient.close();
         });
       });
     });
+
+    // mongoClient.close();
 
     res.status(200).json({ message: 'Data successfully uploaded' });
   } catch {

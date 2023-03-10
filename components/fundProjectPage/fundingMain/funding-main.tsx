@@ -51,7 +51,7 @@ const FundingMain = ({ project }: FundingMainProps) => {
 
     const data = await response.json();
 
-    if (!response.ok) {
+    if (!data.imageUrl) {
       setGenerationError(true);
       setImageRequested(false);
     } else {
