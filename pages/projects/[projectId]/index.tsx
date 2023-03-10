@@ -100,6 +100,6 @@ export const getStaticProps: GetStaticProps = async context => {
       researcherObject: parsedResearcher,
       associatedArtworks: parsedArtworks,
     },
-    revalidate: 60,
+    revalidate: 120,
   };
 };

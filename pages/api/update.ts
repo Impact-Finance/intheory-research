@@ -38,7 +38,7 @@ export default async function handler(
     imageUrl,
   } = req.body;
   const projectIdObj = new ObjectId(projectId);
-  let client;
+  let client: MongoClient;
 
   try {
     client = await MongoClient.connect(mongoUri);
@@ -92,6 +92,7 @@ export default async function handler(
           } else {
             console.log('Successfully uploaded image to S3 bucket');
           }
+          client.close();
         });
       });
     });
@@ -99,9 +100,5 @@ export default async function handler(
     res.status(200).json({ message: 'Data successfully uploaded' });
   } catch {
     res.status(500).json({ message: 'DATA UPLOAD FAILED' });
-  } finally {
-    // if (client) {
-    //   client.close();
-    // }
   }
 }
