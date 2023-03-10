@@ -71,7 +71,11 @@ export default async function handler(
     );
 
     // Fetch image from remote url and upload to s3
-    const streamToS3 = async (url: string) => {
+    const streamToS3 = async (
+      url: string,
+      bucketName: string,
+      objectKey: string
+    ) => {
       return new Promise((resolve, reject) => {
         https
           .get(url, res => {
@@ -84,8 +88,8 @@ export default async function handler(
               return;
             }
             const params = {
-              Bucket: uploadLocation,
-              Key: insertedArtId + '.jpg',
+              Bucket: bucketName,
+              Key: objectKey + '.jpg',
               Body: res,
               ACL: 'public-read',
               ContentType: 'image/jpeg',
@@ -105,7 +109,7 @@ export default async function handler(
       });
     };
 
-    await streamToS3(imageUrl);
+    await streamToS3(imageUrl, uploadLocation, insertedArtId);
 
     mongoClient.close();
 
