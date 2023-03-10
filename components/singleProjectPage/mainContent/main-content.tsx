@@ -24,7 +24,7 @@ const MainContent = ({ project }: MainContentProps) => {
         </div>
         <Image
           className={styles.coverImage}
-          src={`https://${process.env.AWS_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/projectCoverImages/${project._id}.jpg`}
+          src={`https://${process.env.AWS_BUCKET_NAME}.s3.${process.env.AWS_BUCKET_REGION}.amazonaws.com/projectCoverImages/${project._id}.jpg`}
           alt="project image"
           fill
           sizes="50vw"

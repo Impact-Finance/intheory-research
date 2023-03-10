@@ -27,7 +27,7 @@ const AboutResearcher = ({ researcher }: AboutResearcherProps) => {
             {researcher && (
               <Image
                 className={styles.avatarImage}
-                src={`https://${process.env.AWS_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/researcherAvatars/${researcher._id}.jpg`}
+                src={`https://${process.env.AWS_BUCKET_NAME}.s3.${process.env.AWS_BUCKET_REGION}.amazonaws.com/researcherAvatars/${researcher._id}.jpg`}
                 alt={'Picture of ' + researcher.researcherName}
                 fill
                 sizes="15vw"

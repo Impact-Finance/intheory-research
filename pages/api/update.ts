@@ -8,7 +8,7 @@ const mongodb_password = process.env.MONGODB_PASSWORD;
 const mongodb_clustername = process.env.MONGODB_CLUSTERNAME;
 const mongodb_database = process.env.MONGODB_DATABASE;
 const aws_bucket_name = process.env.AWS_BUCKET_NAME;
-const aws_region = process.env.AWS_REGION;
+const aws_region = process.env.AWS_BUCKET_REGION;
 const aws_key_id = process.env.AWS_KEY_ID;
 const aws_secret_key = process.env.AWS_SECRET;
 
