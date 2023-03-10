@@ -96,8 +96,6 @@ export default async function handler(
       });
     });
 
-    // mongoClient.close();
-
     res.status(200).json({ message: 'Data successfully uploaded' });
   } catch {
     res.status(500).json({ message: 'DATA UPLOAD FAILED' });
