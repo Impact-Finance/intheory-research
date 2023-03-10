@@ -22,12 +22,12 @@ export default function App({ Component, pageProps }: AppProps) {
         color="rgba(104, 234, 255, 0.65)"
         height={3}
       />
-      {/* {size.width && size.width <= 1200 && <MobileContent />} */}
-      {/* {size.width && size.width > 1200 && ( */}
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-      {/* )} */}
+      {size.width && size.width <= 1200 && <MobileContent />}
+      {size.width && size.width > 1200 && (
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      )}
     </>
   );
 }

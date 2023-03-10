@@ -31,14 +31,14 @@ const ProjectPage = ({
       <Head>
         <meta
           name="description"
-          content={projectObject.projectName}
+          content={'inTheory Research: ' + projectObject.projectName}
           key="description"
         />
 
         {/* <!-- Twitter card  --> */}
         <meta
           name="twitter:title"
-          content={projectObject.projectName}
+          content={'inTheory Research: ' + projectObject.projectName}
           key="twitter_title"
         />
         <meta
@@ -55,7 +55,7 @@ const ProjectPage = ({
         {/* <!-- Open Graph Meta Tags --> */}
         <meta
           property="og:title"
-          content={projectObject.projectName}
+          content={'inTheory Research: ' + projectObject.projectName}
           key="og_title"
         />
         <meta
