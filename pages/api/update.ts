@@ -38,11 +38,11 @@ export default async function handler(
     imageUrl,
   } = req.body;
   const projectIdObj = new ObjectId(projectId);
-  let client: MongoClient;
+  let mongoClient: MongoClient;
 
   try {
-    client = await MongoClient.connect(mongoUri);
-    const db = client.db();
+    mongoClient = await MongoClient.connect(mongoUri);
+    const db = mongoClient.db();
     const projectsCollection = db.collection('researchProjects');
     const artworksCollection = db.collection('communityArtworks');
 
@@ -92,7 +92,7 @@ export default async function handler(
           } else {
             console.log('Successfully uploaded image to S3 bucket');
           }
-          client.close();
+          mongoClient.close();
         });
       });
     });
