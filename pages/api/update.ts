@@ -70,32 +70,44 @@ export default async function handler(
       }
     );
 
-    // Fetch image from remote url
-    https.get(imageUrl, response => {
-      let imageBytes = '';
-      response.setEncoding('binary');
-      response.on('data', chunk => {
-        imageBytes += chunk;
+    // Fetch image from remote url and upload to s3
+    const streamToS3 = async (url: string) => {
+      return new Promise((resolve, reject) => {
+        https
+          .get(url, res => {
+            if (res.statusCode !== 200) {
+              reject(
+                new Error(
+                  `Failed to download image: ${res.statusCode} ${res.statusMessage}`
+                )
+              );
+              return;
+            }
+            const params = {
+              Bucket: uploadLocation,
+              Key: insertedArtId + '.jpg',
+              Body: res,
+              ACL: 'public-read',
+              ContentType: 'image/jpeg',
+            };
+
+            s3.upload(params, (err: any, data: any) => {
+              if (err) {
+                reject(err);
+              } else {
+                resolve(data);
+              }
+            });
+          })
+          .on('error', err => {
+            reject(err);
+          });
       });
-      response.on('end', () => {
-        const imageBuffer = Buffer.from(imageBytes, 'binary');
-        // Upload the image buffer to S3 bucket
-        const params = {
-          Bucket: uploadLocation,
-          Key: insertedArtId + '.jpg',
-          Body: imageBuffer,
-          ContentType: 'image/jpeg',
-        };
-        s3.putObject(params, (err, data) => {
-          if (err) {
-            console.error(err);
-          } else {
-            console.log('Successfully uploaded image to S3 bucket');
-          }
-          mongoClient.close();
-        });
-      });
-    });
+    };
+
+    await streamToS3(imageUrl);
+
+    mongoClient.close();
 
     res.status(200).json({ message: 'Data successfully uploaded' });
   } catch {
