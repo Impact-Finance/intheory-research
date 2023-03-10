@@ -22,8 +22,8 @@ export default function App({ Component, pageProps }: AppProps) {
         color="rgba(104, 234, 255, 0.65)"
         height={3}
       />
-      {size.width && size.width <= 1200 && <MobileContent />}
-      {size.width && size.width > 1200 && (
+      {size.width && size.width < 1000 && <MobileContent />}
+      {size.width && size.width >= 1000 && (
         <Layout>
           <Component {...pageProps} />
         </Layout>

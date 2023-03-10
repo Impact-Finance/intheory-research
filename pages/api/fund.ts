@@ -21,7 +21,7 @@ export default async function handler(
   );
   //   try {
   // if (walletAddress && contractAddress && contributionAmount) {}
-  if (Math.random() < 0.5) {
+  if (Math.random() < 0.85) {
     txnHash =
       '0x8e24a77a94324b960bb308549dea058fc508096af9be3a0e90d7ccaf8a995e8e';
     tokenId = '1';

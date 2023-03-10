@@ -46,3 +46,14 @@ main {
     }
   }
 }
+
+@include screen-desktop-md {
+  html {
+    font-size: 54%;
+  }
+}
+@include screen-desktop-sm {
+  html {
+    font-size: 45%;
+  }
+}

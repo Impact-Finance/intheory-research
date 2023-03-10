@@ -97,7 +97,7 @@ const SubmitFunding = ({
     if (
       contributionAmount &&
       /^\d+$/.test(contributionAmount.toString()) &&
-      contributionAmount >= 10
+      contributionAmount >= 25
     ) {
       setValidInput(true);
     } else {
@@ -122,7 +122,7 @@ const SubmitFunding = ({
           <div className={styles.fundingBox}>
             <h5 className={styles.mainText}>
               Purchase this artwork as a unique digital collectible by
-              contributing 10 USDC or more to this research.
+              contributing 25 USDC or more to this research.
             </h5>
             <form
               className={styles.fundingForm}
@@ -162,7 +162,7 @@ const SubmitFunding = ({
                   className={
                     validInput ? `${styles.note} ${styles.valid}` : styles.note
                   }>
-                  Please enter a whole number 10 or greater, numbers only.
+                  Please enter a whole number 25 or greater, numbers only.
                 </p>
               )}
               {txnFailed && (

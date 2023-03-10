@@ -117,6 +117,12 @@
   }
 }
 
+@mixin screen-desktop-md {
+  @media (max-width: 1400px) {
+    @content;
+  }
+}
+
 @mixin screen-desktop-sm {
   @media (max-width: 1200px) {
     @content;
