@@ -70,6 +70,8 @@ export default async function handler(
       }
     );
 
+    client.close();
+
     // Fetch image from remote url
     https.get(imageUrl, response => {
       let imageBytes = '';
@@ -99,6 +101,9 @@ export default async function handler(
 
     res.status(200).json({ message: 'Data successfully uploaded' });
   } catch {
+    if (client) {
+      client.close();
+    }
     res.status(500).json({ message: 'DATA UPLOAD FAILED' });
   }
 }
