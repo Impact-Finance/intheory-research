@@ -82,7 +82,8 @@ export default async function handler(
         // Upload the image buffer to S3 bucket
         const params = {
           Bucket: uploadLocation,
-          Key: insertedArtId + '.jpg',
+          Key: 'test.jpg',
+          // Key: insertedArtId + '.jpg',
           Body: imageBuffer,
           ContentType: 'image/jpeg',
         };
