@@ -100,8 +100,8 @@ export default async function handler(
   } catch {
     res.status(500).json({ message: 'DATA UPLOAD FAILED' });
   } finally {
-    if (client) {
-      client.close();
-    }
+    // if (client) {
+    //   client.close();
+    // }
   }
 }
