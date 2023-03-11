@@ -3,12 +3,15 @@ import { useEffect } from 'react';
 import '@/styles/globals.scss';
 import NextNProgress from 'nextjs-progressbar';
 import type { AppProps } from 'next/app';
+import App from 'next/app'; // can be removed when password protection is removed
 import useWindowSize from '@/utils/useWindowSize';
 import Layout from '@/components/layout/layout';
 import MobileContent from '@/components/site/mobileContent/mobile-content';
 import SiteHeader from '@/components/layout/site-header';
 
-export default function App({ Component, pageProps }: AppProps) {
+import { withPasswordProtect } from 'next-password-protect'; // can be removed when password protection is removed
+
+function MyApp({ Component, pageProps }: AppProps) {
   const size = useWindowSize();
 
   useEffect(() => {
@@ -31,3 +34,15 @@ export default function App({ Component, pageProps }: AppProps) {
     </>
   );
 }
+
+// the following can be removed when password protection is removed and the default export can be moved to back app functional component. also remove "login" and "passwordCheck" API routes and related env variables. remove "next-password-protect" dependency.
+export default process.env.PASSWORD_PROTECT
+  ? withPasswordProtect(MyApp, {
+      loginComponentProps: {
+        backUrl: 'https://intheory.science',
+        logo: 'https://i.imgur.com/XBu6GPn.png',
+        buttonColor: '#68eaff',
+        buttonBackgroundColor: '#0c294b',
+      },
+    })
+  : App;

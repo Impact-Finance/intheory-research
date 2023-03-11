@@ -28,6 +28,8 @@ const nextConfig = {
     AWS_SECRET: process.env.AWS_SECRET,
     OPENAI_API_KEY: process.env.OPENAI_API_KEY,
     GOOGLE_PW: process.env.GOOGLE_PW,
+    PASSWORD_PROTECT: true, // can be removed when password protection is removed
+    BETA_PASSWORD: process.env.BETA_PASSWORD, // can be removed when password protection is removed
   },
 };
 
