@@ -35,7 +35,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-// the following can be removed when password protection is removed and the default export can be moved to back app functional component. also remove "login" and "passwordCheck" API routes and related env variables. remove "next-password-protect" dependency.
+// the following can be removed when password protection is removed and the default export can be moved back to app functional component. also remove "login" and "passwordCheck" API routes and related env variables. remove "next-password-protect" dependency.
 export default process.env.PASSWORD_PROTECT
   ? withPasswordProtect(MyApp, {
       loginComponentProps: {

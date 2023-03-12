@@ -1,6 +1,12 @@
 @import '/styles/sass/variables';
 
 .title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
   font-size: 3rem;
   font-weight: 100;
   text-align: center;

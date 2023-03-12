@@ -13,11 +13,8 @@
     padding: 1rem $content-gap;
   }
   .content {
-    @include center-flex;
     @include section-border;
-    gap: 4rem;
     .text {
-      flex: 1;
       filter: opacity(0.85);
       text-align: justify;
       .description {
@@ -30,7 +27,16 @@
       }
     }
     .radar {
-      flex: 1;
+      position: relative;
+      background-color: rgba($color-main, 0.15);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba($color-accent-1, 0.15);
+      padding: 3rem 2rem;
+      margin: 0 0 2rem 3rem;
+      width: 65rem;
+      height: 60rem;
+      border-radius: $box-border-radius;
+      float: right;
     }
   }
 }
