@@ -202,7 +202,9 @@ const dynamicWalletStyles = `
     margin-bottom: ${textXtraSmall};
   }
   .pending-signature__container .pending-signature__copy,
-  .qrcode-container__content {
+  .qrcode-container__content,
+  .pending-connect__container .pending-connect__title,
+  .pending-connect__container .pending-connect__copy-text {
     line-height: calc(${textLarge} * 1.2);
     max-width: calc(${modalWidth} * 0.66);
   }
