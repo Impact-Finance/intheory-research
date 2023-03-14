@@ -13,6 +13,7 @@ import { withPasswordProtect } from 'next-password-protect'; // can be removed w
 
 import { DynamicContextProvider } from '@dynamic-labs/sdk-react';
 import dynamicWalletStyles from '@/utils/dynamicWalletStyles';
+import supportedNetworks from '@/utils/supportedNetworks';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const size = useWindowSize();
@@ -27,6 +28,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         settings={{
           environmentId: process.env.DYNAMIC_SANDBOX_ID, // update with DYNAMIC_LIVE_ID at launch
           cssOverrides: dynamicWalletStyles,
+          evmNetworks: supportedNetworks,
+          appName: 'inTheory Research',
+          appLogoUrl: 'https://i.imgur.com/XBu6GPn.png',
         }}>
         <SiteHeader />
         <NextNProgress
