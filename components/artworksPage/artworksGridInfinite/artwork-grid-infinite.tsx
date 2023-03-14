@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { Waypoint } from 'react-waypoint';
+import { useDynamicContext } from '@dynamic-labs/sdk-react';
 
 import Loader from '@/components/site/loader/loader';
 import sliceIntoChunks from '@/utils/sliceIntoChunks';
@@ -16,8 +17,6 @@ const bannerSize = 8; // number of artworks in one banner group
 const numFirstLoaded = bannerSize * 2; // number of artworks initially loaded on page
 const scrollLoadIncrement = numFirstLoaded; // number of artworks loaded on each infinite scroll step
 
-const wallet = '0xC0f060632E0BfbE52E48b63dAC225de9b0f856F1'; // replace with address from context
-
 const ArtworkGridInfinite = ({ artworkArray }: ArtworkGridInfiniteProps) => {
   const [artworks, setArtworks] = useState(
     artworkArray.slice(0, numFirstLoaded)
@@ -28,6 +27,7 @@ const ArtworkGridInfinite = ({ artworkArray }: ArtworkGridInfiniteProps) => {
   );
   const [currentFilter, setCurrentFilter] = useState<'all' | 'my'>('all');
   const router = useRouter();
+  const { primaryWallet } = useDynamicContext();
 
   useEffect(() => {
     const chunks = sliceIntoChunks(artworks, bannerSize);
@@ -49,7 +49,11 @@ const ArtworkGridInfinite = ({ artworkArray }: ArtworkGridInfiniteProps) => {
       setCurrentFilter('my');
       setArtworks(
         artworkArray.filter(art => {
-          return art.funder === wallet;
+          if (primaryWallet) {
+            return art.funder === primaryWallet.address;
+          } else {
+            return;
+          }
         })
       );
     }
@@ -81,6 +85,11 @@ const ArtworkGridInfinite = ({ artworkArray }: ArtworkGridInfiniteProps) => {
             My Collection
           </button>
         </div>
+        {currentFilter === 'my' && !primaryWallet && (
+          <p className={styles.mustConnect}>
+            Connect your web3 wallet to view your artworks.
+          </p>
+        )}
         {bannerArray.map((banner, i) => (
           <GridRow
             artworks={banner}
