@@ -67,7 +67,7 @@ const dynamicWalletStyles = `
   }
 
   .dynamic-auth-layout__modal {
-    width: 600px;
+    width: 60rem;
     border-radius: 1.8rem;
   }
   .dynamic-auth-layout__container {
@@ -237,6 +237,7 @@ const dynamicWalletStyles = `
     border-radius: 0.8rem;
     color: rgba(104, 234, 255, 0.75);
     gap: 1rem;
+    font-size: 1.8rem;
     transition: all 0.2s;
   }
   .dynamic-widget-inline-controls__network-picker {
