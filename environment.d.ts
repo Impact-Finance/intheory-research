@@ -12,6 +12,8 @@ declare global {
       OPENAI_API_KEY: string;
       GOOGLE_PW: string;
       BETA_PASSWORD: string; // can be removed when password protection is removed
+      DYNAMIC_SANDBOX_ID: string;
+      DYNAMIC_LIVE_ID: string;
     }
   }
 }

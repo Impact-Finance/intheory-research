@@ -1,13 +1,10 @@
-import { Dispatch, SetStateAction } from 'react';
+import { useDynamicContext } from '@dynamic-labs/sdk-react';
 import Link from 'next/link';
 
 import styles from './no-wallet.module.scss';
 
-interface NoWalletProps {
-  setWalletAddress: Dispatch<SetStateAction<string>>;
-}
-
-const NoWallet = ({ setWalletAddress }: NoWalletProps) => {
+const NoWallet = () => {
+  const { setShowAuthFlow } = useDynamicContext();
   return (
     <div className={styles.noWallet}>
       <div className={styles.text}>
@@ -20,7 +17,7 @@ const NoWallet = ({ setWalletAddress }: NoWalletProps) => {
       <button
         className={styles.connectWallet}
         onClick={() => {
-          setWalletAddress('0xD740E2dE99CB47Fb95c4601b597914972e43b0FC');
+          setShowAuthFlow(true);
         }}>
         Connect Wallet
       </button>

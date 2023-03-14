@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@dynamic-labs/sdk-react": "^0.15.3",
     "@next/font": "13.1.6",
     "@types/node": "18.14.0",
     "@types/nodemailer": "^6.4.7",

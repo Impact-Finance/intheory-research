@@ -30,6 +30,8 @@ const nextConfig = {
     GOOGLE_PW: process.env.GOOGLE_PW,
     PASSWORD_PROTECT: true, // can be removed when password protection is removed
     BETA_PASSWORD: process.env.BETA_PASSWORD, // can be removed when password protection is removed
+    DYNAMIC_SANDBOX_ID: process.env.DYNAMIC_SANDBOX_ID,
+    DYNAMIC_LIVE_ID: process.env.DYNAMIC_LIVE_ID,
   },
 };
 

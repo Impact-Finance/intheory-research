@@ -6,6 +6,7 @@ import {
   ChangeEvent,
   useEffect,
 } from 'react';
+import { useDynamicContext } from '@dynamic-labs/sdk-react';
 
 import NoWallet from './no-wallet';
 import AnimatedDots from '@/components/site/animatedDots/animated-dots';
@@ -31,7 +32,6 @@ const SubmitFunding = ({
   setImageGenerated,
   setImageUrl,
 }: SubmitFundingProps) => {
-  const [walletAddress, setWalletAddress] = useState('');
   const [contributionAmount, setContributionAmount] = useState<number>();
   const [validInput, setValidInput] = useState(false);
   const [txnSent, setTxnSent] = useState(false);
@@ -39,13 +39,14 @@ const SubmitFunding = ({
   const [txnFailed, setTxnFailed] = useState(false);
   const [txnHash, setTxnHash] = useState('');
   const [tokenId, setTokenId] = useState('');
+  const { primaryWallet } = useDynamicContext();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setTxnSent(true);
 
     const { newTxnHash, newTokenId } = await submitFunding(
-      walletAddress,
+      primaryWallet!.address,
       contributionAmount!,
       project.contractAddress
     );
@@ -62,7 +63,7 @@ const SubmitFunding = ({
       const dataUpload = await updateData(
         project,
         contributionAmount!,
-        walletAddress,
+        primaryWallet!.address,
         newTxnHash,
         imageUrl
       );
@@ -72,7 +73,7 @@ const SubmitFunding = ({
           project._id,
           newTxnHash,
           imageUrl,
-          walletAddress,
+          primaryWallet!.address,
           contributionAmount!
         );
       }
@@ -109,7 +110,7 @@ const SubmitFunding = ({
     <>
       {!txnSuccess && <h3 className={styles.header}>Looks good!</h3>}
       {txnSuccess && <h3 className={styles.header}>Well done!</h3>}
-      {!walletAddress && <NoWallet setWalletAddress={setWalletAddress} />}
+      {!primaryWallet && <NoWallet />}
       {txnSuccess && (
         <SuccessBox
           txnHash={txnHash}
@@ -117,7 +118,7 @@ const SubmitFunding = ({
           contractAddress={project.contractAddress}
         />
       )}
-      {walletAddress && !txnSuccess && (
+      {primaryWallet && !txnSuccess && (
         <>
           <div className={styles.fundingBox}>
             <h5 className={styles.mainText}>

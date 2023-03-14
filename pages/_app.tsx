@@ -11,6 +11,9 @@ import SiteHeader from '@/components/layout/site-header';
 
 import { withPasswordProtect } from 'next-password-protect'; // can be removed when password protection is removed
 
+import { DynamicContextProvider } from '@dynamic-labs/sdk-react';
+import dynamicWalletStyles from '@/utils/dynamicWalletStyles';
+
 function MyApp({ Component, pageProps }: AppProps) {
   const size = useWindowSize();
 
@@ -20,17 +23,23 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <SiteHeader />
-      <NextNProgress
-        color="rgba(104, 234, 255, 0.65)"
-        height={3}
-      />
-      {size.width && size.width < 1000 && <MobileContent />}
-      {size.width && size.width >= 1000 && (
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      )}
+      <DynamicContextProvider
+        settings={{
+          environmentId: process.env.DYNAMIC_SANDBOX_ID, // update with DYNAMIC_LIVE_ID at launch
+          cssOverrides: dynamicWalletStyles,
+        }}>
+        <SiteHeader />
+        <NextNProgress
+          color="rgba(104, 234, 255, 0.65)"
+          height={3}
+        />
+        {size.width && size.width < 1000 && <MobileContent />}
+        {size.width && size.width >= 1000 && (
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        )}
+      </DynamicContextProvider>
     </>
   );
 }

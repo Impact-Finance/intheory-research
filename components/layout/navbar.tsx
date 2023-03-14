@@ -1,18 +1,18 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState, useRef, MutableRefObject } from 'react';
+import React, { useRef, MutableRefObject } from 'react';
 import { useRouter } from 'next/router';
 
 import search from '@/public/icons/search.svg';
 import inTheory from '@/public/company/intheory-logo-mark.png';
 import styles from './navbar.module.scss';
+import { DynamicWidget } from '@dynamic-labs/sdk-react';
 
 interface NavBarProps {
   current: string;
 }
 
 const Navbar = ({ current }: NavBarProps) => {
-  const [wallet, setWallet] = useState('');
   const searchRef = useRef() as MutableRefObject<HTMLInputElement>;
   const router = useRouter();
 
@@ -91,25 +91,9 @@ const Navbar = ({ current }: NavBarProps) => {
                 <li>Submit a Project</li>
               </Link>
             </ul>
-            {!wallet && (
-              <button
-                className={styles.connectWallet}
-                onClick={() => {
-                  setWallet('0xD740E2dE99CB47Fb95c4601b597914972e43b0FC');
-                }}>
-                Connect Wallet
-              </button>
-            )}
-            {wallet && (
-              <button
-                className={styles.connectedAddress}
-                onClick={() => {
-                  setWallet('');
-                }}>
-                <div className={styles.gradientCircle}></div>
-                {wallet.slice(0, 5) + '...' + wallet.slice(-4)}
-              </button>
-            )}
+            <div className={styles.dynamicWidget}>
+              <DynamicWidget />
+            </div>
           </div>
         </div>
       </div>
