@@ -117,6 +117,9 @@ const dynamicWalletStyles = `
     height: ${textLarge};
     width: ${textLarge};
   }
+  .search__button--clear {
+    font-size: ${textMedium};
+  }
   .icon-button > svg {
     height: ${textLarge};
     width:${textLarge};
@@ -237,6 +240,11 @@ const dynamicWalletStyles = `
     width: calc(${textMedium} * 2) !important;
     height: calc(${textMedium} * 2) !important;
   }
+  .indicator__wallet-connect,
+  .indicator__wallet-connect svg {
+    height: ${textSmall} !important;
+    width: ${textSmall} !important;
+  }
   .qr-code-view__scan-issue-message {
     background-color: transparent;
   }
@@ -258,12 +266,16 @@ const dynamicWalletStyles = `
   .wallet-help-link__anchor p {
     color: white;
   }
-  .copy-button__container {
+  .text-button {
     font-size: ${textSmall};
-  }
-  .icon--size-small {
+  } 
+  .text-button .icon--size-small {
     width: ${textMedium};
     height: ${textMedium};
+  }
+  .text-button .icon--size-xsmall {
+    width: ${textSmall};
+    height: ${textSmall};
   }
 
   .dynamic-widget-inline-controls {
