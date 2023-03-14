@@ -45,21 +45,16 @@ const ArtworkGridInfinite = ({ artworkArray }: ArtworkGridInfiniteProps) => {
   };
 
   const handleFilter = () => {
-    if (currentFilter === 'all') {
-      setCurrentFilter('my');
-      setArtworks(
-        artworkArray.filter(art => {
-          if (primaryWallet) {
-            return art.funder === primaryWallet.address;
-          } else {
-            return;
-          }
-        })
-      );
-    }
-    if (currentFilter === 'my') {
-      router.reload();
-    }
+    setCurrentFilter('my');
+    setArtworks(
+      artworkArray.filter(art => {
+        if (primaryWallet) {
+          return art.funder === primaryWallet.address;
+        } else {
+          return;
+        }
+      })
+    );
   };
 
   const scrollToTop = () => {
@@ -74,7 +69,9 @@ const ArtworkGridInfinite = ({ artworkArray }: ArtworkGridInfiniteProps) => {
         <div className={styles.filters}>
           <button
             className={currentFilter === 'all' ? styles.current : ''}
-            onClick={handleFilter}
+            onClick={() => {
+              router.reload();
+            }}
             disabled={currentFilter === 'all'}>
             All Art
           </button>
@@ -87,7 +84,8 @@ const ArtworkGridInfinite = ({ artworkArray }: ArtworkGridInfiniteProps) => {
         </div>
         {currentFilter === 'my' && !primaryWallet && (
           <p className={styles.mustConnect}>
-            Connect your web3 wallet to view your artworks.
+            Connect your web3 wallet to view your artworks, then refresh this
+            page.
           </p>
         )}
         {bannerArray.map((banner, i) => (

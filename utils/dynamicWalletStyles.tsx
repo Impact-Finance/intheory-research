@@ -317,7 +317,8 @@ const dynamicWalletStyles = `
     max-height: ${modalHeight};
     width: calc(${modalWidth} * 0.75);
   }
-  .dynamic-widget-card {
+  .dynamic-widget-card,
+  .widget-portal__container {
     background-image: linear-gradient(to bottom, rgba(${colorDarkRgb}, 0.75), rgba(${colorDarkRgb}, 1));
     border: none;
     border-top: 1px solid rgba(${colorAccentRgb}, 0.5);
@@ -368,7 +369,8 @@ const dynamicWalletStyles = `
   }
   .evm-network-control__container--error {
     color: rgb(${colorErrorRgb});
-    background-color: rgba(${colorMainRgb}, 0.75);
+    background-color: rgba(${colorErrorRgb}, 0.15);
+    backdrop-filter: blur(15px);
   }
   .network-not-supported__log-out {
     font-size: ${textSmall};

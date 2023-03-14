@@ -1,3 +1,5 @@
+export const networkIds = [137, 80001, 42220, 44787];
+
 const supportedNetworks = [
   //   {
   //     blockExplorerUrls: ['https://polygonscan.com/'],
