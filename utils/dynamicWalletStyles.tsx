@@ -270,11 +270,11 @@ const dynamicWalletStyles = `
   .text-button {
     font-size: ${textSmall};
   } 
-  .text-button .icon--size-small {
+  .icon--size-small {
     width: ${textMedium};
     height: ${textMedium};
   }
-  .text-button .icon--size-xsmall {
+  .icon--size-xsmall {
     width: ${textSmall};
     height: ${textSmall};
   }
