@@ -104,6 +104,7 @@ const dynamicWalletStyles = `
   }
   .wallet-list__scroll-container--full-height {
     max-height: ${modalHeight} !important;
+    overflow-x: hidden;
   }
   .search__container {
     height: calc(${textLarge} * 1.8);

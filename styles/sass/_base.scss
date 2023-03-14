@@ -18,6 +18,7 @@ body {
   box-sizing: border-box;
   background-color: $color-dark;
   position: relative;
+  overflow: hidden;
 }
 
 html,
@@ -32,7 +33,6 @@ main {
   justify-content: flex-start;
   margin-top: calc($navbar-height);
   min-height: 100vh;
-
   .bg-container {
     position: fixed;
     height: 100vh;
@@ -42,7 +42,7 @@ main {
     .bg-image {
       -o-object-fit: cover;
       object-fit: cover;
-      filter: opacity(0.25);
+      filter: opacity(0.3);
     }
   }
 }
