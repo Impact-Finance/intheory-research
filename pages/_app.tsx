@@ -1,19 +1,18 @@
 import { useEffect } from 'react';
-
-import '@/styles/globals.scss';
 import NextNProgress from 'nextjs-progressbar';
 import type { AppProps } from 'next/app';
+import { DynamicContextProvider } from '@dynamic-labs/sdk-react';
+import dynamicWalletStyles from '@/utils/dynamicWalletStyles';
+import supportedNetworks from '@/utils/supportedNetworks';
 import App from 'next/app'; // can be removed when password protection is removed
+
 import useWindowSize from '@/utils/useWindowSize';
 import Layout from '@/components/layout/layout';
 import MobileContent from '@/components/site/mobileContent/mobile-content';
 import SiteHeader from '@/components/layout/site-header';
+import '@/styles/globals.scss';
 
 import { withPasswordProtect } from 'next-password-protect'; // can be removed when password protection is removed
-
-import { DynamicContextProvider } from '@dynamic-labs/sdk-react';
-import dynamicWalletStyles from '@/utils/dynamicWalletStyles';
-import supportedNetworks from '@/utils/supportedNetworks';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const size = useWindowSize();

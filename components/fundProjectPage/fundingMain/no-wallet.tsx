@@ -30,7 +30,7 @@ const NoWallet = ({ action }: NoWalletProps) => {
             <p className={styles.subtext}>
               Choose your preferred blockchain network below for sending your
               funding contribution and receiving your digital collectible.
-              Transactions are conducted in USDC for both networks.
+              Transactions are conducted in USDC on Polygon and cUSD on Celo.
             </p>
           </>
         )}

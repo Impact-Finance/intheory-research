@@ -88,6 +88,16 @@
         }
       }
     }
+    .rampLink {
+      font-size: 1.4rem;
+      color: rgba($color-accent-1, 0.85);
+      text-align: left;
+      transition: all 0.2s;
+      width: fit-content;
+      &:hover {
+        @include btn-hover;
+      }
+    }
     .note {
       margin-top: 1rem;
       font-size: 1.6rem;

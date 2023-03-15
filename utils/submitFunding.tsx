@@ -1,11 +1,13 @@
 const submitFunding = async (
   walletAddress: string,
   contributionAmount: number,
+  connectedNetwork: number,
   contractAddress: string
 ) => {
   const fundingReqBody = {
     walletAddress: walletAddress,
     contributionAmount: contributionAmount,
+    connectedNetwork: connectedNetwork,
     contractAddress: contractAddress,
   };
 

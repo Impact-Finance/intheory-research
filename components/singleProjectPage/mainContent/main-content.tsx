@@ -77,7 +77,8 @@ const MainContent = ({ project }: MainContentProps) => {
               <li className={styles.step}>
                 <span>3</span>Support the project by purchasing the artwork as a
                 digital collectible, sent to your connected wallet address.
-                Proceeds are sent directly to the researcher as USDC.
+                Proceeds are sent directly to the researcher as USDC (on Polygon
+                network) or cUSD (on Celo network).
               </li>
             </ul>
             <Link

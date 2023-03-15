@@ -11,7 +11,12 @@ export default async function handler(
 ) {
   let txnHash = '';
   let tokenId = '';
-  const { walletAddress, contributionAmount, contractAddress } = req.body;
+  const {
+    walletAddress,
+    contributionAmount,
+    connectedNetwork,
+    contractAddress,
+  } = req.body;
   console.log(
     'Funding submitted by ' +
       walletAddress +

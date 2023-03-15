@@ -22,6 +22,7 @@ interface SubmitFundingProps {
   project: ResearchProject;
   connectedWallet: string;
   connectedNetwork: number | undefined;
+  walletBalance: string | undefined;
   setImageRequested: Dispatch<SetStateAction<boolean>>;
   setImageGenerated: Dispatch<SetStateAction<boolean>>;
   setImageUrl: Dispatch<SetStateAction<string>>;
@@ -32,6 +33,7 @@ const SubmitFunding = ({
   project,
   connectedWallet,
   connectedNetwork,
+  walletBalance,
   setImageRequested,
   setImageGenerated,
   setImageUrl,
@@ -51,6 +53,7 @@ const SubmitFunding = ({
     const { newTxnHash, newTokenId } = await submitFunding(
       connectedWallet,
       contributionAmount!,
+      connectedNetwork!,
       project.contractAddress
     );
 
@@ -131,7 +134,12 @@ const SubmitFunding = ({
             <div className={styles.fundingBox}>
               <h5 className={styles.mainText}>
                 Purchase this artwork as a unique digital collectible by
-                contributing 25 USDC or more to this research.
+                contributing 25{' '}
+                {connectedNetwork === 137 ||
+                  (connectedNetwork === 80001 && <span>USDC</span>)}
+                {connectedNetwork === 42220 ||
+                  (connectedNetwork === 44787 && <span>cUSD</span>)}{' '}
+                or more to this research.
               </h5>
               <form
                 className={styles.fundingForm}
@@ -142,7 +150,14 @@ const SubmitFunding = ({
                   Contribution Amount
                 </label>
                 <div className={styles.inputDiv}>
-                  <span className={styles.usdc}>USDC</span>
+                  {connectedNetwork === 137 ||
+                    (connectedNetwork === 80001 && (
+                      <span className={styles.usdc}>USDC</span>
+                    ))}
+                  {connectedNetwork === 42220 ||
+                    (connectedNetwork === 44787 && (
+                      <span className={styles.usdc}>cUSD</span>
+                    ))}
                   <input
                     className={styles.fundingInput}
                     id="contribution"
@@ -168,6 +183,29 @@ const SubmitFunding = ({
                     </div>
                   </button>
                 </div>
+                {/* <div className={styles.currentBalance}>
+                  Current balance: {walletBalance}
+                </div> */}
+                {connectedNetwork === 137 ||
+                  (connectedNetwork === 80001 && (
+                    <a
+                      className={styles.rampLink}
+                      href="https://ramp.network/buy/"
+                      target="_blank"
+                      rel="noreferrer">
+                      Buy Polygon USDC on Ramp
+                    </a>
+                  ))}
+                {connectedNetwork === 42220 ||
+                  (connectedNetwork === 44787 && (
+                    <a
+                      className={styles.rampLink}
+                      href="https://ramp.network/buy/"
+                      target="_blank"
+                      rel="noreferrer">
+                      Buy Celo cUSD on Ramp
+                    </a>
+                  ))}
                 {!txnFailed && (
                   <p
                     className={
