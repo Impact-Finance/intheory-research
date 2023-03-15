@@ -342,9 +342,15 @@ const dynamicWalletStyles = `
     margin-bottom: 0;
     font-size: ${textMedium};
   }
+  .non-widget-network-picker .evm-network-control__container {
+    background-color: rgba(${colorMainRgb}, 0.75);
+    border: none;
+    border-radius: ${btnBorderRadius};
+  }
   .non-widget-network-picker .evm-network-control__container--error {
     background-color: rgba(${colorDarkRgb}, 0.75);
     border: 1px solid rgba(${colorErrorRgb}, 0.75);
+    border-radius: ${btnBorderRadius};
   }
   .single-wallet-buttons .button--primary {
     background-color: rgba(${colorMainRgb}, 0.5);
@@ -355,6 +361,7 @@ const dynamicWalletStyles = `
     background-color: rgba(${colorMainRgb}, 0.85);
     backdrop-filter: blur(10px);
     border-radius: ${btnBorderRadius};
+    min-width: 13rem;
   }
   .network .network__title-icon {
     width: ${textMedium};
@@ -372,10 +379,16 @@ const dynamicWalletStyles = `
     height: 6.5rem !important;
     width: 6.5rem !important;
   }
+  .dynamic-widget-header__network-picker_container .evm-network-control__container {
+    background-color: rgba(${colorMainRgb}, 0.75);
+    backdrop-filter: blur(15px);
+    border-radius: ${btnBorderRadius};
+  }
   .evm-network-control__container--error {
     color: rgb(${colorErrorRgb});
     background-color: rgba(${colorErrorRgb}, 0.15);
     backdrop-filter: blur(15px);
+    border-radius: ${btnBorderRadius};
   }
   .network-not-supported__log-out {
     font-size: ${textSmall};
