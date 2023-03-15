@@ -1,7 +1,10 @@
 import { useDynamicContext } from '@dynamic-labs/sdk-react';
 import Link from 'next/link';
 
+import polygon from '@/public/site/polygon-logo.png';
+import celo from '@/public/site/celo-logo.png';
 import styles from './no-wallet.module.scss';
+import Image from 'next/image';
 
 interface NoWalletProps {
   action: 'connect' | 'switch';
@@ -27,6 +30,7 @@ const NoWallet = ({ action }: NoWalletProps) => {
             <p className={styles.subtext}>
               Choose your preferred blockchain network below for sending your
               funding contribution and receiving your digital collectible.
+              Transactions are conducted in USDC for both networks.
             </p>
           </>
         )}
@@ -41,7 +45,7 @@ const NoWallet = ({ action }: NoWalletProps) => {
         </button>
       )}
       {action === 'switch' && (
-        <div>
+        <div className={styles.networkButtons}>
           <button
             className={styles.connectWallet}
             onClick={() => {
@@ -50,6 +54,15 @@ const NoWallet = ({ action }: NoWalletProps) => {
                 networkChainId: 80001,
               });
             }}>
+            <div className={styles.logoContainer}>
+              <Image
+                className={styles.chainLogo}
+                src={polygon}
+                alt="polygon"
+                fill
+                sizes="5vw"
+              />
+            </div>
             Polygon
           </button>
           <button
@@ -60,6 +73,15 @@ const NoWallet = ({ action }: NoWalletProps) => {
                 networkChainId: 44787,
               });
             }}>
+            <div className={styles.logoContainer}>
+              <Image
+                className={styles.chainLogo}
+                src={celo}
+                alt="celo"
+                fill
+                sizes="5vw"
+              />
+            </div>
             Celo
           </button>
         </div>

@@ -19,10 +19,25 @@
       margin-top: 3rem;
     }
   }
+  .networkButtons {
+    display: flex;
+  }
   .connectWallet {
     @include main-btn;
     font-size: 2.5rem;
     transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    .logoContainer {
+      position: relative;
+      width: 3rem;
+      height: 3rem;
+      .chainLogo {
+        object-fit: contain;
+      }
+    }
+
     &:hover {
       cursor: pointer;
       color: rgba($color-accent-1, 0.75);

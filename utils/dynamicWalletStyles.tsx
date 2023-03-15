@@ -325,9 +325,10 @@ const dynamicWalletStyles = `
     border-bottom: 1px solid rgba(${colorAccentRgb}, 0.5);
     border-radius: ${boxBorderRadius};
   }
-  .status-dot {
-    width: 0.75rem;
-    height: 0.75rem;
+  .status-dot, 
+  .network__status-icon {
+    width: 0.6rem;
+    height: 0.6rem;
   }
   .dynamic-widget-header__icon-container{
     height: 6.5rem;
@@ -340,6 +341,10 @@ const dynamicWalletStyles = `
   .dynamic-widget-header__balance {
     margin-bottom: 0;
     font-size: ${textMedium};
+  }
+  .non-widget-network-picker .evm-network-control__container--error {
+    background-color: rgba(${colorDarkRgb}, 0.75);
+    border: 1px solid rgba(${colorErrorRgb}, 0.75);
   }
   .single-wallet-buttons .button--primary {
     background-color: rgba(${colorMainRgb}, 0.5);
