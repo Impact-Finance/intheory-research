@@ -2,11 +2,7 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
 import { ResearchProject, Researcher, CommunityArtwork } from '@/app';
-import {
-  getProjectArtworks,
-  getSingleProject,
-  getSingleResearcher,
-} from '@/utils/fetchContent';
+import { getSingleProjectAllDetails } from '@/utils/fetchContent';
 import ProjectHeader from '@/components/singleProjectPage/projectHeader/project-header';
 import MainContent from '@/components/singleProjectPage/mainContent/main-content';
 import NotFound from '@/components/site/notFound/not-found';
@@ -118,26 +114,14 @@ export const getStaticProps: GetStaticProps = async context => {
     projectId = context.params.projectId as string;
   }
 
-  const project = await getSingleProject(projectId);
-  if (project) {
-    parsedProject = JSON.parse(JSON.stringify(project));
+  const projectDetails = await getSingleProjectAllDetails(projectId, 8); // second input is number of associated artworks to return
+  if (projectDetails) {
+    parsedProject = JSON.parse(JSON.stringify(projectDetails.project));
+    parsedResearcher = JSON.parse(JSON.stringify(projectDetails.researcher));
+    parsedArtworks = JSON.parse(JSON.stringify(projectDetails.artworks));
   } else {
     parsedProject = false;
-  }
-
-  const researcherId = parsedProject.researcherId;
-  const researcher = await getSingleResearcher(researcherId);
-  if (researcher) {
-    parsedResearcher = JSON.parse(JSON.stringify(researcher));
-  } else {
     parsedResearcher = false;
-  }
-
-  const artworkIds = parsedProject.associatedArtIds;
-  const associatedArtworks = await getProjectArtworks(artworkIds, 8);
-  if (associatedArtworks) {
-    parsedArtworks = JSON.parse(JSON.stringify(associatedArtworks));
-  } else {
     parsedArtworks = false;
   }
 

@@ -27,12 +27,22 @@ const ArtworkGridInfinite = ({ artworkArray }: ArtworkGridInfiniteProps) => {
   );
   const [currentFilter, setCurrentFilter] = useState<'all' | 'my'>('all');
   const router = useRouter();
+  const [filteredArtworks, setFilteredArtworks] = useState<CommunityArtwork[]>(
+    []
+  );
   const { primaryWallet } = useDynamicContext();
 
   useEffect(() => {
+    if (primaryWallet) {
+      setFilteredArtworks(
+        artworkArray.filter(art => {
+          return art.funder === primaryWallet.address;
+        })
+      );
+    }
     const chunks = sliceIntoChunks(artworks, bannerSize);
     setBannerArray(chunks);
-  }, [artworks]);
+  }, [artworks, primaryWallet, artworkArray]);
 
   const handleInfiniteScroll = async () => {
     if (artworks.length < artworkArray.length && currentFilter === 'all') {
@@ -46,15 +56,7 @@ const ArtworkGridInfinite = ({ artworkArray }: ArtworkGridInfiniteProps) => {
 
   const handleFilter = () => {
     setCurrentFilter('my');
-    setArtworks(
-      artworkArray.filter(art => {
-        if (primaryWallet) {
-          return art.funder === primaryWallet.address;
-        } else {
-          return;
-        }
-      })
-    );
+    setArtworks(filteredArtworks);
   };
 
   const scrollToTop = () => {

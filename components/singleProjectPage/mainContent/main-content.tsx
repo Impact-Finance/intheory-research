@@ -83,6 +83,8 @@ const MainContent = ({ project }: MainContentProps) => {
             <Link
               className={styles.learnMore}
               href="/submit-project/#FAQ"
+              target="_blank"
+              rel="noreferrer"
               scroll={false}>
               Learn More
             </Link>

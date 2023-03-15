@@ -351,6 +351,12 @@ const dynamicWalletStyles = `
     background-color: rgba(${colorDarkRgb}, 0.75);
     border: 1px solid rgba(${colorErrorRgb}, 0.75);
     border-radius: ${btnBorderRadius};
+    width: 7rem;
+    height: 4rem;
+  }
+  .non-widget-network-picker .evm-network-control__container--error > .icon--size-small {
+    width: 3.5rem;
+    height: 3.5rem;
   }
   .single-wallet-buttons .button--primary {
     background-color: rgba(${colorMainRgb}, 0.5);

@@ -3,7 +3,7 @@
 .section {
   @include restrained-width(100%);
   display: flex;
-  gap: 5rem;
+  gap: 4rem;
   margin-top: 3rem;
   .imageBox {
     flex: 1;
@@ -28,6 +28,7 @@
     flex: 1;
     display: flex;
     position: relative;
+    padding: 1rem;
     gap: 3rem;
     flex-direction: column;
     .funding {

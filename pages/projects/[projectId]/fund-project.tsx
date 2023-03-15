@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next';
 
-import { getSingleProject, getSingleResearcher } from '@/utils/fetchContent';
+import { getSingleProjectAllDetails } from '@/utils/fetchContent';
 import NotFound from '@/components/site/notFound/not-found';
 import ProjectHeader from '@/components/singleProjectPage/projectHeader/project-header';
 import ReturnToAll from '@/components/site/returnToAll/return-to-all';
@@ -52,18 +52,12 @@ export const getStaticProps: GetStaticProps = async context => {
     projectId = context.params.projectId as string;
   }
 
-  const project = await getSingleProject(projectId);
-  if (project) {
-    parsedProject = JSON.parse(JSON.stringify(project));
+  const projectDetails = await getSingleProjectAllDetails(projectId, 0); // second input is number of associated artworks to return
+  if (projectDetails) {
+    parsedProject = JSON.parse(JSON.stringify(projectDetails.project));
+    parsedResearcher = JSON.parse(JSON.stringify(projectDetails.researcher));
   } else {
     parsedProject = false;
-  }
-
-  const researcherId = parsedProject.researcherId;
-  const researcher = await getSingleResearcher(researcherId);
-  if (researcher) {
-    parsedResearcher = JSON.parse(JSON.stringify(researcher));
-  } else {
     parsedResearcher = false;
   }
 

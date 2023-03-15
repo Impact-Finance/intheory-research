@@ -7,6 +7,62 @@ const mongodb_database = process.env.MONGODB_DATABASE;
 
 const uri = `mongodb+srv://${mongodb_username}:${mongodb_password}@${mongodb_clustername}.4xsak5a.mongodb.net/${mongodb_database}?retryWrites=true&w=majority`;
 
+export const getSingleProjectAllDetails = async (
+  projectId: string | undefined,
+  numArtworks: number
+) => {
+  let client;
+  let objId;
+
+  if (projectId && projectId.length === 24) {
+    objId = new ObjectId(projectId);
+  } else {
+    return false;
+  }
+
+  try {
+    client = await MongoClient.connect(uri);
+  } catch (e) {
+    return false;
+  }
+
+  const db = client.db();
+
+  let project;
+  let researcher;
+  let artworks;
+
+  try {
+    const projectCollection = db.collection('researchProjects');
+    const researcherCollection = db.collection('researcherProfiles');
+    const artworkCollection = db.collection('communityArtworks');
+    project = await projectCollection.findOne({ _id: objId });
+    if (project) {
+      researcher = await researcherCollection.findOne({
+        _id: new ObjectId(project.researcherId),
+      });
+    }
+    if (researcher && project && numArtworks > 0) {
+      const artworkIdArray = project.associatedArtIds.map((id: string) => {
+        return new ObjectId(id);
+      });
+      artworks = await artworkCollection
+        .find({ _id: { $in: artworkIdArray } })
+        .limit(numArtworks)
+        .toArray();
+    }
+
+    const projectDetails = {
+      project,
+      researcher,
+      artworks,
+    };
+    return projectDetails;
+  } catch (e) {
+    return false;
+  }
+};
+
 export const getAllProjects = async () => {
   let client;
 
@@ -24,8 +80,6 @@ export const getAllProjects = async () => {
     return findResult;
   } catch (e) {
     return false;
-  } finally {
-    client.close();
   }
 };
 
@@ -53,8 +107,6 @@ export const getSingleProject = async (projectId: string | undefined) => {
     return findResult;
   } catch (e) {
     return false;
-  } finally {
-    client.close();
   }
 };
 
@@ -84,8 +136,6 @@ export const getSingleResearcher = async (researcherId: string | undefined) => {
     return findResult;
   } catch (e) {
     return false;
-  } finally {
-    client.close();
   }
 };
 
@@ -106,8 +156,6 @@ export const getAllArtworks = async () => {
     return findResult;
   } catch (e) {
     return false;
-  } finally {
-    client.close();
   }
 };
 
@@ -131,8 +179,6 @@ export const getSomeArtworks = async (requestedAmount: number) => {
     return findResult;
   } catch (e) {
     return false;
-  } finally {
-    client.close();
   }
 };
 
@@ -163,8 +209,6 @@ export const getProjectArtworks = async (
       return findResult;
     } catch (e) {
       return false;
-    } finally {
-      client.close();
     }
   } else {
     return false;
@@ -195,7 +239,81 @@ export const getSingleArtwork = async (artworkId: string | undefined) => {
     return findResult;
   } catch (e) {
     return false;
-  } finally {
-    client.close();
+  }
+};
+
+export const getRandomArtworks = async (numRequested: number) => {
+  let client;
+
+  try {
+    client = await MongoClient.connect(uri);
+  } catch (e) {
+    return false;
+  }
+
+  const db = client.db();
+
+  try {
+    const collection = db.collection('communityArtworks');
+    const findResult = await collection
+      .aggregate([{ $sample: { size: numRequested } }])
+      .toArray();
+    return findResult;
+  } catch (e) {
+    return false;
+  }
+};
+
+export const getRandomProjects = async (numRequested: number) => {
+  let client;
+
+  try {
+    client = await MongoClient.connect(uri);
+  } catch (e) {
+    return false;
+  }
+
+  const db = client.db();
+
+  try {
+    const collection = db.collection('researchProjects');
+    const findResult = await collection
+      .aggregate([{ $sample: { size: numRequested } }])
+      .toArray();
+    return findResult;
+  } catch (e) {
+    return false;
+  }
+};
+
+export const getHomeContent = async (
+  numProjects: number,
+  numArtworks: number
+) => {
+  let client;
+
+  try {
+    client = await MongoClient.connect(uri);
+  } catch (e) {
+    return false;
+  }
+
+  const db = client.db();
+
+  try {
+    const projectsCollection = db.collection('researchProjects');
+    const artworkCollection = db.collection('communityArtworks');
+    const projects = await projectsCollection
+      .aggregate([{ $sample: { size: numProjects } }])
+      .toArray();
+    const artworks = await artworkCollection
+      .aggregate([{ $sample: { size: numArtworks } }])
+      .toArray();
+    return {
+      projects,
+      artworks,
+    };
+  } catch (e) {
+    return false;
   }
 };

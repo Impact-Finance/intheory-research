@@ -3,7 +3,7 @@ import ProjectBanner from '@/components/homePage/projectBanner/project-banner';
 import ArtGrid from '@/components/homePage/artGrid/art-grid';
 import LearnMore from '@/components/homePage/learnMore/learn-more';
 import { ResearchProject, CommunityArtwork } from '@/app';
-import { getAllProjects, getSomeArtworks } from '@/utils/fetchContent';
+import { getHomeContent } from '@/utils/fetchContent';
 
 interface HomeProps {
   featuredProject: ResearchProject;
@@ -27,24 +27,18 @@ export default function Home({
 }
 
 export async function getStaticProps() {
-  const projectsArray = await getAllProjects();
-  const artworksArray = await getSomeArtworks(48);
+  const homeContent = await getHomeContent(4, 8); // inputs are number of returned projects and artworks respectively
 
   let bannerProjects;
   let featuredProject;
   let bannerArtworks;
 
-  if (projectsArray) {
-    const parsedProjects = JSON.parse(JSON.stringify(projectsArray));
-    const randomizedProjects = parsedProjects.sort(() => 0.5 - Math.random());
-    bannerProjects = randomizedProjects.slice(0, 3);
-    featuredProject = randomizedProjects[3]; // ensures it is not a banner project
-  }
-
-  if (artworksArray) {
-    const parsedArtworks = JSON.parse(JSON.stringify(artworksArray));
-    const randomizedProjects = parsedArtworks.sort(() => 0.5 - Math.random());
-    bannerArtworks = randomizedProjects.slice(0, 8);
+  if (homeContent) {
+    const parsedProjects = JSON.parse(JSON.stringify(homeContent.projects));
+    bannerProjects = parsedProjects.slice(0, 3);
+    featuredProject = parsedProjects[3]; // ensures it is not a banner project
+    const parsedArtworks = JSON.parse(JSON.stringify(homeContent.artworks));
+    bannerArtworks = parsedArtworks;
   }
 
   return {
