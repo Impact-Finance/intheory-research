@@ -33,7 +33,7 @@
     flex-direction: column;
     .funding {
       font-size: 6rem;
-      font-weight: 100;
+      font-weight: 500;
       color: $color-accent-1;
       span {
         filter: opacity(0.75);
@@ -82,7 +82,7 @@
         filter: opacity(0.75);
         letter-spacing: 1px;
         text-transform: uppercase;
-        font-weight: 100;
+        font-weight: 500;
       }
       .summary {
         font-size: 1.8rem;
@@ -103,7 +103,7 @@
       padding: 3rem;
       .howHead {
         font-size: 3rem;
-        font-weight: 100;
+        font-weight: 500;
         letter-spacing: 1px;
       }
       .exitBtn {

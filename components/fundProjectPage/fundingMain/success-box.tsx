@@ -59,8 +59,8 @@ const SuccessBox = ({
               className={styles.icon}
               src={window}
               alt=""
-              width={20}
-              height={20}
+              width={16}
+              height={16}
             />
           </Link>
         </p>
@@ -76,8 +76,8 @@ const SuccessBox = ({
               className={styles.icon}
               src={window}
               alt=""
-              width={20}
-              height={20}
+              width={16}
+              height={16}
             />
           </Link>
         </p>
