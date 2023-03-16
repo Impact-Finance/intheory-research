@@ -90,7 +90,7 @@ export const userFAQs = [
   {
     question: 'Is a contribution to a project considered an investment?',
     answer:
-      'No, contributions to research on inTheory are not considered investments. Contributors are only promised to receive a personalized NFT from inTheory (not the researcher) to commemorate your contribution. The value of these digital collectibles is determined by an open and fair market, and contributors should not reasonably expect financial return on their contribution.',
+      'No, contributions to research on inTheory are not considered investments. Contributors are only promised to receive a personalized NFT from inTheory (not the researcher) to commemorate the contribution. The value of these digital collectibles is determined by an open and fair market, and contributors should not reasonably expect financial return on their contribution.',
   },
   {
     question: 'Who owns the rights to the images generated on inTheory?',

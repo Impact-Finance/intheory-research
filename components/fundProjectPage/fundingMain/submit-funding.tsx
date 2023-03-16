@@ -6,7 +6,9 @@ import {
   ChangeEvent,
   useEffect,
 } from 'react';
+import Image from 'next/image';
 
+import window from '@/public/icons/window.svg';
 import { networkIds } from '@/utils/supportedNetworks';
 import NoWallet from './no-wallet';
 import AnimatedDots from '@/components/site/animatedDots/animated-dots';
@@ -125,6 +127,7 @@ const SubmitFunding = ({
           txnHash={txnHash}
           tokenId={tokenId}
           contractAddress={project.contractAddress}
+          network={connectedNetwork}
         />
       )}
       {connectedWallet &&
@@ -193,7 +196,14 @@ const SubmitFunding = ({
                       href="https://ramp.network/buy/"
                       target="_blank"
                       rel="noreferrer">
-                      Buy Polygon USDC on Ramp
+                      Buy Polygon USDC on Ramp{' '}
+                      <Image
+                        className={styles.icon}
+                        src={window}
+                        alt=""
+                        width={12}
+                        height={12}
+                      />
                     </a>
                   ))}
                 {connectedNetwork === 42220 ||
@@ -203,7 +213,14 @@ const SubmitFunding = ({
                       href="https://ramp.network/buy/"
                       target="_blank"
                       rel="noreferrer">
-                      Buy Celo cUSD on Ramp
+                      Buy Celo cUSD on Ramp{' '}
+                      <Image
+                        className={styles.icon}
+                        src={window}
+                        alt=""
+                        width={12}
+                        height={12}
+                      />
                     </a>
                   ))}
                 {!txnFailed && (

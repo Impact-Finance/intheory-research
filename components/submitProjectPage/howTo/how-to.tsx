@@ -53,15 +53,15 @@ const HowTo = () => {
           <h3>Receive your funds</h3>
           <p>
             Receive instant payouts from contributions to your project in the
-            form of USDC. If you don&apos;t already have a cryptocurrency
-            wallet, we will help you set one up.
+            form of the USDC or cUSD stablecoins. If you don&apos;t already have
+            a cryptocurrency wallet, we will help you to set one up.
           </p>
         </div>
         <div className={styles.stepItem}>
           <h3>Engage your supporters</h3>
           <p>
             Build your reputation and increase the value of artworks associated
-            with your research by sharing project updates, lab notes, datasets
+            with your research by sharing project updates, lab notes, datasets,
             or anything else relevant to your research.
           </p>
         </div>

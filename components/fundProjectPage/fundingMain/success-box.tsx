@@ -8,9 +8,15 @@ interface SuccessBoxProps {
   txnHash: string;
   tokenId: string;
   contractAddress: string;
+  network: number | undefined;
 }
 
-const SuccessBox = ({ txnHash, tokenId, contractAddress }: SuccessBoxProps) => {
+const SuccessBox = ({
+  txnHash,
+  tokenId,
+  contractAddress,
+  network,
+}: SuccessBoxProps) => {
   return (
     <div className={styles.success}>
       <p className={styles.main}>
@@ -54,7 +60,8 @@ const SuccessBox = ({ txnHash, tokenId, contractAddress }: SuccessBoxProps) => {
               src={window}
               alt=""
               width={20}
-              height={20}></Image>
+              height={20}
+            />
           </Link>
         </p>
         <p className={styles.txnInfo}>
@@ -70,7 +77,8 @@ const SuccessBox = ({ txnHash, tokenId, contractAddress }: SuccessBoxProps) => {
               src={window}
               alt=""
               width={20}
-              height={20}></Image>
+              height={20}
+            />
           </Link>
         </p>
       </div>
