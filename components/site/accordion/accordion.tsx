@@ -1,7 +1,8 @@
+import { QuestionAnswer } from '@/content/FAQ';
 import styles from './accordion.module.scss';
 
 interface AccordionProps {
-  content: any[];
+  content: QuestionAnswer[];
   index: number;
 }
 
@@ -22,7 +23,11 @@ const Accordion = ({ content, index }: AccordionProps) => {
               htmlFor={(index * (i + 1)).toString()}>
               {faq.question}
             </label>
-            <div className={styles.content}>{faq.answer}</div>
+            <div className={styles.content}>
+              {faq.answer.split('\n').map((p, n) => (
+                <p key={n}>- {p}</p>
+              ))}
+            </div>
           </div>
         ))}
       </div>
