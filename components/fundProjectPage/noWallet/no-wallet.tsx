@@ -8,9 +8,10 @@ import Image from 'next/image';
 
 interface NoWalletProps {
   action: 'connect' | 'switch';
+  handleRestart: () => void;
 }
 
-const NoWallet = ({ action }: NoWalletProps) => {
+const NoWallet = ({ action, handleRestart }: NoWalletProps) => {
   const { setShowAuthFlow, primaryWallet } = useDynamicContext();
   return (
     <div className={styles.noWallet}>
@@ -104,6 +105,10 @@ const NoWallet = ({ action }: NoWalletProps) => {
               </span>{' '}
               to learn how to set one up and why you need one. Then come back
               here to claim your art!
+            </p>
+            <p className={styles.tryAgain}>
+              Don&apos;t like your artwork?{' '}
+              <span onClick={handleRestart}>Generate again</span>
             </p>
           </>
         )}

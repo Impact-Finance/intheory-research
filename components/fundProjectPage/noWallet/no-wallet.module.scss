@@ -68,5 +68,17 @@
         }
       }
     }
+    .tryAgain {
+      margin-top: 2rem;
+      font-size: 1.6rem;
+      filter: opacity(0.75);
+      span {
+        color: $color-accent-1;
+        transition: all 0.2s;
+        &:hover {
+          @include btn-hover;
+        }
+      }
+    }
   }
 }

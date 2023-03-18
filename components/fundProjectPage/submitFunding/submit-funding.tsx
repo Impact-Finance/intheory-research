@@ -116,9 +116,17 @@ const SubmitFunding = ({
     <>
       {!txnSuccess && <h3 className={styles.header}>Looks good!</h3>}
       {txnSuccess && <h3 className={styles.header}>Well done!</h3>}
-      {!connectedWallet && <NoWallet action="connect" />}
+      {!connectedWallet && (
+        <NoWallet
+          action="connect"
+          handleRestart={handleRestart}
+        />
+      )}
       {connectedWallet && !networkIds.includes(connectedNetwork!) && (
-        <NoWallet action="switch" />
+        <NoWallet
+          action="switch"
+          handleRestart={handleRestart}
+        />
       )}
       {txnSuccess && (
         <SuccessBox
