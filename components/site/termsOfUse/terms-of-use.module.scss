@@ -1,0 +1,25 @@
+@import '/styles/sass/mixins';
+
+.section {
+  @include restrained-width(100%);
+  .head {
+    @include header-styling;
+    margin: calc($section-spacing / 2) 0 calc($content-gap / 2) $content-gap;
+  }
+  .main {
+    @include section-border;
+    width: 100%;
+    .textBox {
+      background-color: rgba($color-main, 0.25);
+      backdrop-filter: blur(10px);
+      border-radius: $box-border-radius;
+      padding: 1rem 3rem;
+      .text {
+        margin: 2rem 0;
+        font-size: 1.8rem;
+        line-height: 2.4rem;
+        filter: opacity(0.85);
+      }
+    }
+  }
+}

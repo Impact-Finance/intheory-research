@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useDynamicContext } from '@dynamic-labs/sdk-react';
 
-import ImageGenerator from './image-generator';
+import ImageGenerator from '../imageGenerator/image-generator';
 import { ResearchProject, ImagePropertyObject } from '@/app';
-import ImageOptions from './image-options';
-import SubmitFunding from './submit-funding';
+import ImageOptions from '../imageOptions/image-options';
+import SubmitFunding from '../submitFunding/submit-funding';
 import styles from './funding-main.module.scss';
+import getStablecoinBalance from '@/utils/getStablecoinBalance';
 
 interface FundingMainProps {
   project: ResearchProject;
@@ -30,12 +31,15 @@ const FundingMain = ({ project }: FundingMainProps) => {
   const [imageUrl, setImageUrl] = useState('');
   const [connectedWallet, setConnectedWallet] = useState('');
   const [connectedNetwork, setConnectedNetwork] = useState<number>();
-  const [walletBalance, setWalletBalance] = useState<string>();
+  const [walletBalance, setWalletBalance] = useState('');
   const { primaryWallet, network } = useDynamicContext();
 
   useEffect(() => {
     const getBalance = async () => {
-      const balance = await primaryWallet?.connector.getBalance();
+      const balance = await getStablecoinBalance(
+        connectedNetwork,
+        connectedWallet
+      );
       setWalletBalance(balance);
     };
     if (primaryWallet) {
@@ -47,7 +51,7 @@ const FundingMain = ({ project }: FundingMainProps) => {
       setConnectedWallet('');
       setConnectedNetwork(undefined);
     }
-  }, [primaryWallet, network]);
+  }, [primaryWallet, network, connectedNetwork, connectedWallet]);
 
   const handleGeneration = async () => {
     setImageRequested(true);

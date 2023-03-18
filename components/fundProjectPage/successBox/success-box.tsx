@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-import window from '@/public/icons/window.svg';
+import windowIcon from '@/public/icons/window.svg';
 import styles from './success-box.module.scss';
 
 interface SuccessBoxProps {
@@ -46,7 +46,6 @@ const SuccessBox = ({
             Order a Print<span className={styles.popUp}>coming soon</span>
           </button>
         </div>
-
         <p className={styles.txnInfo}>
           <span>Txn Hash</span>
           <Link
@@ -57,7 +56,7 @@ const SuccessBox = ({
             {txnHash.slice(0, 4) + '...' + txnHash.slice(-6)}{' '}
             <Image
               className={styles.icon}
-              src={window}
+              src={windowIcon}
               alt=""
               width={16}
               height={16}
@@ -74,7 +73,7 @@ const SuccessBox = ({
             {tokenId}{' '}
             <Image
               className={styles.icon}
-              src={window}
+              src={windowIcon}
               alt=""
               width={16}
               height={16}

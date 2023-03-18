@@ -1,56 +1,24 @@
+// Styles for Dynamic wallet are also controlled by shadow-dom in _variables.scss
+
 const colorMainRgb = '12, 41, 75';
 const colorAccentRgb = '104, 234, 255';
 const colorDarkRgb = '4, 12, 22';
 const colorErrorRgb = '254, 0, 254';
-const textXtraLarge = '2.6rem';
 const textLarge = '2.2rem';
 const textMedium = '1.6rem';
 const textSmall = '1.2rem';
 const textXtraSmall = '1rem';
-const boxBorderRadius = '1.8rem';
 const btnBorderRadius = '0.8rem';
-const fontFamily = 'Jura, sans-serif';
 const modalWidth = '60rem';
-const modalHeight = '35rem';
+const transition = 'transition: all 0.2s;';
 
 const dynamicWalletStyles = `
-  .typography,
-  .typography--primary,
-  .typography--secondary, 
-  .typography--body-normal,
-  .search__input,
-  .trailing__badge,
-  .search__button--clear,
-  p,
-  button {
-    font-family: ${fontFamily};
+  .typography {
     font-weight: 400;
   }
-  .typography--title {
-    color: rgb(${colorAccentRgb});
-    font-size: ${textXtraLarge};
-  }
-  .typography--body-normal {
-    font-size: ${textLarge};
-  }
-  .typography--body-small {
-    font-size: ${textMedium};
-  }
-  .typography--dynamic-error-1 {
-    color: rgb(${colorErrorRgb});
-  }
-  .typography--button-primary {
-    color: rgb(${colorAccentRgb});
-    font-size: ${textMedium};
-    transition: all 0.2s;
-  }
+
   .dynamic-connect-button {
-    background-color: rgb(${colorMainRgb});
     border-radius: ${btnBorderRadius};
-    border-color: transparent;
-    padding: 0.8rem 1.5rem;
-    width: fit-content;
-    height: fit-content;
   }
   .dynamic-connect-button::after {
     --borderWidth: 1px;
@@ -74,45 +42,46 @@ const dynamicWalletStyles = `
     animation: animatedGradient 6s ease alternate infinite;
     background-size: 300% 300%;
   }
-  .dynamic-connect-button:hover {
-    background-color: rgb(${colorMainRgb});
-    border-color: transparent;
+  .typography--button-primary {
+    color: rgb(${colorAccentRgb});
+    ${transition};
+  }
+  .typography--title {
+    color: rgb(${colorAccentRgb});
   }
   .dynamic-connect-button:hover > .typography--button-primary {
-    color: rgba(${colorAccentRgb}, 0.75)
+    color: rgba(${colorAccentRgb}, 0.75);
   }
   .dynamic-connect-button:hover::after {
     animation-play-state: paused;
   }
 
-  .dynamic-auth-layout__modal {
-    width: ${modalWidth};
-    border-radius: ${boxBorderRadius};
-  }
   .dynamic-auth-layout__container {
-    border-radius: ${boxBorderRadius};
     border-top: 1px solid rgba(${colorAccentRgb}, 0.5);
     border-bottom: 1px solid rgba(${colorAccentRgb}, 0.5);
   }
   .vertical-accordion__container {
     background-image: linear-gradient(to bottom, rgba(${colorDarkRgb}, 0.75), rgba(${colorDarkRgb}, 1));
-    padding: ${textLarge};
-    border-radius: ${boxBorderRadius};
   }
-  .modal-header {
-    padding-top: 0;
+  .wallet-list-item__tile {
+    gap: ${textXtraSmall};
+    border-top: 1px solid rgba(${colorAccentRgb}, 0);
+    border-bottom: 1px solid rgba(${colorAccentRgb}, 0);
+    ${transition}
   }
-  .wallet-list__scroll-container--full-height {
-    max-height: ${modalHeight} !important;
-    overflow-x: hidden;
+  .wallet-list-item__tile > img {
+    width: ${textLarge} !important;
+    height: ${textLarge} !important;
+  }
+  .wallet-list-item__tile:hover {
+    border-top: 1px solid rgba(${colorAccentRgb}, 0.25);
+    border-bottom: 1px solid rgba(${colorAccentRgb}, 0.25);
+    background-color: rgba(${colorMainRgb}, 0.15);
   }
   .search__container {
     height: calc(${textLarge} * 1.8);
     padding: ${textSmall};
     border-radius: ${btnBorderRadius};
-  }
-  .search__input {
-    font-size: ${textMedium};
   }
   .search-icon__container {
     height: ${textLarge};
@@ -121,52 +90,7 @@ const dynamicWalletStyles = `
   .search__button--clear {
     font-size: ${textMedium};
   }
-  .icon-button > svg {
-    height: ${textLarge};
-    width:${textLarge};
-  }
-  .wallet-list-item__tile {
-    padding: ${textSmall};
-    gap: ${textXtraSmall};
-    border-top: 1px solid rgba(${colorAccentRgb}, 0);
-    border-bottom: 1px solid rgba(${colorAccentRgb}, 0);
-    border-radius: ${btnBorderRadius};
-    transition: all 0.2s;
-  }
-  .wallet-list-item__tile:hover {
-    border-top: 1px solid rgba(${colorAccentRgb}, 0.25);
-    border-bottom: 1px solid rgba(${colorAccentRgb}, 0.25);
-    background-color: rgba(${colorMainRgb}, 0.15)
-  }
-  .wallet-list-item__tile > img {
-    width: ${textLarge} !important;
-    height: ${textLarge} !important;
-  }
-  .badge__container {
-    gap: 0.75rem;
-    padding: 0.5rem 1rem;
-    border-radius: ${btnBorderRadius};
-    background-color: rgba(${colorMainRgb}, 0.5);
-  }
-  .badge__container > span {
-    font-size: ${textMedium};
-  }
-  .badge__dot {
-    height: 0.75rem;
-    width: 0.75rem;
-  }
-  .search-instead__container > p {
-    margin: 0.5rem;
-  }
-  .error-container {
-    color: rgb(${colorErrorRgb});
-    background-color: transparent;
-  }
-  .error-container p {
-    color: rgb(${colorErrorRgb});
-  }
   .footer {
-    background-color: rgba(${colorMainRgb}, 0.5);
     border-radius: ${btnBorderRadius};
   }
   .footer__container--icon svg {
@@ -179,7 +103,6 @@ const dynamicWalletStyles = `
   }
   .footer-buttons-item {
     background-color: rgba(${colorMainRgb}, 0.25);
-    border-radius: ${btnBorderRadius};
   }
   .footer-buttons-item__icon--left {
     margin-right: ${textXtraSmall};
@@ -189,17 +112,21 @@ const dynamicWalletStyles = `
     width: ${textLarge};
     height: ${textLarge};
   }
-  .walletlist-footer-content__typography-wrapper {
-    margin: 2rem 0;
-  }
-  .walletlist-footer-content__icon {
-    width: 5rem;
-    margin-top: ${textXtraSmall};
-  }
   .new-to-web3-buttons__container button {
     background-color: rgba(${colorMainRgb}, 0.5);
     color: rgb(${colorAccentRgb});
-    border-radius: ${btnBorderRadius};
+  }
+
+  .badge__container {
+    gap: 0.75rem;
+    padding: 0.5rem 1rem;
+  }
+  .badge__dot {
+    height: 0.75rem;
+    width: 0.75rem;
+  }
+  .search-instead__container > p {
+    margin: 0.5rem;
   }
 
   .pending-signature__container .pending-signature__title {
@@ -210,7 +137,7 @@ const dynamicWalletStyles = `
   .pending-connect__container .pending-connect__title,
   .pending-connect__container .pending-connect__copy-text {
     line-height: calc(${textLarge} * 1.2);
-    max-width: calc(${modalWidth} * 0.66);
+    max-width: calc(${modalWidth} * 0.75);
   }
   .powered-by-dynamic__logo {
     max-width: 6rem;
@@ -269,7 +196,18 @@ const dynamicWalletStyles = `
   }
   .text-button {
     font-size: ${textSmall};
-  } 
+  }
+  .icon--size-small {
+    width: ${textMedium};
+    height: ${textMedium};
+  }
+  .icon--size-xsmall {
+    width: ${textSmall};
+    height: ${textSmall};
+  }
+  .text-button {
+    font-size: ${textSmall};
+  }
   .icon--size-small {
     width: ${textMedium};
     height: ${textMedium};
@@ -309,12 +247,11 @@ const dynamicWalletStyles = `
     width: calc(${textMedium} * 1.25);
   }
   .dynamic-widget-inline-controls__network-picker:hover,
-  .account-control__container:hover { 
+  .account-control__container:hover {
     background-color: rgba(${colorMainRgb}, 0.5);
     filter: opacity(0.85);
   }
   .dynamic-widget-modal {
-    max-height: ${modalHeight};
     width: calc(${modalWidth} * 0.75);
   }
   .dynamic-widget-card,
@@ -323,9 +260,8 @@ const dynamicWalletStyles = `
     border: none;
     border-top: 1px solid rgba(${colorAccentRgb}, 0.5);
     border-bottom: 1px solid rgba(${colorAccentRgb}, 0.5);
-    border-radius: ${boxBorderRadius};
   }
-  .status-dot, 
+  .status-dot,
   .network__status-icon {
     width: 0.6rem;
     height: 0.6rem;
@@ -395,6 +331,11 @@ const dynamicWalletStyles = `
     background-color: rgba(${colorErrorRgb}, 0.15);
     backdrop-filter: blur(15px);
     border-radius: ${btnBorderRadius};
+    ${transition};
+  }
+  .evm-network-control__container--error:hover {
+    cursor: pointer;
+    background-color: rgba(${colorErrorRgb}, 0.15);
   }
   .network-not-supported__log-out {
     font-size: ${textSmall};

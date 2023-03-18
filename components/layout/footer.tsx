@@ -133,7 +133,10 @@ const Footer = () => {
               rel="noreferrer">
               <span>Impact Finance</span>
             </Link>{' '}
-            | &copy; Impact Finance 2023
+            | &copy; Impact Finance 2023 |{' '}
+            <Link href="/terms">
+              <span>Terms of Use</span>
+            </Link>
           </p>
         </div>
       </div>

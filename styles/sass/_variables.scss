@@ -12,3 +12,80 @@ $max-page-width: 140rem;
 $section-spacing: 15rem;
 
 $content-gap: 2.5rem;
+
+// Styles for Dynamic wallet are also controlled by CSS override properties in dynamicWalletStyles.tsx
+.dynamic-shadow-dom {
+  --dynamic-font-family-primary: 'Jura', sans-serif;
+  --dynamic-font-family-numbers: 'Jura', sans-serif;
+  --dynamic-base-1: #0c294b;
+  --dynamic-base-2: rgb(12, 41, 75, 0.75);
+  --dynamic-base-3: rgb(12, 41, 75, 0.5);
+  --dynamic-base-4: rgb(12, 41, 75, 0.25);
+  --dynamic-base-5: #0c294b;
+  --dynamic-brand-primary-color: #68eaff;
+  // --dynamic-connection-green-1
+  // --dynamic-connection-green-2
+  --dynamic-border-radius: 1.8rem;
+  // --dynamic-hover
+  --dynamic-error-1: #fe00fe;
+  --dynamic-error-2: rgba(254, 0, 254, 0.1);
+  // --dynamic-loading-animation-gradient
+  // --dynamic-shadow-down-1
+  // --dynamic-shadow-down-2
+  // --dynamic-shadow-down-3
+  // --dynamic-shadow-up-1
+  // --dynamic-text-primary
+  // --dynamic-text-secondary
+  --dynamic-text-tertiary: #68eaff;
+  // --dynamic-text-link
+  --dynamic-text-size-body-mini: 1rem;
+  --dynamic-text-size-body-small: 1.6rem;
+  --dynamic-text-size-body-normal: 2rem;
+  --dynamic-text-size-button-primary: 1.6rem;
+  // --dynamic-text-size-button-secondary
+  // --dynamic-text-size-numbers-small
+  // --dynamic-text-size-numbers-medium
+  // --dynamic-text-size-numbers-big
+  --dynamic-text-size-title: 2.6rem;
+  // --dynamic-modal-border
+  --dynamic-modal-width: 60rem;
+  --dynamic-modal-padding: 2.2rem;
+  --dynamic-modal-backdrop-background: rgba(4, 12, 22, 0.75);
+  --dynamic-modal-backdrop-filter: blur(15px);
+  --dynamic-footer-background-color: rgb(12, 41, 75, 0.5);
+  // --dynamic-footer-text-color
+  // --dynamic-footer-icon-color
+  // --dynamic-footer-arrow-color
+  // --dynamic-footer-border
+  --dynamic-footer-padding: 2rem;
+  --dynamic-wallet-list-max-height: 35rem;
+  // --dynamic-wallet-list-tile-gap
+  --dynamic-wallet-list-tile-padding: 1.2rem;
+  // --dynamic-wallet-list-tile-background
+  // --dynamic-wallet-list-tile-border
+  // --dynamic-wallet-list-tile-shadow
+  // --dynamic-wallet-list-tile-background-hover
+  // --dynamic-wallet-list-tile-border-hover
+  // --dynamic-wallet-list-tile-shadow-hover
+  // --dynamic-wallet-list-tile-animation-duration
+  --dynamic-badge-background: rgb(12, 41, 75, 0.5);
+  // --dynamic-badge-color
+  // --dynamic-badge-dot-background
+  // --dynamic-search-bar-background
+  // --dynamic-search-bar-border
+  // --dynamic-search-bar-background-hover
+  // --dynamic-search-bar-border-hover
+  // --dynamic-search-bar-background-focus
+  // --dynamic-search-bar-border-focus
+  --dynamic-connect-button-background: #0c294b;
+  --dynamic-connect-button-color: #fff;
+  --dynamic-connect-button-border: transparent;
+  // --dynamic-connect-button-shadow
+  --dynamic-connect-button-background-hover: #0c294b;
+  --dynamic-connect-button-color-hover: #68eaff;
+  // --dynamic-connect-button-border-hover
+  // --dynamic-connect-button-shadow-hover
+  // --dynamic-overlay
+  // --dynamic-tooltip-color
+  // --dynamic-tooltip-text-color
+}

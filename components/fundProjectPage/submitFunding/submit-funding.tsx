@@ -6,25 +6,23 @@ import {
   ChangeEvent,
   useEffect,
 } from 'react';
-import Image from 'next/image';
 
-import window from '@/public/icons/window.svg';
 import { networkIds } from '@/utils/supportedNetworks';
-import NoWallet from './no-wallet';
-import AnimatedDots from '@/components/site/animatedDots/animated-dots';
-import SuccessBox from './success-box';
+import NoWallet from '../noWallet/no-wallet';
+import SuccessBox from '../successBox/success-box';
 import { ResearchProject } from '@/app';
 import submitFunding from '@/utils/submitFunding';
 import updateData from '@/utils/updateData';
 import sendAlert from '@/utils/sendAlert';
 import styles from './submit-funding.module.scss';
+import FormInput from './formInput/form-input';
 
 interface SubmitFundingProps {
   imageUrl: string;
   project: ResearchProject;
   connectedWallet: string;
   connectedNetwork: number | undefined;
-  walletBalance: string | undefined;
+  walletBalance: string;
   setImageRequested: Dispatch<SetStateAction<boolean>>;
   setImageGenerated: Dispatch<SetStateAction<boolean>>;
   setImageUrl: Dispatch<SetStateAction<string>>;
@@ -144,101 +142,16 @@ const SubmitFunding = ({
                   (connectedNetwork === 44787 && <span>cUSD</span>)}{' '}
                 or more to this research.
               </h5>
-              <form
-                className={styles.fundingForm}
-                onSubmit={handleSubmit}>
-                <label
-                  className={styles.label}
-                  htmlFor="contribution">
-                  Contribution Amount
-                </label>
-                <div className={styles.inputDiv}>
-                  {connectedNetwork === 137 ||
-                    (connectedNetwork === 80001 && (
-                      <span className={styles.usdc}>USDC</span>
-                    ))}
-                  {connectedNetwork === 42220 ||
-                    (connectedNetwork === 44787 && (
-                      <span className={styles.usdc}>cUSD</span>
-                    ))}
-                  <input
-                    className={styles.fundingInput}
-                    id="contribution"
-                    name="contribution"
-                    placeholder="0"
-                    onChange={handleChange}
-                    value={contributionAmount || ''}
-                  />
-                  <button
-                    className={styles.submitBtn}
-                    type="submit"
-                    disabled={!validInput || txnSent}>
-                    <span className={txnSent ? styles.hidden : ''}>
-                      Submit Funding
-                    </span>
-                    <div
-                      className={
-                        txnSent
-                          ? styles.dots
-                          : `${styles.dots} ${styles.hidden}`
-                      }>
-                      <AnimatedDots />
-                    </div>
-                  </button>
-                </div>
-                {/* <div className={styles.currentBalance}>
-                  Current balance: {walletBalance}
-                </div> */}
-                {connectedNetwork === 137 ||
-                  (connectedNetwork === 80001 && (
-                    <a
-                      className={styles.rampLink}
-                      href="https://ramp.network/buy/"
-                      target="_blank"
-                      rel="noreferrer">
-                      Buy Polygon USDC on Ramp{' '}
-                      <Image
-                        className={styles.icon}
-                        src={window}
-                        alt=""
-                        width={12}
-                        height={12}
-                      />
-                    </a>
-                  ))}
-                {connectedNetwork === 42220 ||
-                  (connectedNetwork === 44787 && (
-                    <a
-                      className={styles.rampLink}
-                      href="https://ramp.network/buy/"
-                      target="_blank"
-                      rel="noreferrer">
-                      Buy Celo cUSD on Ramp{' '}
-                      <Image
-                        className={styles.icon}
-                        src={window}
-                        alt=""
-                        width={12}
-                        height={12}
-                      />
-                    </a>
-                  ))}
-                {!txnFailed && (
-                  <p
-                    className={
-                      validInput
-                        ? `${styles.note} ${styles.valid}`
-                        : styles.note
-                    }>
-                    Please enter a whole number 25 or greater, numbers only.
-                  </p>
-                )}
-                {txnFailed && (
-                  <p className={`${styles.note} ${styles.alert}`}>
-                    Something went wrong, please try again.
-                  </p>
-                )}
-              </form>
+              <FormInput
+                handleSubmit={handleSubmit}
+                handleChange={handleChange}
+                contributionAmount={contributionAmount}
+                validInput={validInput}
+                txnSent={txnSent}
+                txnFailed={txnFailed}
+                connectedNetwork={connectedNetwork}
+                walletBalance={walletBalance}
+              />
             </div>
             <p className={styles.tryAgain}>
               Don&apos;t like your artwork?{' '}

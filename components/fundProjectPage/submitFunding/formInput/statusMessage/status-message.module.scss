@@ -1,0 +1,14 @@
+@import '/styles/sass/variables';
+
+.note {
+  margin-top: 1rem;
+  font-size: 1.6rem;
+  filter: opacity(0.75);
+  &.valid {
+    filter: opacity(0);
+    cursor: default;
+  }
+  &.alert {
+    color: $color-accent-2;
+  }
+}

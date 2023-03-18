@@ -30,6 +30,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           evmNetworks: supportedNetworks, // update to mainnets at launch
           appName: 'inTheory Research',
           appLogoUrl: 'https://i.imgur.com/XBu6GPn.png',
+          termsOfServiceUrl: 'https://intheory.app/terms',
         }}>
         <SiteHeader />
         <NextNProgress

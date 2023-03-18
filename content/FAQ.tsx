@@ -23,7 +23,7 @@ const generalFAQs = [
   },
   {
     question:
-      'What are the Polygon and Celo blockchain networks and why does inTheory use them?',
+      'What are the Polygon and Celo blockchain networks and which network should I use?',
     answer:
       "Polygon is a Layer 2 scaling solution for Ethereum, which aims to increase the speed and lower the cost of transactions on the Ethereum network. Polygon provides a range of benefits to users, including faster confirmation times, lower gas fees, and increased scalability.\nCelo is a standalone blockchain network that is focused on providing financial services to individuals and businesses in developing countries. Celo's mission is to create a more inclusive financial system that empowers people to participate in the global economy, regardless of their location or socioeconomic status.\nWe have selected both networks because of their commitments to sustainability and inclusion, as well as their ability to process transactions quickly, securely, and cheaply.",
   },
@@ -101,10 +101,21 @@ export const userFAQs = [
     question:
       'How do I create a cryptocurrency wallet and where do I get USDC or cUSD?',
     answer:
-      'There are plenty of useful resources on the web to learn how to install a decentralized wallet and fund your wallet with USDC or cUSD. We recommend MetaMask, as it is one of the most popular and versatile wallets in web3.\nUSDC on Polygon can purchased through a popular exchange like Coinbase or directly through MetaMask or Ramp.\ncUSD is available through decentralized exchanges on the Celo network, like Ubeswap, and is also available for direct purchase through Ramp.',
+      'There are plenty of useful resources on the web to learn how to install a decentralized wallet and fund your wallet with USDC or cUSD. We recommend MetaMask, as it is one of the most popular and versatile wallets in web3.\nUSDC on Polygon can be purchased and sent to your wallet through popular exchanges like Coinbase or directly through MetaMask or Ramp.\ncUSD is available through decentralized exchanges on the Celo network, like Ubeswap, and is also available for direct purchase through Ramp.',
+  },
+  {
+    question:
+      'Which blockchain network should I use for completing my funding contribution?',
+    answer:
+      'The choice is up to you, but here is some information to help you decide.\nIf you plan to sell or trade your NFT after you have received it, NFT liquidity is generally higher on Polygon and there are more marketplace options for doing so. If you do choose the Polygon network, you will also need to have a balance of MATIC (purchasable through Ramp) in your wallet to cover the gas cost of the transaction.\nIf you choose the Celo network, the gas fee is paid using cUSD and no additional asset is required. Gas fees are also generally much lower on the Celo network.',
   },
   {
     question: '***What is "gas" and why do I have to pay for my transactions?',
+    answer:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+  },
+  {
+    question: '***Why does my transaction keep failing?',
     answer:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
   },
@@ -117,7 +128,7 @@ export const userFAQs = [
   {
     question: 'Can I sell my inTheory NFT on a secondary marketplace? ',
     answer:
-      'While inTheory does include a dedicated marketplace for selling NFTs, it is entirely your decision whether to sell it on a secondary marketplace.',
+      "While inTheory doesn't include a dedicated marketplace for selling our NFTs, it is entirely your decision whether to sell it on a secondary marketplace.",
   },
   {
     question:

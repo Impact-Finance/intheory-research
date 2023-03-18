@@ -1,0 +1,94 @@
+@import '/styles/sass/mixins';
+
+.fundingForm {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  gap: 1rem;
+  .label {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.8rem;
+    filter: opacity(0.75);
+    color: $color-accent-1;
+    align-self: flex-start;
+  }
+  .inputDiv {
+    display: flex;
+    position: relative;
+    .usdc {
+      position: absolute;
+      top: 1rem;
+      font-size: 2.5rem;
+      padding: 0.25rem 1.5rem;
+      color: rgba($color-accent-1, 0.5);
+      border-right: 1px solid rgba($color-accent-1, 0.25);
+    }
+    .fundingInput {
+      flex: 1;
+      border: 0.1rem solid rgba($color-accent-1, 0.5);
+      border-radius: $btn-border-radius;
+      background-color: rgba($color-main, 0.25);
+      padding: 1rem 1.5rem;
+      color: rgba($color-white, 0.75);
+      font-size: 2.5rem;
+      text-align: right;
+      &:focus {
+        outline: none;
+        border-color: rgba($color-accent-2, 0.5);
+        box-shadow: 0 0 0.4rem 0.4rem rgba($color-accent-2, 0.15);
+      }
+      &::placeholder {
+        color: rgba($color-accent-1, 0.35);
+      }
+    }
+    .submitBtn {
+      @include main-btn;
+      position: relative;
+      width: fit-content;
+      align-self: center;
+
+      &:disabled {
+        filter: opacity(0.5);
+        border-top: 1px solid rgba($color-accent-1, 0);
+        border-bottom: 1px solid rgba($color-accent-1, 0);
+        &:hover {
+          cursor: none;
+        }
+      }
+      .hidden {
+        filter: opacity(0);
+      }
+      .dots {
+        position: absolute;
+        top: 2.25rem;
+        left: 40%;
+      }
+    }
+  }
+  .subText {
+    display: flex;
+    .currentBalance {
+      text-align: left;
+      font-size: 1.4rem;
+      filter: opacity(0.75);
+      padding-right: 1rem;
+      border-right: 1px solid rgba($color-accent-1, 0.75);
+      span {
+        text-transform: uppercase;
+        color: $color-accent-1;
+      }
+    }
+    .rampLink {
+      padding-left: 1rem;
+      font-size: 1.4rem;
+      color: rgba($color-accent-1, 0.9);
+      text-align: left;
+      transition: all 0.2s;
+      width: fit-content;
+      &:hover {
+        @include btn-hover;
+      }
+    }
+  }
+}

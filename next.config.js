@@ -32,6 +32,7 @@ const nextConfig = {
     BETA_PASSWORD: process.env.BETA_PASSWORD, // can be removed when password protection is removed
     DYNAMIC_SANDBOX_ID: process.env.DYNAMIC_SANDBOX_ID,
     DYNAMIC_LIVE_ID: process.env.DYNAMIC_LIVE_ID,
+    INFURA_API_KEY: process.env.INFURA_API_KEY,
   },
 };
 

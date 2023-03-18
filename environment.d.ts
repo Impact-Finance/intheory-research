@@ -14,6 +14,7 @@ declare global {
       BETA_PASSWORD: string; // can be removed when password protection is removed
       DYNAMIC_SANDBOX_ID: string;
       DYNAMIC_LIVE_ID: string;
+      INFURA_API_KEY: string;
     }
   }
 }
