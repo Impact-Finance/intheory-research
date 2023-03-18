@@ -10,6 +10,7 @@
   border-bottom: solid 1px rgba($color-accent-1, 0.25);
 }
 .fundingBox {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,6 +22,26 @@
     font-size: 2rem;
     font-weight: 500;
     line-height: 3.5rem;
+  }
+}
+.howBtn {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  font-size: 1.6rem;
+  gap: 1rem;
+  transition: all 0.2s;
+  span {
+    font-weight: 900;
+    display: inline-block;
+    height: 2.5rem;
+    width: 2.5rem;
+    line-height: 2rem;
+    border: 1px solid $color-white;
+    border-radius: 50%;
+  }
+  &:hover {
+    @include btn-hover;
   }
 }
 .tryAgain {

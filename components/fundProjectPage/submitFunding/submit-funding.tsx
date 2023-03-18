@@ -7,6 +7,7 @@ import {
   useEffect,
 } from 'react';
 
+import HiddenContent from '@/components/site/hiddenContent/hidden-content';
 import { networkIds } from '@/utils/supportedNetworks';
 import NoWallet from '../noWallet/no-wallet';
 import SuccessBox from '../successBox/success-box';
@@ -45,6 +46,7 @@ const SubmitFunding = ({
   const [txnFailed, setTxnFailed] = useState(false);
   const [txnHash, setTxnHash] = useState('');
   const [tokenId, setTokenId] = useState('');
+  const [displayHelp, setDisplayHelp] = useState(false);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -160,6 +162,19 @@ const SubmitFunding = ({
                 connectedNetwork={connectedNetwork}
                 walletBalance={walletBalance}
               />
+              <button
+                className={styles.howBtn}
+                onClick={() => {
+                  setDisplayHelp(true);
+                }}>
+                <span>?</span>I need help submitting my contribution
+              </button>
+              {displayHelp && (
+                <HiddenContent
+                  revealFunction={setDisplayHelp}
+                  context="funding"
+                />
+              )}
             </div>
             <p className={styles.tryAgain}>
               Don&apos;t like your artwork?{' '}

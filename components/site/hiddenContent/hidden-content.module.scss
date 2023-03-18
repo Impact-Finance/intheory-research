@@ -1,0 +1,73 @@
+@import '/styles/sass/mixins';
+
+.hiddenContent {
+  @include overlay-position;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-image: linear-gradient(
+    to top,
+    rgba($color-dark, 0.85) 60%,
+    rgba($color-main, 0.1)
+  );
+  backdrop-filter: blur(100px);
+  border-top: 1px solid rgba($color-accent-1, 0.25);
+  border-bottom: 1px solid rgba($color-accent-1, 0.25);
+  border-radius: $box-border-radius;
+  padding: 3rem;
+  .howHead {
+    font-size: 3rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  .exitBtn {
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
+    font-size: 3.5rem;
+    color: $color-accent-1;
+    background-color: transparent;
+    transition: all 0.2s;
+    border-radius: $btn-border-radius;
+    &:hover {
+      @include btn-hover;
+    }
+  }
+  .steps {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0;
+    gap: 1.5rem;
+    font-size: 1.8rem;
+    line-height: 2.5rem;
+    .step {
+      display: flex;
+      align-items: flex-start;
+      gap: 2rem;
+      span {
+        text-align: center;
+        display: block;
+        color: $color-accent-1;
+        font-size: 3rem;
+        padding: 0.5rem 1rem;
+        min-width: 4rem;
+        border-bottom: 1px solid rgba($color-accent-1, 0.5);
+        border-radius: $btn-border-radius;
+      }
+      .inlineLink {
+        color: rgba($color-accent-1, 0.85);
+        transition: all 0.2s;
+        &:hover {
+          @include btn-hover;
+        }
+      }
+    }
+  }
+  .learnMore {
+    @include main-btn;
+    align-self: center;
+    width: fit-content;
+    margin: 0;
+  }
+}

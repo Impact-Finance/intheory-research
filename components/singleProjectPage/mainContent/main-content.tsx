@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Loader from '@/components/site/loader/loader';
 import { ResearchProject } from '@/app';
 import styles from './main-content.module.scss';
+import HiddenContent from '@/components/site/hiddenContent/hidden-content';
 
 interface MainContentProps {
   project: ResearchProject;
@@ -45,7 +46,7 @@ const MainContent = ({ project }: MainContentProps) => {
             <button
               className={styles.howBtn}
               onClick={() => {
-                setDisplayHow(!displayHow);
+                setDisplayHow(true);
               }}>
               <span>?</span>How does this work?
             </button>
@@ -56,40 +57,10 @@ const MainContent = ({ project }: MainContentProps) => {
           </div>
         </>
         {displayHow && (
-          <div className={styles.hiddenContent}>
-            <h3 className={styles.howHead}>How does it work?</h3>
-            <button
-              className={styles.exitBtn}
-              onClick={() => {
-                setDisplayHow(!displayHow);
-              }}>
-              X
-            </button>
-            <ul className={styles.steps}>
-              <li className={styles.step}>
-                <span>1</span>Select a research project that you would like to
-                support. Each project is from a vetted researcher.
-              </li>
-              <li className={styles.step}>
-                <span>2</span>Click “Fund Research” to generate a completely
-                unique project-inspired digital artwork.
-              </li>
-              <li className={styles.step}>
-                <span>3</span>Support the project by purchasing the artwork as a
-                digital collectible, sent to your connected wallet address.
-                Proceeds are sent directly to the researcher as USDC (on Polygon
-                network) or cUSD (on Celo network).
-              </li>
-            </ul>
-            <Link
-              className={styles.learnMore}
-              href="/submit-project/#FAQ"
-              target="_blank"
-              rel="noreferrer"
-              scroll={false}>
-              Learn More
-            </Link>
-          </div>
+          <HiddenContent
+            revealFunction={setDisplayHow}
+            context="project"
+          />
         )}
       </div>
     </section>
