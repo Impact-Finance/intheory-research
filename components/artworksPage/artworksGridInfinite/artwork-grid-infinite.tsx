@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import { Waypoint } from 'react-waypoint';
 import { useDynamicContext } from '@dynamic-labs/sdk-react';
 
@@ -26,7 +25,6 @@ const ArtworkGridInfinite = ({ artworkArray }: ArtworkGridInfiniteProps) => {
     numFirstLoaded / scrollLoadIncrement
   );
   const [currentFilter, setCurrentFilter] = useState<'all' | 'my'>('all');
-  const router = useRouter();
   const [filteredArtworks, setFilteredArtworks] = useState<CommunityArtwork[]>(
     []
   );
@@ -40,9 +38,12 @@ const ArtworkGridInfinite = ({ artworkArray }: ArtworkGridInfiniteProps) => {
         })
       );
     }
+    if (!primaryWallet) {
+      setFilteredArtworks([]);
+    }
     const chunks = sliceIntoChunks(artworks, bannerSize);
     setBannerArray(chunks);
-  }, [artworks, primaryWallet, artworkArray]);
+  }, [artworks, primaryWallet, artworkArray, currentFilter]);
 
   const handleInfiniteScroll = async () => {
     if (artworks.length < artworkArray.length && currentFilter === 'all') {
@@ -54,9 +55,15 @@ const ArtworkGridInfinite = ({ artworkArray }: ArtworkGridInfiniteProps) => {
     }
   };
 
-  const handleFilter = () => {
-    setCurrentFilter('my');
-    setArtworks(filteredArtworks);
+  const handleFilter = (newFilter: 'my' | 'all') => {
+    setCurrentFilter(newFilter);
+    if (newFilter === 'my') {
+      setArtworks(filteredArtworks);
+    }
+    if (newFilter === 'all') {
+      setArtworks(artworkArray.slice(0, numFirstLoaded * 2));
+      setCount(numFirstLoaded / scrollLoadIncrement + 1);
+    }
   };
 
   const scrollToTop = () => {
@@ -72,14 +79,16 @@ const ArtworkGridInfinite = ({ artworkArray }: ArtworkGridInfiniteProps) => {
           <button
             className={currentFilter === 'all' ? styles.current : ''}
             onClick={() => {
-              router.reload();
+              handleFilter('all');
             }}
             disabled={currentFilter === 'all'}>
             Community Artworks
           </button>
           <button
             className={currentFilter === 'my' ? styles.current : ''}
-            onClick={handleFilter}
+            onClick={() => {
+              handleFilter('my');
+            }}
             disabled={currentFilter === 'my'}>
             My Collection
           </button>
