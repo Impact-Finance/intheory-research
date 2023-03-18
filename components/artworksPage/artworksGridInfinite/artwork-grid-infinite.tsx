@@ -75,7 +75,7 @@ const ArtworkGridInfinite = ({ artworkArray }: ArtworkGridInfiniteProps) => {
               router.reload();
             }}
             disabled={currentFilter === 'all'}>
-            All Art
+            Community Artworks
           </button>
           <button
             className={currentFilter === 'my' ? styles.current : ''}
@@ -86,8 +86,8 @@ const ArtworkGridInfinite = ({ artworkArray }: ArtworkGridInfiniteProps) => {
         </div>
         {currentFilter === 'my' && !primaryWallet && (
           <p className={styles.mustConnect}>
-            Connect your web3 wallet to view your artworks, then refresh this
-            page.
+            Connect your web3 wallet to view your personal art collection, then
+            refresh this page.
           </p>
         )}
         {bannerArray.map((banner, i) => (
