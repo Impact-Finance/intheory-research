@@ -95,8 +95,7 @@ const ArtworkGridInfinite = ({ artworkArray }: ArtworkGridInfiniteProps) => {
         </div>
         {currentFilter === 'my' && !primaryWallet && (
           <p className={styles.mustConnect}>
-            Connect your web3 wallet to view your personal art collection, then
-            refresh this page.
+            Connect your web3 wallet to view your personal art collection.
           </p>
         )}
         {bannerArray.map((banner, i) => (

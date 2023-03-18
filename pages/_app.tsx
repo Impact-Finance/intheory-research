@@ -13,6 +13,7 @@ import SiteHeader from '@/components/layout/site-header';
 import '@/styles/globals.scss';
 
 import { withPasswordProtect } from 'next-password-protect'; // can be removed when password protection is removed
+import refreshPage from '@/utils/refreshPage';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const size = useWindowSize();
@@ -31,6 +32,14 @@ function MyApp({ Component, pageProps }: AppProps) {
           appName: 'inTheory Research',
           appLogoUrl: 'https://i.imgur.com/XBu6GPn.png',
           termsOfServiceUrl: 'https://intheory.app/terms',
+          eventsCallbacks: {
+            onAuthSuccess: () => {
+              refreshPage('artworks');
+            },
+            onLogout: () => {
+              refreshPage('artworks');
+            },
+          },
         }}>
         <SiteHeader />
         <NextNProgress
