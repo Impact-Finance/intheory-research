@@ -124,12 +124,14 @@ const SubmitFunding = ({
           handleRestart={handleRestart}
         />
       )}
-      {connectedWallet && !networkIds.includes(connectedNetwork!) && (
-        <NoWallet
-          action="switch"
-          handleRestart={handleRestart}
-        />
-      )}
+      {connectedWallet &&
+        !networkIds.includes(connectedNetwork!) &&
+        !txnSuccess && (
+          <NoWallet
+            action="switch"
+            handleRestart={handleRestart}
+          />
+        )}
       {txnSuccess && (
         <SuccessBox
           txnHash={txnHash}
