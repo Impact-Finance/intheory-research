@@ -17,7 +17,7 @@ const HowTo = () => {
           <p>
             Tell us about your proposed research project using{' '}
             <a
-              href="https://www.typeform.com/"
+              href="https://a9hkiyqclu4.typeform.com/to/isX0VL7s"
               target="_blank"
               rel="noreferrer">
               this form

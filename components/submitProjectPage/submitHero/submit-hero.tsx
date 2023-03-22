@@ -17,7 +17,7 @@ const SubmitHero = () => {
       </p>
       <Link
         className={styles.actionBtn}
-        href="https://www.typeform.com/"
+        href="https://a9hkiyqclu4.typeform.com/to/isX0VL7s"
         target="_blank"
         rel="noreferrer">
         Apply for Funding
