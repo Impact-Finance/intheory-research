@@ -118,7 +118,7 @@ const SubmitFunding = ({
     <>
       {!txnSuccess && <h3 className={styles.header}>Looks good!</h3>}
       {txnSuccess && <h3 className={styles.header}>Well done!</h3>}
-      {!connectedWallet && (
+      {!connectedWallet && !txnSuccess && (
         <NoWallet
           action="connect"
           handleRestart={handleRestart}
