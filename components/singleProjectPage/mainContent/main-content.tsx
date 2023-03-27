@@ -3,12 +3,12 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 import Loader from '@/components/site/loader/loader';
-import { ResearchProject } from '@/app';
+import { ResearchProjectObject } from '@/app';
 import styles from './main-content.module.scss';
 import HiddenContent from '@/components/site/hiddenContent/hidden-content';
 
 interface MainContentProps {
-  project: ResearchProject;
+  project: ResearchProjectObject;
 }
 
 const MainContent = ({ project }: MainContentProps) => {
@@ -28,7 +28,7 @@ const MainContent = ({ project }: MainContentProps) => {
           src={`https://${process.env.AWS_BUCKET_NAME}.s3.${process.env.AWS_BUCKET_REGION}.amazonaws.com/projectCoverImages/${project._id}.jpg`}
           alt="project image"
           fill
-          sizes="50vw"
+          sizes="50rem"
         />
       </div>
       <div className={styles.textBox}>

@@ -3,9 +3,14 @@ import styles from './status-message.module.scss';
 interface StatusMessageProps {
   txnFailed: boolean;
   validInput: boolean;
+  minContribution: number;
 }
 
-const StatusMessage = ({ txnFailed, validInput }: StatusMessageProps) => {
+const StatusMessage = ({
+  txnFailed,
+  validInput,
+  minContribution,
+}: StatusMessageProps) => {
   return (
     <>
       {!txnFailed && (
@@ -13,7 +18,8 @@ const StatusMessage = ({ txnFailed, validInput }: StatusMessageProps) => {
           className={
             validInput ? `${styles.note} ${styles.valid}` : styles.note
           }>
-          Please enter a whole number 25 or greater, numbers only.
+          Please enter a whole number {minContribution} or greater, numbers
+          only.
         </p>
       )}
       {txnFailed && (

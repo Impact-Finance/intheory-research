@@ -17,7 +17,7 @@ const NotFound = ({ context }: NotFoundProps) => {
           src={vortex}
           alt="wormhole"
           fill
-          sizes="50vw"
+          sizes="15rem"
         />
       </div>
       <h3 className={styles.errorHead}>404 Error</h3>

@@ -13,7 +13,7 @@ import MobileContent from '@/components/site/mobileContent/mobile-content';
 import SiteHeader from '@/components/layout/site-header';
 import '@/styles/globals.scss';
 
-import { withPasswordProtect } from 'next-password-protect'; // can be removed when password protection is removed
+import { withPasswordProtect } from 'next-password-protect'; // can be removed when password protection is moved to admin console only
 
 function MyApp({ Component, pageProps }: AppProps) {
   const size = useWindowSize();
@@ -28,6 +28,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         settings={{
           environmentId: process.env.DYNAMIC_SANDBOX_ID, // update with DYNAMIC_LIVE_ID at launch
           cssOverrides: dynamicWalletStyles,
+          // initialAuthenticationMode: 'connect-only',
           evmNetworks: supportedNetworks, // update to mainnets at launch
           appName: 'inTheory Research',
           appLogoUrl: 'https://i.imgur.com/XBu6GPn.png',
@@ -43,8 +44,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         }}>
         <SiteHeader />
         <NextNProgress
-          color="rgba(104, 234, 255, 0.65)"
-          height={3}
+          color="rgba(104, 234, 255, 1)"
+          height={1}
         />
         {size.width && size.width < 1000 && <MobileContent />}
         {size.width && size.width >= 1000 && (

@@ -35,7 +35,11 @@ export default async function handler(
     contributionAmount,
     funder,
     txnHash,
+    network,
+    tokenId,
+    contract,
     imageUrl,
+    metadataCid,
   } = req.body;
   const projectIdObj = new ObjectId(projectId);
   let mongoClient: MongoClient;
@@ -53,6 +57,10 @@ export default async function handler(
       fundingAmount: contributionAmount,
       funder: funder,
       txnHash: txnHash,
+      network: network,
+      tokenId: tokenId,
+      contract: contract,
+      metadataCid: metadataCid,
     });
 
     const insertedArtId = insertedArt.insertedId.toString();

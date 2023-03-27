@@ -5,11 +5,11 @@ import { getSingleArtwork } from '@/utils/fetchContent';
 import ArtDisplay from '@/components/singleArtworkPage/artDisplay/art-display';
 import NotFound from '@/components/site/notFound/not-found';
 import ReturnToAll from '@/components/site/returnToAll/return-to-all';
-import { CommunityArtwork } from '@/app';
+import { CommunityArtworkObject } from '@/app';
 import OrderPrint from '@/components/singleArtworkPage/orderPrint/order-print';
 
 interface ArtPageProps {
-  artwork: CommunityArtwork;
+  artwork: CommunityArtworkObject;
 }
 
 const ArtPage = ({ artwork }: ArtPageProps) => {

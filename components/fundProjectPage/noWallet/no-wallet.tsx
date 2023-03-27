@@ -61,7 +61,7 @@ const NoWallet = ({ action, handleRestart }: NoWalletProps) => {
                 src={polygon}
                 alt="polygon"
                 fill
-                sizes="5vw"
+                sizes="3rem"
               />
             </div>
             Polygon
@@ -80,7 +80,7 @@ const NoWallet = ({ action, handleRestart }: NoWalletProps) => {
                 src={celo}
                 alt="celo"
                 fill
-                sizes="5vw"
+                sizes="3rem"
               />
             </div>
             Celo

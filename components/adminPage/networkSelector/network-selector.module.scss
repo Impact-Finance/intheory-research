@@ -1,0 +1,30 @@
+@import '/styles/sass/mixins';
+
+.networkHead {
+  font-size: 3rem;
+  filter: opacity(0.85);
+}
+.networkSelect {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  .networkBtn {
+    font-size: 2rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba($color-accent-1, 0);
+    border-radius: $btn-border-radius;
+    transition: all 0.2s;
+    &.active {
+      color: $color-accent-1;
+      border-bottom: 1px solid rgba($color-accent-1, 0.5);
+      &:hover {
+        filter: opacity(1);
+      }
+    }
+    &:hover {
+      @include btn-hover;
+    }
+  }
+}

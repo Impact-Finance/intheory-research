@@ -1,0 +1,46 @@
+@import '/styles/sass/mixins';
+
+.section {
+  @include restrained-width(100%);
+  @include center-flex;
+  flex-direction: column;
+  .title {
+    color: $color-accent-1;
+    font-size: 4rem;
+    margin: calc($section-spacing/2) 0;
+    letter-spacing: 1px;
+  }
+  .header {
+    font-size: 2.5rem;
+    filter: opacity(0.85);
+    margin-bottom: 1.5rem;
+  }
+  .statsBox {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 5rem 7rem;
+    width: 80%;
+    background-color: rgba($color-main, 0.25);
+    border-top: 1px solid rgba($color-accent-1, 0.25);
+    border-bottom: 1px solid rgba($color-accent-1, 0.25);
+    border-radius: $box-border-radius;
+    padding: 3rem;
+    backdrop-filter: blur(5px);
+    .singleStat {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      gap: 1rem;
+      .statHead {
+        font-size: 2.2rem;
+        filter: opacity(0.85);
+      }
+      .statValue {
+        font-size: 3.5rem;
+        color: $color-accent-1;
+      }
+    }
+  }
+}

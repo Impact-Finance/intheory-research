@@ -11,16 +11,17 @@ import HiddenContent from '@/components/site/hiddenContent/hidden-content';
 import { networkIds } from '@/utils/supportedNetworks';
 import NoWallet from '../noWallet/no-wallet';
 import SuccessBox from '../successBox/success-box';
-import { ResearchProject } from '@/app';
+import { ResearchProjectObject } from '@/app';
 import submitFunding from '@/utils/submitFunding';
 import updateData from '@/utils/updateData';
 import sendAlert from '@/utils/sendAlert';
 import styles from './submit-funding.module.scss';
 import FormInput from './formInput/form-input';
+import createMetadata from '@/utils/createMetadata';
 
 interface SubmitFundingProps {
   imageUrl: string;
-  project: ResearchProject;
+  project: ResearchProjectObject;
   connectedWallet: string;
   connectedNetwork: number | undefined;
   walletBalance: string;
@@ -28,6 +29,8 @@ interface SubmitFundingProps {
   setImageGenerated: Dispatch<SetStateAction<boolean>>;
   setImageUrl: Dispatch<SetStateAction<string>>;
 }
+
+const minContribution = 2; // Change for live projects
 
 const SubmitFunding = ({
   imageUrl,
@@ -45,46 +48,70 @@ const SubmitFunding = ({
   const [txnSuccess, setTxnSuccess] = useState(false);
   const [txnFailed, setTxnFailed] = useState(false);
   const [txnHash, setTxnHash] = useState('');
-  const [tokenId, setTokenId] = useState('');
+  const [tokenId, setTokenId] = useState<number>();
+  const [contractAddress, setContractAddress] = useState('');
+  const [metadataCid, setMetadataCid] = useState('');
   const [displayHelp, setDisplayHelp] = useState(false);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setTxnSent(true);
+    try {
+      let txnResponse;
 
-    const { newTxnHash, newTokenId } = await submitFunding(
-      connectedWallet,
-      contributionAmount!,
-      connectedNetwork!,
-      project.contractAddress
-    );
+      const metadataUri = await createMetadata(
+        imageUrl,
+        project.projectName,
+        contributionAmount,
+        connectedWallet
+      );
 
-    if (!newTxnHash) {
+      if (metadataUri) {
+        setMetadataCid(metadataUri.slice(7, -14));
+        txnResponse = await submitFunding(
+          connectedWallet,
+          contributionAmount!,
+          connectedNetwork!,
+          contractAddress,
+          metadataUri
+        );
+      }
+
+      if (!txnResponse?.newTokenId || !txnResponse?.newTxnHash) {
+        setTxnFailed(true);
+        setTxnSuccess(false);
+        setTxnSent(false);
+      } else {
+        setTxnSuccess(true);
+        setTxnHash(txnResponse.newTxnHash);
+        setTokenId(txnResponse.newTokenId);
+
+        const dataUpload = await updateData(
+          project,
+          contributionAmount!,
+          connectedWallet,
+          txnResponse.newTxnHash,
+          imageUrl,
+          connectedNetwork!,
+          txnResponse.newTokenId,
+          contractAddress,
+          metadataUri.slice(7, -14)
+        );
+
+        if (!dataUpload) {
+          await sendAlert(
+            project._id,
+            txnResponse.newTxnHash,
+            imageUrl,
+            connectedWallet,
+            contributionAmount!
+          );
+        }
+      }
+    } catch {
       setTxnFailed(true);
       setTxnSuccess(false);
       setTxnSent(false);
-    } else {
-      setTxnSuccess(true);
-      setTxnHash(newTxnHash);
-      setTokenId(newTokenId);
-
-      const dataUpload = await updateData(
-        project,
-        contributionAmount!,
-        connectedWallet,
-        newTxnHash,
-        imageUrl
-      );
-
-      if (!dataUpload) {
-        await sendAlert(
-          project._id,
-          newTxnHash,
-          imageUrl,
-          connectedWallet,
-          contributionAmount!
-        );
-      }
     }
   };
 
@@ -106,13 +133,27 @@ const SubmitFunding = ({
     if (
       contributionAmount &&
       /^\d+$/.test(contributionAmount.toString()) &&
-      contributionAmount >= 25
+      contributionAmount >= minContribution
     ) {
       setValidInput(true);
     } else {
       setValidInput(false);
     }
-  }, [contributionAmount]);
+
+    // select correct contract address corresponding to connected network
+    if (connectedNetwork === 137 || connectedNetwork === 80001) {
+      setContractAddress(project.contractAddress.polygon);
+    } else if (connectedNetwork === 42220 || connectedNetwork === 44787) {
+      setContractAddress(project.contractAddress.celo);
+    } else {
+      setContractAddress('');
+    }
+  }, [
+    contributionAmount,
+    connectedNetwork,
+    project.contractAddress.polygon,
+    project.contractAddress.celo,
+  ]);
 
   return (
     <>
@@ -136,8 +177,9 @@ const SubmitFunding = ({
         <SuccessBox
           txnHash={txnHash}
           tokenId={tokenId}
-          contractAddress={project.contractAddress}
+          contractAddress={contractAddress}
           network={connectedNetwork}
+          metadataCid={metadataCid}
         />
       )}
       {connectedWallet &&
@@ -147,7 +189,7 @@ const SubmitFunding = ({
             <div className={styles.fundingBox}>
               <h5 className={styles.mainText}>
                 Purchase this artwork as a unique digital collectible by
-                contributing 25{' '}
+                contributing {minContribution}{' '}
                 {connectedNetwork === 137 ||
                   (connectedNetwork === 80001 && <span>USDC</span>)}
                 {connectedNetwork === 42220 ||
@@ -163,6 +205,7 @@ const SubmitFunding = ({
                 txnFailed={txnFailed}
                 connectedNetwork={connectedNetwork}
                 walletBalance={walletBalance}
+                minContribution={minContribution}
               />
               <button
                 className={styles.howBtn}

@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 import ProjectGridItem from '../../site/projectGridItem/project-grid-item';
-import { ResearchProject } from '@/app';
+import { ResearchProjectObject } from '@/app';
 import { Waypoint } from 'react-waypoint';
 import Loader from '@/components/site/loader/loader';
 import searchFilter from '@/utils/searchFilter';
 import styles from './project-grid-infinite.module.scss';
 
 interface ProjectGridInfiniteProps {
-  projectArray: ResearchProject[];
+  projectArray: ResearchProjectObject[];
   searchQuery: string | string[] | undefined;
 }
 
@@ -20,7 +20,7 @@ const ProjectGridInfinite = ({
   projectArray,
   searchQuery,
 }: ProjectGridInfiniteProps) => {
-  const [projects, setProjects] = useState<ResearchProject[]>(
+  const [projects, setProjects] = useState<ResearchProjectObject[]>(
     projectArray.slice(0, numFirstLoaded)
   );
   const [count, setCount] = useState<number>(

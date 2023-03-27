@@ -2,11 +2,11 @@ import { useRouter } from 'next/router';
 
 import ProjectGridInfinite from '@/components/projectsPage/projectGridInfinite/project-grid-infinite';
 import ExploreHeader from '@/components/site/exploreHeader/explore-header';
-import { ResearchProject } from '@/app';
+import { ResearchProjectObject } from '@/app';
 import { getAllProjects } from '@/utils/fetchContent';
 
 interface AllProjectsPageProps {
-  projectArray: ResearchProject[];
+  projectArray: ResearchProjectObject[];
 }
 
 const AllProjectsPage = ({ projectArray }: AllProjectsPageProps) => {

@@ -1,10 +1,10 @@
 import ProjectGridItem from '../../site/projectGridItem/project-grid-item';
 import SectionHeading from '../../site/sectionHeading/section-heading';
-import { ResearchProject } from '@/app';
+import { ResearchProjectObject } from '@/app';
 import styles from './project-banner.module.scss';
 
 interface ProjectBannerProps {
-  bannerProjects: ResearchProject[];
+  bannerProjects: ResearchProjectObject[];
 }
 
 const ProjectBanner = ({ bannerProjects }: ProjectBannerProps) => {

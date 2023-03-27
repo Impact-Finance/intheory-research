@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
 
-import { CommunityArtwork } from '@/app';
+import { CommunityArtworkObject } from '@/app';
 import Loader from '../loader/loader';
 import styles from './artwork-grid-item.module.scss';
 
 interface ArtworkGridItemProps {
-  artwork: CommunityArtwork;
+  artwork: CommunityArtworkObject;
 }
 
 const ArtworkGridItem = ({ artwork }: ArtworkGridItemProps) => {
@@ -22,7 +22,7 @@ const ArtworkGridItem = ({ artwork }: ArtworkGridItemProps) => {
           src={`https://${process.env.AWS_BUCKET_NAME}.s3.${process.env.AWS_BUCKET_REGION}.amazonaws.com/communityArtworks/${artwork._id}.jpg`}
           alt="community artwork"
           fill
-          sizes="20vw"
+          sizes="30rem"
         />
         <div className={styles.hoverContent}>
           <p className={styles.hoverText}>

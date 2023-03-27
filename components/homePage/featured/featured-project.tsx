@@ -3,11 +3,11 @@ import Link from 'next/link';
 
 import atom from '@/public/icons/atom.svg';
 import Loader from '@/components/site/loader/loader';
-import { ResearchProject } from '@/app';
+import { ResearchProjectObject } from '@/app';
 import styles from './featured-project.module.scss';
 
 interface FeaturedProjectProps {
-  project: ResearchProject;
+  project: ResearchProjectObject;
 }
 
 const FeaturedProject = ({ project }: FeaturedProjectProps) => {
@@ -25,7 +25,7 @@ const FeaturedProject = ({ project }: FeaturedProjectProps) => {
           src={`https://${process.env.AWS_BUCKET_NAME}.s3.${process.env.AWS_BUCKET_REGION}.amazonaws.com/projectCoverImages/${project._id}.jpg`}
           alt={project.projectName}
           fill
-          sizes="40vw"
+          sizes="52rem"
         />
         <div className={styles.toolTip}>
           <div className={styles.icon}>

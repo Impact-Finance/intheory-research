@@ -11,6 +11,8 @@
   "dependencies": {
     "@dynamic-labs/sdk-react": "^0.15.9",
     "@next/font": "13.1.6",
+    "@openzeppelin/contracts": "^4.8.2",
+    "@truffle/hdwallet-provider": "^2.1.9",
     "@types/node": "18.14.0",
     "@types/nodemailer": "^6.4.7",
     "@types/react": "18.0.28",
@@ -24,6 +26,7 @@
     "next": "13.1.6",
     "next-password-protect": "^1.8.0",
     "nextjs-progressbar": "^0.0.16",
+    "nft.storage": "^7.0.3",
     "nodemailer": "^6.9.1",
     "openai": "^3.2.1",
     "react": "18.2.0",

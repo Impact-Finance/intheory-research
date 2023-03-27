@@ -1,3 +1,5 @@
+// DO NOT CALL THESE FUNCTIONS FROM THE CLIENT SIDE OR IT WILL EXPOSE MONGODB CREDENTIALS
+
 import { MongoClient, ObjectId } from 'mongodb';
 
 const mongodb_username = process.env.MONGODB_USERNAME;
@@ -48,6 +50,7 @@ export const getSingleProjectAllDetails = async (
       });
       artworks = await artworkCollection
         .find({ _id: { $in: artworkIdArray } })
+        .sort({ _id: -1 })
         .limit(numArtworks)
         .toArray();
     }
@@ -312,6 +315,58 @@ export const getHomeContent = async (
     return {
       projects,
       artworks,
+    };
+  } catch (e) {
+    return false;
+  }
+};
+
+export const getPlatformStats = async () => {
+  let client;
+
+  try {
+    client = await MongoClient.connect(uri);
+  } catch (e) {
+    return false;
+  }
+
+  const db = client.db();
+
+  try {
+    const projectsCollection = db.collection('researchProjects');
+    const artworkCollection = db.collection('communityArtworks');
+    const researcherCollection = db.collection('researcherProfiles');
+    const activeProjects = await projectsCollection.countDocuments({
+      active: true,
+    });
+    const inactiveProjects = await projectsCollection.countDocuments({
+      active: false,
+    });
+    const numArtworks = await artworkCollection.countDocuments();
+    const numResearchers = await researcherCollection.countDocuments();
+    const fundingByNetwork = await artworkCollection
+      .aggregate([
+        { $group: { _id: '$network', sum_val: { $sum: '$fundingAmount' } } },
+      ])
+      .toArray();
+    const celo = fundingByNetwork.filter(n => {
+      return n._id === 'celo';
+    });
+    const polygon = fundingByNetwork.filter(n => {
+      return n._id === 'polygon';
+    });
+    const celoTotalFunding = celo[0].sum_val;
+    const polygonTotalFunding = polygon[0].sum_val;
+    const platformTotalFunding = celoTotalFunding + polygonTotalFunding;
+
+    return {
+      activeProjects,
+      inactiveProjects,
+      numArtworks,
+      numResearchers,
+      platformTotalFunding,
+      celoTotalFunding,
+      polygonTotalFunding,
     };
   } catch (e) {
     return false;

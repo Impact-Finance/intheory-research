@@ -74,7 +74,7 @@ const HiddenContent = ({ revealFunction, context }: HiddenContentProps) => {
                 To submit your contribution, you must have sufficient funds in
                 your connected wallet (USDC for Polygon and cUSD for Celo). You
                 must also have enough funds to cover the small network gas fee
-                (paid in MATIC on Polygon and cUSD on Celo). All required assets
+                (paid in MATIC on Polygon and CELO on Celo). All required assets
                 can be purchased through{' '}
                 <a
                   className={styles.inlineLink}

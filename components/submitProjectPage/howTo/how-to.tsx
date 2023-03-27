@@ -71,7 +71,7 @@ const HowTo = () => {
             src={chain}
             alt="chain"
             fill
-            sizes="20vw"
+            sizes="30rem"
           />
         </div>
       </div>

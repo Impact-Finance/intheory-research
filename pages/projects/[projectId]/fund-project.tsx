@@ -5,11 +5,11 @@ import NotFound from '@/components/site/notFound/not-found';
 import ProjectHeader from '@/components/singleProjectPage/projectHeader/project-header';
 import ReturnToAll from '@/components/site/returnToAll/return-to-all';
 import FundingMain from '@/components/fundProjectPage/fundingMain/funding-main';
-import { Researcher, ResearchProject } from '@/app';
+import { ResearcherObject, ResearchProjectObject } from '@/app';
 
 interface FundProjectPageProps {
-  projectObject: ResearchProject;
-  researcherObject: Researcher;
+  projectObject: ResearchProjectObject;
+  researcherObject: ResearcherObject;
 }
 
 const FundProjectPage = ({

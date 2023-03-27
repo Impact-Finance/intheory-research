@@ -1,6 +1,6 @@
-import { ResearchProject } from '@/app';
+import { ResearchProjectObject } from '@/app';
 
-const searchFilter = (el: ResearchProject, queryTerms: string[]) => {
+const searchFilter = (el: ResearchProjectObject, queryTerms: string[]) => {
   const nameArray = el.projectName.toLowerCase().split(' ');
   const descriptionArray = el.shortDescription.toLowerCase().split(' ');
   const validateArray = nameArray.concat(descriptionArray);

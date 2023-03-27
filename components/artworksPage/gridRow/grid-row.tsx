@@ -1,9 +1,9 @@
-import { CommunityArtwork } from '@/app';
+import { CommunityArtworkObject } from '@/app';
 import ArtworkGridItem from '@/components/site/artworkGridItem/artwork-grid-item';
 import styles from './grid-row.module.scss';
 
 interface GridRowProps {
-  artworks: CommunityArtwork[];
+  artworks: CommunityArtworkObject[];
 }
 
 const GridRow = ({ artworks }: GridRowProps) => {

@@ -5,11 +5,11 @@ import { useDynamicContext } from '@dynamic-labs/sdk-react';
 import Loader from '@/components/site/loader/loader';
 import sliceIntoChunks from '@/utils/sliceIntoChunks';
 import GridRow from '../gridRow/grid-row';
-import { CommunityArtwork } from '@/app';
+import { CommunityArtworkObject } from '@/app';
 import styles from './artwork-grid-infinite.module.scss';
 
 interface ArtworkGridInfiniteProps {
-  artworkArray: CommunityArtwork[];
+  artworkArray: CommunityArtworkObject[];
 }
 
 const bannerSize = 8; // number of artworks in one banner group
@@ -20,14 +20,16 @@ const ArtworkGridInfinite = ({ artworkArray }: ArtworkGridInfiniteProps) => {
   const [artworks, setArtworks] = useState(
     artworkArray.slice(0, numFirstLoaded)
   );
-  const [bannerArray, setBannerArray] = useState<CommunityArtwork[][]>([]);
+  const [bannerArray, setBannerArray] = useState<CommunityArtworkObject[][]>(
+    []
+  );
   const [count, setCount] = useState<number>(
     numFirstLoaded / scrollLoadIncrement
   );
   const [currentFilter, setCurrentFilter] = useState<'all' | 'my'>('all');
-  const [filteredArtworks, setFilteredArtworks] = useState<CommunityArtwork[]>(
-    []
-  );
+  const [filteredArtworks, setFilteredArtworks] = useState<
+    CommunityArtworkObject[]
+  >([]);
   const { primaryWallet } = useDynamicContext();
 
   useEffect(() => {

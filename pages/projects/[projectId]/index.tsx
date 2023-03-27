@@ -1,7 +1,11 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
-import { ResearchProject, Researcher, CommunityArtwork } from '@/app';
+import {
+  ResearchProjectObject,
+  ResearcherObject,
+  CommunityArtworkObject,
+} from '@/app';
 import { getSingleProjectAllDetails } from '@/utils/fetchContent';
 import ProjectHeader from '@/components/singleProjectPage/projectHeader/project-header';
 import MainContent from '@/components/singleProjectPage/mainContent/main-content';
@@ -12,9 +16,9 @@ import AssociatedArtworks from '@/components/singleProjectPage/associatedArtwork
 import ReturnToAll from '@/components/site/returnToAll/return-to-all';
 
 interface ProjectPageProps {
-  projectObject: ResearchProject;
-  researcherObject: Researcher;
-  associatedArtworks: CommunityArtwork[];
+  projectObject: ResearchProjectObject;
+  researcherObject: ResearcherObject;
+  associatedArtworks: CommunityArtworkObject[];
 }
 
 const ProjectPage = ({

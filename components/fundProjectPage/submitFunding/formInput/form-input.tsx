@@ -15,6 +15,7 @@ interface FormInputProps {
   txnFailed: boolean;
   connectedNetwork: number | undefined;
   walletBalance: string;
+  minContribution: number;
 }
 
 const FormInput = ({
@@ -26,6 +27,7 @@ const FormInput = ({
   txnFailed,
   connectedNetwork,
   walletBalance,
+  minContribution,
 }: FormInputProps) => {
   return (
     <form
@@ -52,6 +54,7 @@ const FormInput = ({
           placeholder="0"
           onChange={handleChange}
           value={contributionAmount || ''}
+          readOnly={txnSent}
         />
         <button
           className={styles.submitBtn}
@@ -113,6 +116,7 @@ const FormInput = ({
       <StatusMessage
         validInput={validInput}
         txnFailed={txnFailed}
+        minContribution={minContribution}
       />
     </form>
   );

@@ -3,11 +3,11 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 import Loader from '../loader/loader';
-import { ResearchProject } from '@/app';
+import { ResearchProjectObject } from '@/app';
 import styles from './project-grid-item.module.scss';
 
 interface ProjectBannerItemProps {
-  project: ResearchProject;
+  project: ResearchProjectObject;
 }
 
 const ProjectBannerItem = ({ project }: ProjectBannerItemProps) => {
@@ -21,7 +21,7 @@ const ProjectBannerItem = ({ project }: ProjectBannerItemProps) => {
           src={`https://${process.env.AWS_BUCKET_NAME}.s3.${process.env.AWS_BUCKET_REGION}.amazonaws.com/projectCoverImages/${project._id}.jpg`}
           alt={project.projectName}
           fill
-          sizes="30vw"
+          sizes="40rem"
           onLoadingComplete={() => {
             setLoaded(true);
           }}

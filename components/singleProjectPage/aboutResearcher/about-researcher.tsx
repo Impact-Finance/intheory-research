@@ -6,11 +6,11 @@ import twitter from '@/public/icons/twitter.svg';
 import website from '@/public/icons/website.svg';
 import Loader from '@/components/site/loader/loader';
 import SupporterPortal from './supporter-portal';
-import { Researcher } from '@/app';
+import { ResearcherObject } from '@/app';
 import styles from './about-researcher.module.scss';
 
 interface AboutResearcherProps {
-  researcher: Researcher;
+  researcher: ResearcherObject;
 }
 
 const AboutResearcher = ({ researcher }: AboutResearcherProps) => {
@@ -30,7 +30,7 @@ const AboutResearcher = ({ researcher }: AboutResearcherProps) => {
                 src={`https://${process.env.AWS_BUCKET_NAME}.s3.${process.env.AWS_BUCKET_REGION}.amazonaws.com/researcherAvatars/${researcher._id}.jpg`}
                 alt={'Picture of ' + researcher.researcherName}
                 fill
-                sizes="15vw"
+                sizes="20rem"
               />
             )}
           </div>

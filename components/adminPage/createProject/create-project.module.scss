@@ -1,0 +1,67 @@
+@import '/styles/sass/mixins';
+
+.section {
+  @include restrained-width(100%);
+  @include center-flex;
+  flex-direction: column;
+  margin-top: $section-spacing;
+  .header {
+    font-size: 2.5rem;
+    filter: opacity(0.85);
+    margin-bottom: 1.5rem;
+  }
+  .deployBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    width: 80%;
+    background-color: rgba($color-main, 0.25);
+    border-top: 1px solid rgba($color-accent-1, 0.25);
+    border-bottom: 1px solid rgba($color-accent-1, 0.25);
+    border-radius: $box-border-radius;
+    padding: 3rem;
+    backdrop-filter: blur(5px);
+    .optionsForm {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: flex-end;
+      .formLabel {
+        font-size: 1.8rem;
+        margin-right: 1rem;
+        filter: opacity(0.85);
+      }
+      .formInput {
+        width: 40rem;
+        padding: 1rem;
+        border: none;
+        font-size: 1.8rem;
+        border-radius: $btn-border-radius;
+        border-bottom: 1px solid rgba($color-accent-1, 0.25);
+        background-color: rgba($color-dark, 0.5);
+        color: $color-accent-1;
+        &:focus {
+          outline: 1px solid rgba($color-accent-2, 0.5);
+          border-bottom: 1px solid rgba($color-accent-1, 0);
+        }
+      }
+    }
+    .deployBtn {
+      @include main-btn;
+      width: fit-content;
+      &:disabled {
+        filter: opacity(0.5);
+        &:hover {
+          cursor: none;
+        }
+      }
+    }
+    .subtext {
+      font-size: 1.8rem;
+      span {
+        color: rgba($color-accent-1, 0.75);
+      }
+    }
+  }
+}

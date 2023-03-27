@@ -1,10 +1,10 @@
 import SectionHeading from '../../site/sectionHeading/section-heading';
 import ArtworkGridItem from '@/components/site/artworkGridItem/artwork-grid-item';
-import { CommunityArtwork } from '@/app';
+import { CommunityArtworkObject } from '@/app';
 import styles from './art-grid.module.scss';
 
 interface ArtGridProps {
-  bannerArtworks: CommunityArtwork[];
+  bannerArtworks: CommunityArtworkObject[];
 }
 
 const ArtGrid = ({ bannerArtworks }: ArtGridProps) => {

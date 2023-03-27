@@ -33,6 +33,8 @@ const nextConfig = {
     DYNAMIC_SANDBOX_ID: process.env.DYNAMIC_SANDBOX_ID,
     DYNAMIC_LIVE_ID: process.env.DYNAMIC_LIVE_ID,
     INFURA_API_KEY: process.env.INFURA_API_KEY,
+    NFT_STORAGE_API_KEY: process.env.NFT_STORAGE_API_KEY,
+    DEV_MNEMONIC: process.env.DEV_MNEMONIC, // do not add mnemonics to hosting service!! -> only needed to deploy factory contract, which should be done only in the case of changes to .sol files and can be done locally
   },
 };
 

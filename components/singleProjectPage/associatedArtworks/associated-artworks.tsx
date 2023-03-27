@@ -1,11 +1,11 @@
 import Link from 'next/link';
 
 import GridRow from '@/components/artworksPage/gridRow/grid-row';
-import { CommunityArtwork } from '@/app';
+import { CommunityArtworkObject } from '@/app';
 import styles from './associated-artworks.module.scss';
 
 interface AssociatedArtworksProps {
-  artworks: CommunityArtwork[];
+  artworks: CommunityArtworkObject[];
   projectId: string;
 }
 

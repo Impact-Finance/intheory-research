@@ -1,14 +1,16 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
 import windowIcon from '@/public/icons/window.svg';
 import styles from './success-box.module.scss';
 
 interface SuccessBoxProps {
   txnHash: string;
-  tokenId: string;
+  tokenId: number | undefined;
   contractAddress: string;
   network: number | undefined;
+  metadataCid: string;
 }
 
 const SuccessBox = ({
@@ -16,7 +18,25 @@ const SuccessBox = ({
   tokenId,
   contractAddress,
   network,
+  metadataCid,
 }: SuccessBoxProps) => {
+  const [txnUrl, setTxnUrl] = useState('');
+
+  useEffect(() => {
+    if (network === 137) {
+      setTxnUrl('https://polygonscan.com/tx/' + txnHash);
+    }
+    if (network === 80001) {
+      setTxnUrl('https://mumbai.polygonscan.com/tx/' + txnHash);
+    }
+    if (network === 42220) {
+      setTxnUrl('https://explorer.celo.org/mainnet/tx/' + txnHash);
+    }
+    if (network === 44787) {
+      setTxnUrl('https://explorer.celo.org/alfajores/tx/' + txnHash);
+    }
+  }, [contractAddress, network, tokenId, txnHash]);
+
   return (
     <div className={styles.success}>
       <p className={styles.main}>
@@ -47,13 +67,17 @@ const SuccessBox = ({
           </button>
         </div>
         <p className={styles.txnInfo}>
+          <span>Token ID</span>
+          {tokenId}
+        </p>
+        <p className={styles.txnInfo}>
           <span>Txn Hash</span>
           <Link
             className={styles.link}
-            href="https://etherscan.io/"
+            href={txnUrl}
             target="_blank"
             rel="noreferrer">
-            {txnHash.slice(0, 4) + '...' + txnHash.slice(-6)}{' '}
+            {txnHash.slice(0, 10) + '...' + txnHash.slice(-10)}{' '}
             <Image
               className={styles.icon}
               src={windowIcon}
@@ -64,13 +88,13 @@ const SuccessBox = ({
           </Link>
         </p>
         <p className={styles.txnInfo}>
-          <span>Token ID</span>
+          <span>Metadata CID</span>
           <Link
             className={styles.link}
-            href="https://etherscan.io/"
+            href={'https://ipfs.io/ipfs/' + metadataCid + '/metadata.json'}
             target="_blank"
             rel="noreferrer">
-            {tokenId}{' '}
+            {metadataCid.slice(0, 10) + '...' + metadataCid.slice(-10)}{' '}
             <Image
               className={styles.icon}
               src={windowIcon}

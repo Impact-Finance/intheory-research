@@ -1,9 +1,9 @@
-import { ResearchProject, Researcher } from '@/app';
+import { ResearchProjectObject, ResearcherObject } from '@/app';
 import styles from './project-header.module.scss';
 
 interface ProjectHeaderProps {
-  project: ResearchProject;
-  researcher: Researcher;
+  project: ResearchProjectObject;
+  researcher: ResearcherObject;
   displayTags: boolean;
 }
 

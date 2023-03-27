@@ -45,7 +45,7 @@ const ImageGenerator = ({
           src={imageUrl}
           alt="generated image"
           fill
-          sizes="50vw"
+          sizes="60rem"
           onLoadingComplete={() => {
             setImageGenerated(true);
           }}

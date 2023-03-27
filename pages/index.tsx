@@ -2,13 +2,13 @@ import Hero from '@/components/homePage/hero/hero';
 import ProjectBanner from '@/components/homePage/projectBanner/project-banner';
 import ArtGrid from '@/components/homePage/artGrid/art-grid';
 import LearnMore from '@/components/homePage/learnMore/learn-more';
-import { ResearchProject, CommunityArtwork } from '@/app';
+import { ResearchProjectObject, CommunityArtworkObject } from '@/app';
 import { getHomeContent } from '@/utils/fetchContent';
 
 interface HomeProps {
-  featuredProject: ResearchProject;
-  bannerProjects: ResearchProject[];
-  bannerArtworks: CommunityArtwork[];
+  featuredProject: ResearchProjectObject;
+  bannerProjects: ResearchProjectObject[];
+  bannerArtworks: CommunityArtworkObject[];
 }
 
 export default function Home({

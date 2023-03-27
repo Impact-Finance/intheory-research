@@ -39,7 +39,7 @@ const generalFAQs = [
   {
     question: 'Does inTheory charge any fees?',
     answer:
-      'Yes. inTheory charges a 7% fee on all funding contributions, which is comparable to most other crowdfunding platforms. This allows us to keep operations running and to continue to add new features to the platform. The collection of this fee is transparently visible via a blockchain explorer.',
+      'Yes. inTheory charges a 7% fee on all funding contributions, which is comparable to many other crowdfunding platforms. This allows us to keep operations running and to continue to add new features to the platform to support our research community. The collection of this fee is transparently visible via a blockchain explorer. As with every blockchain transaction, there is also a network "gas" fee for each contribution, though we chose the Celo and Polygon networks due in part to their extremely low gas fees.',
   },
 ];
 
@@ -107,7 +107,7 @@ export const userFAQs = [
     question:
       'Which blockchain network should I use for completing my funding contribution?',
     answer:
-      'The choice is up to you, but here is some information to help you decide.\nIf you plan to sell or trade your NFT after you have received it, NFT liquidity is generally higher on Polygon and there are more marketplace options for doing so. If you do choose the Polygon network, you will also need to have a balance of MATIC (purchasable through Ramp) in your wallet to cover the gas cost of the transaction.\nIf you choose the Celo network, the gas fee is paid using cUSD and no additional asset is required. Gas fees are also generally much lower on the Celo network.',
+      'The choice is up to you, but here is some information to help you decide.\nIf you plan to sell or trade your NFT after you have received it, NFT liquidity is generally higher on Polygon and there are more marketplace options for doing so. If you do choose the Polygon network, you will also need to have a balance of MATIC (purchasable through Ramp) in your wallet to cover the gas cost of the transaction.\nIf you choose the Celo network, the gas fee is paid using CELO, which is also available on Ramp or through a centralized exchange. Gas fees are generally only a few cents on both networks.',
   },
   {
     question: '***What is "gas" and why do I have to pay for my transactions?',

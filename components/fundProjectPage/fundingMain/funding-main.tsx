@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 import { useDynamicContext } from '@dynamic-labs/sdk-react';
 
 import ImageGenerator from '../imageGenerator/image-generator';
-import { ResearchProject, ImagePropertyObject } from '@/app';
+import { ResearchProjectObject, ImagePropertyObject } from '@/app';
 import ImageOptions from '../imageOptions/image-options';
 import SubmitFunding from '../submitFunding/submit-funding';
-import styles from './funding-main.module.scss';
 import getStablecoinBalance from '@/utils/getStablecoinBalance';
+import styles from './funding-main.module.scss';
 
 interface FundingMainProps {
-  project: ResearchProject;
+  project: ResearchProjectObject;
 }
 
 const FundingMain = ({ project }: FundingMainProps) => {

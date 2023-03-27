@@ -1,10 +1,10 @@
-import { CommunityArtwork } from '@/app';
+import { CommunityArtworkObject } from '@/app';
 import ArtworkGridInfinite from '@/components/artworksPage/artworksGridInfinite/artwork-grid-infinite';
 import ExploreHeader from '@/components/site/exploreHeader/explore-header';
 import { getAllArtworks } from '@/utils/fetchContent';
 
 interface AllArtworksPageProps {
-  artworkArray: CommunityArtwork[];
+  artworkArray: CommunityArtworkObject[];
 }
 
 const AllArtworksPage = ({ artworkArray }: AllArtworksPageProps) => {

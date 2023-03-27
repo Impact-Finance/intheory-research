@@ -18,7 +18,7 @@ const RotatingShapes = ({ shapes }: RotatingShapesProps) => {
             src={shape}
             alt="rotating shape"
             fill
-            sizes="10vw"
+            sizes="15rem"
           />
         </div>
       ))}
