@@ -140,7 +140,9 @@ const dynamicWalletStyles = `
     max-width: calc(${modalWidth} * 0.75);
   }
   .powered-by-dynamic__logo {
-    max-width: 6rem;
+    max-width: 8rem;
+    width: 8rem;
+    height: 3rem;
   }
   .footer-more-info-content__wrapper {
     gap: ${textSmall};
