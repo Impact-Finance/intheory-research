@@ -27,7 +27,7 @@ const ArtDisplay = ({ artwork }: ArtDisplayProps) => {
     if (artwork.network === 'alfajores') {
       setTxnUrl('https://explorer.celo.org/alfajores/tx/' + artwork.txnHash);
     }
-  }, []);
+  }, [artwork.network, artwork.txnHash]);
 
   return (
     <section className={styles.section}>
