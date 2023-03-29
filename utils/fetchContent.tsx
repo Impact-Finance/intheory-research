@@ -323,6 +323,9 @@ export const getHomeContent = async (
 
 export const getPlatformStats = async () => {
   let client;
+  let celoTotalFunding;
+  let polygonTotalFunding;
+  let platformTotalFunding;
 
   try {
     client = await MongoClient.connect(uri);
@@ -349,15 +352,17 @@ export const getPlatformStats = async () => {
         { $group: { _id: '$network', sum_val: { $sum: '$fundingAmount' } } },
       ])
       .toArray();
-    const celo = fundingByNetwork.filter(n => {
-      return n._id === 'celo';
-    });
-    const polygon = fundingByNetwork.filter(n => {
-      return n._id === 'polygon';
-    });
-    const celoTotalFunding = celo[0].sum_val;
-    const polygonTotalFunding = polygon[0].sum_val;
-    const platformTotalFunding = celoTotalFunding + polygonTotalFunding;
+    if (fundingByNetwork) {
+      const celo = fundingByNetwork.filter(n => {
+        return n._id === 'alfajores';
+      });
+      const polygon = fundingByNetwork.filter(n => {
+        return n._id === 'mumbai';
+      });
+      celoTotalFunding = celo[0].sum_val;
+      polygonTotalFunding = polygon[0].sum_val;
+      platformTotalFunding = celoTotalFunding + polygonTotalFunding;
+    }
 
     return {
       activeProjects,

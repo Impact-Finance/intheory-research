@@ -59,7 +59,11 @@ const FormInput = ({
         <button
           className={styles.submitBtn}
           type="submit"
-          disabled={!validInput || txnSent}>
+          disabled={
+            !validInput ||
+            txnSent ||
+            contributionAmount! > parseInt(walletBalance)
+          }>
           <span className={txnSent ? styles.hidden : ''}>Submit Funding</span>
           <div
             className={
@@ -117,6 +121,8 @@ const FormInput = ({
         validInput={validInput}
         txnFailed={txnFailed}
         minContribution={minContribution}
+        walletBalance={walletBalance}
+        contributionAmount={contributionAmount}
       />
     </form>
   );

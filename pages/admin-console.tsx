@@ -53,6 +53,7 @@ export default AdminConsole;
 
 export async function getServerSideProps() {
   const platformStats = await getPlatformStats();
+  console.log(platformStats);
 
   return {
     props: {

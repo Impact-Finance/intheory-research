@@ -13,44 +13,62 @@ const StatsBox = ({ stats }: StatsBoxProps) => {
       <div className={styles.statsBox}>
         <div className={styles.singleStat}>
           <p className={styles.statHead}>Active Projects</p>
-          <p className={styles.statValue}>{stats.activeProjects}</p>
+          <p className={styles.statValue}>
+            {stats.activeProjects ? stats.activeProjects : 0}
+          </p>
         </div>
         <div className={styles.singleStat}>
           <p className={styles.statHead}>Inactive Projects</p>
-          <p className={styles.statValue}>{stats.inactiveProjects}</p>
+          <p className={styles.statValue}>
+            {stats.inactiveProjects ? stats.inactiveProjects : 0}
+          </p>
         </div>
         <div className={styles.singleStat}>
           <p className={styles.statHead}>Total Artworks</p>
           <p className={styles.statValue}>
-            {stats.numArtworks.toLocaleString('en-US')}
+            {stats.numArtworks ? stats.numArtworks.toLocaleString('en-US') : 0}
           </p>
         </div>
         <div className={styles.singleStat}>
           <p className={styles.statHead}>Total Researchers</p>
-          <p className={styles.statValue}>{stats.numResearchers}</p>
+          <p className={styles.statValue}>
+            {stats.numResearchers ? stats.numResearchers : 0}
+          </p>
         </div>
         <div className={styles.singleStat}>
           <p className={styles.statHead}>Total Funding</p>
           <p className={styles.statValue}>
-            ${stats.platformTotalFunding.toLocaleString('en-US')}
+            $
+            {stats.platformTotalFunding
+              ? stats.platformTotalFunding.toLocaleString('en-US')
+              : 0}
           </p>
         </div>
         <div className={styles.singleStat}>
           <p className={styles.statHead}>Funding on Celo</p>
           <p className={styles.statValue}>
-            ${stats.celoTotalFunding.toLocaleString('en-US')}
+            $
+            {stats.celoTotalFunding
+              ? stats.celoTotalFunding.toLocaleString('en-US')
+              : 0}
           </p>
         </div>
         <div className={styles.singleStat}>
           <p className={styles.statHead}>Funding on Polygon</p>
           <p className={styles.statValue}>
-            ${stats.polygonTotalFunding.toLocaleString('en-US')}
+            $
+            {stats.polygonTotalFunding
+              ? stats.polygonTotalFunding.toLocaleString('en-US')
+              : 0}
           </p>
         </div>
         <div className={styles.singleStat}>
           <p className={styles.statHead}>Fee Revenue (7%)</p>
           <p className={styles.statValue}>
-            ${(stats.platformTotalFunding * 0.07).toLocaleString('en-US')}
+            $
+            {stats.platformTotalFunding
+              ? (stats.platformTotalFunding * 0.07).toLocaleString('en-US')
+              : 0}
           </p>
         </div>
       </div>
