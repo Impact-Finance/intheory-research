@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { NFTStorage, File } from 'nft.storage';
-// import fetch from "node-fetch";
 
 type Data = {
   metadataUri: string;

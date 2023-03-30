@@ -1,11 +1,11 @@
 import { ChangeEvent, useEffect, useState } from 'react';
+import { ethers } from 'ethers';
 
 import sendContractQuery from '@/utils/sendContractQuery';
 import { AdminModuleProps } from '@/pages/admin-console';
 import NetworkSelector from '../networkSelector/network-selector';
-import styles from './claim-and-disburse.module.scss';
 import { sendClaimRequest } from '@/utils/sendContractModifier';
-import { fromWei } from '@/utils/getWei';
+import styles from './claim-and-disburse.module.scss';
 
 const ClaimAndDisburse = ({
   primaryWallet,
@@ -21,6 +21,7 @@ const ClaimAndDisburse = ({
   const [failed, setFailed] = useState(false);
   const [pending, setPending] = useState(false);
   const [txnHash, setTxnHash] = useState('');
+  const [decimals, setDecimals] = useState(1);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setContractAddress(event.target.value.trim());
@@ -35,7 +36,11 @@ const ClaimAndDisburse = ({
     setTxnHash('');
     if (primaryWallet) {
       try {
-        const hash = await sendClaimRequest(claimType, contractAddress);
+        const hash = await sendClaimRequest(
+          claimType,
+          contractAddress,
+          primaryWallet
+        );
         setSuccess(true);
         setTxnHash(hash);
         setUnclaimedFees('');
@@ -52,25 +57,42 @@ const ClaimAndDisburse = ({
   useEffect(() => {
     setUnclaimedFees('');
     setUndisbursedFunds('');
-
+    if (network === 137 || network === 80001) {
+      setDecimals(6);
+    }
+    if (network === 42220 || network === 44787) {
+      setDecimals(18);
+    }
     const fetchData = async () => {
       setFetching(true);
       setFetched(false);
       try {
         const fees = await sendContractQuery(
           'getUnclaimedFees',
-          contractAddress
+          contractAddress,
+          primaryWallet!
         );
         const funds = await sendContractQuery(
           'getUnclaimedFunds',
-          contractAddress
+          contractAddress,
+          primaryWallet!
         );
         if (fees === null || funds === null) {
           setUnclaimedFees('ERROR, CHECK LOGS AND TRY AGAIN');
           setUndisbursedFunds('ERROR, CHECK LOGS AND TRY AGAIN');
         } else {
-          setUnclaimedFees(fromWei(network!, fees) || 0);
-          setUndisbursedFunds(fromWei(network!, funds) || 0);
+          if (fees !== 'NO VALUE') {
+            const formattedFees = ethers.formatUnits(fees, decimals);
+            setUnclaimedFees(formattedFees || 0);
+          } else {
+            setUnclaimedFees(0);
+          }
+          if (funds !== 'NO VALUE') {
+            const formattedFunds = ethers.formatUnits(funds, decimals);
+            setUndisbursedFunds(formattedFunds || 0);
+          } else {
+            setUndisbursedFunds(0);
+          }
         }
       } catch {
         setUnclaimedFees('ERROR, CHECK LOGS AND TRY AGAIN');
@@ -87,6 +109,7 @@ const ClaimAndDisburse = ({
 
       fetchData();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [contractAddress, primaryWallet, network]);
 
   return (

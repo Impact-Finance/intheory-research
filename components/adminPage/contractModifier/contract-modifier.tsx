@@ -1,10 +1,9 @@
 import { useState, useEffect, ChangeEvent } from 'react';
-import BN from 'bn.js';
+import { ethers } from 'ethers';
 
 import sendContractModifier from '@/utils/sendContractModifier';
 import { AdminModuleProps } from '@/pages/admin-console';
 import NetworkSelector from '../networkSelector/network-selector';
-import getWei from '@/utils/getWei';
 import styles from './contract-modifier.module.scss';
 
 const ContractModifier = ({
@@ -15,11 +14,12 @@ const ContractModifier = ({
   const [contractAddress, setContractAddress] = useState('');
   const [validAddress, setValidAddress] = useState(false);
   const [selectedModifier, setSelectedModifier] = useState('setOwnerFactory');
-  const [newValue, setNewValue] = useState<string | number | BN>('');
+  const [newValue, setNewValue] = useState<string | number | bigint>('');
   const [fetching, setFetching] = useState(false);
   const [txnHash, setTxnHash] = useState('');
   const [success, setSuccess] = useState(false);
   const [failed, setFailed] = useState(false);
+  const [decimals, setDecimals] = useState(1);
 
   const handleAddressChange = (event: ChangeEvent<HTMLInputElement>) => {
     setContractAddress(event.target.value.trim());
@@ -46,13 +46,15 @@ const ContractModifier = ({
           hash = await sendContractModifier(
             selectedModifier,
             contractAddress,
-            getWei(network, newValue as number)
+            ethers.parseUnits(newValue.toString(), decimals),
+            primaryWallet
           );
         } else {
           hash = await sendContractModifier(
             selectedModifier,
             contractAddress,
-            newValue
+            newValue,
+            primaryWallet
           );
         }
 
@@ -77,7 +79,13 @@ const ContractModifier = ({
     } else {
       setValidAddress(false);
     }
-  }, [contractAddress]);
+    if (network === 137 || network === 80001) {
+      setDecimals(6);
+    }
+    if (network === 42220 || network === 44787) {
+      setDecimals(18);
+    }
+  }, [contractAddress, network]);
 
   return (
     <section className={styles.section}>

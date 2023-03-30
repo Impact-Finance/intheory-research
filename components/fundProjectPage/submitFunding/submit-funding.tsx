@@ -6,6 +6,8 @@ import {
   ChangeEvent,
   useEffect,
 } from 'react';
+import { Wallet } from '@dynamic-labs/sdk-react';
+import { ethers } from 'ethers';
 
 import HiddenContent from '@/components/site/hiddenContent/hidden-content';
 import { networkIds } from '@/utils/supportedNetworks';
@@ -15,9 +17,10 @@ import { ResearchProjectObject } from '@/app';
 import submitFunding from '@/utils/submitFunding';
 import updateData from '@/utils/updateData';
 import sendAlert from '@/utils/sendAlert';
-import styles from './submit-funding.module.scss';
 import FormInput from './formInput/form-input';
 import createMetadata from '@/utils/createMetadata';
+import approveErc20 from '@/utils/approveErc20';
+import styles from './submit-funding.module.scss';
 
 interface SubmitFundingProps {
   imageUrl: string;
@@ -25,6 +28,7 @@ interface SubmitFundingProps {
   connectedWallet: string;
   connectedNetwork: number | undefined;
   walletBalance: string;
+  walletObject: Wallet | null;
   setImageRequested: Dispatch<SetStateAction<boolean>>;
   setImageGenerated: Dispatch<SetStateAction<boolean>>;
   setImageUrl: Dispatch<SetStateAction<string>>;
@@ -38,6 +42,7 @@ const SubmitFunding = ({
   connectedWallet,
   connectedNetwork,
   walletBalance,
+  walletObject,
   setImageRequested,
   setImageGenerated,
   setImageUrl,
@@ -45,6 +50,9 @@ const SubmitFunding = ({
   const [contributionAmount, setContributionAmount] = useState<number>();
   const [validInput, setValidInput] = useState(false);
   const [txnSent, setTxnSent] = useState(false);
+  const [creatingMetadata, setCreatingMetadata] = useState(false);
+  const [requestingApproval, setRequestingApproval] = useState(false);
+  const [requestingTxn, setRequestingTxn] = useState(false);
   const [txnSuccess, setTxnSuccess] = useState(false);
   const [txnFailed, setTxnFailed] = useState(false);
   const [txnHash, setTxnHash] = useState('');
@@ -52,60 +60,99 @@ const SubmitFunding = ({
   const [contractAddress, setContractAddress] = useState('');
   const [metadataCid, setMetadataCid] = useState('');
   const [displayHelp, setDisplayHelp] = useState(false);
+  const [decimals, setDecimals] = useState(1);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     setTxnSent(true);
+    setCreatingMetadata(false);
+    setRequestingApproval(false);
+    setRequestingTxn(false);
+
     try {
       let txnResponse;
-
-      const metadataUri = await createMetadata(
-        imageUrl,
-        project.projectName,
-        contributionAmount,
-        connectedWallet
-      );
-
-      if (metadataUri) {
-        setMetadataCid(metadataUri.slice(7, -14));
-        txnResponse = await submitFunding(
-          connectedWallet,
+      let approveResponse;
+      let metadataUri;
+      let provider;
+      let signer;
+      if (walletObject) {
+        provider =
+          (await walletObject.connector.getRpcProvider()) as ethers.JsonRpcProvider;
+        signer =
+          (await walletObject.connector.getSigner()) as ethers.JsonRpcSigner;
+        setRequestingApproval(true);
+        approveResponse = await approveErc20(
           contributionAmount!,
           connectedNetwork!,
           contractAddress,
-          metadataUri
+          provider,
+          signer,
+          decimals
         );
-      }
-
-      if (!txnResponse?.newTokenId || !txnResponse?.newTxnHash) {
-        setTxnFailed(true);
-        setTxnSuccess(false);
-        setTxnSent(false);
-      } else {
-        setTxnSuccess(true);
-        setTxnHash(txnResponse.newTxnHash);
-        setTokenId(txnResponse.newTokenId);
-
-        const dataUpload = await updateData(
-          project,
-          contributionAmount!,
-          connectedWallet,
-          txnResponse.newTxnHash,
-          imageUrl,
-          connectedNetwork!,
-          txnResponse.newTokenId,
-          contractAddress,
-          metadataUri.slice(7, -14)
-        );
-
-        if (!dataUpload) {
-          await sendAlert(
-            project._id,
-            txnResponse.newTxnHash,
+        setRequestingApproval(false);
+        if (approveResponse) {
+          setCreatingMetadata(true);
+          metadataUri = await createMetadata(
             imageUrl,
-            connectedWallet,
-            contributionAmount!
+            project.projectName,
+            contributionAmount,
+            connectedWallet
           );
+          setMetadataCid(metadataUri.slice(7, -14));
+          setCreatingMetadata(false);
+
+          if (approveResponse && metadataUri && walletObject) {
+            setRequestingTxn(true);
+            txnResponse = await submitFunding(
+              contributionAmount!,
+              contractAddress,
+              metadataUri,
+              signer,
+              decimals
+            );
+            setRequestingTxn(false);
+          } else {
+            setTxnFailed(true);
+            setTxnSuccess(false);
+            setTxnSent(false);
+          }
+
+          if (!txnResponse?.newTokenId || !txnResponse?.newTxnHash) {
+            setTxnFailed(true);
+            setTxnSuccess(false);
+            setTxnSent(false);
+          } else {
+            setTxnSuccess(true);
+            setTxnHash(txnResponse.newTxnHash);
+            setTokenId(txnResponse.newTokenId);
+
+            const dataUpload = await updateData(
+              project,
+              contributionAmount!,
+              connectedWallet,
+              txnResponse.newTxnHash,
+              imageUrl,
+              connectedNetwork!,
+              txnResponse.newTokenId,
+              contractAddress,
+              metadataUri.slice(7, -14)
+            );
+
+            if (!dataUpload) {
+              await sendAlert(
+                project._id,
+                txnResponse.newTxnHash,
+                imageUrl,
+                connectedWallet,
+                contributionAmount!
+              );
+            }
+          }
+        } else {
+          setTxnFailed(true);
+          setTxnSuccess(false);
+          setTxnSent(false);
         }
       }
     } catch {
@@ -143,8 +190,10 @@ const SubmitFunding = ({
     // select correct contract address corresponding to connected network
     if (connectedNetwork === 137 || connectedNetwork === 80001) {
       setContractAddress(project.contractAddress.polygon);
+      setDecimals(6);
     } else if (connectedNetwork === 42220 || connectedNetwork === 44787) {
       setContractAddress(project.contractAddress.celo);
+      setDecimals(18);
     } else {
       setContractAddress('');
     }
@@ -206,6 +255,9 @@ const SubmitFunding = ({
                 connectedNetwork={connectedNetwork}
                 walletBalance={walletBalance}
                 minContribution={minContribution}
+                creatingMetadata={creatingMetadata}
+                requestingApproval={requestingApproval}
+                requestingTxn={requestingTxn}
               />
               <button
                 className={styles.howBtn}

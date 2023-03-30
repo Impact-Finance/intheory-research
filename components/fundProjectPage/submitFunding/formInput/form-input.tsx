@@ -16,6 +16,9 @@ interface FormInputProps {
   connectedNetwork: number | undefined;
   walletBalance: string;
   minContribution: number;
+  creatingMetadata: boolean;
+  requestingApproval: boolean;
+  requestingTxn: boolean;
 }
 
 const FormInput = ({
@@ -28,6 +31,9 @@ const FormInput = ({
   connectedNetwork,
   walletBalance,
   minContribution,
+  creatingMetadata,
+  requestingApproval,
+  requestingTxn,
 }: FormInputProps) => {
   return (
     <form
@@ -123,6 +129,10 @@ const FormInput = ({
         minContribution={minContribution}
         walletBalance={walletBalance}
         contributionAmount={contributionAmount}
+        txnSent={txnSent}
+        creatingMetadata={creatingMetadata}
+        requestingApproval={requestingApproval}
+        requestingTxn={requestingTxn}
       />
     </form>
   );

@@ -1,7 +1,18 @@
-@import '/styles/sass/variables';
+@import '/styles/sass/mixins';
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba($color-dark, 0.75);
+  backdrop-filter: blur(2px);
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+}
 
 .note {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   font-size: 1.6rem;
   filter: opacity(0.75);
   &.valid {
@@ -10,5 +21,19 @@
   }
   &.alert {
     color: $color-accent-2;
+  }
+  &.status {
+    color: $color-accent-1;
+    filter: opacity(1);
+    z-index: 1000;
+    &:after {
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: bottom;
+      -webkit-animation: ellipsis steps(4, end) 2s infinite;
+      animation: ellipsis steps(4, end) 2s infinite;
+      content: '\2026'; /* ascii code for the ellipsis character */
+      width: 0px;
+    }
   }
 }

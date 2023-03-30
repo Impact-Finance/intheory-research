@@ -1,9 +1,9 @@
 import { ChangeEvent, useEffect, useState } from 'react';
+import { ethers } from 'ethers';
 
 import sendContractQuery from '@/utils/sendContractQuery';
 import { AdminModuleProps } from '@/pages/admin-console';
 import NetworkSelector from '../networkSelector/network-selector';
-import { fromWei } from '@/utils/getWei';
 import styles from './contract-queries.module.scss';
 
 const ContractQueries = ({
@@ -16,6 +16,7 @@ const ContractQueries = ({
   const [validAddress, setValidAddress] = useState(false);
   const [fetching, setFetching] = useState(false);
   const [queryResult, setQueryResult] = useState<string | undefined>('');
+  const [decimals, setDecimals] = useState(1);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setContractAddress(event.target.value.trim());
@@ -29,14 +30,23 @@ const ContractQueries = ({
     setFetching(true);
     if (primaryWallet) {
       try {
-        const result = await sendContractQuery(selectedQuery, contractAddress);
+        const result = await sendContractQuery(
+          selectedQuery,
+          contractAddress,
+          primaryWallet
+        );
         if (result) {
+          if (result === 'NO VALUE') {
+            setQueryResult(result);
+            return;
+          }
           if (
             selectedQuery === 'getUnclaimedFunds' ||
             selectedQuery === 'getUnclaimedFees' ||
             selectedQuery === 'getMinContribution'
           ) {
-            setQueryResult(fromWei(network!, result) || '0');
+            const formatted = ethers.formatUnits(result, decimals);
+            setQueryResult(formatted || '0');
           } else {
             if (Array.isArray(result)) {
               setQueryResult(result.join('\n'));
@@ -62,6 +72,12 @@ const ContractQueries = ({
       setValidAddress(true);
     } else {
       setValidAddress(false);
+    }
+    if (network === 137 || network === 80001) {
+      setDecimals(6);
+    }
+    if (network === 42220 || network === 44787) {
+      setDecimals(18);
     }
   }, [contractAddress, network]);
 

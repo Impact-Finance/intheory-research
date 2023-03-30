@@ -6,6 +6,10 @@ interface StatusMessageProps {
   minContribution: number;
   walletBalance: string;
   contributionAmount: number | undefined;
+  txnSent: boolean;
+  creatingMetadata: boolean;
+  requestingApproval: boolean;
+  requestingTxn: boolean;
 }
 
 const StatusMessage = ({
@@ -14,23 +18,42 @@ const StatusMessage = ({
   minContribution,
   walletBalance,
   contributionAmount,
+  txnSent,
+  creatingMetadata,
+  requestingApproval,
+  requestingTxn,
 }: StatusMessageProps) => {
   return (
     <>
-      {!txnFailed &&
+      {txnSent && (
+        <>
+          <div className={styles.overlay}></div>
+          <p className={`${styles.note} ${styles.status}`}>
+            {requestingApproval &&
+              'Requesting spending approval. Confirm in wallet'}
+            {creatingMetadata && 'Creating metadata and uploading to IPFS'}
+            {requestingTxn &&
+              'Requesting transaction completion. Confirm in wallet'}
+          </p>
+        </>
+      )}
+      {!txnSent &&
+        !txnFailed &&
         contributionAmount! <= parseInt(walletBalance) &&
         contributionAmount! > 0 &&
         contributionAmount! > minContribution && (
           <p className={`${styles.note} ${styles.valid}`}>-</p>
         )}
-      {!txnFailed &&
+      {!txnSent &&
+        !txnFailed &&
         contributionAmount! > parseInt(walletBalance) &&
         contributionAmount! > 0 && (
           <p className={`${styles.note} ${styles.alert}`}>
             INSUFFICIENT BALANCE
           </p>
         )}
-      {!txnFailed &&
+      {!txnSent &&
+        !txnFailed &&
         (!contributionAmount ||
           contributionAmount === 0 ||
           contributionAmount! <= minContribution) && (
@@ -42,7 +65,7 @@ const StatusMessage = ({
             only.
           </p>
         )}
-      {txnFailed && (
+      {!txnSent && txnFailed && (
         <p className={`${styles.note} ${styles.alert}`}>
           Something went wrong, please try again.
         </p>

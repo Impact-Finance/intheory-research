@@ -21,6 +21,7 @@
     "chart.js": "^4.2.1",
     "eslint": "8.34.0",
     "eslint-config-next": "13.1.6",
+    "ethers": "^6.2.3",
     "https": "^1.0.0",
     "mongodb": "^5.1.0",
     "next": "13.1.6",
@@ -34,8 +35,7 @@
     "react-dom": "18.2.0",
     "react-waypoint": "^10.3.0",
     "sharp": "^0.31.3",
-    "typescript": "4.9.5",
-    "web3": "^1.8.2"
+    "typescript": "4.9.5"
   },
   "devDependencies": {
     "sass": "^1.58.3"

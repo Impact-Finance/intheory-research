@@ -1,13 +1,11 @@
 import { useState, useEffect, ChangeEvent } from 'react';
-import Web3 from 'web3';
-import { AbiItem } from 'web3-utils';
+import { ethers } from 'ethers';
 
 import { AdminModuleProps } from '@/pages/admin-console';
 import { ResearchProjectFactory } from '@/abi/abi';
 import { stablecoinAddresses } from '@/utils/supportedNetworks';
 import NetworkSelector from '../networkSelector/network-selector';
 import styles from './create-project.module.scss';
-import getWei from '@/utils/getWei';
 
 const alfajoresFactory = '0x83456256a6D26F19955E42EadB9b8a8d27Ec3B11';
 const mumbaiFactory = '0x6B8529943363248b7f27ddB66E4384e4C9Ccc0D5';
@@ -30,6 +28,7 @@ const CreateProject = ({
   const [newContractAddress, setNewContractAddress] = useState('');
   const [pending, setPending] = useState(false);
   const [validInputs, setValidInputs] = useState(false);
+  const [decimals, setDecimals] = useState(1);
   const [deploymentOptions, setDeploymentOptions] = useState<DeploymentOptions>(
     {
       minContribution: 25,
@@ -50,22 +49,32 @@ const CreateProject = ({
     setPending(true);
     if (primaryWallet && network) {
       try {
-        const web3 = new Web3(window.ethereum);
-        const factoryInstance = new web3.eth.Contract(
-          ResearchProjectFactory as AbiItem[],
-          factoryAddress
-        );
-        const receipt = await factoryInstance.methods
-          .createResearchProject(
-            getWei(network, deploymentOptions.minContribution),
-            deploymentOptions.researcher,
-            deploymentOptions.stableContract,
-            deploymentOptions.feePercentage
-          )
-          .send({ from: window.ethereum.selectedAddress });
+        const provider =
+          (await primaryWallet.connector.getRpcProvider()) as ethers.JsonRpcProvider;
+        const signer =
+          (await primaryWallet.connector.getSigner()) as ethers.JsonRpcSigner;
 
-        if (receipt) {
-          setNewContractAddress(receipt.events.OwnershipTransferred[0].address);
+        const factoryInstance = new ethers.Contract(
+          factoryAddress,
+          ResearchProjectFactory,
+          signer
+        );
+        const tx = await factoryInstance.createResearchProject(
+          ethers.parseUnits(
+            deploymentOptions.minContribution.toString(),
+            decimals
+          ),
+          deploymentOptions.researcher,
+          deploymentOptions.stableContract,
+          deploymentOptions.feePercentage
+        );
+        if (tx) {
+          const receipt = await provider.waitForTransaction(tx.hash);
+          if (receipt) {
+            setNewContractAddress(receipt.logs[0].address);
+          } else {
+            setNewContractAddress('ERROR DEPLOYING CONTRACT');
+          }
         } else {
           setNewContractAddress('ERROR DEPLOYING CONTRACT');
         }
@@ -82,18 +91,22 @@ const CreateProject = ({
     setNewContractAddress('');
     if (network === 137) {
       setFactoryAddress(polygonFactory);
+      setDecimals(6);
       deploymentOptions.stableContract = stablecoinAddresses.polygon;
     }
     if (network === 42220) {
       setFactoryAddress(celoFactory);
+      setDecimals(18);
       deploymentOptions.stableContract = stablecoinAddresses.celo;
     }
     if (network === 44787) {
       setFactoryAddress(alfajoresFactory);
+      setDecimals(18);
       deploymentOptions.stableContract = stablecoinAddresses.alfajores;
     }
     if (network === 80001) {
       setFactoryAddress(mumbaiFactory);
+      setDecimals(6);
       deploymentOptions.stableContract = stablecoinAddresses.mumbai;
     }
     if (

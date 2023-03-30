@@ -1,61 +1,54 @@
-import Web3 from 'web3';
-import { AbiItem } from 'web3-utils';
+import { ethers } from 'ethers';
 
-import { ResearchProject, IERC20 } from '@/abi/abi';
-import { stablecoinAddresses } from './supportedNetworks';
-import getWei from './getWei';
+import { ResearchProject } from '@/abi/abi';
 
 const submitFunding = async (
-  walletAddress: string,
   contributionAmount: number,
-  connectedNetwork: number,
   contractAddress: string,
-  metadataUri: string
+  metadataUri: string,
+  signer: ethers.JsonRpcSigner,
+  decimals: number
 ) => {
-  try {
-    let stableAddress;
-    let contributeReceipt;
-    if (connectedNetwork === 137) {
-      stableAddress = stablecoinAddresses.polygon;
-    }
-    if (connectedNetwork === 80001) {
-      stableAddress = stablecoinAddresses.mumbai;
-    }
-    if (connectedNetwork === 42220) {
-      stableAddress = stablecoinAddresses.celo;
-    }
-    if (connectedNetwork === 44787) {
-      stableAddress = stablecoinAddresses.alfajores;
-    }
-    const web3 = new Web3(window.ethereum);
-
-    const projectContract = new web3.eth.Contract(
-      ResearchProject as AbiItem[],
-      contractAddress
-    );
-    const stablecoinContract = new web3.eth.Contract(
-      IERC20 as AbiItem[],
-      stableAddress
-    );
-
-    await stablecoinContract.methods
-      .approve(contractAddress, getWei(connectedNetwork, contributionAmount))
-      .send({ from: walletAddress });
-    contributeReceipt = await projectContract.methods
-      .contribute(getWei(connectedNetwork, contributionAmount), metadataUri)
-      .send({
-        from: walletAddress,
+  function subscribeToEvent(contract: ethers.Contract, eventName: string) {
+    return new Promise((resolve, reject) => {
+      const filter = contract.filters[eventName]();
+      contract.on(eventName, (contributor, amount, tokenId) => {
+        contract.removeListener(eventName, listener);
+        resolve(tokenId);
       });
+      const listener = (contributor: string, amount: any, tokenId: any) => {
+        contract.removeListener(eventName, listener);
+        resolve(tokenId);
+      };
+      contract.once(filter, listener);
+    });
+  }
 
-    console.log(contributeReceipt);
-
-    const tokenId =
-      contributeReceipt.events.ContributionReceived.returnValues.tokenId;
-
-    return {
-      newTxnHash: contributeReceipt.transactionHash,
-      newTokenId: tokenId,
-    };
+  try {
+    const projectContract = new ethers.Contract(
+      contractAddress,
+      ResearchProject,
+      signer
+    );
+    const tx = await projectContract.contribute(
+      ethers.parseUnits(contributionAmount.toString(), decimals),
+      metadataUri
+    );
+    if (tx) {
+      const tokenId = await subscribeToEvent(
+        projectContract,
+        'ContributionReceived'
+      );
+      return {
+        newTxnHash: tx.hash,
+        newTokenId: parseInt((tokenId as bigint).toString()),
+      };
+    } else {
+      return {
+        newTxnHash: '',
+        newTokenId: undefined,
+      };
+    }
   } catch {
     return {
       newTxnHash: '',

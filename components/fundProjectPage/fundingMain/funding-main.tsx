@@ -31,15 +31,12 @@ const FundingMain = ({ project }: FundingMainProps) => {
   const [imageUrl, setImageUrl] = useState('');
   const [connectedWallet, setConnectedWallet] = useState('');
   const [connectedNetwork, setConnectedNetwork] = useState<number>();
-  const [walletBalance, setWalletBalance] = useState('');
+  const [walletBalance, setWalletBalance] = useState('--');
   const { primaryWallet, network } = useDynamicContext();
 
   useEffect(() => {
     const getBalance = async () => {
-      const balance = await getStablecoinBalance(
-        connectedNetwork,
-        connectedWallet
-      );
+      const balance = await getStablecoinBalance(network, primaryWallet!);
       setWalletBalance(balance);
     };
     if (primaryWallet) {
@@ -51,7 +48,7 @@ const FundingMain = ({ project }: FundingMainProps) => {
       setConnectedWallet('');
       setConnectedNetwork(undefined);
     }
-  }, [primaryWallet, network, connectedNetwork, connectedWallet]);
+  }, [primaryWallet, network, connectedWallet]);
 
   const handleGeneration = async () => {
     setImageRequested(true);
@@ -108,6 +105,7 @@ const FundingMain = ({ project }: FundingMainProps) => {
             setImageRequested={setImageRequested}
             setImageGenerated={setImageGenerated}
             setImageUrl={setImageUrl}
+            walletObject={primaryWallet}
           />
         )}
       </div>
