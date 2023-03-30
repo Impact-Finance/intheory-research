@@ -1,4 +1,5 @@
 import { ethers } from 'ethers';
+import { Dispatch, SetStateAction } from 'react';
 
 import { IERC20 } from '@/abi/abi';
 import { stablecoinAddresses } from './supportedNetworks';
@@ -9,7 +10,9 @@ const approveErc20 = async (
   contractAddress: string,
   provider: ethers.JsonRpcProvider,
   signer: ethers.JsonRpcSigner,
-  decimals: number
+  decimals: number,
+  setRequestingApproval: Dispatch<SetStateAction<boolean>>,
+  setApprovalGranted: Dispatch<SetStateAction<boolean>>
 ) => {
   try {
     let stableAddress;
@@ -37,7 +40,10 @@ const approveErc20 = async (
       ethers.parseUnits(contributionAmount.toString(), decimals)
     );
     if (tx) {
+      setRequestingApproval(false);
+      setApprovalGranted(true);
       await provider.waitForTransaction(tx.hash);
+      setApprovalGranted(false);
       return true;
     } else {
       return false;

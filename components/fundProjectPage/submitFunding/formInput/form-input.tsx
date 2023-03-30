@@ -19,6 +19,8 @@ interface FormInputProps {
   creatingMetadata: boolean;
   requestingApproval: boolean;
   requestingTxn: boolean;
+  approvalGranted: boolean;
+  txnGranted: boolean;
 }
 
 const FormInput = ({
@@ -34,6 +36,8 @@ const FormInput = ({
   creatingMetadata,
   requestingApproval,
   requestingTxn,
+  approvalGranted,
+  txnGranted,
 }: FormInputProps) => {
   return (
     <form
@@ -133,6 +137,8 @@ const FormInput = ({
         creatingMetadata={creatingMetadata}
         requestingApproval={requestingApproval}
         requestingTxn={requestingTxn}
+        approvalGranted={approvalGranted}
+        txnGranted={txnGranted}
       />
     </form>
   );

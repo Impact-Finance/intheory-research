@@ -23,17 +23,37 @@
     color: $color-accent-2;
   }
   &.status {
-    color: $color-accent-1;
+    span {
+      color: $color-accent-1;
+      text-transform: uppercase;
+    }
     filter: opacity(1);
     z-index: 1000;
-    &:after {
-      overflow: hidden;
-      display: inline-block;
-      vertical-align: bottom;
-      -webkit-animation: ellipsis steps(4, end) 2s infinite;
-      animation: ellipsis steps(4, end) 2s infinite;
-      content: '\2026'; /* ascii code for the ellipsis character */
-      width: 0px;
-    }
+  }
+}
+
+.loaderLine {
+  width: 30rem;
+  height: 1px;
+  left: calc(50% - 30rem / 2);
+  top: 3.5rem;
+  position: absolute;
+  overflow: hidden;
+  background-color: rgba($color-accent-1, 0.25);
+  -webkit-border-radius: $btn-border-radius;
+  -moz-border-radius: $btn-border-radius;
+  border-radius: $btn-border-radius;
+  &:before {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 40%;
+    background-color: $color-accent-1;
+    -webkit-animation: lineAnim 1s linear infinite;
+    -moz-animation: lineAnim 1s linear infinite;
+    animation: lineAnim 1s linear infinite;
+    -webkit-border-radius: $btn-border-radius;
+    -moz-border-radius: $btn-border-radius;
+    border-radius: $btn-border-radius;
   }
 }

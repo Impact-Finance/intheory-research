@@ -10,6 +10,8 @@ interface StatusMessageProps {
   creatingMetadata: boolean;
   requestingApproval: boolean;
   requestingTxn: boolean;
+  approvalGranted: boolean;
+  txnGranted: boolean;
 }
 
 const StatusMessage = ({
@@ -22,6 +24,8 @@ const StatusMessage = ({
   creatingMetadata,
   requestingApproval,
   requestingTxn,
+  approvalGranted,
+  txnGranted,
 }: StatusMessageProps) => {
   return (
     <>
@@ -30,10 +34,23 @@ const StatusMessage = ({
           <div className={styles.overlay}></div>
           <p className={`${styles.note} ${styles.status}`}>
             {requestingApproval &&
-              'Requesting spending approval. Confirm in wallet'}
-            {creatingMetadata && 'Creating metadata and uploading to IPFS'}
+              'Requesting spending approval. Confirm in wallet...'}
+            {/* {approvalGranted && 'APPROVED. Waiting on network confirmation.'} */}
+            {approvalGranted && (
+              <>
+                <span>APPROVED. </span>Waiting on network confirmation...
+              </>
+            )}
+            {creatingMetadata &&
+              'Creating token metadata and uploading to IPFS...'}
             {requestingTxn &&
-              'Requesting transaction completion. Confirm in wallet'}
+              'Requesting finalized transaction. Confirm in wallet...'}
+            {txnGranted && (
+              <>
+                <span>SUBMITTED. </span>Waiting on network confirmation...
+              </>
+            )}
+            <div className={styles.loaderLine}></div>
           </p>
         </>
       )}

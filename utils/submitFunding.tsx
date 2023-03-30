@@ -1,4 +1,5 @@
 import { ethers } from 'ethers';
+import { Dispatch, SetStateAction } from 'react';
 
 import { ResearchProject } from '@/abi/abi';
 
@@ -11,7 +12,9 @@ const submitFunding = async (
   contractAddress: string,
   metadataUri: string,
   signer: ethers.JsonRpcSigner,
-  decimals: number
+  decimals: number,
+  setRequestingTxn: Dispatch<SetStateAction<boolean>>,
+  setTxnGranted: Dispatch<SetStateAction<boolean>>
 ) => {
   function subscribeToEvent(
     contract: ethers.Contract,
@@ -34,11 +37,14 @@ const submitFunding = async (
       metadataUri
     );
     if (tx) {
+      setRequestingTxn(false);
+      setTxnGranted(true);
       const eventPayload: ContributionEvent = await subscribeToEvent(
         projectContract,
         'ContributionReceived'
       );
       const tokenId = eventPayload.args[2];
+      setTxnGranted(false);
       return {
         newTxnHash: tx.hash,
         newTokenId: tokenId.toString(),

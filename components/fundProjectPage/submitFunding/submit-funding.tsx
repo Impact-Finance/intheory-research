@@ -52,7 +52,9 @@ const SubmitFunding = ({
   const [txnSent, setTxnSent] = useState(false);
   const [creatingMetadata, setCreatingMetadata] = useState(false);
   const [requestingApproval, setRequestingApproval] = useState(false);
+  const [approvalGranted, setApprovalGranted] = useState(false);
   const [requestingTxn, setRequestingTxn] = useState(false);
+  const [txnGranted, setTxnGranted] = useState(false);
   const [txnSuccess, setTxnSuccess] = useState(false);
   const [txnFailed, setTxnFailed] = useState(false);
   const [txnHash, setTxnHash] = useState('');
@@ -88,9 +90,10 @@ const SubmitFunding = ({
           contractAddress,
           provider,
           signer,
-          decimals
+          decimals,
+          setRequestingApproval,
+          setApprovalGranted
         );
-        setRequestingApproval(false);
         if (approveResponse) {
           setCreatingMetadata(true);
           metadataUri = await createMetadata(
@@ -109,9 +112,10 @@ const SubmitFunding = ({
               contractAddress,
               metadataUri,
               signer,
-              decimals
+              decimals,
+              setRequestingTxn,
+              setTxnGranted
             );
-            setRequestingTxn(false);
           } else {
             setTxnFailed(true);
             setTxnSuccess(false);
@@ -257,7 +261,9 @@ const SubmitFunding = ({
                 minContribution={minContribution}
                 creatingMetadata={creatingMetadata}
                 requestingApproval={requestingApproval}
+                approvalGranted={approvalGranted}
                 requestingTxn={requestingTxn}
+                txnGranted={txnGranted}
               />
               <button
                 className={styles.howBtn}

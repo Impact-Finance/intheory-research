@@ -28,7 +28,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         settings={{
           environmentId: process.env.DYNAMIC_SANDBOX_ID, // update with DYNAMIC_LIVE_ID at launch
           cssOverrides: dynamicWalletStyles,
-          // initialAuthenticationMode: 'connect-only',
           evmNetworks: supportedNetworks, // update to mainnets at launch
           appName: 'inTheory Research',
           appLogoUrl: 'https://i.imgur.com/XBu6GPn.png',
