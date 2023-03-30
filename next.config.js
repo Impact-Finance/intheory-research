@@ -28,8 +28,7 @@ const nextConfig = {
     AWS_SECRET: process.env.AWS_SECRET,
     OPENAI_API_KEY: process.env.OPENAI_API_KEY,
     GOOGLE_PW: process.env.GOOGLE_PW,
-    PASSWORD_PROTECT: true, // can be removed when password protection is removed
-    BETA_PASSWORD: process.env.BETA_PASSWORD, // can be removed when password protection is removed
+    ADMIN_PASSWORD: process.env.ADMIN_PASSWORD,
     DYNAMIC_SANDBOX_ID: process.env.DYNAMIC_SANDBOX_ID,
     DYNAMIC_LIVE_ID: process.env.DYNAMIC_LIVE_ID,
     INFURA_API_KEY: process.env.INFURA_API_KEY,

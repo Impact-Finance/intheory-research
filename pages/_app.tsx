@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import NextNProgress from 'nextjs-progressbar';
 import type { AppProps } from 'next/app';
 import { DynamicContextProvider } from '@dynamic-labs/sdk-react';
-import App from 'next/app'; // can be removed when password protection is removed
 
 import dynamicWalletStyles from '@/utils/dynamicWalletStyles';
 import supportedNetworks from '@/utils/supportedNetworks';
@@ -58,13 +57,13 @@ function MyApp({ Component, pageProps }: AppProps) {
 }
 
 // the following can be removed when password protection is removed and the default export can be moved back to app functional component. also remove "login" and "passwordCheck" API routes and related env variables. remove "next-password-protect" dependency.
-export default process.env.PASSWORD_PROTECT
-  ? withPasswordProtect(MyApp, {
-      loginComponentProps: {
-        backUrl: 'https://intheory.science',
-        logo: 'https://i.imgur.com/XBu6GPn.png',
-        buttonColor: '#68eaff',
-        buttonBackgroundColor: '#0c294b',
-      },
-    })
-  : App;
+export default withPasswordProtect(MyApp, {
+  loginComponentProps: {
+    backUrl: 'https://intheory.science',
+    logo: 'https://i.imgur.com/XBu6GPn.png',
+    buttonColor: '#68eaff',
+    buttonBackgroundColor: '#0c294b',
+  },
+});
+
+// export default MyApp;

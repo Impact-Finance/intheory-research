@@ -9,6 +9,8 @@ import ClaimAndDisburse from '@/components/adminPage/claimAndDisburse/claim-and-
 import ContractQueries from '@/components/adminPage/contractQueries/contract-queries';
 import ContractModifier from '@/components/adminPage/contractModifier/contract-modifier';
 
+// import { withPasswordProtect } from 'next-password-protect';
+
 interface AdminPageProps {
   platformStats: PlatformStatsObject;
 }
@@ -49,8 +51,6 @@ const AdminConsole = ({ platformStats }: AdminPageProps) => {
   );
 };
 
-export default AdminConsole;
-
 export async function getServerSideProps() {
   const platformStats = await getPlatformStats();
 
@@ -60,3 +60,14 @@ export async function getServerSideProps() {
     },
   };
 }
+
+export default AdminConsole;
+// Password protection
+// export default withPasswordProtect(AdminConsole, {
+//   loginComponentProps: {
+//     backUrl: 'https://intheory.science',
+//     logo: 'https://i.imgur.com/XBu6GPn.png',
+//     buttonColor: '#68eaff',
+//     buttonBackgroundColor: '#0c294b',
+//   },
+// });

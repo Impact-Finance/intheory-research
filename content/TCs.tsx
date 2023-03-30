@@ -116,7 +116,7 @@ const termsAndConditions = {
     '10.1':
       'In the event of a dispute between a Contributor and a Researcher, the parties agree to first attempt to resolve the dispute through good faith negotiations.',
     '10.2':
-      'If the dispute cannot be resolved through negotiations, the parties agree to submit the dispute to binding arbitration in accordance with the rules of the American Arbitration Association.',
+      'If the dispute cannot be resolved through negotiations, the parties agree to submit the dispute to binding arbitration in accordance with the rules of the American Arbitration Association, or the applicable governing arbitration body associated with the jurisdiction(s) of the party(ies) involved in the dispute.',
   },
   '11. disclaimer of warranties': {
     '11.1':

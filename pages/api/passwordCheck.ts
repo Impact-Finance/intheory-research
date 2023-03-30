@@ -1,8 +1,6 @@
-// API route can be removed once password protection is removed
-
 import { passwordCheckHandler } from 'next-password-protect';
 
-const password = process.env.BETA_PASSWORD;
+const password = process.env.ADMIN_PASSWORD;
 
 export default passwordCheckHandler(password, {
   // Options go here (optional)

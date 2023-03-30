@@ -11,7 +11,7 @@ declare global {
       AWS_SECRET: string;
       OPENAI_API_KEY: string;
       GOOGLE_PW: string;
-      BETA_PASSWORD: string; // can be removed when password protection is removed
+      ADMIN_PASSWORD: string;
       DYNAMIC_SANDBOX_ID: string;
       DYNAMIC_LIVE_ID: string;
       INFURA_API_KEY: string;
