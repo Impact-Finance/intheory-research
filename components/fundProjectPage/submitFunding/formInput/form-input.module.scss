@@ -9,6 +9,7 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 1.8rem;
+    -webkit-filter: opacity(0.75);
     filter: opacity(0.75);
     color: $color-accent-1;
     align-self: flex-start;
@@ -38,6 +39,18 @@
         border-color: rgba($color-accent-2, 0.5);
         box-shadow: 0 0 0.4rem 0.4rem rgba($color-accent-2, 0.15);
       }
+      &::-webkit-input-placeholder {
+        color: rgba($color-accent-1, 0.35);
+      }
+      &::-moz-placeholder {
+        color: rgba($color-accent-1, 0.35);
+      }
+      &:-ms-input-placeholder {
+        color: rgba($color-accent-1, 0.35);
+      }
+      &::-ms-input-placeholder {
+        color: rgba($color-accent-1, 0.35);
+      }
       &::placeholder {
         color: rgba($color-accent-1, 0.35);
       }
@@ -45,10 +58,13 @@
     .submitBtn {
       @include main-btn;
       position: relative;
+      width: -webkit-fit-content;
+      width: -moz-fit-content;
       width: fit-content;
       align-self: center;
 
       &:disabled {
+        -webkit-filter: opacity(0.5);
         filter: opacity(0.5);
         border-top: 1px solid rgba($color-accent-1, 0);
         border-bottom: 1px solid rgba($color-accent-1, 0);
@@ -57,6 +73,7 @@
         }
       }
       .hidden {
+        -webkit-filter: opacity(0);
         filter: opacity(0);
       }
       .dots {
@@ -71,6 +88,7 @@
     .currentBalance {
       text-align: left;
       font-size: 1.4rem;
+      -webkit-filter: opacity(0.75);
       filter: opacity(0.75);
       padding-right: 1rem;
       border-right: 1px solid rgba($color-accent-1, 0.75);
@@ -85,6 +103,8 @@
       color: rgba($color-accent-1, 0.9);
       text-align: left;
       transition: all 0.2s;
+      width: -webkit-fit-content;
+      width: -moz-fit-content;
       width: fit-content;
       &:hover {
         @include btn-hover;

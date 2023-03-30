@@ -10,6 +10,7 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: rgba($color-main, 0.25);
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   transition: all 0.2s;
   @include safari-overflow;
@@ -19,12 +20,15 @@
     left: 35%;
   }
   .coverImage {
+    -o-object-fit: cover;
     object-fit: cover;
     transition: all 0.7s;
   }
   .toolTip {
     display: flex;
     align-items: center;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
     align-self: flex-end;
     font-size: 1.8rem;
@@ -35,12 +39,14 @@
     border-radius: $btn-border-radius;
     color: $color-accent-1;
     background-color: rgba($color-main, 0.75);
+    -webkit-backdrop-filter: blur(15px);
     backdrop-filter: blur(15px);
     .icon {
       position: relative;
       width: 2rem;
       height: 2rem;
       margin-right: 1rem;
+      -webkit-animation: rotateClockwise 10s linear infinite;
       animation: rotateClockwise 10s linear infinite;
       .atom {
         @include obj-contain;
@@ -51,12 +57,14 @@
     padding: 2rem;
     width: 100%;
     background-color: rgba($color-main, 0.75);
+    -webkit-backdrop-filter: blur(15px);
     backdrop-filter: blur(15px);
     .subtitle {
       font-size: 1.6rem;
       text-transform: uppercase;
       display: inline-block;
       margin-bottom: 0.5rem;
+      -webkit-filter: opacity(0.75);
       filter: opacity(0.75);
     }
     .title {
@@ -67,6 +75,7 @@
   }
   &:hover {
     .coverImage {
+      -webkit-filter: saturate(1.5);
       filter: saturate(1.5);
     }
     .title {

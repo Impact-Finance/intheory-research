@@ -10,6 +10,7 @@
   transition: all 0.3s;
   @include safari-overflow;
   .image {
+    -o-object-fit: cover;
     object-fit: cover;
     transition: all 0.4s;
   }
@@ -21,12 +22,14 @@
     align-items: flex-start;
     padding: 0 3rem;
     background-color: rgba($color-dark, 0.5);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     .subtitle {
       font-size: 1.6rem;
       text-transform: uppercase;
       display: inline-block;
       margin-bottom: 0.5rem;
+      -webkit-filter: opacity(0.75);
       filter: opacity(0.75);
     }
     .title {
@@ -39,6 +42,7 @@
       @include image-hover;
     }
     .text {
+      -webkit-backdrop-filter: none;
       backdrop-filter: none;
       .title {
         color: $color-accent-1;

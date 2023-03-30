@@ -7,6 +7,7 @@
   overflow: hidden;
   @include safari-overflow;
   .artwork {
+    -o-object-fit: cover;
     object-fit: cover;
     transform: scale(1.1);
     transition: all 0.4s;
@@ -19,6 +20,7 @@
     align-items: flex-start;
     padding: 0 $content-gap;
     background-color: rgba($color-dark, 0.75);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     .hoverText {
       font-size: 1.4rem;
@@ -27,6 +29,7 @@
       .label {
         text-transform: uppercase;
         font-weight: 400;
+        -webkit-filter: opacity(0.75);
         filter: opacity(0.75);
       }
     }
@@ -58,6 +61,7 @@
   &:hover {
     .artwork {
       transform: scale(1);
+      -webkit-filter: opacity(1.5);
       filter: opacity(1.5);
     }
     .hoverContent {

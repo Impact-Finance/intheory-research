@@ -47,6 +47,7 @@
 .tryAgain {
   padding: 3rem 0;
   font-size: 1.6rem;
+  -webkit-filter: opacity(0.75);
   filter: opacity(0.75);
   span {
     color: $color-accent-1;

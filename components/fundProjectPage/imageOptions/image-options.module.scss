@@ -22,6 +22,7 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 2rem;
+    -webkit-filter: opacity(0.75);
     filter: opacity(0.75);
     color: $color-accent-1;
   }
@@ -37,6 +38,7 @@
         color: $color-white;
       }
       &.active:hover {
+        -webkit-filter: opacity(1);
         filter: opacity(1);
       }
     }

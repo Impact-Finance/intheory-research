@@ -14,8 +14,11 @@
     height: 55rem;
     z-index: -1;
     .vortex {
+      -o-object-fit: contain;
       object-fit: contain;
+      -webkit-filter: opacity(0.1);
       filter: opacity(0.1);
+      -webkit-animation: rotateClockwise 60s linear infinite;
       animation: rotateClockwise 60s linear infinite;
     }
   }
@@ -28,6 +31,7 @@
     font-size: 3.5rem;
     letter-spacing: 1px;
     text-align: center;
+    -webkit-filter: opacity(0.75);
     filter: opacity(0.75);
   }
 }

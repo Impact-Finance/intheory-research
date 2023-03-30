@@ -7,6 +7,7 @@
   margin-top: $section-spacing;
   .header {
     font-size: 2.5rem;
+    -webkit-filter: opacity(0.85);
     filter: opacity(0.85);
     margin-bottom: 1.5rem;
   }
@@ -21,6 +22,7 @@
     border-bottom: 1px solid rgba($color-accent-1, 0.25);
     border-radius: $box-border-radius;
     padding: 3rem;
+    -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     .inputForm {
       display: flex;
@@ -30,6 +32,7 @@
       .formLabel {
         font-size: 1.8rem;
         margin-right: 1rem;
+        -webkit-filter: opacity(0.85);
         filter: opacity(0.85);
       }
       .formInput {
@@ -49,8 +52,11 @@
     }
     .actionBtn {
       @include main-btn;
+      width: -webkit-fit-content;
+      width: -moz-fit-content;
       width: fit-content;
       &:disabled {
+        -webkit-filter: opacity(0.5);
         filter: opacity(0.5);
         &:hover {
           cursor: none;
@@ -64,6 +70,7 @@
         color: $color-accent-1;
       }
       .pending {
+        -webkit-filter: opacity(0.5);
         filter: opacity(0.5);
       }
       .failed {

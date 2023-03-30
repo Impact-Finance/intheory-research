@@ -34,7 +34,9 @@
         background-color: rgba($color-main, 0.25);
         @include safari-overflow;
         .avatarImage {
+          -o-object-fit: cover;
           object-fit: cover;
+          -o-object-position: top;
           object-position: top;
         }
       }
@@ -52,6 +54,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 1.8rem;
+            -webkit-filter: opacity(0.75);
             filter: opacity(0.75);
             color: $color-accent-1;
           }
@@ -62,6 +65,7 @@
         font-size: 2rem;
         line-height: 3rem;
         text-align: justify;
+        -webkit-filter: opacity(0.85);
         filter: opacity(0.85);
       }
       .socials {
@@ -70,6 +74,7 @@
         right: $content-gap;
         display: flex;
         gap: 2rem;
+        -webkit-filter: opacity(0.85);
         filter: opacity(0.85);
         .icon {
           transition: all 0.2s;

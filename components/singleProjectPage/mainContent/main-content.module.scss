@@ -18,9 +18,11 @@
     border-radius: $box-border-radius;
     transition: all 0.4s;
     .coverImage {
+      -o-object-fit: cover;
       object-fit: cover;
     }
     &:hover {
+      -webkit-filter: saturate(1.5);
       filter: saturate(1.5);
     }
   }
@@ -36,6 +38,7 @@
       font-weight: 500;
       color: $color-accent-1;
       span {
+        -webkit-filter: opacity(0.75);
         filter: opacity(0.75);
         font-size: 2.2rem;
       }
@@ -48,6 +51,8 @@
       .fundProject {
         @include main-btn;
         font-size: 3rem;
+        width: -webkit-fit-content;
+        width: -moz-fit-content;
         width: fit-content;
         margin: 0;
       }
@@ -79,6 +84,7 @@
       .summaryHead {
         color: $color-accent-1;
         font-size: 1.8rem;
+        -webkit-filter: opacity(0.75);
         filter: opacity(0.75);
         letter-spacing: 1px;
         text-transform: uppercase;

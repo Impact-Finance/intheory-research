@@ -13,6 +13,7 @@
   border-radius: $box-border-radius;
   color: rgba($color-white, 0.85);
   margin: 1rem 0;
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
   .label {
     display: flex;

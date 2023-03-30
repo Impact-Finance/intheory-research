@@ -9,7 +9,9 @@
   background-color: $color-accent-1;
   color: $color-accent-1;
   box-shadow: 999rem 0 0 0 $color-accent-1;
+  -webkit-animation: dot-falling 1s infinite linear;
   animation: dot-falling 1s infinite linear;
+  -webkit-animation-delay: 0.1s;
   animation-delay: 0.1s;
   &::after,
   &::before {
@@ -25,11 +27,15 @@
     color: $color-accent-1;
   }
   &::before {
+    -webkit-animation: dot-falling-before 1s infinite linear;
     animation: dot-falling-before 1s infinite linear;
+    -webkit-animation-delay: 0s;
     animation-delay: 0s;
   }
   &::after {
+    -webkit-animation: dot-falling-after 1s infinite linear;
     animation: dot-falling-after 1s infinite linear;
+    -webkit-animation-delay: 0.2s;
     animation-delay: 0.2s;
   }
 }

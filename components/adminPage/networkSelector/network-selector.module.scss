@@ -2,6 +2,7 @@
 
 .networkHead {
   font-size: 3rem;
+  -webkit-filter: opacity(0.85);
   filter: opacity(0.85);
 }
 .networkSelect {
@@ -20,6 +21,7 @@
       color: $color-accent-1;
       border-bottom: 1px solid rgba($color-accent-1, 0.5);
       &:hover {
+        -webkit-filter: opacity(1);
         filter: opacity(1);
       }
     }

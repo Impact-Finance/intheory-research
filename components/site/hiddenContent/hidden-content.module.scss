@@ -11,6 +11,7 @@
     rgba($color-dark, 0.85) 60%,
     rgba($color-main, 0.1)
   );
+  -webkit-backdrop-filter: blur(100px);
   backdrop-filter: blur(100px);
   border-top: 1px solid rgba($color-accent-1, 0.25);
   border-bottom: 1px solid rgba($color-accent-1, 0.25);
@@ -67,6 +68,8 @@
   .learnMore {
     @include main-btn;
     align-self: center;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
     margin: 0;
   }

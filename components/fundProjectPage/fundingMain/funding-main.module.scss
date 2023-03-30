@@ -21,12 +21,14 @@
         cursor: pointer;
         color: rgba($color-accent-1, 0.7);
         &::after {
+          -webkit-animation-play-state: paused;
           animation-play-state: paused;
         }
       }
       &:disabled {
         color: rgba($color-accent-1, 0.3);
         &::after {
+          -webkit-animation-play-state: paused;
           animation-play-state: paused;
         }
         &:hover {
@@ -41,11 +43,13 @@
     height: 60rem;
     width: 60rem;
     border: 1px solid rgba($color-accent-1, 0.15);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     overflow: hidden;
     @include safari-overflow;
     transition: all 0.4s;
     &:hover {
+      -webkit-filter: saturate(1.5);
       filter: saturate(1.5);
     }
   }

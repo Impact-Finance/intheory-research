@@ -6,6 +6,7 @@
   position: fixed;
   background-color: rgba($color-dark, 0.75);
   overflow-y: visible;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   z-index: 100;
   top: 0;
@@ -38,6 +39,7 @@
         left: calc(var(--icon-size) * 2.3);
         top: calc(50% - var(--icon-size) / 2);
         background-color: transparent;
+        -webkit-filter: opacity(0.5);
         filter: opacity(0.5);
         .icon {
           @include obj-contain;
@@ -60,6 +62,22 @@
           border-color: rgba($color-accent-2, 0.5);
           background-color: rgba($color-main, 0.35);
           box-shadow: 0 0 0.4rem 0.4rem rgba($color-accent-2, 0.15);
+        }
+
+        &::-webkit-input-placeholder {
+          color: rgba($color-accent-1, 0.5);
+        }
+
+        &::-moz-placeholder {
+          color: rgba($color-accent-1, 0.5);
+        }
+
+        &:-ms-input-placeholder {
+          color: rgba($color-accent-1, 0.5);
+        }
+
+        &::-ms-input-placeholder {
+          color: rgba($color-accent-1, 0.5);
         }
 
         &::placeholder {

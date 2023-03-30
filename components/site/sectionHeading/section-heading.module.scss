@@ -10,6 +10,7 @@
   .allLink {
     display: inline-block;
     font-size: 1.6rem;
+    -webkit-filter: opacity(0.75);
     filter: opacity(0.75);
     transition: all 0.2s;
     &:hover {

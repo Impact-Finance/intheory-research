@@ -2,6 +2,7 @@
 @import 'animations';
 
 @mixin btn-hover {
+  -webkit-filter: opacity(0.8);
   filter: opacity(0.8);
   cursor: pointer;
 }
@@ -23,6 +24,7 @@
 
 @mixin image-hover {
   transform: scale(1.1);
+  -webkit-filter: saturate(1.5);
   filter: saturate(1.5);
 }
 
@@ -85,10 +87,15 @@
   position: relative;
   border-radius: $btn-border-radius;
   display: inline-block;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
   height: fit-content;
   &::after {
     content: '';
+    -webkit-filter: opacity(0.5);
     filter: opacity(0.5);
     position: absolute;
     top: calc(-1 * var(--borderWidth));
@@ -105,6 +112,7 @@
     );
     border-radius: $btn-border-radius;
     z-index: -1;
+    -webkit-animation: animatedGradient 6s ease alternate infinite;
     animation: animatedGradient 6s ease alternate infinite;
     background-size: 300% 300%;
   }

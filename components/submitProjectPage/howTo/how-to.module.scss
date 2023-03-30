@@ -23,6 +23,7 @@
     grid-area: chain;
     .chain {
       @include obj-contain;
+      -webkit-animation: pulse 6s ease infinite;
       animation: pulse 6s ease infinite;
     }
   }

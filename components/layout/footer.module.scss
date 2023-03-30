@@ -34,6 +34,7 @@
       .description {
         font-size: 1.4rem;
         line-height: 2rem;
+        -webkit-filter: opacity(0.75);
         filter: opacity(0.75);
       }
     }
@@ -44,6 +45,7 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(2, 1fr);
+        -webkit-filter: opacity(0.75);
         filter: opacity(0.75);
       }
       .title {
@@ -64,6 +66,7 @@
     }
     .socials {
       grid-area: socials;
+      -webkit-filter: opacity(0.75);
       filter: opacity(0.75);
       .socialList {
         display: flex;
@@ -88,22 +91,26 @@
       align-items: center;
       padding: 2rem 0;
       .ifLogo {
+        -webkit-filter: grayscale(0.75);
         filter: grayscale(0.75);
         margin: 0 2rem;
         width: 2.5rem;
         height: 2.5rem;
         transition: all 0.2s;
         &:hover {
+          -webkit-filter: grayscale(0);
           filter: grayscale(0);
         }
       }
       p {
         font-size: 1.2rem;
+        -webkit-filter: opacity(0.5);
         filter: opacity(0.5);
         span {
           text-decoration: underline;
           transition: all 0.2s;
           &:hover {
+            -webkit-filter: opacity(0.75);
             filter: opacity(0.75);
           }
         }

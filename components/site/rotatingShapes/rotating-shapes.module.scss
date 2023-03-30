@@ -8,9 +8,11 @@
   z-index: -1;
   .shape {
     @include obj-contain;
+    -webkit-filter: opacity(0.1);
     filter: opacity(0.1);
   }
   &:nth-child(1) {
+    -webkit-animation: rotateClockwise 60s linear infinite;
     animation: rotateClockwise 60s linear infinite;
   }
   &:nth-child(2) {
@@ -20,6 +22,7 @@
     }
   }
   &:nth-child(3) {
+    -webkit-animation: rotateClockwise 15s linear infinite;
     animation: rotateClockwise 15s linear infinite;
     .shape {
       transform: scale(0.25);
