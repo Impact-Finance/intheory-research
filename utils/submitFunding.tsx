@@ -41,7 +41,7 @@ const submitFunding = async (
       const tokenId = eventPayload.args[2];
       return {
         newTxnHash: tx.hash,
-        newTokenId: parseInt(tokenId.toString()),
+        newTokenId: tokenId.toString(),
       };
     } else {
       return {

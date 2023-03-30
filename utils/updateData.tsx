@@ -7,7 +7,7 @@ const updateData = async (
   txnHash: string,
   imageUrl: string,
   network: number,
-  tokenId: number,
+  tokenId: string,
   contract: string,
   metadataCid: string
 ) => {

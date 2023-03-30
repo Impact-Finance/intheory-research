@@ -7,7 +7,7 @@ import styles from './success-box.module.scss';
 
 interface SuccessBoxProps {
   txnHash: string;
-  tokenId: number | undefined;
+  tokenId: string;
   contractAddress: string;
   network: number | undefined;
   metadataCid: string;
