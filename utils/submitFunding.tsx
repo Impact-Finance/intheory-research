@@ -2,6 +2,10 @@ import { ethers } from 'ethers';
 
 import { ResearchProject } from '@/abi/abi';
 
+interface ContributionEvent {
+  args: [contributor: string, amount: bigint, tokenId: bigint];
+}
+
 const submitFunding = async (
   contributionAmount: number,
   contractAddress: string,
@@ -9,7 +13,10 @@ const submitFunding = async (
   signer: ethers.JsonRpcSigner,
   decimals: number
 ) => {
-  function subscribeToEvent(contract: ethers.Contract, eventName: string) {
+  function subscribeToEvent(
+    contract: ethers.Contract,
+    eventName: string
+  ): Promise<ContributionEvent> {
     const filter = contract.filters[eventName]();
     return new Promise(resolve => {
       contract.once(filter, resolve);
@@ -27,14 +34,14 @@ const submitFunding = async (
       metadataUri
     );
     if (tx) {
-      const eventPayload: any = await subscribeToEvent(
+      const eventPayload: ContributionEvent = await subscribeToEvent(
         projectContract,
         'ContributionReceived'
       );
       const tokenId = eventPayload.args[2];
       return {
         newTxnHash: tx.hash,
-        newTokenId: parseInt((tokenId as bigint).toString()),
+        newTokenId: parseInt(tokenId.toString()),
       };
     } else {
       return {
