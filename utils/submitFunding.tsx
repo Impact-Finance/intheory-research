@@ -10,17 +10,9 @@ const submitFunding = async (
   decimals: number
 ) => {
   function subscribeToEvent(contract: ethers.Contract, eventName: string) {
-    return new Promise((resolve, reject) => {
-      const filter = contract.filters[eventName]();
-      contract.on(eventName, (contributor, amount, tokenId) => {
-        contract.removeListener(eventName, listener);
-        resolve(tokenId);
-      });
-      const listener = (contributor: string, amount: any, tokenId: any) => {
-        contract.removeListener(eventName, listener);
-        resolve(tokenId);
-      };
-      contract.once(filter, listener);
+    const filter = contract.filters[eventName]();
+    return new Promise(resolve => {
+      contract.once(filter, resolve);
     });
   }
 
@@ -35,10 +27,11 @@ const submitFunding = async (
       metadataUri
     );
     if (tx) {
-      const tokenId = await subscribeToEvent(
+      const eventPayload: any = await subscribeToEvent(
         projectContract,
         'ContributionReceived'
       );
+      const tokenId = eventPayload.args[2];
       return {
         newTxnHash: tx.hash,
         newTokenId: parseInt((tokenId as bigint).toString()),
