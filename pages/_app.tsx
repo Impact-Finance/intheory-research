@@ -56,7 +56,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-// the following can be removed when password protection is removed and the default export can be moved back to app functional component. also remove "login" and "passwordCheck" API routes and related env variables. remove "next-password-protect" dependency.
+// the following can be removed when password protection is moved to admin page only and the default export can be moved back to app functional component.
 export default withPasswordProtect(MyApp, {
   loginComponentProps: {
     backUrl: 'https://intheory.science',

@@ -11,6 +11,7 @@ interface FormInputProps {
   handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
   contributionAmount: number | undefined;
   validInput: boolean;
+  insufficientBalance: boolean;
   txnSent: boolean;
   txnFailed: boolean;
   connectedNetwork: number | undefined;
@@ -28,6 +29,7 @@ const FormInput = ({
   handleChange,
   contributionAmount,
   validInput,
+  insufficientBalance,
   txnSent,
   txnFailed,
   connectedNetwork,
@@ -129,6 +131,7 @@ const FormInput = ({
         ))}
       <StatusMessage
         validInput={validInput}
+        insufficientBalance={insufficientBalance}
         txnFailed={txnFailed}
         minContribution={minContribution}
         walletBalance={walletBalance}

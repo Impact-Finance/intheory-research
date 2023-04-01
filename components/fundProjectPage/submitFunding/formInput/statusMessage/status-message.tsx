@@ -3,6 +3,7 @@ import styles from './status-message.module.scss';
 interface StatusMessageProps {
   txnFailed: boolean;
   validInput: boolean;
+  insufficientBalance: boolean;
   minContribution: number;
   walletBalance: string;
   contributionAmount: number | undefined;
@@ -17,6 +18,7 @@ interface StatusMessageProps {
 const StatusMessage = ({
   txnFailed,
   validInput,
+  insufficientBalance,
   minContribution,
   walletBalance,
   contributionAmount,
@@ -35,7 +37,6 @@ const StatusMessage = ({
           <p className={`${styles.note} ${styles.status}`}>
             {requestingApproval &&
               'Requesting spending approval. Confirm in wallet...'}
-            {/* {approvalGranted && 'APPROVED. Waiting on network confirmation.'} */}
             {approvalGranted && (
               <>
                 <span>APPROVED. </span>Waiting on network confirmation...
@@ -54,34 +55,20 @@ const StatusMessage = ({
           </p>
         </>
       )}
-      {!txnSent &&
-        !txnFailed &&
-        contributionAmount! <= parseInt(walletBalance) &&
-        contributionAmount! > 0 &&
-        contributionAmount! > minContribution && (
-          <p className={`${styles.note} ${styles.valid}`}>-</p>
-        )}
-      {!txnSent &&
-        !txnFailed &&
-        contributionAmount! > parseInt(walletBalance) &&
-        contributionAmount! > 0 && (
-          <p className={`${styles.note} ${styles.alert}`}>
-            INSUFFICIENT BALANCE
-          </p>
-        )}
-      {!txnSent &&
-        !txnFailed &&
-        (!contributionAmount ||
-          contributionAmount === 0 ||
-          contributionAmount! <= minContribution) && (
-          <p
-            className={
-              validInput ? `${styles.note} ${styles.valid}` : styles.note
-            }>
-            Please enter a whole number {minContribution} or greater, numbers
-            only.
-          </p>
-        )}
+      {!txnSent && !txnFailed && insufficientBalance && (
+        <p className={`${styles.note} ${styles.alert}`}>
+          INSUFFICIENT BALANCE IN WALLET
+        </p>
+      )}
+      {!txnSent && !txnFailed && !insufficientBalance && (
+        <p
+          className={
+            validInput ? `${styles.note} ${styles.valid}` : styles.note
+          }>
+          Please enter a whole number {minContribution} or greater, numbers
+          only.
+        </p>
+      )}
       {!txnSent && txnFailed && (
         <p className={`${styles.note} ${styles.alert}`}>
           Something went wrong, please try again.

@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { MongoClient, ObjectId } from 'mongodb';
-import AWS from 'aws-sdk';
+import { S3 } from 'aws-sdk';
 import https from 'https';
 
 const mongodb_username = process.env.MONGODB_USERNAME;
@@ -14,7 +14,7 @@ const aws_secret_key = process.env.AWS_SECRET;
 
 const mongoUri = `mongodb+srv://${mongodb_username}:${mongodb_password}@${mongodb_clustername}.4xsak5a.mongodb.net/${mongodb_database}?retryWrites=true&w=majority`;
 
-const s3 = new AWS.S3({
+const s3 = new S3({
   accessKeyId: aws_key_id,
   secretAccessKey: aws_secret_key,
   region: aws_region,
@@ -103,6 +103,8 @@ export default async function handler(
               ContentType: 'image/jpeg',
             };
 
+            // S3 ManagedUpload with callbacks are not supported in AWS SDK for JavaScript (v3).
+            // Please convert to `await client.upload(params, options).promise()`, and re-run aws-sdk-js-codemod.
             s3.upload(params, (err: any, data: any) => {
               if (err) {
                 reject(err);

@@ -49,6 +49,7 @@ const SubmitFunding = ({
 }: SubmitFundingProps) => {
   const [contributionAmount, setContributionAmount] = useState<number>();
   const [validInput, setValidInput] = useState(false);
+  const [insufficientBalance, setInsufficientBalance] = useState(false);
   const [txnSent, setTxnSent] = useState(false);
   const [creatingMetadata, setCreatingMetadata] = useState(false);
   const [requestingApproval, setRequestingApproval] = useState(false);
@@ -181,10 +182,17 @@ const SubmitFunding = ({
   };
 
   useEffect(() => {
+    if (contributionAmount && contributionAmount > parseInt(walletBalance)) {
+      setInsufficientBalance(true);
+      setValidInput(false);
+    } else {
+      setInsufficientBalance(false);
+    }
     if (
       contributionAmount &&
       /^\d+$/.test(contributionAmount.toString()) &&
-      contributionAmount >= minContribution
+      contributionAmount >= minContribution &&
+      !insufficientBalance
     ) {
       setValidInput(true);
     } else {
@@ -200,12 +208,13 @@ const SubmitFunding = ({
       setDecimals(18);
     } else {
       setContractAddress('');
-    }
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     contributionAmount,
     connectedNetwork,
     project.contractAddress.polygon,
     project.contractAddress.celo,
+    walletBalance,
   ]);
 
   return (
@@ -254,6 +263,7 @@ const SubmitFunding = ({
                 handleChange={handleChange}
                 contributionAmount={contributionAmount}
                 validInput={validInput}
+                insufficientBalance={insufficientBalance}
                 txnSent={txnSent}
                 txnFailed={txnFailed}
                 connectedNetwork={connectedNetwork}
