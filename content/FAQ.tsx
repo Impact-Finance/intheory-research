@@ -7,13 +7,12 @@ const generalFAQs = [
   {
     question: 'Why does inTheory exist?',
     answer:
-      'inTheory was borne from the idea that science should be accessible to all and driven by an involved and informed community. Our platform aids in the democratization of scientific funding, and our development has been influenced by the emerging decentralized science movement.\ninTheory provides researchers with an entirely new way to fund and communicate their work, shrinking the divide between the science community and the rest of the world.',
+      'inTheory was born from the idea that science should be accessible to all and driven by an involved and informed community. Our platform aids in the democratization of scientific funding, and our development has been influenced by the emerging decentralized science movement.\ninTheory provides researchers with an entirely new way to fund and communicate their work, shrinking the divide between the science community and the rest of the world.',
   },
   {
-    question:
-      '***How does inTheory verify the legitimacy of research projects?',
+    question: 'How does inTheory verify the legitimacy of research projects?',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      'In order for a project to be added to the platform, a researcher must submit a project application, including references, and complete a 30-minute video interview with our team to verify legitimacy. Funds are distributed to researchers on an intermittent basis. If a researcher ever abandons their project or ceases communications, the project will be become inactive, contributions will cease, and all undisbursed funds will be returned to contributors.\nIf you believe that a certain project may be falsified or illegitimate, please contact us at info@impact-finance.io.',
   },
   {
     question:
@@ -34,7 +33,7 @@ const generalFAQs = [
   {
     question: 'How do I know that transactions are secure?',
     answer:
-      'All of our smart contracts have been audited for security by Certik, an industry-leading third-party auditor. Please be aware of phishing scams and bookmark the correct URL (https://www.intheory.app/).',
+      'Our smart contracts were developed using the OpenZeppelin contract libraries to ensure security and adherence to ERC token standards. Our contracts have been extensively tested using the Truffle testing suite and analyzed for security vulnerabilities and exploits using the latest AI tooling. The Solidity source code for our smart contracts is available for review upon request.\nPlease beware of phishing scams, bookmark the correct platform URL (https://www.intheory.app/), and report all scammers or malicious actors to info@impact-finance.io',
   },
   {
     question: 'Does inTheory charge any fees?',
@@ -51,38 +50,36 @@ export const researcherFAQs = [
       'No! Neither inTheory nor its community members assume any ownership rights over the outputs of the research conducted by researchers, including, but not limited to, technologies, frameworks, patents, datasets, or other trade secrets that may be developed while associated with inTheory. Though we encourage a transparent and open-access scientific process, researchers are free to decide what information they do or do not share with their supporters.\nAs the technology and regulations surrounding IP-NFTs mature, we may add features allowing researchers to share their IP with community members as a funding incentive, but this will always be on an opt-in basis.',
   },
   {
-    question:
-      '***What types of people should apply for funding through inTheory?',
+    question: 'What types of people should apply for funding through inTheory?',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      'If you are actively conducting scientific research, feel free to submit an application! We accept a broad range of disciplines from early-career to seasoned researchers. We especially encourage current graduate students, post-docs, or DAO members to apply. We believe that anyone can be a scientist and encourage anyone to apply regardless of their background.',
   },
   {
-    question: '***What types of research can inTheory fund?',
+    question: 'What types of research can inTheory fund?',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      'We will accept applications across many scientific disciplines, so long as the research adheres to our design principles of sustainability and social integrity. If in doubt, submit an application!',
   },
   {
-    question: '***What research will inTheory NOT fund?',
+    question: 'What research will inTheory NOT fund?',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      'We will not accept: projects whose primary application is weaponry, projects that are conducted in or with the support of countries on the OFAC sanctioned countries list, projects that are labeled as confidential by a government authority, or projects that do not adhere to our design principles of sustainability and social integrity.\nFor more information, please read our full terms and conditions.',
   },
   {
-    question:
-      '***What obligations do I have once my project is live on inTheory?',
+    question: 'What obligations do I have once my project is live on inTheory?',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-  },
-  {
-    question:
-      '***How often will I receive funds and how can I transfer funds to my bank account?',
-    answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      'Work towards the milestones as laid out in your project application.\nPromptly communicate changes to your project milestones or setbacks that you may encounter.\nThough you are free to decide what content (if any) that you share with your contributors, we suggest that you update your supporters with outputs of your research that may include reports, datasets, or manuscripts. Doing so helps verify the legitimacy of your project, which can encourage users to contribute.',
   },
   {
     question:
-      "***How do I make changes or updates to my research project's profile?",
+      'How often will I receive funds and how can I transfer funds to my bank account?',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      'Contributions to your project will be disbursed on a monthly basis, pending verification that the project is still active and proceeding towards the milestones outlined in the project application.\nWe understand that science is messy and that things change. To ensure that you receive your contributions, we ask that you simply communicate changes or setbacks in a timely manner.',
+  },
+  {
+    question:
+      "How do I make changes or updates to my research project's profile?",
+    answer:
+      "If you need to make any changes to your project's profile, please contact us at info@impact-finance.io.",
   },
 ];
 
@@ -95,7 +92,7 @@ export const userFAQs = [
   {
     question: 'Who owns the rights to the images generated on inTheory?',
     answer:
-      'You do! Neither inTheory nor the project researchers claim any ownership over images produced during the funding process. Should you decide to sell or transfer your NFT, the ownership of the image shall also be transfered to the new owner.',
+      'You do! Neither inTheory nor the project researchers claim any ownership over images produced during the funding process. Should you decide to sell or transfer your NFT, the ownership of the image shall also be transferred to the new owner.',
   },
   {
     question:
@@ -110,20 +107,20 @@ export const userFAQs = [
       'The choice is up to you, but here is some information to help you decide.\nIf you plan to sell or trade your NFT after you have received it, NFT liquidity is generally higher on Polygon and there are more marketplace options for doing so. If you do choose the Polygon network, you will also need to have a balance of MATIC (purchasable through Ramp) in your wallet to cover the gas cost of the transaction.\nIf you choose the Celo network, the gas fee is paid using CELO, which is also available on Ramp or through a centralized exchange. Gas fees are generally only a few cents on both networks.',
   },
   {
-    question: '***What is "gas" and why do I have to pay for my transactions?',
+    question: 'What is "gas" and why do I have to pay for my transactions?',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      'Each transaction requires a small amount of network "gas" fee be paid to execute. These fees are paid in MATIC on the Polygon network and CELO on the Celo network. The gas fees on these networks is small, and a balance of 1 MATIC/CELO should be much more than adequate to complete the contribution.\nIf you are encountering issues submitting a contribution, please contact us at info@impact-finance.io.',
   },
   {
-    question: '***Why does my transaction keep failing?',
+    question: 'Why does my transaction keep failing?',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      'Insufficient balance of USDC/cUSD: Please ensure that you have enough USDC (if on Polygon network) or cUSD (if on Celo network) in your connected wallet to complete the transaction, and that you approve inTheory to access your payment token when prompted.\nInsufficient balance of MATIC/CELO for gas fees: Each transaction requires a small amount of network "gas" fee be paid to execute. These fees are paid in MATIC on the Polygon network and CELO on the Celo network. The gas fees on these networks is small, and a balance of 1 MATIC/CELO should be much more than adequate to complete the contribution.\nIf you are still encountering issues submitting a contribution, please contact us at info@impact-finance.io.',
   },
   {
     question:
-      '***How do I find my NFT in my wallet after I have contributed to a project?',
+      'How do I find my NFT in my wallet after I have contributed to a project?',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      'To find your inTheory NFT in your wallet, you must import the token using its contract address. The contract address for your contribution token can be found via the block explorer summary of your contribution.\nIf you need help viewing your NFT in your wallet, please contact us at info@impact-finance.io.',
   },
   {
     question: 'Can I sell my inTheory NFT on a secondary marketplace? ',
@@ -132,21 +129,21 @@ export const userFAQs = [
   },
   {
     question:
-      "***What if I contribute to a project and the project owner doesn't do any work?",
+      "What if I contribute to a project and the project owner doesn't do any work?",
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      'Funds are distributed to researchers on an intermittent basis. If a researcher ever abandons their project or ceases communications, the project will be become inactive, contributions will cease, and all undisbursed funds will be returned to contributors.\nIf you believe that a certain project may be falsified or illegitimate, please contact us at info@impact-finance.io.',
   },
   {
     question:
-      '***How can I stay updated with new results and track progress of the projects that I fund?',
+      'How can I stay updated with new results and track progress of the projects that I fund?',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      "Researchers are encouraged to share reports, datasets, and more through their project's contributor portal (coming soon). Only users that have submitted a funding contribution to the project and hold their inTheory NFT in their wallet can access the contributor portal.",
   },
   {
     question:
-      '***Is there a way to contact the researchers that have projects on the platform?',
+      'Is there a way to contact the researchers that have projects on the platform?',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+      'Please direct all researcher contact requests to info@impact-finance.io. Please do not harass researchers through their social accounts or contact websites. We take harassment of our researcher community very seriously and will pursue legal action as necessary.',
   },
 ];
 
