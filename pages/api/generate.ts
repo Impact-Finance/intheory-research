@@ -28,13 +28,13 @@ export default async function handler(
       prompt: imagePrompt,
       n: 1,
       size: '1024x1024',
-      // size: '256x256',
     });
 
     const imageUrl = genResponse.data.data[0].url;
 
     res.status(200).json({ imageUrl: imageUrl! });
-  } catch {
+  } catch (e) {
+    console.error;
     res.status(500).json({ imageUrl: '' });
   }
 }
