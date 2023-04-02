@@ -34,7 +34,7 @@ const FeaturedProject = ({ project }: FeaturedProjectProps) => {
               src={atom}
               alt=""
               fill
-              sizes="20px"
+              sizes="2rem"
             />
           </div>
           Featured Research

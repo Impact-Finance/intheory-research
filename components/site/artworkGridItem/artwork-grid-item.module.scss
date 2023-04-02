@@ -90,6 +90,9 @@
     }
     .hoverContent {
       display: flex;
+      @include screen-tablet-lg {
+        display: none;
+      }
     }
   }
 }
