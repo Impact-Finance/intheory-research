@@ -55,7 +55,7 @@ const SuccessBox = ({
         <div>
           <Link
             className={styles.tweetLink}
-            href="https://twitter.com/intent/tweet?text=I+just+supported+scientific+research+on+inTheory!+Check+it+out+at&url=https://intheory.app/&hashtags=desci,openscience,web3&via=desci_impact"
+            href="https://twitter.com/intent/tweet?text=I+just+supported+scientific+research+on+inTheory!+Check+it+out+at&url=https://intheory.app/&hashtags=DeSci,OpenScience,web3,DeSciSummer&via=desci_impact"
             target="_blank"
             rel="noreferrer">
             Share on Twitter
