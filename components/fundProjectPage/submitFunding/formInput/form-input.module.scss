@@ -102,13 +102,15 @@
     .currentBalance {
       text-align: left;
       font-size: 1.4rem;
-      -webkit-filter: opacity(0.75);
-      filter: opacity(0.75);
       padding-right: 1rem;
       border-right: 1px solid rgba($color-accent-1, 0.75);
+      transition: all 0.2s;
       span {
         text-transform: uppercase;
-        color: $color-accent-1;
+        color: rgba($color-accent-1, 0.75);
+      }
+      &:hover {
+        @include btn-hover;
       }
     }
     .rampLink {

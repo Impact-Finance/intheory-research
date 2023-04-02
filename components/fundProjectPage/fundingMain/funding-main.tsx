@@ -38,6 +38,11 @@ const FundingMain = ({ project }: FundingMainProps) => {
   const size = useWindowSize();
   const leftPanel = useRef<null | HTMLDivElement>(null);
 
+  const refreshBalance = async () => {
+    const newBalance = await getStablecoinBalance(network, primaryWallet!);
+    setWalletBalance(newBalance);
+  };
+
   useEffect(() => {
     const getBalance = async () => {
       const balance = await getStablecoinBalance(network, primaryWallet!);
@@ -120,6 +125,7 @@ const FundingMain = ({ project }: FundingMainProps) => {
             walletObject={primaryWallet}
             txnSuccess={txnSuccess}
             setTxnSuccess={setTxnSuccess}
+            refreshBalance={refreshBalance}
           />
         )}
       </div>

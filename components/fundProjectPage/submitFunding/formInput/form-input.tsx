@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { ChangeEvent, FormEvent } from 'react';
 
 import StatusMessage from './statusMessage/status-message';
+import refreshIcon from '@/public/icons/refresh.svg';
 import windowIcon from '@/public/icons/window.svg';
 import AnimatedDots from '@/components/site/animatedDots/animated-dots';
 import styles from './form-input.module.scss';
@@ -22,6 +23,7 @@ interface FormInputProps {
   requestingTxn: boolean;
   approvalGranted: boolean;
   txnGranted: boolean;
+  refreshBalance: () => void;
 }
 
 const FormInput = ({
@@ -40,6 +42,7 @@ const FormInput = ({
   requestingTxn,
   approvalGranted,
   txnGranted,
+  refreshBalance,
 }: FormInputProps) => {
   return (
     <form
@@ -88,8 +91,17 @@ const FormInput = ({
       {connectedNetwork === 137 ||
         (connectedNetwork === 80001 && (
           <div className={styles.subText}>
-            <p className={styles.currentBalance}>
-              <span>Wallet balance:</span> {walletBalance} USDC
+            <p
+              className={styles.currentBalance}
+              onClick={refreshBalance}>
+              <span>Wallet balance:</span> {walletBalance} USDC{' '}
+              <Image
+                className={styles.icon}
+                src={refreshIcon}
+                alt=""
+                width={10}
+                height={10}
+              />
             </p>
             <a
               className={styles.rampLink}
@@ -110,8 +122,17 @@ const FormInput = ({
       {connectedNetwork === 42220 ||
         (connectedNetwork === 44787 && (
           <div className={styles.subText}>
-            <p className={styles.currentBalance}>
-              <span>Wallet balance:</span> {walletBalance} cUSD
+            <p
+              className={styles.currentBalance}
+              onClick={refreshBalance}>
+              <span>Wallet balance:</span> {walletBalance} cUSD{' '}
+              <Image
+                className={styles.icon}
+                src={refreshIcon}
+                alt=""
+                width={10}
+                height={10}
+              />
             </p>
             <a
               className={styles.rampLink}

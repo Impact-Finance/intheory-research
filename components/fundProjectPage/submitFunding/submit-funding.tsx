@@ -34,6 +34,7 @@ interface SubmitFundingProps {
   setImageRequested: Dispatch<SetStateAction<boolean>>;
   setImageGenerated: Dispatch<SetStateAction<boolean>>;
   setImageUrl: Dispatch<SetStateAction<string>>;
+  refreshBalance: () => void;
 }
 
 const minContribution = 2; // Change for live projects
@@ -50,6 +51,7 @@ const SubmitFunding = ({
   setImageRequested,
   setImageGenerated,
   setImageUrl,
+  refreshBalance,
 }: SubmitFundingProps) => {
   const [contributionAmount, setContributionAmount] = useState<number>();
   const [validInput, setValidInput] = useState(false);
@@ -277,6 +279,7 @@ const SubmitFunding = ({
                 approvalGranted={approvalGranted}
                 requestingTxn={requestingTxn}
                 txnGranted={txnGranted}
+                refreshBalance={refreshBalance}
               />
               <button
                 className={styles.howBtn}
