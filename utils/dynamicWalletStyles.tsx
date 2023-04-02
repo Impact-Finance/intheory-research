@@ -9,6 +9,7 @@ const textMedium = '1.6rem';
 const textSmall = '1.2rem';
 const textXtraSmall = '1rem';
 const btnBorderRadius = '0.8rem';
+const boxBorderRadius = '1.8rem';
 const modalWidth = '60rem';
 const transition = 'transition: all 0.2s;';
 
@@ -347,8 +348,11 @@ const dynamicWalletStyles = `
 
   @media (max-width: 640px) {
     .dynamic-auth-layout__container {
-      border-bottom: none;
-      top: 0;
+      border-radius: ${boxBorderRadius};
+    }
+    .dynamic-auth-layout__modal {
+      top: 10rem;
+      bottom: unset;
     }
   }
 
