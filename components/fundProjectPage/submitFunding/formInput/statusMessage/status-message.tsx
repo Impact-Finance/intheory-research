@@ -5,8 +5,6 @@ interface StatusMessageProps {
   validInput: boolean;
   insufficientBalance: boolean;
   minContribution: number;
-  walletBalance: string;
-  contributionAmount: number | undefined;
   txnSent: boolean;
   creatingMetadata: boolean;
   requestingApproval: boolean;
@@ -20,8 +18,6 @@ const StatusMessage = ({
   validInput,
   insufficientBalance,
   minContribution,
-  walletBalance,
-  contributionAmount,
   txnSent,
   creatingMetadata,
   requestingApproval,
