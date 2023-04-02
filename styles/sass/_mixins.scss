@@ -20,6 +20,11 @@
   &:hover {
     @include btn-hover;
   }
+  @include screen-tablet-sm {
+    font-size: 2rem;
+    margin: 0 1rem;
+    padding: 1.5rem 1.5rem;
+  }
 }
 
 @mixin image-hover {
@@ -67,6 +72,12 @@
   width: $width;
   max-width: $max-page-width;
   padding: 0 5rem;
+  @include screen-tablet-sm {
+    padding: 0 3rem;
+  }
+  @include screen-mobile-lg {
+    padding: 0 2rem;
+  }
 }
 
 @mixin section-border {
@@ -87,12 +98,6 @@
   position: relative;
   border-radius: $btn-border-radius;
   display: inline-block;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
   &::after {
     content: '';
     -webkit-filter: opacity(0.5);

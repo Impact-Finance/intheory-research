@@ -33,14 +33,7 @@ const RadarChart = ({ impacts }: RadarChartProps) => {
   };
 
   const impactData = {
-    labels: [
-      'SUSTAINABILITY',
-      'GLOBAL HEALTH',
-      'SOCIAL SCIENCE',
-      'DIGITAL TECHNOLOGY',
-      'MANUFACTURING',
-      'TRANSPORTATION',
-    ],
+    labels: ['SUS', 'GH', 'SOC', 'DIG', 'MAN', 'TRA'],
     datasets: [
       {
         data: impactArray,
@@ -99,6 +92,26 @@ const RadarChart = ({ impacts }: RadarChartProps) => {
           />
         </div>
       </Waypoint>
+      <ul className={styles.legend}>
+        <li className={styles.legendItem}>
+          <span>SUS:</span> Sustainability
+        </li>
+        <li className={styles.legendItem}>
+          <span>GH:</span> Global Health
+        </li>
+        <li className={styles.legendItem}>
+          <span>SOC:</span> Social Science
+        </li>
+        <li className={styles.legendItem}>
+          <span>DIG:</span> Digital Technology
+        </li>
+        <li className={styles.legendItem}>
+          <span>MAN:</span> Manufacturing
+        </li>
+        <li className={styles.legendItem}>
+          <span>TRA:</span> Transportation
+        </li>
+      </ul>
     </>
   );
 };

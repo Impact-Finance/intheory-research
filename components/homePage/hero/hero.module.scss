@@ -9,10 +9,17 @@
     .textBox {
       width: 55%;
       margin-right: 5%;
+      @include screen-tablet-lg {
+        width: 100%;
+        margin: 0;
+      }
       .mainHeader {
         font-size: 4.3rem;
         letter-spacing: 2px;
         margin-bottom: 2.5rem;
+        @include screen-tablet-sm {
+          font-size: 4rem;
+        }
         .highlighted {
           background-image: linear-gradient(
             to right,
@@ -29,7 +36,10 @@
         filter: opacity(0.85);
         font-size: 2.7rem;
         line-height: 3.5rem;
-        margin-bottom: 5rem;
+        margin-bottom: 3rem;
+        @include screen-tablet-sm {
+          font-size: 2.4rem;
+        }
       }
       .actionButtons {
         display: flex;
@@ -52,6 +62,15 @@
       justify-content: flex-end;
       height: 55rem;
       width: 55rem;
+      @include screen-tablet-lg {
+        display: none;
+      }
     }
   }
+}
+
+@include screen-mobile-lg {
+}
+
+@include screen-mobile-sm {
 }

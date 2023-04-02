@@ -77,7 +77,7 @@ const SuccessBox = ({
             href={txnUrl}
             target="_blank"
             rel="noreferrer">
-            {txnHash.slice(0, 10) + '...' + txnHash.slice(-10)}{' '}
+            {txnHash.slice(0, 6) + '...' + txnHash.slice(-6)}{' '}
             <Image
               className={styles.icon}
               src={windowIcon}
@@ -94,7 +94,7 @@ const SuccessBox = ({
             href={'https://ipfs.io/ipfs/' + metadataCid + '/metadata.json'}
             target="_blank"
             rel="noreferrer">
-            {metadataCid.slice(0, 10) + '...' + metadataCid.slice(-10)}{' '}
+            {metadataCid.slice(0, 6) + '...' + metadataCid.slice(-6)}{' '}
             <Image
               className={styles.icon}
               src={windowIcon}

@@ -17,6 +17,14 @@
   border-bottom: 1px solid rgba($color-accent-1, 0.25);
   border-radius: $box-border-radius;
   padding: 3rem;
+  z-index: 10;
+  @include screen-tablet-sm {
+    height: 100%;
+    min-height: -webkit-fit-content;
+    min-height: -moz-fit-content;
+    min-height: fit-content;
+    justify-content: space-around;
+  }
   .howHead {
     font-size: 3rem;
     font-weight: 500;

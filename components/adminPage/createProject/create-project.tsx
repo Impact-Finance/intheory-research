@@ -130,8 +130,13 @@ const CreateProject = ({
           primaryWallet={primaryWallet}
           setShowAuthFlow={setShowAuthFlow}
         />
-        <p className={styles.subtext}>
-          <span>Factory Contract Address:</span> {factoryAddress}
+        <p
+          className={styles.subtext}
+          onClick={() => {
+            navigator.clipboard.writeText(factoryAddress);
+          }}>
+          <span>Factory Contract Address:</span>{' '}
+          {factoryAddress.slice(0, 8) + '...' + factoryAddress.slice(-8)}
         </p>
         <form className={styles.optionsForm}>
           <div>
@@ -207,8 +212,19 @@ const CreateProject = ({
           disabled={pending || !validInputs || !primaryWallet}>
           {pending ? 'Deploying' : 'Deploy'}
         </button>
-        <p className={styles.subtext}>
-          <span>New Project Contract Address:</span> {newContractAddress}
+        <p
+          className={styles.subtext}
+          onClick={() => {
+            navigator.clipboard.writeText(newContractAddress);
+          }}>
+          <span>New Project Contract Address:</span>{' '}
+          {newContractAddress && (
+            <>
+              {newContractAddress.slice(0, 8) +
+                '...' +
+                newContractAddress.slice(-8)}
+            </>
+          )}
         </p>
       </div>
     </section>

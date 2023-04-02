@@ -10,6 +10,7 @@
     -webkit-filter: opacity(0.85);
     filter: opacity(0.85);
     margin-bottom: 1.5rem;
+    text-align: center;
   }
   .deployBox {
     display: flex;
@@ -24,11 +25,18 @@
     padding: 3rem;
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
+    @include screen-tablet-sm {
+      text-align: center;
+      width: 95%;
+    }
     .optionsForm {
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
       align-items: flex-end;
+      @include screen-tablet-sm {
+        gap: 4rem;
+      }
       .formLabel {
         font-size: 1.8rem;
         margin-right: 1rem;
@@ -44,6 +52,9 @@
         border-bottom: 1px solid rgba($color-accent-1, 0.25);
         background-color: rgba($color-dark, 0.5);
         color: $color-accent-1;
+        @include screen-tablet-sm {
+          width: 35rem;
+        }
         &:focus {
           outline: 1px solid rgba($color-accent-2, 0.5);
           border-bottom: 1px solid rgba($color-accent-1, 0);
@@ -67,6 +78,9 @@
       font-size: 1.8rem;
       span {
         color: rgba($color-accent-1, 0.75);
+      }
+      &:hover {
+        cursor: pointer;
       }
     }
   }

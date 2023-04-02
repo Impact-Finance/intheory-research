@@ -52,7 +52,7 @@ const HowTo = () => {
         <div className={styles.stepItem}>
           <h3>Receive your funds</h3>
           <p>
-            Receive instant payouts from contributions to your project in the
+            Receive periodic payouts from contributions to your project in the
             form of the USDC or cUSD stablecoins. If you don&apos;t already have
             a cryptocurrency wallet, we will help you to set one up.
           </p>

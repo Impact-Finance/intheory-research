@@ -8,6 +8,9 @@
   .mainContent {
     @include center-flex;
     gap: 5rem;
+    @include screen-tablet-lg {
+      flex-direction: column;
+    }
     .leftContent {
       position: relative;
       background-color: rgba($color-main, 0.25);
@@ -19,6 +22,10 @@
       backdrop-filter: blur(10px);
       overflow: hidden;
       transition: all 0.4s;
+      @include screen-tablet-lg {
+        height: 50rem;
+        width: 90%;
+      }
       &:hover {
         -webkit-filter: saturate(1.5);
         filter: saturate(1.5);
@@ -46,9 +53,13 @@
       justify-content: center;
       min-height: 65rem;
       gap: 3rem;
+      @include screen-tablet-lg {
+        align-items: center;
+        text-align: center;
+      }
       p {
         font-size: 4rem;
-        line-height: 4rem;
+        line-height: 4.5rem;
         span {
           color: $color-accent-1;
           display: block;

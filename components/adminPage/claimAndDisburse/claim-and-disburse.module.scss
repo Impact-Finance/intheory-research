@@ -5,6 +5,7 @@
   @include center-flex;
   flex-direction: column;
   margin-top: $section-spacing;
+  text-align: center;
   .header {
     font-size: 2.5rem;
     -webkit-filter: opacity(0.85);
@@ -24,11 +25,17 @@
     padding: 3rem;
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
+    @include screen-tablet-sm {
+      width: 95%;
+    }
     .inputForm {
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
       align-items: flex-end;
+      @include screen-tablet-sm {
+        gap: 4rem;
+      }
       .formLabel {
         font-size: 1.8rem;
         margin-right: 1rem;
@@ -44,6 +51,9 @@
         border-bottom: 1px solid rgba($color-accent-1, 0.25);
         background-color: rgba($color-dark, 0.5);
         color: $color-accent-1;
+        @include screen-tablet-sm {
+          width: 35rem;
+        }
         &:focus {
           outline: 1px solid rgba($color-accent-2, 0.5);
           border-bottom: 1px solid rgba($color-accent-1, 0);
@@ -65,6 +75,9 @@
     }
     .status {
       font-size: 2rem;
+      &:hover {
+        cursor: pointer;
+      }
       .success {
         text-transform: uppercase;
         color: $color-accent-1;

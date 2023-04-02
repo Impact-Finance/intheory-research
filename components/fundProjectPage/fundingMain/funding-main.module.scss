@@ -4,7 +4,11 @@
   @include restrained-width(100%);
   @include center-flex;
   gap: $content-gap;
-  margin-top: $section-spacing/2;
+  margin-top: $section-spacing / 2;
+  @include screen-tablet-lg {
+    flex-direction: column;
+    gap: $content-gap * 2;
+  }
   .leftPanel {
     @include center-flex;
     flex-direction: column;
@@ -48,9 +52,18 @@
     overflow: hidden;
     @include safari-overflow;
     transition: all 0.4s;
+    @include screen-tablet-lg {
+      width: 95%;
+    }
     &:hover {
       -webkit-filter: saturate(1.5);
       filter: saturate(1.5);
+    }
+  }
+  .continueBtn {
+    @include main-btn;
+    &:disabled {
+      filter: opacity(0.5);
     }
   }
 }

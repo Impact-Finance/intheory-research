@@ -5,6 +5,7 @@
   @include center-flex;
   flex-direction: column;
   margin-top: $section-spacing;
+  text-align: center;
   .header {
     font-size: 2.5rem;
     -webkit-filter: opacity(0.85);
@@ -24,11 +25,17 @@
     padding: 3rem;
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
+    @include screen-tablet-sm {
+      width: 95%;
+    }
     .inputForm {
       display: flex;
       flex-direction: column;
       gap: 1.5rem;
       align-items: center;
+      @include screen-tablet-sm {
+        gap: 4rem;
+      }
       .formLabel {
         font-size: 1.8rem;
         line-height: 2.4rem;
@@ -61,12 +68,21 @@
         border-bottom: 1px solid rgba($color-accent-1, 0.25);
         background-color: rgba($color-dark, 0.5);
         color: $color-accent-1;
+        @include screen-tablet-sm {
+          width: 35rem;
+        }
         &:focus {
           outline: 1px solid rgba($color-accent-2, 0.5);
           border-bottom: 1px solid rgba($color-accent-1, 0);
         }
         &.areaInput {
           width: 70rem;
+          @include screen-tablet-lg {
+            width: 50rem;
+          }
+          @include screen-tablet-sm {
+            width: 35rem;
+          }
         }
       }
       .radioSelector {
@@ -74,6 +90,9 @@
         grid-template-columns: repeat(2, 1fr);
         margin: 2rem 0;
         gap: 2rem 10rem;
+        @include screen-tablet-sm {
+          grid-template-columns: 1fr;
+        }
         .formLabel:hover {
           cursor: pointer;
         }

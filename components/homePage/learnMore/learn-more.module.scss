@@ -5,6 +5,7 @@
   @include center-flex;
   flex-direction: column;
   margin-top: $section-spacing;
+  text-align: center;
   .heading {
     @include header-styling;
     font-size: 3rem;

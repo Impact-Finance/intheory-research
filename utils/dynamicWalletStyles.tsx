@@ -120,6 +120,7 @@ const dynamicWalletStyles = `
   .badge__container {
     gap: 0.75rem;
     padding: 0.5rem 1rem;
+    font-size: ${textMedium};
   }
   .badge__dot {
     height: 0.75rem;
@@ -306,13 +307,14 @@ const dynamicWalletStyles = `
     backdrop-filter: blur(10px);
     border-radius: ${btnBorderRadius};
     min-width: 13rem;
+    height: fit-content;
   }
   .network .network__title-icon {
     width: ${textMedium};
     height: ${textMedium};
   }
   .dynamic-widget-inline-controls__network-picker-list {
-    top: 3rem;
+    top: 100%;
   }
   .network-not-supported__continue {
     background-color: rgba(${colorMainRgb}, 0.5);
@@ -341,6 +343,38 @@ const dynamicWalletStyles = `
   }
   .network-not-supported__log-out {
     font-size: ${textSmall};
+  }
+
+  @media (max-width: 640px) {
+    .dynamic-auth-layout__container {
+      border-bottom: none;
+      top: 0;
+    }
+  }
+
+  @media (max-width: 550px) {
+    .action-list__container {
+      background-image: linear-gradient(to bottom, rgba(${colorDarkRgb}, 0.75), rgba(${colorDarkRgb}, 1));
+      border-top: 1px solid rgba(${colorAccentRgb}, 0.5);
+    }
+  }
+
+  @media (pointer: coarse) {
+    .dynamic-widget-inline-controls__network-picker-list {
+      background-image: linear-gradient(to bottom, rgba(${colorDarkRgb}, 0.85), rgba(${colorDarkRgb}, 1));
+      border-top: 1px solid rgba(${colorAccentRgb}, 0.5);
+      border-bottom: 1px solid rgba(${colorAccentRgb}, 0.5);
+      top: 80px;
+    }
+    .dynamic-widget-modal {
+      top: 10rem;
+      bottom: unset;
+      border-radius: ${btnBorderRadius}
+    }
+    .dynamic-widget-card,
+    .widget-portal__container {
+      border-radius: ${btnBorderRadius}
+    }
   }
 
   @keyframes animatedGradient {

@@ -5,6 +5,9 @@
   display: flex;
   gap: 4rem;
   margin-top: 3rem;
+  @include screen-tablet-lg {
+    flex-direction: column;
+  }
   .imageBox {
     flex: 1;
     position: relative;
@@ -17,6 +20,10 @@
     overflow: hidden;
     border-radius: $box-border-radius;
     transition: all 0.4s;
+    @include screen-tablet-lg {
+      height: 40rem;
+      flex: none;
+    }
     .coverImage {
       -o-object-fit: cover;
       object-fit: cover;

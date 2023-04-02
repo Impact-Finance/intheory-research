@@ -8,7 +8,6 @@ import supportedNetworks from '@/utils/supportedNetworks';
 import refreshPage from '@/utils/refreshPage';
 import useWindowSize from '@/utils/useWindowSize';
 import Layout from '@/components/layout/layout';
-import MobileContent from '@/components/site/mobileContent/mobile-content';
 import SiteHeader from '@/components/layout/site-header';
 import '@/styles/globals.scss';
 
@@ -45,12 +44,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           color="rgba(104, 234, 255, 1)"
           height={1}
         />
-        {size.width && size.width < 1000 && <MobileContent />}
-        {size.width && size.width >= 1000 && (
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        )}
+        <Layout screenWidth={size.width}>
+          <Component {...pageProps} />
+        </Layout>
       </DynamicContextProvider>
     </>
   );

@@ -29,6 +29,8 @@ interface SubmitFundingProps {
   connectedNetwork: number | undefined;
   walletBalance: string;
   walletObject: Wallet | null;
+  txnSuccess: boolean;
+  setTxnSuccess: Dispatch<SetStateAction<boolean>>;
   setImageRequested: Dispatch<SetStateAction<boolean>>;
   setImageGenerated: Dispatch<SetStateAction<boolean>>;
   setImageUrl: Dispatch<SetStateAction<string>>;
@@ -43,6 +45,8 @@ const SubmitFunding = ({
   connectedNetwork,
   walletBalance,
   walletObject,
+  txnSuccess,
+  setTxnSuccess,
   setImageRequested,
   setImageGenerated,
   setImageUrl,
@@ -56,7 +60,6 @@ const SubmitFunding = ({
   const [approvalGranted, setApprovalGranted] = useState(false);
   const [requestingTxn, setRequestingTxn] = useState(false);
   const [txnGranted, setTxnGranted] = useState(false);
-  const [txnSuccess, setTxnSuccess] = useState(false);
   const [txnFailed, setTxnFailed] = useState(false);
   const [txnHash, setTxnHash] = useState('');
   const [tokenId, setTokenId] = useState('');

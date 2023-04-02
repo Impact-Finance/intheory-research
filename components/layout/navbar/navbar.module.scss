@@ -1,0 +1,82 @@
+@import 'styles/sass/mixins';
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  background-color: rgba($color-dark, 0.75);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: $navbar-height;
+  .innerShell {
+    @include center-flex;
+    @include restrained-width(100%);
+    .rightContent,
+    .leftContent {
+      @include center-flex;
+    }
+
+    .logoBox {
+      position: relative;
+      height: $navbar-height;
+      width: 18rem;
+      .logo {
+        @include obj-contain;
+      }
+    }
+
+    .buttons {
+      display: inline-flex;
+      font-size: 1.6rem;
+      align-items: center;
+      .links {
+        display: flex;
+        .navLink {
+          padding: 1rem 1.2rem;
+          --link-spacing: 2.5rem;
+          margin: 0 var(--link-spacing);
+          border-radius: $btn-border-radius;
+          border-bottom: 1px solid rgba($color-accent-1, 0);
+          transition: all 0.2s;
+          &:last-child {
+            margin-right: calc(2 * var(--link-spacing));
+          }
+          &:hover:not(.active) {
+            @include btn-hover;
+          }
+          &.active {
+            color: $color-accent-1;
+            border-bottom: 1px solid rgba($color-accent-1, 0.5);
+          }
+        }
+      }
+      .mobileWalletConnect {
+        background-color: $color-main;
+        width: 4.5rem;
+        height: 4.5rem;
+        padding: 0.7rem;
+        border-radius: $btn-border-radius;
+        border: 1px solid rgba($color-accent-1, 0.25);
+        &.unConnected {
+          border: none;
+          @include gradient-border;
+        }
+        div {
+          position: relative;
+          height: 100%;
+          width: 100%;
+          .walletIcon {
+            -o-object-fit: contain;
+            object-fit: contain;
+            -webkit-filter: opacity(0.75);
+            filter: opacity(0.75);
+          }
+        }
+      }
+    }
+  }
+}

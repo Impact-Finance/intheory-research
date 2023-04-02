@@ -19,24 +19,26 @@ const ExploreHeader = ({ current }: ExploreHeaderProps) => {
     <section className={styles.section}>
       <div className={styles.leftContent}>
         <h1 className={styles.head}>Explore</h1>
-        <Link
-          className={
-            current === 'projects'
-              ? `${styles.tab} ${styles.active}`
-              : styles.tab
-          }
-          href="/projects">
-          Research
-        </Link>
-        <Link
-          className={
-            current === 'artworks'
-              ? `${styles.tab} ${styles.active}`
-              : styles.tab
-          }
-          href="/artworks">
-          Artworks
-        </Link>
+        <div className={styles.tabs}>
+          <Link
+            className={
+              current === 'projects'
+                ? `${styles.tab} ${styles.active}`
+                : styles.tab
+            }
+            href="/projects">
+            Research
+          </Link>
+          <Link
+            className={
+              current === 'artworks'
+                ? `${styles.tab} ${styles.active}`
+                : styles.tab
+            }
+            href="/artworks">
+            Artworks
+          </Link>
+        </div>
       </div>
       <div className={styles.filters}>
         <button

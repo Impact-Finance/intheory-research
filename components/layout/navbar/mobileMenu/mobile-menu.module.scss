@@ -1,0 +1,39 @@
+@import '/styles/sass/mixins';
+
+.menuContainer {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(
+    to bottom,
+    rgba($color-dark, 0.9),
+    rgba($color-dark, 0.8)
+  );
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  .links {
+    margin-top: $navbar-height + 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    .navLink {
+      font-size: 3rem;
+      padding: 1rem 1.2rem;
+      border-radius: $btn-border-radius;
+      border-bottom: 1px solid rgba($color-accent-1, 0);
+      transition: all 0.2s;
+      &.active {
+        color: $color-accent-1;
+        border-bottom: 1px solid rgba($color-accent-1, 0.5);
+      }
+    }
+  }
+}

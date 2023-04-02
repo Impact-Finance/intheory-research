@@ -6,6 +6,10 @@
   height: 50rem;
   width: 50rem;
   z-index: -1;
+  @include screen-tablet-sm {
+    height: 40rem;
+    width: 40rem;
+  }
   .shape {
     @include obj-contain;
     -webkit-filter: opacity(0.1);

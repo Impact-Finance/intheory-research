@@ -204,14 +204,25 @@ const ClaimAndDisburse = ({
           }>
           Send Funds to Researcher
         </button>
-        <p className={styles.status}>
+        <p
+          className={styles.status}
+          onClick={() => {
+            navigator.clipboard.writeText(txnHash);
+          }}>
           Transfer status:{' '}
           {success && <span className={styles.success}>success</span>}
           {pending && <span className={styles.pending}>pending...</span>}
           {failed && <span className={styles.failed}>failed</span>}
         </p>
-        <p className={styles.status}>
-          Txn hash: <span className={styles.pending}>{txnHash}</span>
+        <p
+          className={styles.status}
+          onClick={() => {
+            navigator.clipboard.writeText(txnHash);
+          }}>
+          Txn hash:{' '}
+          <span className={styles.pending}>
+            {txnHash && <>{txnHash.slice(0, 8) + '...' + txnHash.slice(-8)}</>}
+          </span>
         </p>
       </div>
     </section>

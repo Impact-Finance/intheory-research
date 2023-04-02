@@ -11,7 +11,7 @@ const ArtGrid = ({ bannerArtworks }: ArtGridProps) => {
   return (
     <section className={styles.section}>
       <SectionHeading
-        title="community artwork"
+        title="community art"
         link="/artworks"
       />
       <div className={styles.gridBox}>

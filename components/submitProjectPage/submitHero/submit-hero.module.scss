@@ -11,9 +11,13 @@
     font-size: 6rem;
     letter-spacing: 3px;
     margin-bottom: 3rem;
+    @include screen-tablet-sm {
+      font-size: 6rem;
+      letter-spacing: 1px;
+    }
   }
   .subText {
-    width: 55rem;
+    max-width: 55rem;
     font-size: 3rem;
     line-height: 5rem;
     margin-bottom: 3rem;

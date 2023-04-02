@@ -1,0 +1,58 @@
+@import '/styles/sass/mixins';
+
+.search {
+  position: relative;
+  .searchIcon {
+    position: absolute;
+    --icon-size: 1.8rem;
+    height: var(--icon-size);
+    width: var(--icon-size);
+    left: calc(var(--icon-size) * 2.3);
+    top: calc(50% - var(--icon-size) / 2);
+    background-color: transparent;
+    -webkit-filter: opacity(0.5);
+    filter: opacity(0.5);
+    .icon {
+      @include obj-contain;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .searchInput {
+    border: 0.1rem solid rgba($color-accent-1, 0.5);
+    border-radius: $box-border-radius;
+    background-color: rgba($color-dark, 0.35);
+    margin: 0 3rem;
+    padding: 1rem 1.5rem 1rem 3.5rem;
+    width: 25rem;
+    color: rgba($color-white, 0.5);
+
+    &:focus {
+      outline: none;
+      border-color: rgba($color-accent-2, 0.5);
+      background-color: rgba($color-main, 0.35);
+      box-shadow: 0 0 0.4rem 0.4rem rgba($color-accent-2, 0.15);
+    }
+
+    &::-webkit-input-placeholder {
+      color: rgba($color-accent-1, 0.5);
+    }
+
+    &::-moz-placeholder {
+      color: rgba($color-accent-1, 0.5);
+    }
+
+    &:-ms-input-placeholder {
+      color: rgba($color-accent-1, 0.5);
+    }
+
+    &::-ms-input-placeholder {
+      color: rgba($color-accent-1, 0.5);
+    }
+
+    &::placeholder {
+      color: rgba($color-accent-1, 0.5);
+    }
+  }
+}

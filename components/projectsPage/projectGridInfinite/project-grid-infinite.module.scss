@@ -22,6 +22,10 @@
       display: grid;
       gap: $content-gap;
       grid-template-columns: repeat(3, 1fr);
+      @include screen-tablet-lg {
+        display: flex;
+        flex-wrap: wrap;
+      }
     }
     .loaderBox {
       margin-top: 5rem;
@@ -35,6 +39,7 @@
         font-size: 4rem;
         margin-bottom: 2rem;
         letter-spacing: 1px;
+        text-align: center;
       }
       .endText {
         font-size: 2rem;

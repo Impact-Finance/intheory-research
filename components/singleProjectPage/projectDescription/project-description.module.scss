@@ -36,9 +36,16 @@
       padding: 3rem 2rem;
       margin: 0 0 2rem 3rem;
       width: 65rem;
-      height: 60rem;
+      height: -webkit-fit-content;
+      height: -moz-fit-content;
+      height: fit-content;
       border-radius: $box-border-radius;
       float: right;
+      @include screen-tablet-lg {
+        margin: 0 0 3rem 0;
+        width: 100%;
+        height: 100%;
+      }
     }
   }
 }

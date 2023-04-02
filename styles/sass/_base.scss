@@ -48,6 +48,7 @@ main {
   }
 }
 
+// Responsive root sizing
 @include screen-desktop-md {
   html {
     font-size: 54%;
@@ -56,5 +57,29 @@ main {
 @include screen-desktop-sm {
   html {
     font-size: 45%;
+  }
+}
+
+@include screen-tablet-lg {
+  html {
+    font-size: 62.5%;
+  }
+}
+
+@include screen-tablet-sm {
+  html {
+    font-size: 54%;
+  }
+}
+
+@include screen-mobile-lg {
+  html {
+    font-size: 50%;
+  }
+}
+
+@include screen-mobile-sm {
+  html {
+    font-size: 42%;
   }
 }

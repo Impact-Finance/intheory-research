@@ -9,12 +9,14 @@
     font-size: 4rem;
     margin: calc($section-spacing/2) 0;
     letter-spacing: 1px;
+    text-align: center;
   }
   .header {
     font-size: 2.5rem;
     -webkit-filter: opacity(0.85);
     filter: opacity(0.85);
     margin-bottom: 1.5rem;
+    text-align: center;
   }
   .statsBox {
     display: flex;
@@ -29,6 +31,9 @@
     padding: 3rem;
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
+    @include screen-tablet-sm {
+      width: 95%;
+    }
     .singleStat {
       display: flex;
       flex-direction: column;

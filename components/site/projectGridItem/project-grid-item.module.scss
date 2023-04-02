@@ -9,6 +9,14 @@
   border-radius: $box-border-radius;
   transition: all 0.3s;
   @include safari-overflow;
+  @include screen-tablet-lg {
+    width: calc(50% - $content-gap / 2);
+    flex: none;
+  }
+  @include screen-tablet-sm {
+    width: 100%;
+    flex: none;
+  }
   .image {
     -o-object-fit: cover;
     object-fit: cover;
@@ -47,6 +55,11 @@
       .title {
         color: $color-accent-1;
       }
+    }
+  }
+  &:nth-child(3n + 1) {
+    @include screen-tablet-lg {
+      width: 100%;
     }
   }
 }

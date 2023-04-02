@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useDynamicContext } from '@dynamic-labs/sdk-react';
 
 import ImageGenerator from '../imageGenerator/image-generator';
@@ -6,6 +6,7 @@ import { ResearchProjectObject, ImagePropertyObject } from '@/app';
 import ImageOptions from '../imageOptions/image-options';
 import SubmitFunding from '../submitFunding/submit-funding';
 import getStablecoinBalance from '@/utils/getStablecoinBalance';
+import useWindowSize from '@/utils/useWindowSize';
 import styles from './funding-main.module.scss';
 
 interface FundingMainProps {
@@ -32,7 +33,10 @@ const FundingMain = ({ project }: FundingMainProps) => {
   const [connectedWallet, setConnectedWallet] = useState('');
   const [connectedNetwork, setConnectedNetwork] = useState<number>();
   const [walletBalance, setWalletBalance] = useState('--');
+  const [txnSuccess, setTxnSuccess] = useState(false);
   const { primaryWallet, network } = useDynamicContext();
+  const size = useWindowSize();
+  const leftPanel = useRef<null | HTMLDivElement>(null);
 
   useEffect(() => {
     const getBalance = async () => {
@@ -49,6 +53,12 @@ const FundingMain = ({ project }: FundingMainProps) => {
       setConnectedNetwork(undefined);
     }
   }, [primaryWallet, network, connectedWallet]);
+
+  const handleScroll = () => {
+    if (leftPanel.current && leftPanel) {
+      leftPanel.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   const handleGeneration = async () => {
     setImageRequested(true);
@@ -83,7 +93,9 @@ const FundingMain = ({ project }: FundingMainProps) => {
 
   return (
     <section className={styles.section}>
-      <div className={styles.leftPanel}>
+      <div
+        className={styles.leftPanel}
+        ref={leftPanel}>
         {!imageGenerated && (
           <>
             <ImageOptions setImageProperties={setImageProperties} />
@@ -106,6 +118,8 @@ const FundingMain = ({ project }: FundingMainProps) => {
             setImageGenerated={setImageGenerated}
             setImageUrl={setImageUrl}
             walletObject={primaryWallet}
+            txnSuccess={txnSuccess}
+            setTxnSuccess={setTxnSuccess}
           />
         )}
       </div>
@@ -117,6 +131,14 @@ const FundingMain = ({ project }: FundingMainProps) => {
           setImageGenerated={setImageGenerated}
         />
       </div>
+      {size.width && size.width < 1000 && !txnSuccess && (
+        <button
+          className={styles.continueBtn}
+          onClick={handleScroll}
+          disabled={!imageGenerated}>
+          Continue
+        </button>
+      )}
     </section>
   );
 };

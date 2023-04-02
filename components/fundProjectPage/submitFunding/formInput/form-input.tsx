@@ -101,8 +101,8 @@ const FormInput = ({
                 className={styles.icon}
                 src={windowIcon}
                 alt=""
-                width={12}
-                height={12}
+                width={10}
+                height={10}
               />
             </a>
           </div>
@@ -123,8 +123,8 @@ const FormInput = ({
                 className={styles.icon}
                 src={windowIcon}
                 alt=""
-                width={12}
-                height={12}
+                width={10}
+                height={10}
               />
             </a>
           </div>

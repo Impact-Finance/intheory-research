@@ -5,6 +5,10 @@
   flex-direction: column;
   width: 95%;
   gap: 1rem;
+  @include screen-tablet-sm {
+    align-items: center;
+    gap: 2rem;
+  }
   .label {
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -13,10 +17,18 @@
     filter: opacity(0.75);
     color: $color-accent-1;
     align-self: flex-start;
+    @include screen-tablet-sm {
+      align-self: center;
+    }
   }
   .inputDiv {
     display: flex;
     position: relative;
+    @include screen-tablet-sm {
+      flex-direction: column;
+      gap: $content-gap / 2;
+      width: 80%;
+    }
     .usdc {
       position: absolute;
       top: 1rem;
@@ -24,6 +36,9 @@
       padding: 0.25rem 1.5rem;
       color: rgba($color-accent-1, 0.5);
       border-right: 1px solid rgba($color-accent-1, 0.25);
+      @include screen-tablet-sm {
+        top: 0.75rem;
+      }
     }
     .fundingInput {
       flex: 1;
@@ -62,7 +77,6 @@
       width: -moz-fit-content;
       width: fit-content;
       align-self: center;
-
       &:disabled {
         -webkit-filter: opacity(0.5);
         filter: opacity(0.5);
@@ -106,6 +120,12 @@
       width: -webkit-fit-content;
       width: -moz-fit-content;
       width: fit-content;
+      .icon {
+        @include screen-mobile-sm {
+          width: 8px;
+          height: 8px;
+        }
+      }
       &:hover {
         @include btn-hover;
       }

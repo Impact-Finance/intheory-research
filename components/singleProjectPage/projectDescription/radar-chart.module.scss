@@ -1,15 +1,28 @@
 @import '/styles/sass/variables';
 
 .title {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
+  margin-bottom: 2rem;
   width: 80%;
   font-size: 3rem;
   font-weight: 500;
   text-align: center;
   letter-spacing: 1px;
   color: $color-accent-1;
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+  justify-content: center;
+  .legendItem {
+    font-size: 2rem;
+    -webkit-filter: opacity(0.85);
+    filter: opacity(0.85);
+    span {
+      color: $color-accent-1;
+      text-transform: uppercase;
+    }
+  }
 }
