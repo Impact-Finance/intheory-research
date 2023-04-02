@@ -18,13 +18,13 @@ const generalFAQs = [
     question:
       'Why is funding done using cryptocurrency and what are USDC and cUSD?',
     answer:
-      'inTheory processes payments using cryptocurrency because it allows anyone with access to the internet to support the advancement of science, and by tokenizing a funding contribution on the blockchain, we can create a permanent and transparent record of impact.\nThe USDC and cUSD stablecoins (a form of cryptocurrency that is pegged to the US dollar) are widely accepted in web3 as stable stores of value. USDC is available on the Polygon blockchain network and cUSD is available on the Celo blockchain network. Both are available for purchase through Ramp or various decentralized exchanges.',
+      'inTheory processes payments using cryptocurrency because it allows anyone with access to the internet to support the advancement of science. Also, by tokenizing a funding contribution on the blockchain, we can create a permanent and transparent record of impact in the form of an indisputable digital receipt.\nThe USDC and cUSD stablecoins (cryptocurrency that is pegged to the US dollar) are widely accepted in web3 as stable stores of value. USDC is available on the Polygon blockchain network and cUSD is available on the Celo blockchain network. Both are available for purchase through Ramp or various decentralized exchanges.',
   },
   {
     question:
       'What are the Polygon and Celo blockchain networks and which network should I use?',
     answer:
-      "Polygon is a Layer 2 scaling solution for Ethereum, which aims to increase the speed and lower the cost of transactions on the Ethereum network. Polygon provides a range of benefits to users, including faster confirmation times, lower gas fees, and increased scalability.\nCelo is a standalone blockchain network that is focused on providing financial services to individuals and businesses in developing countries. Celo's mission is to create a more inclusive financial system that empowers people to participate in the global economy, regardless of their location or socioeconomic status.\nWe have selected both networks because of their commitments to sustainability and inclusion, as well as their ability to process transactions quickly, securely, and cheaply.",
+      "Polygon is a blockchain network that is interoperable with the Ethereum network (a 'Layer-2') which aims to increase the speed and lower the cost of transactions on Ethereum. Polygon provides a range of benefits to users, including faster confirmation times, lower gas fees, and increased scalability.\nCelo is a standalone blockchain network that is focused on providing financial services to individuals and businesses in developing countries. Celo's mission is to create a more inclusive financial system that empowers people to participate in the global economy, regardless of their location or socioeconomic status.\nWe have selected both networks because of their commitments to sustainability and inclusion, as well as their ability to process transactions quickly, securely, and cheaply.",
   },
   {
     question: 'What AI model is used to generate images?',
@@ -33,12 +33,17 @@ const generalFAQs = [
   {
     question: 'How do I know that transactions are secure?',
     answer:
-      'Our smart contracts were developed using the OpenZeppelin contract libraries to ensure security and adherence to ERC token standards. Our contracts have been extensively tested using the Truffle testing suite and analyzed for security vulnerabilities and exploits using the latest AI tooling. The Solidity source code and testing scripts for our smart contracts are available for review upon request.\nPlease beware of phishing scams, bookmark the correct platform URL (https://www.intheory.app/), and report all scammers or malicious actors to info@impact-finance.io',
+      'Our smart contracts were developed using the OpenZeppelin contract libraries to ensure security and adherence to ERC token standards. Our contracts have been extensively tested using the Truffle testing suite and analyzed for security vulnerabilities and exploits using the latest AI tooling. The Solidity source code and testing scripts for our smart contracts are available for review upon request.\nPlease beware of phishing scams, bookmark the correct platform URL (https://www.intheory.app/), and report all scammers or malicious actors to info@impact-finance.io.',
+  },
+  {
+    question: "What's up with the over-the-top digital design choices?",
+    answer:
+      "Science is hard. And it's even harder to communicate. We want to tell the world about science in a way that everyone can understand - visually. ",
   },
   {
     question: 'Does inTheory charge any fees?',
     answer:
-      'Yes. inTheory charges a 7% fee on all funding contributions, which is comparable to many other crowdfunding platforms. This allows us to keep operations running and to continue to add new features to the platform to support our research community. The collection of this fee is transparently visible via a blockchain explorer. As with every blockchain transaction, there is also a network "gas" fee for each contribution, though we chose the Celo and Polygon networks due in part to their extremely low gas fees.',
+      'Yes. inTheory charges a 7% fee on all funding contributions, which is comparable to many other crowdfunding platforms. The collection of this fee is transparently visible via a blockchain explorer.',
   },
 ];
 
@@ -47,7 +52,7 @@ export const researcherFAQs = [
     question:
       'Do I have to give up any IP or patent rights to my research when I receive funding through inTheory?',
     answer:
-      'No! Neither inTheory nor its community members assume any ownership rights over the outputs of the research conducted by researchers, including, but not limited to, technologies, frameworks, patents, datasets, or other trade secrets that may be developed while associated with inTheory. Though we encourage a transparent and open-access scientific process, researchers are free to decide what information they do or do not share with their supporters.\nAs the technology and regulations surrounding IP-NFTs mature, we may add features allowing researchers to share their IP with community members as a funding incentive, but this will always be on an opt-in basis.',
+      'NO! Neither inTheory nor its community members assume any ownership rights over the outputs of the research conducted by researchers, including, but not limited to, technologies, frameworks, patents, datasets, or other trade secrets that may be developed while associated with inTheory. Though we encourage a transparent and open-access scientific process, researchers are free to decide what information they do or do not share with their supporters.\nAs the technology and regulations surrounding IP-NFTs mature, we may add features allowing researchers to share their IP with community members as a funding incentive, but this will always be on an opt-in basis.',
   },
   {
     question: 'What types of people should apply for funding through inTheory?',
