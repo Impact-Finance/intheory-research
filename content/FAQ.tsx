@@ -72,13 +72,13 @@ export const researcherFAQs = [
   {
     question: 'What obligations do I have once my project is live on inTheory?',
     answer:
-      'Work towards the milestones as laid out in your project application.\nPromptly communicate changes to your project milestones or setbacks that you may encounter.\nThough you are free to decide what content (if any) that you share with your contributors, we suggest that you update your supporters with outputs of your research that may include reports, datasets, or manuscripts. Doing so helps verify the legitimacy of your project, which can encourage users to contribute.',
+      'Work towards the milestones as laid out in your project application.\nPromptly communicate changes to your project milestones or setbacks that you may encounter.\nThough you are free to decide what content (if any) that you share with your contributors, we suggest that you update your supporters with outputs of your research that may include reports, datasets, or manuscripts. Doing so helps to verify the legitimacy of your project (which can encourage more users to contribute).',
   },
   {
     question:
       'How often will I receive funds and how can I transfer funds to my bank account?',
     answer:
-      'Contributions to your project will be disbursed on a monthly basis, pending verification that the project is still active and proceeding towards the milestones outlined in the project application.\nWe understand that science is messy and that things change. To ensure that you receive your contributions, we ask that you simply communicate changes or setbacks in a timely manner.',
+      'Contributions to your project will be disbursed on a monthly basis, pending verification that the project is still active and proceeding towards the milestones outlined in the project application.\nWe understand that science is messy and that things change. To ensure that you receive your contributions, we ask that you simply communicate changes or setbacks in a timely manner, along with a plan for moving forward.',
   },
   {
     question:
@@ -103,52 +103,52 @@ export const userFAQs = [
     question:
       'How do I create a cryptocurrency wallet and where do I get USDC or cUSD?',
     answer:
-      'There are plenty of useful resources on the web to learn how to install a decentralized wallet and fund your wallet with USDC or cUSD. We recommend MetaMask, as it is one of the most popular and versatile wallets in web3.\nUSDC on Polygon can be purchased and sent to your wallet through popular exchanges like Coinbase or directly through MetaMask or Ramp.\ncUSD is available through decentralized exchanges on the Celo network, like Ubeswap, and is also available for direct purchase through Ramp.',
+      'There are plenty of useful resources on the web to learn how to install a decentralized wallet and fund your wallet with USDC or cUSD. We recommend MetaMask, as it is one of the most popular and interoperable wallets in web3.\nUSDC on Polygon can be purchased and sent to your wallet through popular exchanges like Coinbase or directly through MetaMask or Ramp.\ncUSD is available through decentralized exchanges on the Celo network, like Ubeswap, and is also available for direct purchase through Ramp.',
   },
   {
     question:
       'Which blockchain network should I use for completing my funding contribution?',
     answer:
-      'The choice is up to you, but here is some information to help you decide.\nIf you plan to sell or trade your NFT after you have received it, NFT liquidity is generally higher on Polygon and there are more marketplace options for doing so. If you do choose the Polygon network, you will also need to have a balance of MATIC (purchasable through Ramp) in your wallet to cover the gas cost of the transaction.\nIf you choose the Celo network, the gas fee is paid using CELO, which is also available on Ramp or through a centralized exchange. Gas fees are generally only a few cents on both networks.',
+      'The choice is up to you, but here is some information to help you decide.\nIf you plan to sell or trade your NFT after you have received it, NFT liquidity is generally higher on Polygon and there are more marketplace options for doing so. If you do choose the Polygon network, you will also need to have a balance of MATIC (purchasable through Ramp) in your wallet to cover the gas cost of the transaction.\nThe Celo network was built with an intense commitment to sustainability and real-world impact. NFT liquidity is lower, but potential interoperability with other impact projects is higher. If you choose the Celo network, the gas fee is paid using CELO, which is also available on Ramp or through a centralized exchange.\nGas fees are generally only a few cents on both networks.',
   },
   {
     question: 'What is "gas" and why do I have to pay for my transactions?',
     answer:
-      'Each transaction requires a small amount of network "gas" fee be paid to execute. These fees are paid in MATIC on the Polygon network and CELO on the Celo network. The gas fees on these networks is small, and a balance of 1 MATIC/CELO should be much more than adequate to complete the contribution.\nIf you are encountering issues submitting a contribution, please contact us at info@impact-finance.io.',
+      'Each transaction requires a small amount of network "gas" fee be paid to execute. This helps ensure the security and decentralization of the network and the public ledger. These fees are paid in MATIC on the Polygon network and CELO on the Celo network. The gas fees on these networks is small, and a balance of 1 MATIC/CELO should be much more than adequate to cover gas costs for the contribution.\nIf you are encountering issues submitting a contribution, please contact us at info@impact-finance.io.',
   },
   {
     question: 'Why does my transaction keep failing?',
     answer:
-      'Insufficient balance of USDC/cUSD: Please ensure that you have enough USDC (if on Polygon network) or cUSD (if on Celo network) in your connected wallet to complete the transaction, and that you approve inTheory to access your payment token when prompted.\nInsufficient balance of MATIC/CELO for gas fees: Each transaction requires a small amount of network "gas" fee be paid to execute. These fees are paid in MATIC on the Polygon network and CELO on the Celo network. The gas fees on these networks is small, and a balance of 1 MATIC/CELO should be much more than adequate to complete the contribution.\nIf you are still encountering issues submitting a contribution, please contact us at info@impact-finance.io.',
+      'Insufficient balance of USDC/cUSD: Please ensure that you have enough USDC (if on Polygon network) or cUSD (if on Celo network) in your connected wallet to complete the transaction, and that you approve inTheory to access your payment token when prompted.\nInsufficient balance of MATIC/CELO for gas fees: Each transaction requires a small amount of network "gas" fee be paid to execute. These fees are paid in MATIC on the Polygon network and CELO on the Celo network. The gas fees on these networks is small, and a balance of 1 MATIC/CELO should be much more than adequate to cover gas costs for the contribution.\nIf you are still encountering issues submitting a contribution, please contact us at info@impact-finance.io.',
   },
   {
     question:
       'How do I find my NFT in my wallet after I have contributed to a project?',
     answer:
-      'To find your inTheory NFT in your wallet, you must import the token using its contract address. The contract address for your contribution token can be found via the block explorer summary of your contribution.\nIf you need help viewing your NFT in your wallet, please contact us at info@impact-finance.io.',
+      'To view your inTheory NFT in your wallet, you can import the token using its contract address. The contract address for your contribution token can be found via the block explorer summary of your contribution.\nIf you need help viewing your NFT in your wallet, please contact us at info@impact-finance.io - we would be happy to assist!',
   },
   {
     question: 'Can I sell my inTheory NFT on a secondary marketplace? ',
     answer:
-      "While inTheory doesn't include a dedicated marketplace for selling our NFTs, it is entirely your decision whether to sell it on a secondary marketplace.",
+      'While inTheory does not include a dedicated marketplace for selling our NFTs, it is entirely your decision whether or not to sell it on a secondary marketplace.',
   },
   {
     question:
       "What if I contribute to a project and the project owner doesn't do any work?",
     answer:
-      'Funds are distributed to researchers on an intermittent basis. If a researcher ever abandons their project or ceases communications, the project will be become inactive, contributions will cease, and all undisbursed funds will be returned to contributors.\nIf you believe that a certain project may be falsified or illegitimate, please contact us at info@impact-finance.io.',
+      'Funds are distributed to researchers on a monthly basis. If a researcher ever abandons their project or ceases communications, the project will become inactive, contributions will cease, and all undisbursed funds will be returned to contributors.\nIf you believe that a certain project may be falsified or illegitimate, please contact us at info@impact-finance.io.',
   },
   {
     question:
       'How can I stay updated with new results and track progress of the projects that I fund?',
     answer:
-      "Researchers are encouraged to share reports, datasets, and more through their project's contributor portal (coming soon). Only users that have submitted a funding contribution to the project and hold their inTheory NFT in their wallet can access the contributor portal.",
+      "Researchers are encouraged to share reports, datasets, and more through their project's contributor portal (coming soon). Only users that have submitted a funding contribution to the project and hold their inTheory NFT in their wallet can access the project's contributor portal.",
   },
   {
     question:
       'Is there a way to contact the researchers that have projects on the platform?',
     answer:
-      'Please direct all researcher contact requests to info@impact-finance.io. Please do not harass researchers through their social accounts or contact websites. We take harassment of our researcher community very seriously and will pursue legal action as necessary.',
+      'Please direct all researcher contact requests to info@impact-finance.io. Do not harass researchers through their social accounts or contact websites. We take harassment of our researcher and user communities very seriously and will pursue legal action as necessary.',
   },
 ];
 
