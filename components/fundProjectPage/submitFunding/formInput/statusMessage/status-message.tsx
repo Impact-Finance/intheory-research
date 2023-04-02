@@ -35,20 +35,30 @@ const StatusMessage = ({
         <>
           <div className={styles.overlay}></div>
           <p className={`${styles.note} ${styles.status}`}>
-            {requestingApproval &&
-              'Requesting spending approval. Confirm in wallet...'}
+            {requestingApproval && (
+              <>
+                Requesting spending approval.{' '}
+                <span className={styles.confirm}>Confirm in wallet...</span>
+              </>
+            )}
             {approvalGranted && (
               <>
-                <span>APPROVED. </span>Waiting on network confirmation...
+                <span className={styles.approved}>APPROVED. </span>Waiting on
+                network confirmation...
               </>
             )}
             {creatingMetadata &&
               'Creating token metadata and uploading to IPFS...'}
-            {requestingTxn &&
-              'Requesting finalized transaction. Confirm in wallet...'}
+            {requestingTxn && (
+              <>
+                Requesting finalized transaction.{' '}
+                <span className={styles.confirm}>Confirm in wallet...</span>
+              </>
+            )}
             {txnGranted && (
               <>
-                <span>SUBMITTED. </span>Waiting on network confirmation...
+                <span className={styles.approved}>SUBMITTED. </span>Waiting on
+                network confirmation...
               </>
             )}
             <div className={styles.loaderLine}></div>

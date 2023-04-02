@@ -15,6 +15,7 @@
 .note {
   margin-top: 0.5rem;
   font-size: 1.6rem;
+  position: relative;
   -webkit-filter: opacity(0.75);
   filter: opacity(0.75);
   &.valid {
@@ -26,9 +27,12 @@
     color: $color-accent-2;
   }
   &.status {
-    span {
+    .approved {
       color: $color-accent-1;
       text-transform: uppercase;
+    }
+    .confirm {
+      color: $color-accent-2;
     }
     -webkit-filter: opacity(1);
     filter: opacity(1);
