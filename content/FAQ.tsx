@@ -38,7 +38,7 @@ const generalFAQs = [
   {
     question: "What's up with the over-the-top digital design choices?",
     answer:
-      "Science is hard. And it's even harder to communicate. We want to tell the world about science in a way that everyone can understand - visually. ",
+      "Science is hard. And it's even harder to communicate. We want to tell the world about science in a way that everyone can understand - visually!",
   },
   {
     question: 'Does inTheory charge any fees?',

@@ -71,8 +71,7 @@ const StatusMessage = ({
           className={
             validInput ? `${styles.note} ${styles.valid}` : styles.note
           }>
-          Please enter a whole number {minContribution} or greater, numbers
-          only.
+          Please enter a whole number {minContribution} or greater.
         </p>
       )}
       {!txnSent && txnFailed && (

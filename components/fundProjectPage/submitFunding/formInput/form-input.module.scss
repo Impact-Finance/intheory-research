@@ -99,6 +99,9 @@
   }
   .subText {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem 0rem;
     .currentBalance {
       text-align: left;
       font-size: 1.4rem;
@@ -108,6 +111,12 @@
       span {
         text-transform: uppercase;
         color: rgba($color-accent-1, 0.75);
+      }
+      .icon {
+        @include screen-mobile-sm {
+          width: 8px;
+          height: 8px;
+        }
       }
       &:hover {
         @include btn-hover;
