@@ -33,7 +33,7 @@ const generalFAQs = [
   {
     question: 'How do I know that transactions are secure?',
     answer:
-      'Our smart contracts were developed using the OpenZeppelin contract libraries to ensure security and adherence to ERC token standards. Our contracts have been extensively tested using the Truffle testing suite and analyzed for security vulnerabilities and exploits using the latest AI tooling. The Solidity source code and testing scripts for our smart contracts are available for review upon request.\nPlease beware of phishing scams, bookmark the correct platform URL (https://www.intheory.app/), and report all scammers or malicious actors to info@impact-finance.io.',
+      'Our smart contracts were developed using the OpenZeppelin contract libraries to ensure security and adherence to ERC token standards. Our contracts have been extensively tested using the Truffle testing suite and analyzed for security vulnerabilities and exploits using the latest AI tooling. The Solidity source code and testing scripts for our smart contracts are available at in the project Github repo: https://github.com/Impact-Finance/intheory-research\nPlease beware of phishing scams, bookmark the correct platform URL (https://www.intheory.app/), and report all scammers or malicious actors to info@impact-finance.io.',
   },
   {
     question: "What's up with the over-the-top digital design choices?",
