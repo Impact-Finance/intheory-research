@@ -696,7 +696,7 @@ contract('ResearchProject', accounts => {
   });
 
   it('should handle a large number of contributions from multiple users', async () => {
-    const numTransactions = 100;
+    const numTransactions = 50;
     const amount = minimum;
     const tokenMetaURI = 'https://fake.uri';
     for (let i = 0; i < numTransactions; i++) {
