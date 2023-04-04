@@ -1,4 +1,4 @@
-require('dotenv').config({path: '../.env.local'})
+require('dotenv').config({ path: '../.env.local' });
 /**
  * Use this file to configure your truffle project. It's seeded with some
  * common settings for different networks and features like migrations,
@@ -42,16 +42,10 @@ require('dotenv').config({path: '../.env.local'})
  * https://trufflesuite.com/docs/truffle/getting-started/using-the-truffle-dashboard/
  */
 
-// require('dotenv').config();
-// const { DEV_MNEMONIC, INFURA_API_KEY } = process.env;
-
 // ################### ~ DANGER AREA ~ ########################
-// WHY CANT I ACCESS MY ENVIRONMENT VARIABLES IN THIS FILE???
-// POPULATING BELOW AS NEEDED AND THEN DELETING AFTER USE
 const INFURA_API_KEY = process.env.INFURA_API_KEY;
 const DEV_MNEMONIC = process.env.DEV_MNEMONIC;
 const PROD_MNEMONIC = process.env.PROD_MNEMONIC;
-// BE SURE TO DELETE ABOVE VARIABLES AFTER USE!!!!!!!!!!
 // ############### ~ END DANGER AREA ~ ########################
 
 const HDWalletProvider = require('@truffle/hdwallet-provider');
@@ -84,7 +78,8 @@ module.exports = {
       host: 'localhost', // Localhost (default: none)
       port: 8545, // Standard Ethereum port (default: none)
       network_id: '*', // Any network (default: none),
-      provider: () => new HDWalletProvider(DEV_MNEMONIC, "http://127.0.0.1:8545")
+      provider: () =>
+        new HDWalletProvider(DEV_MNEMONIC, 'http://127.0.0.1:8545'),
     },
     mumbai: {
       provider: () => new HDWalletProvider(DEV_MNEMONIC, MUMBAI_INFURA_API),
