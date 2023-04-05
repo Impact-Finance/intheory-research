@@ -28,6 +28,9 @@ export async function getServerSideProps() {
     const parsedArtworks = JSON.parse(JSON.stringify(artworkArray));
     numArtworks = parsedArtworks.length;
     randomized = parsedArtworks.sort(() => 0.5 - Math.random());
+  } else {
+    numArtworks = 0;
+    randomized = []
   }
 
   return {

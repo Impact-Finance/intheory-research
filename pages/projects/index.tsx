@@ -34,6 +34,8 @@ export async function getServerSideProps() {
   if (projectsArray) {
     const parsedProjects = JSON.parse(JSON.stringify(projectsArray));
     randomized = parsedProjects.sort(() => 0.5 - Math.random());
+  } else {
+    randomized = [];
   }
 
   return {
