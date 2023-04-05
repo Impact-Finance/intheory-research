@@ -113,6 +113,7 @@
         color: rgba($color-accent-1, 0.75);
       }
       .icon {
+        transition: all 0.5s;
         @include screen-mobile-sm {
           width: 8px;
           height: 8px;
@@ -120,6 +121,9 @@
       }
       &:hover {
         @include btn-hover;
+        & > .icon {
+          transform: rotate(180deg);
+        }
       }
     }
     .rampLink {
