@@ -3,7 +3,8 @@ import { ResearchProjectObject } from '@/app';
 const searchFilter = (el: ResearchProjectObject, queryTerms: string[]) => {
   const nameArray = el.projectName.toLowerCase().split(' ');
   const descriptionArray = el.shortDescription.toLowerCase().split(' ');
-  const validateArray = nameArray.concat(descriptionArray);
+  const tagsArray = el.tags.map(tag => tag.toLowerCase());
+  const validateArray = nameArray.concat(descriptionArray).concat(tagsArray);
   return queryTerms.some(word => {
     if (word.length > 2) {
       return validateArray.includes(word.toLowerCase());

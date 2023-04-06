@@ -37,7 +37,7 @@
         display: flex;
         .navLink {
           padding: 1rem 1.2rem;
-          --link-spacing: 2.5rem;
+          --link-spacing: 2rem;
           margin: 0 var(--link-spacing);
           border-radius: $btn-border-radius;
           border-bottom: 1px solid rgba($color-accent-1, 0);
