@@ -26,7 +26,7 @@ const WelcomeModal = ({ setShowWelcome }: WelcomeModalProps) => {
             src={inTheory}
             alt="intheory logo"
             fill
-            sizes=""
+            sizes="38rem"
           />
         </div>
         <h3 className={styles.header}>Welcome science lovers!</h3>
