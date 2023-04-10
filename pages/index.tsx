@@ -28,7 +28,6 @@ export default function Home({
 
 export async function getStaticProps() {
   const homeContent = await getHomeContent(4, 8); // inputs are number of returned projects and artworks respectively
-
   let bannerProjects;
   let featuredProject;
   let bannerArtworks;
@@ -39,8 +38,11 @@ export async function getStaticProps() {
     featuredProject = parsedProjects[3]; // ensures it is not a banner project
     const parsedArtworks = JSON.parse(JSON.stringify(homeContent.artworks));
     bannerArtworks = parsedArtworks;
+  } else {
+    featuredProject = {}
+    bannerProjects = []
+    bannerArtworks = []
   }
-
   return {
     props: {
       featuredProject: featuredProject,
