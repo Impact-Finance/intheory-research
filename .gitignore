@@ -27,6 +27,7 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env
 
 # vercel
 .vercel
@@ -37,3 +38,5 @@ next-env.d.ts
 
 # truffle build
 evm/build
+evm/node_modules
+ganache_data

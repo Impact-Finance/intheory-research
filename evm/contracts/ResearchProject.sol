@@ -3,6 +3,7 @@
 pragma solidity ^0.8.9;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts/token/ERC20/extensions/draft-IERC20Permit.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
@@ -12,10 +13,30 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 contract ResearchProjectFactory is Ownable {
     address[] private deployedProjects;
 
+
+    event ResearchProjectCreated(
+        uint256 indexed index,
+        address indexed projectAddress
+    );
+
     // Deploy a ResearchProject contract -> requires a minimum contribution amount, researcher address, contract address of stablecoin used for payment, and fee percentage
-    function createResearchProject(uint128 minimum, address payable researcher, address stablecoinContract, uint32 feePercentage) external onlyOwner {
-        address newProject = address(new ResearchProject(minimum, researcher, stablecoinContract, feePercentage, payable(msg.sender)));
+    function createResearchProject(
+        uint128 minimum,
+        address payable researcher,
+        address stablecoinContract,
+        bool  stablecoinPermitEnabled,
+        uint32 feePercentage
+    ) external onlyOwner {
+        address newProject = address(new ResearchProject(
+            minimum,
+            researcher,
+            stablecoinContract,
+            stablecoinPermitEnabled,
+            feePercentage,
+            payable(msg.sender)
+        ));
         deployedProjects.push(newProject);
+        emit ResearchProjectCreated(deployedProjects.length - 1, newProject);
     }
 
     function getDeployedProjects() external view returns (address[] memory) {
@@ -35,27 +56,50 @@ contract ResearchProject is ERC721, ERC721URIStorage, ERC721Enumerable, Ownable 
     address payable private _researcher; 
     address payable private _paymentFeeReceiver; 
 
-    IERC20 private _stable; 
+    address private _stable; 
+    bool private _stablePermitEnabled;
 
     address[] private _allContributors; 
 
+    bytes32 public DOMAIN_SEPARATOR;
+    bytes32 public constant DOMAIN_TYPEHASH = keccak256("EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)");
     event ContributionReceived(address indexed contributor, uint amount, uint tokenId);
 
-    constructor(uint128 minimumContribution, address payable researcher, address stablecoinContract, uint32 feePercentage, address payable paymentFeeReceiver) ERC721("inTheory Research NFT", "THEORY") {
-        _stable = IERC20(stablecoinContract);
+    constructor(
+        uint128 minimumContribution,
+        address payable researcher,
+        address stablecoinContract,
+        bool stablecoinPermitEnabled,
+        uint32 feePercentage,
+        address payable paymentFeeReceiver
+    ) ERC721("inTheory Research NFT", "THEORY") {
+        _stable = stablecoinContract;
+        _stablePermitEnabled = stablecoinPermitEnabled;
         _minimumContribution = minimumContribution;
         _feePercentage = feePercentage;
         _researcher = researcher;
         _paymentFeeReceiver = paymentFeeReceiver;
+
+        uint256 ch;
+        assembly {
+            ch := chainid()
+        }
+        DOMAIN_SEPARATOR = keccak256(abi.encode(
+            DOMAIN_TYPEHASH,
+            keccak256(bytes("inTheory Research NFT")),
+            keccak256(bytes("1")),
+            ch,
+            address(this)
+        ));
         super.transferOwnership(paymentFeeReceiver);
     }
 
     // Accepts a contribution and mints an ERC721 to the sender with the metadata located at tokenMetaURI
     function contribute(uint amount, string calldata tokenMetaURI) external returns(uint) {
         require(amount >= _minimumContribution, "Contribution is below the required minimum.");
-        uint allowance = _stable.allowance(msg.sender, address(this));
+        uint allowance = IERC20(_stable).allowance(msg.sender, address(this));
         require(allowance >= amount, "Check token allowance.");
-        _stable.transferFrom(msg.sender, address(this), amount);
+        IERC20(_stable).transferFrom(msg.sender, address(this), amount);
         uint newTokenId = _tokenIds.current();
         uint feeAmount = amount * _feePercentage / 100;
 
@@ -72,14 +116,38 @@ contract ResearchProject is ERC721, ERC721URIStorage, ERC721Enumerable, Ownable 
         return newTokenId;
     }
 
+    function contributeWithPermit(
+        uint amount, string calldata tokenMetaURI,
+        uint8 v, bytes32 r, bytes32 s, uint256 deadline
+    ) external returns(uint) {
+        require(amount >= _minimumContribution, "Contribution is below the required minimum.");
+        IERC20Permit(_stable).permit(msg.sender, address(this), amount, deadline, v, r, s);
+        IERC20(_stable).transferFrom(msg.sender, address(this), amount);
+        uint newTokenId = _tokenIds.current();
+        uint feeAmount = amount * _feePercentage / 100;
+
+        _mint(msg.sender, newTokenId);
+        _setTokenURI(newTokenId, tokenMetaURI);
+
+        _unclaimedFees = _unclaimedFees + feeAmount;
+        _unclaimedContributions = _unclaimedContributions + (amount - feeAmount);
+
+        _allContributors.push(msg.sender);
+        _tokenIds.increment();
+
+        emit ContributionReceived(msg.sender, amount, newTokenId);
+        return newTokenId;
+
+    }
+
     function getAllContributors() external view returns(address[] memory) {
         return _allContributors;
     }
 
     function disburseFunds() external onlyOwner {
         require(_unclaimedContributions > 0, "No contributions to claim.");
-        require(_stable.balanceOf(address(this)) >= _unclaimedContributions, "Insufficient balance in contract.");
-        _stable.transfer(_researcher, _unclaimedContributions);
+        require(IERC20(_stable).balanceOf(address(this)) >= _unclaimedContributions, "Insufficient balance in contract.");
+        IERC20(_stable).transfer(_researcher, _unclaimedContributions);
         delete _unclaimedContributions; // gas-efficient way to reinitialize variable
     }
 
@@ -89,8 +157,8 @@ contract ResearchProject is ERC721, ERC721URIStorage, ERC721Enumerable, Ownable 
 
     function claimFees() external onlyOwner {
         require(_unclaimedFees > 0, "No fees to claim.");
-        require(_stable.balanceOf(address(this)) >= _unclaimedFees, "Insufficient balance in contract.");
-        _stable.transfer(_paymentFeeReceiver, _unclaimedFees);
+        require(IERC20(_stable).balanceOf(address(this)) >= _unclaimedFees, "Insufficient balance in contract.");
+        IERC20(_stable).transfer(_paymentFeeReceiver, _unclaimedFees);
         delete _unclaimedFees; // gas-efficient way to reinitialize variable
     }
 
@@ -100,8 +168,8 @@ contract ResearchProject is ERC721, ERC721URIStorage, ERC721Enumerable, Ownable 
 
     // Used to empty entire balance of contract, takes boolean as input on whether to reset state variables for unclaimed funds/fees -> function for emergency use only
     function withdrawBalance(bool resetBalances) external onlyOwner {
-        require(_stable.balanceOf(address(this)) > 0);
-        _stable.transfer(_paymentFeeReceiver, _stable.balanceOf(address(this)));
+        require(IERC20(_stable).balanceOf(address(this)) > 0);
+        IERC20(_stable).transfer(_paymentFeeReceiver, IERC20(_stable).balanceOf(address(this)));
         if(resetBalances){
             _unclaimedFees = 0;
             _unclaimedContributions = 0;
@@ -127,11 +195,12 @@ contract ResearchProject is ERC721, ERC721URIStorage, ERC721Enumerable, Ownable 
     }
 
     function getStablecoinAddress() external view returns(address) {
-        return address(_stable);
+        return _stable;
     }
 
-    function changeStablecoinAddress(address newContractAddress) external onlyOwner {
-        _stable = IERC20(newContractAddress);
+    function changeStablecoinAddress(address newContractAddress, bool isPermitEnabled) external onlyOwner {
+        _stablePermitEnabled = isPermitEnabled;
+        _stable = newContractAddress;
     }
 
     function getCurrentResearcher() external view returns(address) {
