@@ -79,6 +79,8 @@ module.exports = {
       host: 'localhost', // Localhost (default: none)
       port: 8545, // Standard Ethereum port (default: none)
       network_id: '*', // Any network (default: none),
+      networkCheckTimout: 1000000,
+      timeoutBlocks: 200,
       provider: () =>
         new HDWalletProvider(DEV_MNEMONIC, 'http://127.0.0.1:8545'),
     },
