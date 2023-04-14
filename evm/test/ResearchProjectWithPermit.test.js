@@ -1,14 +1,6 @@
 /* global contract; global it; global web3; global assert */
 
 const { EIP712DOMAIN, PERMIT } =  require("./typeHashes");
-const {
-  encrypt,
-  recoverPersonalSignature,
-  recoverTypedSignature,
-  TypedMessage,
-  MessageTypes,
-  SignTypedDataVersion
-} = require('@metamask/eth-sig-util');
 
 const ResearchProjectFactory = artifacts.require('ResearchProjectFactory');
 const ResearchProject = artifacts.require('ResearchProject');
