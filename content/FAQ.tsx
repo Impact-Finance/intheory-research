@@ -10,9 +10,10 @@ const generalFAQs = [
       'inTheory was born from the idea that science should be accessible to all and driven by an involved and informed community. Our platform aids in the democratization of scientific funding, and our development has been influenced by the emerging decentralized science movement.\ninTheory provides researchers with an entirely new way to fund and communicate their work, shrinking the divide between the science community and the rest of the world.',
   },
   {
-    question: 'How does inTheory verify the legitimacy of research projects?',
+    question:
+      'How does inTheory verify the legitimacy of research groups or projects?',
     answer:
-      'In order for a project to be added to the platform, a researcher must submit a project application, including references, and complete a 30-minute video interview with our team to verify legitimacy. Funds are distributed to researchers on an intermittent basis. If a researcher ever abandons their project or ceases communications, the project will be become inactive, contributions will cease, and all undisbursed funds will be returned to contributors.\nIf you believe that a certain project may be falsified or illegitimate, please contact us at info@impact-finance.io.',
+      'In order for research to be added to the platform, a researcher must submit a funding application, including references, and complete a 30-minute video interview with our team to verify legitimacy. Funds are distributed to researchers on an intermittent basis. If a researcher ever abandons their work or ceases communications, the project will be become inactive, contributions will cease, and all undisbursed funds will be returned to contributors.\nIf you believe that a certain group or project may be falsified or illegitimate, please contact us at info@impact-finance.io.',
   },
   {
     question:
@@ -33,7 +34,7 @@ const generalFAQs = [
   {
     question: 'How do I know that transactions are secure?',
     answer:
-      'Our smart contracts were developed using the OpenZeppelin contract libraries to ensure security and adherence to ERC token standards. Our contracts have been extensively tested using the Truffle testing suite and analyzed for security vulnerabilities and exploits using the latest AI tooling. The Solidity source code and testing scripts for our smart contracts are available at in the project Github repo: https://github.com/Impact-Finance/intheory-research\nPlease beware of phishing scams, bookmark the correct platform URL (https://www.intheory.app/), and report all scammers or malicious actors to info@impact-finance.io.',
+      'Our smart contracts were developed using the OpenZeppelin contract libraries to ensure security and adherence to ERC token standards. Our contracts have been extensively tested using the Truffle testing suite and analyzed for security vulnerabilities and exploits using the latest AI tooling. The Solidity source code and testing scripts for our smart contracts are available in the platform Github repo: https://github.com/Impact-Finance/intheory-research\nPlease beware of phishing scams, bookmark the correct platform URL (https://www.intheory.app/), and report all scammers or malicious actors to info@impact-finance.io.',
   },
   {
     question: "What's up with the over-the-top digital design choices?",
@@ -62,23 +63,24 @@ export const researcherFAQs = [
   {
     question: 'What types of research can inTheory fund?',
     answer:
-      'We will accept applications across many scientific disciplines, so long as the research adheres to our design principles of sustainability and social integrity. If in doubt, submit an application!',
+      'We will accept applications across many scientific disciplines, so long as the research adheres to our design principles of sustainability and social integrity. We accept applications for specific research projects or for general funding for targeted research groups/DAOs. If in doubt, submit an application!',
   },
   {
     question: 'What research will inTheory NOT fund?',
     answer:
-      'We will not accept: projects whose primary application is weaponry, projects that are conducted in or with the support of countries on the OFAC sanctioned countries list, projects that are labeled as confidential by a government authority, or projects that do not adhere to our design principles of sustainability and social integrity.\nFor more information, please read our full terms and conditions.',
+      'We will not accept: research where the primary application is weaponry, research that is conducted in or with the support of countries on the OFAC sanctioned countries list, research that is labeled as confidential by a government authority, or research that does not adhere to our design principles of sustainability and social integrity.\nFor more information, please read our full terms and conditions.',
   },
   {
-    question: 'What obligations do I have once my project is live on inTheory?',
+    question:
+      'What obligations do I have once my research is live on inTheory?',
     answer:
-      'Work towards the milestones as laid out in your project application.\nPromptly communicate changes to your project milestones or setbacks that you may encounter.\nThough you are free to decide what content (if any) that you share with your contributors, we suggest that you update your supporters with outputs of your research that may include reports, datasets, or manuscripts. Doing so helps to verify the legitimacy of your project (which can encourage more users to contribute).',
+      'Work towards the milestones as laid out in your funding application.\nPromptly communicate changes to your goals/milestones or any setbacks that you may encounter.\nThough you are free to decide what content (if any) that you share with your contributors, we suggest that you update your supporters with outputs of your research that may include reports, datasets, or manuscripts. Doing so helps to verify the legitimacy of your work (which can encourage more users to contribute).',
   },
   {
     question:
       'How often will I receive funds and how can I transfer funds to my bank account?',
     answer:
-      'Contributions to your project will be disbursed on a monthly basis, pending verification that the project is still active and proceeding towards the milestones outlined in the project application.\nWe understand that science is messy and that things change. To ensure that you receive your contributions, we ask that you simply communicate changes or setbacks in a timely manner, along with a plan for moving forward.',
+      'Contributions to your research will be disbursed on a monthly basis, pending verification that the work is still active and proceeding towards the milestones outlined in the funding application.\nWe understand that science is messy and that things change. To ensure that you receive your contributions, we ask that you simply communicate changes or setbacks in a timely manner, along with a plan for moving forward.',
   },
   {
     question:

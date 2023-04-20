@@ -13,9 +13,10 @@ const HowTo = () => {
       />
       <div className={styles.howBox}>
         <div className={styles.stepItem}>
-          <h3>Submit a project application</h3>
+          <h3>Submit a funding application</h3>
           <p>
-            Tell us about your proposed research project using{' '}
+            Apply for funding for a specific project or for general funding for
+            your research group/DAO using{' '}
             <a
               href="https://a9hkiyqclu4.typeform.com/to/isX0VL7s"
               target="_blank"
@@ -29,14 +30,14 @@ const HowTo = () => {
           <h3>Complete a screening interview</h3>
           <p>
             We&apos;ll set up a brief 30-minute video interview to learn more
-            about you and your project. The interview will focus on feasibility
-            and broader impact.
+            about you and your group/project. The interview will focus on
+            feasibility and broader impact.
           </p>
         </div>
         <div className={styles.stepItem}>
           <h3>Create your project profile</h3>
           <p>
-            Once your project is approved, our team will help you create a
+            Once your research is approved, our team will help you create a
             project profile to be showcased on our platform. We&apos;ll do most
             of the work on this step.
           </p>
@@ -52,7 +53,7 @@ const HowTo = () => {
         <div className={styles.stepItem}>
           <h3>Receive your funds</h3>
           <p>
-            Receive periodic payouts from contributions to your project in the
+            Receive periodic payouts from contributions to your research in the
             form of the USDC or cUSD stablecoins. If you don&apos;t already have
             a cryptocurrency wallet, we will help you to set one up.
           </p>
