@@ -39,6 +39,7 @@ const FundingMain = ({ project }: FundingMainProps) => {
   const leftPanel = useRef<null | HTMLDivElement>(null);
 
   const refreshBalance = async () => {
+    // Required for if a user adds to their wallet balance while on funding page
     const newBalance = await getStablecoinBalance(network, primaryWallet!);
     setWalletBalance(newBalance);
   };
