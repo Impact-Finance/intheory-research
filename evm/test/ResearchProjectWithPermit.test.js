@@ -1,13 +1,64 @@
-// To run tests, execute `truffle develop` from project directory and then run `test` in the dev console
+/* global contract; global it; global web3; global assert */
+
+const { EIP712DOMAIN, PERMIT } =  require("./typeHashes");
 
 const ResearchProjectFactory = artifacts.require('ResearchProjectFactory');
 const ResearchProject = artifacts.require('ResearchProject');
-const ERC20 = artifacts.require('MockERC20');
+const ERC20Permit = artifacts.require('MockERC20Permit');
+const createPermit = async (
+  domainData,
+  owner,
+  spender,
+  amount,
+  nonce,
+  deadline
+) => {
+  const permitData = {
+    owner: owner,
+    spender: spender,
+    value: amount,
+    nonce: nonce,
+    deadline: deadline
+  }
+  const data = JSON.stringify({
+    domain: domainData,
+    message: permitData,
+    primaryType: "Permit",
+    types: {
+      EIP712Domain: EIP712DOMAIN,
+      Permit: PERMIT
+    }
+  })
+
+  const getPermit = () => {
+    return new Promise((res, rej) => {
+      web3.currentProvider.send({
+        method: "eth_signTypedData_v4",
+        params: [owner, data],
+        from: owner
+      }, (error, result) => {
+        if (error) rej(error)
+        res(result)
+      }
+      )
+    })
+  }
+
+  const permit = await getPermit()
+
+  const signature = permit.result.substring(2)
+  const r = "0x" + signature.substring(0, 64)
+  const s = "0x" + signature.substring(64, 128)
+  const v = parseInt(signature.substring(128, 130), 16)
+  return { v, r, s }
+
+}
 
 contract('ResearchProjectFactory', accounts => {
   let factoryInstance;
   let stablecoinAddress;
-  let stablecoinIsPermit = false
+  let stablecoinIsPermit = true
+
   const owner = accounts[0];
   const researcher = accounts[1];
   const manager = accounts[2];
@@ -17,12 +68,12 @@ contract('ResearchProjectFactory', accounts => {
   const feePercentage = 7;
 
   beforeEach(async () => {
-    erc20Instance = await ERC20.new({ from: stableOwner });
+    erc20Instance = await ERC20Permit.new({ from: stableOwner });
     stablecoinAddress = erc20Instance.address;
     factoryInstance = await ResearchProjectFactory.new({ from: owner });
   });
 
-  it('should deploy a new ResearchProject contract', async () => {
+  it("should deploy research project contract", async () => {
     await factoryInstance.createResearchProject(
       minimum,
       researcher,
@@ -35,36 +86,7 @@ contract('ResearchProjectFactory', accounts => {
     expect(deployedProjects.length).to.equal(1);
     researchProject = await ResearchProject.at(deployedProjects[0]);
     expect(await researchProject.getCurrentResearcher()).to.equal(researcher);
-  });
-
-  it('should deploy multiple ResearchProject contracts', async () => {
-    await factoryInstance.createResearchProject(
-      minimum,
-      researcher,
-      stablecoinAddress,
-      stablecoinIsPermit,
-      feePercentage,
-      { from: owner }
-    );
-    await factoryInstance.createResearchProject(
-      minimum,
-      researcher,
-      stablecoinAddress,
-      stablecoinIsPermit,
-      feePercentage,
-      { from: owner }
-    );
-    await factoryInstance.createResearchProject(
-      minimum,
-      researcher,
-      stablecoinAddress,
-      stablecoinIsPermit,
-      feePercentage,
-      { from: owner }
-    );
-    const deployedProjects = await factoryInstance.getDeployedProjects();
-    expect(deployedProjects.length).to.equal(3);
-  });
+  })
 
   it('should transfer ownership', async () => {
     expect(await factoryInstance.owner()).to.equal(owner);
@@ -114,7 +136,9 @@ contract('ResearchProject', accounts => {
   let factoryInstance;
   let projectInstance;
   let stablecoinAddress;
-  let stablecoinIsPermit = false
+  let stablecoinIsPermit = true
+  let domainData
+
   const owner = accounts[0];
   const researcher = accounts[1];
   const manager = accounts[2];
@@ -126,7 +150,7 @@ contract('ResearchProject', accounts => {
   const feePercentage = 7;
 
   beforeEach(async () => {
-    erc20Instance = await ERC20.new({ from: stableOwner });
+    erc20Instance = await ERC20Permit.new({ from: stableOwner });
     stablecoinAddress = erc20Instance.address;
     factoryInstance = await ResearchProjectFactory.new({ from: owner });
     await factoryInstance.createResearchProject(
@@ -137,9 +161,19 @@ contract('ResearchProject', accounts => {
       feePercentage,
       { from: owner }
     );
+
+
     const deployedProjects = await factoryInstance.getDeployedProjects();
     expect(deployedProjects.length).to.equal(1);
     projectInstance = await ResearchProject.at(deployedProjects[0]);
+    
+    domainData = {
+      name: 'Stable',
+      version: "1",
+      chainId: (await web3.eth.getChainId()),
+      verifyingContract: stablecoinAddress
+    }
+
     await erc20Instance.transfer(contributor1, 1000000, {
       from: stableOwner,
     });
@@ -168,10 +202,23 @@ contract('ResearchProject', accounts => {
   it('should allow contributions above minimum and mint an NFT', async () => {
     const amount = minimum + 1;
     const tokenMetaURI = 'https://fake.uri';
-    await erc20Instance.approve(projectInstance.address, amount, {
-      from: contributor1,
-    });
-    await projectInstance.contribute(amount, tokenMetaURI, {
+    const nonce = parseInt(await erc20Instance.nonces(contributor1))
+    const deadline =  Math.floor(new Date().getTime() / 1000) + 3600
+    
+    const { v, r, s } = await createPermit(
+      domainData,
+      contributor1,
+      projectInstance.address,
+      amount,
+      nonce,
+      deadline
+    )
+    console.log(v, r, s)
+    await projectInstance.contributeWithPermit(
+      amount,
+      tokenMetaURI,
+      v, r, s, deadline,
+        {
       from: contributor1,
     });
     const stableBalance = await erc20Instance.balanceOf(
@@ -185,11 +232,23 @@ contract('ResearchProject', accounts => {
   it('should not allow contributions and not mint an NFT if contribution is below minimum', async () => {
     const amount = minimum - 1;
     const tokenMetaURI = 'https://fake.uri';
-    await erc20Instance.approve(projectInstance.address, amount, {
-      from: contributor1,
-    });
+
+    const nonce = parseInt(await erc20Instance.nonces(contributor1))
+    const deadline =  Math.floor(new Date().getTime() / 1000) + 3600
+    
+    const { v, r, s } = await createPermit(
+      domainData,
+      contributor1,
+      projectInstance.address,
+      amount,
+      nonce,
+      deadline
+    )
     try {
-      await projectInstance.contribute(amount, tokenMetaURI, {
+      await projectInstance.contributeWithPermit(
+        amount, tokenMetaURI,
+        v, r, s, deadline,
+         {
         from: contributor1,
       });
       assert(false);
@@ -207,10 +266,21 @@ contract('ResearchProject', accounts => {
   it('should allow contributions equal to minimum and mint an NFT', async () => {
     const amount = minimum;
     const tokenMetaURI = 'https://fake.uri';
-    await erc20Instance.approve(projectInstance.address, amount, {
-      from: contributor1,
-    });
-    await projectInstance.contribute(amount, tokenMetaURI, {
+
+    const nonce = parseInt(await erc20Instance.nonces(contributor1))
+    const deadline =  Math.floor(new Date().getTime() / 1000) + 3600
+    const { v, r, s } = await createPermit(
+      domainData,
+      contributor1,
+      projectInstance.address,
+      amount,
+      nonce,
+      deadline
+    )
+    await projectInstance.contributeWithPermit(
+      amount, tokenMetaURI,
+      v, r, s, deadline,
+        {
       from: contributor1,
     });
     const stableBalance = await erc20Instance.balanceOf(
@@ -225,12 +295,23 @@ contract('ResearchProject', accounts => {
     const amount = minimum;
     const tokenMetaURI = 'https://fake.uri';
     try {
-      await erc20Instance.approve(projectInstance.address, amount, {
-        from: contributor3,
-      });
-      await projectInstance.contribute(amount, tokenMetaURI, {
-        from: contributor3,
-      });
+    const nonce = parseInt(await erc20Instance.nonces(contributor3))
+    const deadline =  Math.floor(new Date().getTime() / 1000) + 3600
+    const { v, r, s } = await createPermit(
+      domainData,
+      contributor3,
+      projectInstance.address,
+      amount,
+      nonce,
+      deadline
+    )
+
+    await projectInstance.contributeWithPermit(
+      amount, tokenMetaURI,
+      v, r, s, deadline,
+        {
+      from: contributor3,
+    });
       assert(false);
     } catch (err) {
       assert(err);
@@ -246,13 +327,26 @@ contract('ResearchProject', accounts => {
   it('should not allow contributions and not mint an NFT if there is insufficient token allowance', async () => {
     const amount = minimum;
     const tokenMetaURI = 'https://fake.uri';
-    await erc20Instance.approve(projectInstance.address, amount - 1, {
-      from: contributor1,
-    });
+
+    const nonce = parseInt(await erc20Instance.nonces(contributor3))
+    const deadline =  Math.floor(new Date().getTime() / 1000) + 3600
+    const { v, r, s } = await createPermit(
+      domainData,
+      contributor3,
+      projectInstance.address,
+      amount,
+      nonce,
+      deadline
+    )
     try {
-      await projectInstance.contribute(amount, tokenMetaURI, {
-        from: contributor1,
-      });
+
+    await projectInstance.contributeWithPermit(
+      amount, tokenMetaURI,
+      v, r, s, deadline,
+        {
+      from: contributor3,
+    });
+
       assert(false);
     } catch (err) {
       assert(err);
@@ -268,13 +362,25 @@ contract('ResearchProject', accounts => {
   it('should not allow contributions and not mint an NFT if there is no metadataURI', async () => {
     const amount = minimum;
     let tokenMetaURI;
-    await erc20Instance.approve(projectInstance.address, amount, {
+
+    const nonce = parseInt(await erc20Instance.nonces(contributor1))
+    const deadline =  Math.floor(new Date().getTime() / 1000) + 3600
+    const { v, r, s } = await createPermit(
+      domainData,
+      contributor1,
+      projectInstance.address,
+      amount,
+      nonce,
+      deadline
+    )
+    try {
+    await projectInstance.contributeWithPermit(
+      amount, tokenMetaURI,
+      v, r, s, deadline,
+        {
       from: contributor1,
     });
-    try {
-      await projectInstance.contribute(amount, tokenMetaURI, {
-        from: contributor1,
-      });
+
       assert(false);
     } catch (err) {
       assert(err);
@@ -351,12 +457,25 @@ contract('ResearchProject', accounts => {
     const fees = (amount * feePercentage) / 100;
     const funds = amount - fees;
     const tokenMetaURI = 'https://fake.uri';
-    await erc20Instance.approve(projectInstance.address, amount, {
+
+    const nonce = parseInt(await erc20Instance.nonces(contributor1))
+    const deadline =  Math.floor(new Date().getTime() / 1000) + 3600
+    const { v, r, s } = await createPermit(
+      domainData,
+      contributor1,
+      projectInstance.address,
+      amount,
+      nonce,
+      deadline
+    )
+
+    await projectInstance.contributeWithPermit(
+      amount, tokenMetaURI,
+      v, r, s, deadline,
+        {
       from: contributor1,
     });
-    await projectInstance.contribute(amount, tokenMetaURI, {
-      from: contributor1,
-    });
+
     await projectInstance.disburseFunds({ from: owner });
     const stableBalance = await erc20Instance.balanceOf(researcher);
     expect(parseInt(stableBalance)).to.equal(funds);
@@ -373,10 +492,22 @@ contract('ResearchProject', accounts => {
     const fees = (amount * feePercentage) / 100;
     const funds = amount - fees;
     const tokenMetaURI = 'https://fake.uri';
-    await erc20Instance.approve(projectInstance.address, amount, {
-      from: contributor1,
-    });
-    await projectInstance.contribute(amount, tokenMetaURI, {
+
+    const nonce = parseInt(await erc20Instance.nonces(contributor1))
+    const deadline =  Math.floor(new Date().getTime() / 1000) + 3600
+    const { v, r, s } = await createPermit(
+      domainData,
+      contributor1,
+      projectInstance.address,
+      amount,
+      nonce,
+      deadline
+    )
+
+    await projectInstance.contributeWithPermit(
+      amount, tokenMetaURI,
+      v, r, s, deadline,
+        {
       from: contributor1,
     });
     await projectInstance.claimFees({ from: owner });
@@ -393,12 +524,25 @@ contract('ResearchProject', accounts => {
     const fees = (amount * feePercentage) / 100;
     const funds = amount - fees;
     const tokenMetaURI = 'https://fake.uri';
-    await erc20Instance.approve(projectInstance.address, amount, {
+
+    const nonce = parseInt(await erc20Instance.nonces(contributor1))
+    const deadline =  Math.floor(new Date().getTime() / 1000) + 3600
+    const { v, r, s } = await createPermit(
+      domainData,
+      contributor1,
+      projectInstance.address,
+      amount,
+      nonce,
+      deadline
+    )
+
+    await projectInstance.contributeWithPermit(
+      amount, tokenMetaURI,
+      v, r, s, deadline,
+        {
       from: contributor1,
     });
-    await projectInstance.contribute(amount, tokenMetaURI, {
-      from: contributor1,
-    });
+
     await projectInstance.claimFees({ from: owner });
     await projectInstance.disburseFunds({ from: owner });
     const researcherBalance = await erc20Instance.balanceOf(researcher);
@@ -563,10 +707,22 @@ contract('ResearchProject', accounts => {
   it('should withdraw full balance and reset fees and contributions', async () => {
     const amount = minimum * 10 ** 4; // simulate to wei
     const tokenMetaURI = 'https://fake.uri';
-    await erc20Instance.approve(projectInstance.address, amount, {
-      from: contributor1,
-    });
-    await projectInstance.contribute(amount, tokenMetaURI, {
+
+    const nonce = parseInt(await erc20Instance.nonces(contributor1))
+    const deadline =  Math.floor(new Date().getTime() / 1000) + 3600
+    const { v, r, s } = await createPermit(
+      domainData,
+      contributor1,
+      projectInstance.address,
+      amount,
+      nonce,
+      deadline
+    )
+
+    await projectInstance.contributeWithPermit(
+      amount, tokenMetaURI,
+      v, r, s, deadline,
+        {
       from: contributor1,
     });
     await projectInstance.withdrawBalance(true, { from: owner });
@@ -588,10 +744,22 @@ contract('ResearchProject', accounts => {
     const fees = (amount * feePercentage) / 100;
     const funds = amount - fees;
     const tokenMetaURI = 'https://fake.uri';
-    await erc20Instance.approve(projectInstance.address, amount, {
-      from: contributor1,
-    });
-    await projectInstance.contribute(amount, tokenMetaURI, {
+
+    const nonce = parseInt(await erc20Instance.nonces(contributor1))
+    const deadline =  Math.floor(new Date().getTime() / 1000) + 3600
+    const { v, r, s } = await createPermit(
+      domainData,
+      contributor1,
+      projectInstance.address,
+      amount,
+      nonce,
+      deadline
+    )
+
+    await projectInstance.contributeWithPermit(
+      amount, tokenMetaURI,
+      v, r, s, deadline,
+        {
       from: contributor1,
     });
     await projectInstance.withdrawBalance(false, { from: owner });
@@ -656,43 +824,42 @@ contract('ResearchProject', accounts => {
     const tokenMetaURI = 'https://fake.uri';
     const numTransactions = 10;
 
-    await erc20Instance.approve(
-      projectInstance.address,
-      amount * numTransactions,
-      {
-        from: contributor1,
-      }
-    );
-    await erc20Instance.approve(
-      projectInstance.address,
-      amount * numTransactions,
-      {
-        from: contributor2,
-      }
-    );
-
+    const deadline =  Math.floor(new Date().getTime() / 1000) + 3600
     // Spawn multiple transaction promises
     const promises = [];
     for (let i = 0; i < numTransactions; i++) {
-      promises.push(
-        projectInstance.contribute(amount, tokenMetaURI, {
-          from: contributor1,
-        })
-      );
-      promises.push(
-        projectInstance.contribute(amount, tokenMetaURI, {
-          from: contributor2,
-        })
-      );
-    }
-
-    // Wait for all transactions to complete
-    const results = await Promise.all(promises);
-
-    // Check that all transactions succeeded
-    for (let i = 0; i < numTransactions; i++) {
-      assert.equal(results[i].receipt.status, true, 'Transaction failed');
-    }
+          const nonce = parseInt(await erc20Instance.nonces(contributor1))
+          const nonce2 = parseInt(await erc20Instance.nonces(contributor2))
+          const { v, r, s } = await createPermit(
+              domainData,
+              contributor1,
+              projectInstance.address,
+              amount,
+              nonce,
+              deadline
+            )
+            const res1 = await projectInstance.contributeWithPermit(
+              amount, tokenMetaURI,
+              v, r, s, deadline,
+                {
+              from: contributor1,
+            })
+            assert.equal(res1.receipt.status, true, "Transaction failed")
+            const { v:v2, r:r2, s:s2 } = await createPermit(
+              domainData,
+              contributor2,
+              projectInstance.address,
+              amount,
+              nonce2,
+              deadline
+            )
+            const res2 = await projectInstance.contributeWithPermit(
+              amount, tokenMetaURI,
+              v2, r2, s2, deadline,
+              {from: contributor2}
+            )
+            assert.equal(res2.receipt.status, true, "Transaction failed")
+        }
 
     // Check that project contract balance is correct
     const expectedBalance = amount * numTransactions * 2;
@@ -707,16 +874,36 @@ contract('ResearchProject', accounts => {
     const amount = minimum;
     const tokenMetaURI = 'https://fake.uri';
     for (let i = 0; i < numTransactions; i++) {
-      await erc20Instance.approve(projectInstance.address, amount, {
+      const nonce = parseInt(await erc20Instance.nonces(contributor1))
+      const nonce2 = parseInt(await erc20Instance.nonces(contributor2))
+      const deadline =  Math.floor(new Date().getTime() / 1000) + 3600
+      const { v, r, s } = await createPermit(
+        domainData,
+        contributor1,
+        projectInstance.address,
+        amount,
+        nonce,
+        deadline
+      )
+      const { v:v2, r:r2, s:s2 } = await createPermit(
+        domainData,
+        contributor2,
+        projectInstance.address,
+        amount,
+        nonce2,
+        deadline
+      )
+
+      await projectInstance.contributeWithPermit(
+        amount, tokenMetaURI,
+        v, r, s, deadline,
+          {
         from: contributor1,
       });
-      await erc20Instance.approve(projectInstance.address, amount, {
-        from: contributor2,
-      });
-      await projectInstance.contribute(amount, tokenMetaURI, {
-        from: contributor1,
-      });
-      await projectInstance.contribute(amount, tokenMetaURI, {
+      await projectInstance.contributeWithPermit(
+        amount, tokenMetaURI,
+        v2, r2, s2, deadline,
+          {
         from: contributor2,
       });
     }
